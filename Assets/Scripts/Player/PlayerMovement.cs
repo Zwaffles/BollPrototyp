@@ -46,8 +46,10 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
+        _isGrounded = false;
+
         _rigidbody.AddForce(new Vector2(_move.x, 0) * moveSpeed);
     }
 
@@ -55,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_isGrounded)
         {
-            _isGrounded = false;
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
