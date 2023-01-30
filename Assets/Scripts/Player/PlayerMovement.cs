@@ -5,10 +5,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Header("Movement Values")]
     private float moveSpeed = 8.0f;
     [SerializeField]
-    private float acceleration = 0.8f;    
-    [SerializeField]
-    private float maxSpeed = 18f;
-    [SerializeField]
     private float jumpForce = 8f;
 
     [Header("Ground Check")]
@@ -52,20 +48,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _rigidbody.AddForce(new Vector2(_move.x, 0) * moveSpeed, ForceMode.Acceleration);
-    }
-
-    private void FixedUpdate()
-    {
-        _isGrounded = false;
-
-        _rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, maxSpeed);
+        _rigidbody.AddForce(new Vector2(_move.x, 0) * moveSpeed);
     }
 
     private void Jump()
     {
         if (_isGrounded)
         {
+            _isGrounded = false;
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }

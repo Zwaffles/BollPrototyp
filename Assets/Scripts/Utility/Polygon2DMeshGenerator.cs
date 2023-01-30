@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Polygon2DMeshGenerator : MonoBehaviour
 {
-    [SerializeField]
     private PolygonCollider2D polygonCollider;
-
-	[SerializeField]
-	private float terrainDepth;
 
     void Start()
     {
-        // get the vertex data from the polygon collider
-        Vector2[] points = polygonCollider.points;
+		polygonCollider = gameObject.GetComponentInParent<PolygonCollider2D>();
+
+		// get the vertex data from the polygon collider
+		Vector2[] points = polygonCollider.points;
 
 		// Use the triangulator to get indices for creating triangles
 		Triangulator tr = new Triangulator(points);
@@ -23,7 +21,7 @@ public class Polygon2DMeshGenerator : MonoBehaviour
 		Vector3[] vertices = new Vector3[points.Length];
 		for (int i = 0; i < vertices.Length; i++)
 		{
-			vertices[i] = new Vector3(points[i].x, points[i].y, terrainDepth);
+			vertices[i] = new Vector3(points[i].x, points[i].y, 0);
 		}
 
 		// Create the mesh
