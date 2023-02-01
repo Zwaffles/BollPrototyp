@@ -11,7 +11,7 @@ public class CameraZoom : MonoBehaviour
     [SerializeField, Tooltip("The maximum amount of zoom")]
     private float maxZoom = 60f;
 
-    private float _currentZoom = 20f;
+    private float _currentZoom = 60f;
     private Camera _cam;
 
     private PlayerInputs _playerInputs;
