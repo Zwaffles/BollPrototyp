@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private Vector3 movementInput;
+    private Vector2 movementInput;
 
    public void OnMovementInput(InputAction.CallbackContext context)
    {
-        movementInput = context.ReadValue<Vector3>();
+        movementInput = context.ReadValue<Vector2>();
    }
    
-    public Vector3 GetMovement()
+    public Vector2 GetMovement()
     {
         return movementInput;
     }

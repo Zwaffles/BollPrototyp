@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     private Rigidbody Rb;
-    private float moveSpeed = 30;
+    [SerializeField]
+    private float moveSpeed = 30f;
  
 
     [SerializeField]
@@ -21,18 +22,18 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Rb = GetComponent<Rigidbody>();
+        inputs = GetComponent<InputManager>();
         Rb.maxAngularVelocity = moveSpeed;
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Move();
     }
+
     private void Move()
     {
-        Rb.AddTorque(new Vector3(0, 0, inputs.GetMovement().y * moveSpeed));
-
+        Rb.AddTorque(new Vector3(0, 0, -inputs.GetMovement().y * moveSpeed));
     }
 }
