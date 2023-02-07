@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class CourseManager : MonoBehaviour
@@ -6,21 +7,85 @@ public class CourseManager : MonoBehaviour
     [SerializeField, Header("A list of SetData objects for each set of courses")]
     private List<SetData> sets;
 
-    void Start()
+    private int currentSet;
+    private int currentCourse;
+
+    public void LoadCourse(int setIndex, int courseIndex)
     {
-        // Initialize the sets
-        sets = new List<SetData>();
+        SceneManager.LoadScene(sets[setIndex].subCourses[courseIndex].sceneName);
+    }
+
+    public void LoadBossCourse(int setIndex)
+    {
+        SceneManager.LoadScene(sets[setIndex].bossCourse.sceneName);
+    }
+
+    public void UpdateCourseData(bool isCompleted, float timeSpent)
+    {
+        CourseData courseData = currentCourse < 5 ? sets[currentSet].subCourses[currentCourse] : sets[currentSet].bossCourse;
+        float bestTime = courseData.bestTime;
+        courseData.SetCourseCompleted(isCompleted);
+        if (bestTime == 0 || timeSpent < bestTime)
+            courseData.SetTimeSpent(timeSpent);
+
+        SceneManager.LoadScene(0);
     }
 
     public bool GetCompletionStatus(int setIndex, int courseIndex)
     {
-        return sets[setIndex].subcourses[courseIndex].courseCompleted;
+        return sets[setIndex].subCourses[courseIndex].courseCompleted;
     }
 
-    public string GetTimeSpent(int setIndex, int courseIndex)
+    public string GetCourseName(int setIndex, int courseIndex)
     {
-        float timeSpent = sets[setIndex].subcourses[courseIndex].timeSpent;
-        return timeSpent > 0 ? timeSpent.ToString() : "course not yet completed";
+        return sets[setIndex].subCourses[courseIndex].courseName;
+    }
+
+    public string GetBossCourseName(int setIndex)
+    {
+        return sets[setIndex].bossCourse.courseName;
+    }
+
+    public float GetTimeSpent(int setIndex, int courseIndex)
+    {
+        return sets[setIndex].subCourses[courseIndex].bestTime;
+    }
+
+    public float GetBossTimeSpent(int setIndex)
+    {
+        return sets[setIndex].bossCourse.bestTime;
+    }
+
+    public float GetBossTimeLimit(int setIndex)
+    {
+        return sets[setIndex].bossTimeLimit;
+    }
+
+    public float GetTotalTimeSpent(int setIndex)
+    {
+        float totalTimeSpent = 0f;
+        CourseData[] subcourses = sets[setIndex].subCourses;
+        for (int i = 0; i < subcourses.Length; i++)
+        {
+            totalTimeSpent += subcourses[i].bestTime;
+        }
+
+        return totalTimeSpent;
+    }
+
+    public CourseData[] GetCourseData(int setIndex)
+    {
+        return sets[setIndex].subCourses;
+    }
+
+    public void SetCurrentSet(int setIndex)
+    {
+        currentSet = setIndex;
+    }
+
+    public void SetCurrentCourse(int courseIndex)
+    {
+        currentCourse = courseIndex;
     }
 }
 

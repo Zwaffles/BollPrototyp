@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Screen" style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement name="AnimatedText" style="margin-left: 32px; margin-right: 32px; margin-top: 32px; margin-bottom: 32px;">
+            <ui:Label text="Animation" display-tooltip-when-elided="true" style="font-size: 64px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Buttons">
+            <ui:Button text="Wow what an animation" display-tooltip-when-elided="true" name="AnimatedButton" style="font-size: 40px; background-color: rgba(88, 88, 88, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); -unity-font-style: bold;" />
+            <ui:Button text="Wow what an animation" display-tooltip-when-elided="true" name="AnimatedButton" style="font-size: 40px; background-color: rgba(88, 88, 88, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); -unity-font-style: bold;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
