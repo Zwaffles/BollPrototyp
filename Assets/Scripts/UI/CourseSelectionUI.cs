@@ -58,11 +58,15 @@ public class CourseSelectionUI : MonoBehaviour
 
     public void LoadCourse(int courseIndex)
     {
+        courseManager.SetCurrentSet(currentSet);
+        courseManager.SetCurrentCourse(courseIndex);
         courseManager.LoadCourse(currentSet, courseIndex);
     }
 
     public void LoadBossCourse()
     {
+        courseManager.SetCurrentSet(currentSet);
+        courseManager.SetCurrentCourse(5);
         courseManager.LoadBossCourse(currentSet);
     }
 

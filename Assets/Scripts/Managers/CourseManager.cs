@@ -7,6 +7,9 @@ public class CourseManager : MonoBehaviour
     [SerializeField, Header("A list of SetData objects for each set of courses")]
     private List<SetData> sets;
 
+    private int currentSet;
+    private int currentCourse;
+
     public void LoadCourse(int setIndex, int courseIndex)
     {
         SceneManager.LoadScene(sets[setIndex].subCourses[courseIndex].sceneName);
@@ -15,6 +18,17 @@ public class CourseManager : MonoBehaviour
     public void LoadBossCourse(int setIndex)
     {
         SceneManager.LoadScene(sets[setIndex].bossCourse.sceneName);
+    }
+
+    public void UpdateCourseData(bool isCompleted, float timeSpent)
+    {
+        CourseData courseData = currentCourse < 5 ? sets[currentSet].subCourses[currentCourse] : sets[currentSet].bossCourse;
+        float bestTime = courseData.bestTime;
+        courseData.SetCourseCompleted(isCompleted);
+        if (bestTime == 0 || timeSpent < bestTime)
+            courseData.SetTimeSpent(timeSpent);
+
+        SceneManager.LoadScene(0);
     }
 
     public bool GetCompletionStatus(int setIndex, int courseIndex)
@@ -34,12 +48,12 @@ public class CourseManager : MonoBehaviour
 
     public float GetTimeSpent(int setIndex, int courseIndex)
     {
-        return sets[setIndex].subCourses[courseIndex].timeSpent;
+        return sets[setIndex].subCourses[courseIndex].bestTime;
     }
 
     public float GetBossTimeSpent(int setIndex)
     {
-        return sets[setIndex].bossCourse.timeSpent;
+        return sets[setIndex].bossCourse.bestTime;
     }
 
     public float GetBossTimeLimit(int setIndex)
@@ -53,7 +67,7 @@ public class CourseManager : MonoBehaviour
         CourseData[] subcourses = sets[setIndex].subCourses;
         for (int i = 0; i < subcourses.Length; i++)
         {
-            totalTimeSpent += subcourses[i].timeSpent;
+            totalTimeSpent += subcourses[i].bestTime;
         }
 
         return totalTimeSpent;
@@ -62,6 +76,16 @@ public class CourseManager : MonoBehaviour
     public CourseData[] GetCourseData(int setIndex)
     {
         return sets[setIndex].subCourses;
+    }
+
+    public void SetCurrentSet(int setIndex)
+    {
+        currentSet = setIndex;
+    }
+
+    public void SetCurrentCourse(int courseIndex)
+    {
+        currentCourse = courseIndex;
     }
 }
 

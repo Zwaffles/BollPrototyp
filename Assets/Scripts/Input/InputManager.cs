@@ -16,6 +16,4 @@ public class InputManager : MonoBehaviour
     {
         return movementInput;
     }
-   
-
 }

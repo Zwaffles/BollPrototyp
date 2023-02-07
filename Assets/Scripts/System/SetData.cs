@@ -25,13 +25,21 @@ public class CourseData
     public string sceneName;
 
     public bool courseCompleted { get; private set; } = false;
-    public float timeSpent { get; private set; } = 0f;
+    public float bestTime { get; private set; } = 0f;
 
-    public CourseData(string courseName, string sceneName, bool courseCompleted, float timeSpent)
+    public CourseData(string courseName, string sceneName)
     {
         this.courseName = courseName;
         this.sceneName = sceneName;
-        this.courseCompleted = courseCompleted;
-        this.timeSpent = timeSpent;
+    }
+
+    public void SetCourseCompleted(bool isCompleted)
+    {
+        courseCompleted = isCompleted;
+    }
+
+    public void SetTimeSpent(float newBestTime)
+    {
+        bestTime = newBestTime;
     }
 }
