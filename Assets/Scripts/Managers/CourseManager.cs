@@ -24,6 +24,7 @@ public class CourseManager : MonoBehaviour
     {
         CourseData courseData = currentCourse < 5 ? sets[currentSet].subCourses[currentCourse] : sets[currentSet].bossCourse;
         float bestTime = courseData.bestTime;
+
         courseData.SetCourseCompleted(isCompleted);
         if (bestTime == 0 || timeSpent < bestTime)
             courseData.SetTimeSpent(timeSpent);
