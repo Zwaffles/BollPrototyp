@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 2521958281556728575}
   - component: {fileID: 2521958281556728560}
   m_Layer: 0
-  m_Name: TrackManager
+  m_Name: CourseManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,9 +90,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sets:
-  - setName: Test Level
-    bossTimeLimit: 0
-    subTracks: []
-    bossTrack:
-      trackName: 
+  - setName: 1st Set
+    bossTimeLimit: 300
+    subCourses:
+    - courseName: 1st Course
+      sceneName: 
+    - courseName: 2nd Course
+      sceneName: 
+    - courseName: 3rd Course
+      sceneName: 
+    - courseName: 4th Course
+      sceneName: 
+    - courseName: 5th Course
+      sceneName: 
+    bossCourse:
+      courseName: Boss Course
       sceneName: 

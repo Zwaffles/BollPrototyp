@@ -343,7 +343,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 19604714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 751332884}
+        m_TargetAssemblyTypeName: CourseSelectionUI, Assembly-CSharp
+        m_MethodName: LoadBossCourse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &19604714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,8 +839,9 @@ GameObject:
   - component: {fileID: 751332881}
   - component: {fileID: 751332880}
   - component: {fileID: 751332879}
+  - component: {fileID: 751332884}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CourseCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,6 +960,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &751332884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751332878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f15072e4f0223840b01d527b2f94c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  courseButtons:
+  - {fileID: 787278803}
+  - {fileID: 1414769163}
+  - {fileID: 262850972}
+  - {fileID: 2002776290}
+  - {fileID: 727428975}
+  - {fileID: 1059543675}
+  currentSet: 0
 --- !u!1 &774556925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1493,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1316464039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 751332884}
+        m_TargetAssemblyTypeName: CourseSelectionUI, Assembly-CSharp
+        m_MethodName: LoadCourse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1316464039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1756,7 +1801,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1573207885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 751332884}
+        m_TargetAssemblyTypeName: CourseSelectionUI, Assembly-CSharp
+        m_MethodName: LoadCourse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1573207885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1878,7 +1935,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1930404344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 751332884}
+        m_TargetAssemblyTypeName: CourseSelectionUI, Assembly-CSharp
+        m_MethodName: LoadCourse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1930404344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2037,7 +2106,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2033999948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 751332884}
+        m_TargetAssemblyTypeName: CourseSelectionUI, Assembly-CSharp
+        m_MethodName: LoadCourse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2033999948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,7 +2240,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2043803175}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 751332884}
+        m_TargetAssemblyTypeName: CourseSelectionUI, Assembly-CSharp
+        m_MethodName: LoadCourse
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2043803175
 MonoBehaviour:
   m_ObjectHideFlags: 0
