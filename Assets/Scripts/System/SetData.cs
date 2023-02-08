@@ -24,8 +24,10 @@ public class CourseData
     public string courseName;
     public string sceneName;
 
-    public bool courseCompleted { get; private set; } = false;
-    public float bestTime { get; private set; } = 0f;
+    [HideInInspector]
+    public bool courseCompleted = false;
+    [HideInInspector]
+    public float bestTime = 0f;
 
     public CourseData(string courseName, string sceneName)
     {

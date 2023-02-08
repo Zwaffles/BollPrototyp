@@ -20,15 +20,25 @@ public class CourseManager : MonoBehaviour
         SceneManager.LoadScene(sets[setIndex].bossCourse.sceneName);
     }
 
+    public void LoadPlayerProgress(List<SetData> setDataList)
+    {
+        sets = setDataList;
+    }
+
     public void UpdateCourseData(bool isCompleted, float timeSpent)
     {
         CourseData courseData = currentCourse < 5 ? sets[currentSet].subCourses[currentCourse] : sets[currentSet].bossCourse;
         float bestTime = courseData.bestTime;
 
+        // Set the course data as completed and update the best time
         courseData.SetCourseCompleted(isCompleted);
         if (bestTime == 0 || timeSpent < bestTime)
             courseData.SetTimeSpent(timeSpent);
 
+        // Save the data
+        GameManager.instance.dataManager.SaveData(sets);
+
+        // Load CourseSelectionMenu
         SceneManager.LoadScene(0);
     }
 
