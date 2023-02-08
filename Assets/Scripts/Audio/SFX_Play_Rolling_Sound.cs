@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
-public class Rolling_Sound : MonoBehaviour
+public class SFX_Play_Rolling_Sound : MonoBehaviour
 {
 
     public FMODUnity.EventReference RollingAudio;
