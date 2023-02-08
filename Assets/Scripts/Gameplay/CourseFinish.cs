@@ -16,6 +16,8 @@ public class CourseFinish : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             float timeSpent = Time.time - startTime;
+
+            // Set the course data as completed and update the time spent
             GameManager.instance.courseManager.UpdateCourseData(true, timeSpent);
         }
     }
