@@ -1319,30 +1319,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].bossCourse.sceneName
-      value: TestCourseUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[0].sceneName
-      value: TestCourseUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[1].sceneName
-      value: TestCourseUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[2].sceneName
-      value: TestCourseUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[3].sceneName
-      value: TestCourseUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[4].sceneName
-      value: TestCourseUI
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
 --- !u!1 &1296526277
@@ -2320,26 +2296,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043803172}
   m_CullTransparentMesh: 1
---- !u!1 &2059362505 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2521958280786284842, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-  m_PrefabInstance: {fileID: 1292300541}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2059362508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059362505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e081b699975381241af35bd96b231523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalDamage: 20000
-  critRate: 87.8
-  critDamage: 227.6
 --- !u!1 &2109459688
 GameObject:
   m_ObjectHideFlags: 0
