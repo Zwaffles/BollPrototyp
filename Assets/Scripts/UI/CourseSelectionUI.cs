@@ -71,10 +71,11 @@ public class CourseSelectionUI : MonoBehaviour
     }
 
     // Converts a float time in seconds to a 00:00 formatted string
-    public string DisplayTime(float timeInSeconds)
+    private string DisplayTime(float timeInSeconds)
     {
         int minutes = Mathf.FloorToInt(timeInSeconds / 60f);
         int seconds = Mathf.FloorToInt(timeInSeconds % 60f);
-        return string.Format("{0:00}:{1:00}", minutes, seconds); 
+        int milliSeconds = Mathf.FloorToInt((timeInSeconds % 1) * 1000);
+        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds); 
     }
 }
