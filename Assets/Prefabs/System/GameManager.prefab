@@ -95,18 +95,30 @@ MonoBehaviour:
     bossTimeLimit: 300
     subCourses:
     - courseName: 1st Course
-      sceneName: TestCourse
+      sceneName: TestCourseUI
+      courseCompleted: 0
+      bestTime: 0
     - courseName: 2nd Course
-      sceneName: TestCourse
+      sceneName: TestCourseUI
+      courseCompleted: 0
+      bestTime: 0
     - courseName: 3rd Course
-      sceneName: TestCourse
+      sceneName: TestCourseUI
+      courseCompleted: 0
+      bestTime: 0
     - courseName: 4th Course
-      sceneName: TestCourse
+      sceneName: TestCourseUI
+      courseCompleted: 0
+      bestTime: 0
     - courseName: 5th Course
-      sceneName: TestCourse
+      sceneName: TestCourseUI
+      courseCompleted: 0
+      bestTime: 0
     bossCourse:
       courseName: Boss Course
-      sceneName: TestCourse
+      sceneName: TestCourseUI
+      courseCompleted: 0
+      bestTime: 0
 --- !u!1 &4637475394147627162
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,4 +163,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b9918541af9a14aaea9d22cde4abc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setDataList: []
