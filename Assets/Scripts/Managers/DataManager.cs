@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -27,10 +28,12 @@ public class DataManager : MonoBehaviour
     {
         setDataList = new List<SetData>();
         int setDataCount = 0;
+        bool hasSavedData = false;
 
         while(PlayerPrefs.HasKey("SetData_" + setDataCount))
         {
             Debug.Log("Save data found");
+            hasSavedData = true;
             string jsonData = PlayerPrefs.GetString("SetData_" + setDataCount);
 
             if (!string.IsNullOrEmpty(jsonData))
@@ -42,18 +45,19 @@ public class DataManager : MonoBehaviour
             setDataCount++;
         }
 
-        GameManager.instance.courseManager.LoadPlayerProgress(setDataList);
+        if(hasSavedData)
+            GameManager.instance.courseManager.LoadPlayerProgress(setDataList);
+    }
+}
 
-        //for (int i = 0; i < setDataList.Count; i++)
-        //{
-        //    string jsonData = PlayerPrefs.GetString("SetData_" + i, "");
-
-        //    if (!string.IsNullOrEmpty(jsonData))
-        //    {
-        //        SetData setData = JsonUtility.FromJson<SetData>(jsonData);
-        //        setDataList.Add(setData);
-        //        GameManager.instance.courseManager.LoadPlayerProgress(setDataList);
-        //    }
-        //}
+[CustomEditor(typeof(DataManager))]
+public class DataManagerEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        if (GUILayout.Button("Purge All Saved Data"))
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 }
