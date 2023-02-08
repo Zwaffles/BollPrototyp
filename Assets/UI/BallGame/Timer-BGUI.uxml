@@ -2,11 +2,11 @@
     <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
     <ui:VisualElement style="flex-grow: 1; align-items: flex-start;">
         <ui:VisualElement style="border-left-color: rgb(43, 43, 43); border-right-color: rgb(43, 43, 43); border-top-color: rgb(43, 43, 43); border-bottom-color: rgb(43, 43, 43); background-color: rgb(34, 34, 34); flex-direction: row; border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; margin-right: 0; margin-left: 32px; margin-top: 32px; padding-left: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px;">
-            <ui:Label text="00" display-tooltip-when-elided="true" name="Minutes" class="Time" style="font-size: 64px;" />
-            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="Time" style="font-size: 64px;" />
-            <ui:Label text="00" display-tooltip-when-elided="true" name="Seconds" class="Time" style="font-size: 64px;" />
-            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="Time" style="font-size: 64px;" />
-            <ui:Label text="000" display-tooltip-when-elided="true" name="Microseconds" class="Time" style="font-size: 64px;" />
+            <ui:Label text="00" display-tooltip-when-elided="true" name="Minutes" class="Time" style="font-size: 32px;" />
+            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="Time" style="font-size: 32px;" />
+            <ui:Label text="00" display-tooltip-when-elided="true" name="Seconds" class="Time" style="font-size: 32px;" />
+            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="Time" style="font-size: 32px;" />
+            <ui:Label text="000" display-tooltip-when-elided="true" name="Microseconds" class="Time" style="font-size: 32px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
