@@ -36,13 +36,24 @@ public class InputManager : MonoBehaviour
     public void OnCameraCycleInput(InputAction.CallbackContext context)
     {
 
-        cameraInput = context.performed;
+        if (context.performed)
+        {
+            cameraInput = true;
+        }
 
     }
 
     public bool getCameraInput()
     {
-        return cameraInput;
+        if (cameraInput)
+        {
+            cameraInput = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

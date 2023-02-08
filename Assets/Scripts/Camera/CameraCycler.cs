@@ -11,8 +11,6 @@ public class CameraCycler : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera[] cameras;
     private int currentCameraPointer = 0;
 
-    private const bool ALWAYS_FALSE = false;
-
     private InputManager inputs;
 
     void Start()
