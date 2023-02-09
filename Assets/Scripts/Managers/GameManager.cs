@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public CourseManager courseManager { get; private set; }
+    public DataManager dataManager { get; private set; }
 
     private void Awake()
     {
@@ -21,5 +22,6 @@ public class GameManager : MonoBehaviour
 
         // Find references to other managers in the scene
         courseManager = FindObjectOfType<CourseManager>();
+        dataManager = FindObjectOfType<DataManager>();
     }
 }

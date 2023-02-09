@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+[RequireComponent(typeof(InputManager))]
 public class CameraCycler : MonoBehaviour
 {
 
@@ -10,13 +11,18 @@ public class CameraCycler : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera[] cameras;
     private int currentCameraPointer = 0;
 
-    private const bool ALWAYS_FALSE = false;
+    private InputManager inputs;
+
+    void Start()
+    {
+        inputs = GetComponent<InputManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (ALWAYS_FALSE)
+        if (inputs.getCameraInput())
         {
 
             cameras[currentCameraPointer].enabled = false;
