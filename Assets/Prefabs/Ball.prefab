@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2850255129268814917}
   - component: {fileID: 2850255129268814914}
   - component: {fileID: 2850255129268814916}
+  - component: {fileID: 7528852356402765625}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -193,6 +194,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4a2df6c2-2c9b-4acf-8964-b25e322fa9bf
     m_ActionName: Gameplay/Zoom[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2850255129268814917}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnCameraCycleInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 79bb7003-8a1f-442f-8194-77f9f636fa02
+    m_ActionName: Gameplay/Cycle camera[/Keyboard/v]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -240,3 +257,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rb: {fileID: 2850255129268815804}
   JumpWindow: 1
+--- !u!114 &7528852356402765625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850255129268815805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b816dbb9ce54510478e87b7cccce12d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras: []

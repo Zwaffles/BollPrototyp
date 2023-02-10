@@ -46,6 +46,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Cycle camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""79bb7003-8a1f-442f-8194-77f9f636fa02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Zoom"",
                     ""type"": ""Value"",
                     ""id"": ""4a2df6c2-2c9b-4acf-8964-b25e322fa9bf"",
@@ -60,6 +69,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""77bc06de-1d3b-44af-a11c-a88f67b9e7c3"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae5430e4-c8e4-474c-8fd6-21a22c6dfc05"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -143,6 +163,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c43f398-8734-46e5-bd29-95f0c452de53"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb322662-b41c-4c77-b2da-c0c79374c851"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -153,6 +195,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_Cyclecamera = m_Gameplay.FindAction("Cycle camera", throwIfNotFound: true);
         m_Gameplay_Zoom = m_Gameplay.FindAction("Zoom", throwIfNotFound: true);
     }
 
@@ -215,6 +258,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_Cyclecamera;
     private readonly InputAction m_Gameplay_Zoom;
     public struct GameplayActions
     {
@@ -222,6 +266,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public GameplayActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @Cyclecamera => m_Wrapper.m_Gameplay_Cyclecamera;
         public InputAction @Zoom => m_Wrapper.m_Gameplay_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -238,6 +283,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
+                @Cyclecamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCyclecamera;
+                @Cyclecamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCyclecamera;
+                @Cyclecamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCyclecamera;
                 @Zoom.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
                 @Zoom.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
                 @Zoom.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
@@ -251,6 +299,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Cyclecamera.started += instance.OnCyclecamera;
+                @Cyclecamera.performed += instance.OnCyclecamera;
+                @Cyclecamera.canceled += instance.OnCyclecamera;
                 @Zoom.started += instance.OnZoom;
                 @Zoom.performed += instance.OnZoom;
                 @Zoom.canceled += instance.OnZoom;
@@ -262,6 +313,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnCyclecamera(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
     }
 }

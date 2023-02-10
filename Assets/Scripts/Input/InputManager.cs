@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
     public bool jumpInput = false;
     public float TimeWhenJumpWasPressed = 0;
 
+    private bool cameraInput = false;
+
     public void OnMovementInput(InputAction.CallbackContext context)
    {
         movementInput = context.ReadValue<Vector2>();
@@ -30,4 +32,28 @@ public class InputManager : MonoBehaviour
 
 
     }
+
+    public void OnCameraCycleInput(InputAction.CallbackContext context)
+    {
+
+        if (context.performed)
+        {
+            cameraInput = true;
+        }
+
+    }
+
+    public bool getCameraInput()
+    {
+        if (cameraInput)
+        {
+            cameraInput = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }
