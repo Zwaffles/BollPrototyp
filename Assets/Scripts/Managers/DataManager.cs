@@ -50,6 +50,7 @@ public class DataManager : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(DataManager))]
 public class DataManagerEditor : Editor
 {
@@ -61,3 +62,4 @@ public class DataManagerEditor : Editor
         }
     }
 }
+#endif
