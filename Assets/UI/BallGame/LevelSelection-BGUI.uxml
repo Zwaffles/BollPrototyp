@@ -1,0 +1,179 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
+    <ui:VisualElement style="flex-grow: 1; align-items: stretch; justify-content: space-between; flex-direction: row;">
+        <ui:VisualElement name="LB-Container" style="justify-content: flex-end; align-items: center; flex-direction: row; width: 20%;">
+            <ui:VisualElement name="LB" style="margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px; width: 50px; height: 50px; background-color: rgb(77, 77, 77);" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Main-Container" style="flex-grow: 1;">
+            <ui:VisualElement name="MarginBox-Top" style="flex-grow: 0; width: 100%; height: 8%;" />
+            <ui:VisualElement name="Set-Title" style="align-items: center; justify-content: center;">
+                <ui:Label text="Sunset Beach" display-tooltip-when-elided="true" style="font-size: 64px; -unity-font-style: bold-and-italic; color: rgb(212, 212, 212);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Set-List" style="flex-direction: row; justify-content: center;">
+                <ui:VisualElement name="Set-1" class="LS-Set-List" style="background-color: rgb(209, 209, 68);" />
+                <ui:VisualElement name="Set-2" class="LS-Set-List" />
+                <ui:VisualElement name="Set-3" class="LS-Set-List" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Course-1" class="LS-Course" style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="ImageAndNumber-Container" style="width: 25%; height: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:VisualElement name="CourseImage-Container" style="width: 75%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="CourseImage" style="align-items: center; width: 75%; height: 75%; background-color: rgb(253, 253, 253);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="TrackNumber-Container" style="align-items: center; justify-content: center; width: 25%; height: 100%;">
+                        <ui:Label text="1" display-tooltip-when-elided="true" name="CourseNumber" class="LS-TrackNumber" style="font-size: 48px; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Details-Container" style="width: 75%; height: 100%;">
+                    <ui:VisualElement name="Name-Container" style="height: 50%; flex-direction: row; align-items: center; width: 100%; margin-left: 0; padding-left: 4%;">
+                        <ui:Label text="Nice Seaside Road" display-tooltip-when-elided="true" class="LS-CourseName" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PBTime-Container" style="height: 50%; align-items: center; flex-direction: row; justify-content: space-around; width: 100%;">
+                        <ui:VisualElement name="EmptySpace-Container" style="width: 25%; height: 100%;" />
+                        <ui:Label text="Best Time:" display-tooltip-when-elided="true" name="PB" class="LS-PBTime" />
+                        <ui:VisualElement name="TimerText-Container" style="flex-direction: row; opacity: 1; display: flex;">
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Minutes" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Seconds" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="---" display-tooltip-when-elided="true" name="Miliseconds" class="LS-PBTime" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Course-2" class="LS-Course" style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="ImageAndNumber-Container" style="width: 25%; height: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:VisualElement name="CourseImage-Container" style="width: 75%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="CourseImage" style="align-items: center; width: 75%; height: 75%; background-color: rgb(253, 253, 253);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="TrackNumber-Container" style="align-items: center; justify-content: center; width: 25%; height: 100%;">
+                        <ui:Label text="2" display-tooltip-when-elided="true" name="CourseNumber" class="LS-TrackNumber" style="font-size: 48px; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Details-Container" style="width: 75%; height: 100%;">
+                    <ui:VisualElement name="Name-Container" style="height: 50%; flex-direction: row; align-items: center; width: 100%; margin-left: 0; padding-left: 4%;">
+                        <ui:Label text="Nice Seaside Road" display-tooltip-when-elided="true" class="LS-CourseName" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PBTime-Container" style="height: 50%; align-items: center; flex-direction: row; justify-content: space-around; width: 100%;">
+                        <ui:VisualElement name="EmptySpace-Container" style="width: 25%; height: 100%;" />
+                        <ui:Label text="Best Time:" display-tooltip-when-elided="true" name="PB" class="LS-PBTime" />
+                        <ui:VisualElement name="TimerText-Container" style="flex-direction: row; opacity: 1; display: flex;">
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Minutes" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Seconds" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="---" display-tooltip-when-elided="true" name="Miliseconds" class="LS-PBTime" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Course-3" class="LS-Course" style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="ImageAndNumber-Container" style="width: 25%; height: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:VisualElement name="CourseImage-Container" style="width: 75%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="CourseImage" style="align-items: center; width: 75%; height: 75%; background-color: rgb(253, 253, 253);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="TrackNumber-Container" style="align-items: center; justify-content: center; width: 25%; height: 100%;">
+                        <ui:Label text="3" display-tooltip-when-elided="true" name="CourseNumber" class="LS-TrackNumber" style="font-size: 48px; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Details-Container" style="width: 75%; height: 100%;">
+                    <ui:VisualElement name="Name-Container" style="height: 50%; flex-direction: row; align-items: center; width: 100%; margin-left: 0; padding-left: 4%;">
+                        <ui:Label text="Nice Seaside Road" display-tooltip-when-elided="true" class="LS-CourseName" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PBTime-Container" style="height: 50%; align-items: center; flex-direction: row; justify-content: space-around; width: 100%;">
+                        <ui:VisualElement name="EmptySpace-Container" style="width: 25%; height: 100%;" />
+                        <ui:Label text="Best Time:" display-tooltip-when-elided="true" name="PB" class="LS-PBTime" />
+                        <ui:VisualElement name="TimerText-Container" style="flex-direction: row; opacity: 1; display: flex;">
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Minutes" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Seconds" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="---" display-tooltip-when-elided="true" name="Miliseconds" class="LS-PBTime" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Course-4" class="LS-Course" style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="ImageAndNumber-Container" style="width: 25%; height: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:VisualElement name="CourseImage-Container" style="width: 75%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="CourseImage" style="align-items: center; width: 75%; height: 75%; background-color: rgb(253, 253, 253);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="TrackNumber-Container" style="align-items: center; justify-content: center; width: 25%; height: 100%;">
+                        <ui:Label text="4" display-tooltip-when-elided="true" name="CourseNumber" class="LS-TrackNumber" style="font-size: 48px; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Details-Container" style="width: 75%; height: 100%;">
+                    <ui:VisualElement name="Name-Container" style="height: 50%; flex-direction: row; align-items: center; width: 100%; margin-left: 0; padding-left: 4%;">
+                        <ui:Label text="Nice Seaside Road" display-tooltip-when-elided="true" class="LS-CourseName" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PBTime-Container" style="height: 50%; align-items: center; flex-direction: row; justify-content: space-around; width: 100%;">
+                        <ui:VisualElement name="EmptySpace-Container" style="width: 25%; height: 100%;" />
+                        <ui:Label text="Best Time:" display-tooltip-when-elided="true" name="PB" class="LS-PBTime" />
+                        <ui:VisualElement name="TimerText-Container" style="flex-direction: row; opacity: 1; display: flex;">
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Minutes" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Seconds" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="---" display-tooltip-when-elided="true" name="Miliseconds" class="LS-PBTime" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Course-5" class="LS-Course" style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="ImageAndNumber-Container" style="width: 25%; height: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:VisualElement name="CourseImage-Container" style="width: 75%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="CourseImage" style="align-items: center; width: 75%; height: 75%; background-color: rgb(253, 253, 253);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="TrackNumber-Container" style="align-items: center; justify-content: center; width: 25%; height: 100%;">
+                        <ui:Label text="5" display-tooltip-when-elided="true" name="CourseNumber" class="LS-TrackNumber" style="font-size: 48px; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Details-Container" style="width: 75%; height: 100%;">
+                    <ui:VisualElement name="Name-Container" style="height: 50%; flex-direction: row; align-items: center; width: 100%; margin-left: 0; padding-left: 4%;">
+                        <ui:Label text="Nice Seaside Road" display-tooltip-when-elided="true" class="LS-CourseName" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PBTime-Container" style="height: 50%; align-items: center; flex-direction: row; justify-content: space-around; width: 100%;">
+                        <ui:VisualElement name="EmptySpace-Container" style="width: 25%; height: 100%;" />
+                        <ui:Label text="Best Time:" display-tooltip-when-elided="true" name="PB" class="LS-PBTime" />
+                        <ui:VisualElement name="TimerText-Container" style="flex-direction: row; opacity: 1; display: flex;">
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Minutes" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Seconds" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="---" display-tooltip-when-elided="true" name="Miliseconds" class="LS-PBTime" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Course-6" class="LS-Course" style="align-items: stretch; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="ImageAndNumber-Container" style="width: 25%; height: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <ui:VisualElement name="CourseImage-Container" style="width: 75%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="CourseImage" style="align-items: center; width: 75%; height: 75%; background-color: rgb(253, 253, 253);" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="TrackNumber-Container" style="align-items: center; justify-content: center; width: 25%; height: 100%;">
+                        <ui:Label text="6" display-tooltip-when-elided="true" name="CourseNumber" class="LS-TrackNumber" style="font-size: 48px; -unity-font-style: bold;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Details-Container" style="width: 75%; height: 100%;">
+                    <ui:VisualElement name="Name-Container" style="height: 50%; flex-direction: row; align-items: center; width: 100%; margin-left: 0; padding-left: 4%;">
+                        <ui:Label text="Nice Seaside Road" display-tooltip-when-elided="true" class="LS-CourseName" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="PBTime-Container" style="height: 50%; align-items: center; flex-direction: row; justify-content: space-around; width: 100%;">
+                        <ui:VisualElement name="EmptySpace-Container" style="width: 25%; height: 100%;" />
+                        <ui:Label text="Best Time:" display-tooltip-when-elided="true" name="PB" class="LS-PBTime" />
+                        <ui:VisualElement name="TimerText-Container" style="flex-direction: row; opacity: 1; display: flex;">
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Minutes" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="--" display-tooltip-when-elided="true" name="Seconds" class="LS-PBTime" />
+                            <ui:Label text=":" display-tooltip-when-elided="true" name="Colon" class="LS-PBTime" />
+                            <ui:Label text="---" display-tooltip-when-elided="true" name="Miliseconds" class="LS-PBTime" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="MarginBox-Bottom" style="flex-grow: 0; width: 100%; height: 8%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RB-Container" style="align-items: center; justify-content: flex-end; flex-direction: row-reverse; width: 20%;">
+            <ui:VisualElement name="RB" style="margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px; width: 50px; height: 50px; background-color: rgb(77, 77, 77);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
