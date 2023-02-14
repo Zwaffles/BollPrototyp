@@ -7,6 +7,9 @@ public class CourseFinish : MonoBehaviour
 {
     private float startTime;
     private float timeSpent;
+    private float totalTimeSpent;
+
+    private bool isBossCourse;
 
     [SerializeField]
     private TimerUIController timerUIController;
@@ -14,6 +17,10 @@ public class CourseFinish : MonoBehaviour
     private void Start()
     {
         startTime = Time.time;
+
+        // Get the total time spent for this set
+        totalTimeSpent = GameManager.instance.courseManager.GetCurrentSetTotalTimeSpent();
+        isBossCourse = GameManager.instance.courseManager.GetCurrentCourseIsBossCourse();
     }
 
     private void Update()
@@ -22,11 +29,28 @@ public class CourseFinish : MonoBehaviour
 
         try
         {
-            timerUIController.UpdateTimerUI(timeSpent);
+            if (isBossCourse)
+            {
+                timerUIController.UpdateTimerUI(totalTimeSpent - timeSpent);
+            }
+            else
+            {
+                timerUIController.UpdateTimerUI(timeSpent);
+            }
         }
         catch
         {
             Debug.Log("Timer UI Controller not found!");
+        }
+
+        if (!isBossCourse)
+            return;
+
+        // Check if the total time spent has reached 0
+        if (totalTimeSpent - timeSpent <= 0)
+        {
+            // Update the course data as not completed with 0 time spent
+            GameManager.instance.courseManager.UpdateCourseData(false, 0f);
         }
     }
 
@@ -37,12 +61,5 @@ public class CourseFinish : MonoBehaviour
             // Set the course data as completed and update the time spent
             GameManager.instance.courseManager.UpdateCourseData(true, timeSpent);
         }
-    }
-
-    private void UpdateTimerUIController(float timeSpent)
-    {
-        string minutes = Mathf.FloorToInt(timeSpent / 60f).ToString();
-        string seconds = Mathf.FloorToInt(timeSpent % 60f).ToString();
-        string milliSeconds = Mathf.FloorToInt((timeSpent % 1) * 1000).ToString();
     }
 }

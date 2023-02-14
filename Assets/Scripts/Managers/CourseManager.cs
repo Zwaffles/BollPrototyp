@@ -47,6 +47,11 @@ public class CourseManager : MonoBehaviour
         return sets[setIndex].subCourses[courseIndex].courseCompleted;
     }
 
+    public bool GetCurrentCourseIsBossCourse()
+    {
+        return currentCourse < 5 ? false : true;
+    }
+
     public string GetCourseName(int setIndex, int courseIndex)
     {
         return sets[setIndex].subCourses[courseIndex].courseName;
@@ -76,6 +81,18 @@ public class CourseManager : MonoBehaviour
     {
         float totalTimeSpent = 0f;
         CourseData[] subcourses = sets[setIndex].subCourses;
+        for (int i = 0; i < subcourses.Length; i++)
+        {
+            totalTimeSpent += subcourses[i].bestTime;
+        }
+
+        return totalTimeSpent;
+    }
+
+    public float GetCurrentSetTotalTimeSpent()
+    {
+        float totalTimeSpent = 0f;
+        CourseData[] subcourses = sets[currentSet].subCourses;
         for (int i = 0; i < subcourses.Length; i++)
         {
             totalTimeSpent += subcourses[i].bestTime;
