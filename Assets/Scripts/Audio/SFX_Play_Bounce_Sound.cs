@@ -15,7 +15,7 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
 
     //FMOD
     private FMOD.Studio.EventInstance instance;
-    public FMODUnity.EventReference RollingSound; //fmodEvent;
+    //public FMODUnity.EventReference RollingSound; //fmodEvent;
 
     private FMOD.Studio.PARAMETER_ID pitchParameterId;
 
@@ -37,13 +37,11 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
 
 
 
-
-
     //On Event Start
     void Start()
     {
 
-        instance = FMODUnity.RuntimeManager.CreateInstance(RollingSound); //(fmodEvent);
+        instance = FMODUnity.RuntimeManager.CreateInstance(BounceSound); //(fmodEvent);
 
         FMOD.Studio.EventDescription pitchEventDescription;
         instance.getDescription(out pitchEventDescription);
@@ -51,6 +49,7 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
         FMOD.Studio.PARAMETER_DESCRIPTION pitchParameterDescription;
         pitchEventDescription.getParameterDescriptionByName("Pitch", out pitchParameterDescription);
 
+        // What does this line do?
         pitchParameterId = pitchParameterDescription.id;
         instance.start();
 
@@ -79,6 +78,5 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("EQ Global", eqGlobal);
 
     }
-
 
 }

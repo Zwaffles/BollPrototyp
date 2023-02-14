@@ -6,24 +6,31 @@ using FMODUnity;
 public class SFX_Play_Rolling_Sound : MonoBehaviour
 {
 
-    public FMODUnity.EventReference RollingAudio;
+    //FMOD
+    private FMODUnity.StudioEventEmitter emitter;
 
-    public float minSpeed;
-    public float maxSpeed;
+    [SerializeField]
+    private float minSpeed;
+    [SerializeField]
+    private float maxSpeed;
     private float currentSpeed;
 
     private Rigidbody ballRb;
-    private AudioSource ballAudio;
 
-    public float minPitch;
-    public float maxPitch;
+    [SerializeField]
+    private float minPitch;
+    [SerializeField]
+    private float maxPitch;
     private float pitchFromBall;
+
+    private int currentCollisions = 0;
 
     void Start()
     {
 
-        ballAudio = GetComponent<AudioSource>();
         ballRb = GetComponent<Rigidbody>();
+
+        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
 
     }
 
@@ -39,30 +46,37 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
 
         currentSpeed = ballRb.velocity.magnitude;
         pitchFromBall = ballRb.velocity.magnitude / 50f;
+
+        float pitch, volume;
         
         if (currentSpeed < minSpeed) 
         {
 
-            ballAudio.volume = 1;
-            ballAudio.pitch = minPitch;
+            pitch = minPitch;
+            volume = 0f;
 
-        }
-
-        if (currentSpeed > minSpeed && currentSpeed < maxSpeed)
+        } 
+        else
         {
 
-            ballAudio.volume = 1;
-            ballAudio.pitch = minPitch + pitchFromBall;
+            pitch = minPitch + pitchFromBall;
+            volume = 1f;
 
         }
 
-        if (currentSpeed > maxSpeed)
-        {
-
-            ballAudio.volume = 1;
-            ballAudio.pitch = maxPitch;
-
-        }
+        emitter.SetParameter("Pitch", pitch);
+        emitter.EventInstance.setVolume(currentCollisions > 0 ? volume : 0f);
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        currentCollisions++;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        currentCollisions--;
+    }
+
 }
