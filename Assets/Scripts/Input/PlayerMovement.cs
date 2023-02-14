@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody Rb;
     [SerializeField]
-    private float moveSpeed = 30f;
+    private float moveSpeed = 27.5f;
  
 
     [SerializeField]
