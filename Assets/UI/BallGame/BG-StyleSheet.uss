@@ -1,4 +1,42 @@
 .Time {
-    color: rgba(248, 248, 248, 255);
+    color: rgb(248, 248, 248);
     font-size: 32px;
+}
+
+.LS-Set-List {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(29, 29, 29, 255);
+    width: 48px;
+    height: 32px;
+}
+
+.LS-Course {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 12%;
+    background-color: rgba(130, 130, 130, 255);
+}
+
+.LS-PBTime {
+    font-size: 24px;
+    color: rgba(221, 221, 221, 255);
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    -unity-text-align: middle-center;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.LS-CourseName {
+    font-size: 32px;
+    color: rgba(222, 222, 222, 255);
+}
+
+.LS-TrackNumber {
+    color: rgba(222, 222, 222, 255);
 }
