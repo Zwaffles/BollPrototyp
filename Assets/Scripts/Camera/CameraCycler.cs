@@ -7,8 +7,9 @@ using Cinemachine;
 public class CameraCycler : MonoBehaviour
 {
 
-    [SerializeField]
+    [SerializeField, Header("Cameras"), Tooltip("A list of which cameras to use. If left empty the script will automatically find all the cameras in the scene.")]
     private Cinemachine.CinemachineVirtualCamera[] cameras;
+    
     private int currentCameraPointer = 0;
 
     private InputManager inputs;
@@ -16,6 +17,14 @@ public class CameraCycler : MonoBehaviour
     void Start()
     {
         inputs = GetComponent<InputManager>();
+
+
+        // Automatically find cameras in scene
+        if (cameras.Length == 0)
+        {
+            cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
+        }
+
     }
 
     // Update is called once per frame
