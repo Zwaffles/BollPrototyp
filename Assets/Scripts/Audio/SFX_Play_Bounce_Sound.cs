@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+/*
+ *  Plays the bouncing SFX
+ *  Original script by Ludwig, modified by Johan
+ */
+
 public class SFX_Play_Bounce_Sound : MonoBehaviour
 {
     //Sound Reference
@@ -12,12 +17,13 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     //Rigidbody
     private Rigidbody BallCollisionRb;
 
-
     //FMOD
     private FMOD.Studio.EventInstance instance;
     //public FMODUnity.EventReference RollingSound; //fmodEvent;
 
     private FMOD.Studio.PARAMETER_ID pitchParameterId;
+
+    private int currentCollisions = 0;
 
     [SerializeField]
     [Range(0f, 1f)]
@@ -41,6 +47,10 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     void Start()
     {
 
+        /*
+         * I don't know what most of this does, but I'm too afraid to touch it RN
+         */
+
         instance = FMODUnity.RuntimeManager.CreateInstance(BounceSound); //(fmodEvent);
 
         FMOD.Studio.EventDescription pitchEventDescription;
@@ -53,22 +63,6 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
         pitchParameterId = pitchParameterDescription.id;
         instance.start();
 
-    }
-
-
-    //On Event Colliding With Collision
-    private void OnCollisionEnter(Collision collision)
-    {
-
-            FMODUnity.RuntimeManager.PlayOneShot(BounceSound, transform.position);
-
-    }
-
-
-    //Event Update
-    void Update()
-    {
-
         //FMOD
         instance.setParameterByName("Pitch", pitch);
         instance.setParameterByName("Delay", delay);
@@ -77,6 +71,21 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
 
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("EQ Global", eqGlobal);
 
+    }
+
+
+    //On Event Colliding With Collision
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (currentCollisions++ != 0) return;
+        FMODUnity.RuntimeManager.PlayOneShot(BounceSound, transform.position);
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        currentCollisions--;
     }
 
 }

@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+/*
+ *  Plays the rolling SFX
+ *  Original script by Ludwig, modified by Johan
+ */
+
+[RequireComponent(typeof(FMODUnity.StudioEventEmitter))]
 public class SFX_Play_Rolling_Sound : MonoBehaviour
 {
 
     //FMOD
     private FMODUnity.StudioEventEmitter emitter;
 
-    [SerializeField]
-    private float minSpeed;
-    [SerializeField]
-    private float maxSpeed;
+    [SerializeField, Header("Sound Controls"), Tooltip("The minimum speed to play the SFX")]
+    private float minSpeed = 1f;
+    [SerializeField, Tooltip("The maximum speed that affects the pitch of the SFX")]
+    private float maxSpeed = 10f;
     private float currentSpeed;
 
     private Rigidbody ballRb;
 
-    [SerializeField]
-    private float minPitch;
-    [SerializeField]
-    private float maxPitch;
+    [SerializeField, Tooltip("The minimum pitch to play the SFX at, 0 = default")]
+    private float minPitch = 0f;
+    [SerializeField, Tooltip("The maximum pitch to play the SFX at")]
+    private float maxPitch = 0.4f;
     private float pitchFromBall;
 
     private int currentCollisions = 0;
@@ -29,7 +35,6 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
     {
 
         ballRb = GetComponent<Rigidbody>();
-
         emitter = GetComponent<FMODUnity.StudioEventEmitter>();
 
     }
@@ -44,8 +49,9 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
     void EngineSound()
     {
 
-        currentSpeed = ballRb.velocity.magnitude;
-        pitchFromBall = ballRb.velocity.magnitude / 50f;
+        currentSpeed = Mathf.Min(ballRb.velocity.magnitude, maxSpeed);
+
+        pitchFromBall = currentSpeed / 50f;
 
         float pitch, volume;
         
@@ -59,16 +65,18 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
         else
         {
 
-            pitch = minPitch + pitchFromBall;
+            pitch = Mathf.Min(maxPitch, minPitch + pitchFromBall);
             volume = 1f;
 
         }
 
+        // Set pitch and volume (if the ball is rolling on something)
         emitter.SetParameter("Pitch", pitch);
         emitter.EventInstance.setVolume(currentCollisions > 0 ? volume : 0f);
 
     }
 
+    // Keep track of how many surfaces the ball is touching
     private void OnCollisionEnter(Collision collision)
     {
         currentCollisions++;
