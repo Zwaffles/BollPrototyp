@@ -15,7 +15,7 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     //public FMODUnity.EventReference RollingSound;
 
     //Rigidbody
-    private Rigidbody BallCollisionRb;
+    private Rigidbody ballCollisionRb;
 
     //FMOD
     private FMOD.Studio.EventInstance instance;
@@ -41,11 +41,15 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     [Range(-12f, 12f)]
     private float pitch;
 
-
+    [SerializeField, Tooltip("How strong the impulse from a collision has to be to trigger the SFX")]
+    [Range(0f, 20f)]
+    private float minimumImpulse = 6f;
 
     //On Event Start
     void Start()
     {
+
+        ballCollisionRb = GetComponent<Rigidbody>();
 
         /*
          * I don't know what most of this does, but I'm too afraid to touch it RN
@@ -79,6 +83,9 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     {
 
         if (currentCollisions++ != 0) return;
+
+        if (collision.impulse.magnitude < minimumImpulse) return;
+
         FMODUnity.RuntimeManager.PlayOneShot(BounceSound, transform.position);
 
     }
