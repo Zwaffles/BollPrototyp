@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7288041211911290537}
   - component: {fileID: 3495261087126227392}
+  - component: {fileID: 767537752028038843}
   m_Layer: 0
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -71,6 +72,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2235521236553456319}
+--- !u!114 &767537752028038843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620768100966508394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fe0bb0814434249bebb7a2f962d0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3401469667392361815
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7143443441028467003}
   - component: {fileID: 7143443441028467002}
+  - component: {fileID: 7205792669349708414}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -332,6 +346,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 7143443440055136001}
+--- !u!114 &7205792669349708414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143443441028467001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fe0bb0814434249bebb7a2f962d0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7143443441464226445
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,8 +384,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7143443441464226445}
-  m_LocalRotation: {x: 0.13703987, y: -0.07021683, z: 0.009739125, w: 0.9880257}
-  m_LocalPosition: {x: 15.5, y: 5.5, z: -4}
+  m_LocalRotation: {x: 0.17238072, y: 0.08377438, z: -0.014715518, w: 0.98135126}
+  m_LocalPosition: {x: 70.62572, y: 8.515021, z: 80.3277}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

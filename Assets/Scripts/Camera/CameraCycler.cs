@@ -7,7 +7,6 @@ using Cinemachine;
 public class CameraCycler : MonoBehaviour
 {
 
-    [SerializeField, Header("Cameras"), Tooltip("A list of which cameras to use. If left empty the script will automatically find all the cameras in the scene.")]
     private Cinemachine.CinemachineVirtualCamera[] cameras;
     
     private int currentCameraPointer = 0;
@@ -18,12 +17,10 @@ public class CameraCycler : MonoBehaviour
     {
         inputs = GetComponent<InputManager>();
 
-
-        // Automatically find cameras in scene
-        if (cameras.Length == 0)
-        {
-            cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
-        }
+        cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
+        System.Array.Sort<CinemachineVirtualCamera>(cameras,
+            (a, b) => -b.name.CompareTo(a.name)
+            );
 
     }
 
