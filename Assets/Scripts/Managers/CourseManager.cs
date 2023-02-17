@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Linq;
 
 public class CourseManager : MonoBehaviour
 {
@@ -34,8 +35,8 @@ public class CourseManager : MonoBehaviour
         courseData.SetCourseCompleted(isCompleted);
         if (isCompleted)
         {
-            if (bestTime == 0 || timeSpent < bestTime)
-                courseData.SetTimeSpent(timeSpent);
+            bestTime = bestTime == 0 || timeSpent < bestTime ? timeSpent : bestTime;
+            courseData.SetTimeSpent(bestTime);
         }
 
         // Save the data
@@ -52,7 +53,7 @@ public class CourseManager : MonoBehaviour
 
     public bool GetCurrentCourseIsBossCourse()
     {
-        return currentCourse < 5 ? false : true;
+        return currentCourse == 5;
     }
 
     public string GetCourseName(int setIndex, int courseIndex)
@@ -82,25 +83,12 @@ public class CourseManager : MonoBehaviour
 
     public float GetTotalTimeSpent(int setIndex)
     {
-        float totalTimeSpent = 0f;
-        CourseData[] subcourses = sets[setIndex].subCourses;
-        for (int i = 0; i < subcourses.Length; i++)
-        {
-            totalTimeSpent += subcourses[i].bestTime;
-        }
-
-        return totalTimeSpent;
+        return sets[setIndex].subCourses.Sum(course => course.bestTime);
     }
 
     public float GetCurrentBossTimeLimit()
     {
-        float totalTimeSpent = 0f;
-        CourseData[] subcourses = sets[currentSet].subCourses;
-        for (int i = 0; i < subcourses.Length; i++)
-        {
-            totalTimeSpent += subcourses[i].bestTime;
-        }
-
+        float totalTimeSpent = GetTotalTimeSpent(currentSet);
         return sets[currentSet].bossTimeLimit - totalTimeSpent;
     }
 
