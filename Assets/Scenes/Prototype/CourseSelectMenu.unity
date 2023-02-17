@@ -1319,14 +1319,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].bossTimeLimit
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 8795088601927785379, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: bossTimer
-      value: 
-      objectReference: {fileID: 1902059186}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
 --- !u!1 &1296526277
@@ -1694,11 +1686,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357966223}
   m_CullTransparentMesh: 1
---- !u!4 &1392387239 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1091061834450644841, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-  m_PrefabInstance: {fileID: 1292300541}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1414769163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,67 +1857,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573207882}
   m_CullTransparentMesh: 1
---- !u!1 &1902059182
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1902059183}
-  - component: {fileID: 1902059185}
-  - component: {fileID: 1902059186}
-  m_Layer: 0
-  m_Name: UI-BossTimer-BG
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1902059183
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902059182}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1392387239}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1902059185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902059182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 1af738f1cda07f64e9a20cd1e40dee30, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 97c509229a7ea3546952c6c6e75597be, type: 3}
-  m_SortingOrder: 0
---- !u!114 &1902059186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902059182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a359cdf4252ad64f9f46c8e51b041c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1930404341
 GameObject:
   m_ObjectHideFlags: 0
