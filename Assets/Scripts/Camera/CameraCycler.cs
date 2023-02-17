@@ -7,8 +7,8 @@ using Cinemachine;
 public class CameraCycler : MonoBehaviour
 {
 
-    [SerializeField]
     private Cinemachine.CinemachineVirtualCamera[] cameras;
+    
     private int currentCameraPointer = 0;
 
     private InputManager inputs;
@@ -16,6 +16,12 @@ public class CameraCycler : MonoBehaviour
     void Start()
     {
         inputs = GetComponent<InputManager>();
+
+        cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
+        System.Array.Sort<CinemachineVirtualCamera>(cameras,
+            (a, b) => -b.name.CompareTo(a.name)
+            );
+
     }
 
     // Update is called once per frame

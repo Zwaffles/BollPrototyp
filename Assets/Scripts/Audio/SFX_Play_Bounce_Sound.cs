@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+/*
+ *  Plays the bouncing SFX
+ *  Original script by Ludwig, modified by Johan
+ */
+
 public class SFX_Play_Bounce_Sound : MonoBehaviour
 {
     //Sound Reference
@@ -10,14 +15,15 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     //public FMODUnity.EventReference RollingSound;
 
     //Rigidbody
-    private Rigidbody BallCollisionRb;
-
+    private Rigidbody ballCollisionRb;
 
     //FMOD
     private FMOD.Studio.EventInstance instance;
-    public FMODUnity.EventReference RollingSound; //fmodEvent;
+    //public FMODUnity.EventReference RollingSound; //fmodEvent;
 
     private FMOD.Studio.PARAMETER_ID pitchParameterId;
+
+    private int currentCollisions = 0;
 
     [SerializeField]
     [Range(0f, 1f)]
@@ -35,15 +41,21 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     [Range(-12f, 12f)]
     private float pitch;
 
-
-
-
+    [SerializeField, Tooltip("How strong the impulse from a collision has to be to trigger the SFX")]
+    [Range(0f, 20f)]
+    private float minimumImpulse = 6f;
 
     //On Event Start
     void Start()
     {
 
-        instance = FMODUnity.RuntimeManager.CreateInstance(RollingSound); //(fmodEvent);
+        ballCollisionRb = GetComponent<Rigidbody>();
+
+        /*
+         * I don't know what most of this does, but I'm too afraid to touch it RN
+         */
+
+        instance = FMODUnity.RuntimeManager.CreateInstance(BounceSound); //(fmodEvent);
 
         FMOD.Studio.EventDescription pitchEventDescription;
         instance.getDescription(out pitchEventDescription);
@@ -51,24 +63,9 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
         FMOD.Studio.PARAMETER_DESCRIPTION pitchParameterDescription;
         pitchEventDescription.getParameterDescriptionByName("Pitch", out pitchParameterDescription);
 
+        // What does this line do?
         pitchParameterId = pitchParameterDescription.id;
         instance.start();
-
-    }
-
-
-    //On Event Colliding With Collision
-    private void OnCollisionEnter(Collision collision)
-    {
-
-            FMODUnity.RuntimeManager.PlayOneShot(BounceSound, transform.position);
-
-    }
-
-
-    //Event Update
-    void Update()
-    {
 
         //FMOD
         instance.setParameterByName("Pitch", pitch);
@@ -80,5 +77,22 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
 
     }
 
+
+    //On Event Colliding With Collision
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (currentCollisions++ != 0) return;
+
+        if (collision.impulse.magnitude < minimumImpulse) return;
+
+        FMODUnity.RuntimeManager.PlayOneShot(BounceSound, transform.position);
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        currentCollisions--;
+    }
 
 }

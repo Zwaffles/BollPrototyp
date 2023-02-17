@@ -19,6 +19,9 @@ GameObject:
   - component: {fileID: 2850255129268814914}
   - component: {fileID: 2850255129268814916}
   - component: {fileID: 7528852356402765625}
+  - component: {fileID: 2765027152541553274}
+  - component: {fileID: 7631505359320462678}
+  - component: {fileID: 1060289330994781116}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -241,7 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b053cb5b55cd7304796048ae8bd33bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
   inputs: {fileID: 2850255129268814917}
 --- !u!114 &2850255129268814916
 MonoBehaviour:
@@ -270,3 +272,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameras: []
+--- !u!114 &2765027152541553274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850255129268815805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927309e04262cd4985e16a043e758da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BounceSound:
+    Guid:
+      Data1: -776349059
+      Data2: 1204787096
+      Data3: 1359910591
+      Data4: -2068015768
+    Path: event:/BallSFX/Test-Bounce
+  eqGlobal: 0
+  reverb: 0
+  delay: 0
+  delayTime: 0
+  pitch: 0
+--- !u!114 &7631505359320462678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850255129268815805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb4be582918f37448f8de11521ff560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSpeed: 1
+  maxSpeed: 10
+  minPitch: 0
+  maxPitch: 0.4
+--- !u!114 &1060289330994781116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850255129268815805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -748639806
+      Data2: 1150162484
+      Data3: 756954000
+      Data4: -1476375804
+    Path: event:/BallSFX/Test-Rolling
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
