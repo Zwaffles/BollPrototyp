@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 141103433318658295}
-  - component: {fileID: -1119140842689305548}
   m_Layer: 0
   m_Name: Soft edge BigSlope
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &-1119140842689305548
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113881756878324355}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &2445417868969091306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: add6f91532c5976418ace1489f934ed4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: add6f91532c5976418ace1489f934ed4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -109,3 +94,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: add6f91532c5976418ace1489f934ed4, type: 3}
   m_PrefabInstance: {fileID: 2445417868969091306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3255741107132603835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: add6f91532c5976418ace1489f934ed4, type: 3}
+  m_PrefabInstance: {fileID: 2445417868969091306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &4711123452388410260
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3255741107132603835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5741174448488666723, guid: add6f91532c5976418ace1489f934ed4, type: 3}
