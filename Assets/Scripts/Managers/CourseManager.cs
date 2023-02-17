@@ -32,8 +32,11 @@ public class CourseManager : MonoBehaviour
 
         // Set the course data as completed and update the best time
         courseData.SetCourseCompleted(isCompleted);
-        if (bestTime == 0 || timeSpent < bestTime)
-            courseData.SetTimeSpent(timeSpent);
+        if (isCompleted)
+        {
+            if (bestTime == 0 || timeSpent < bestTime)
+                courseData.SetTimeSpent(timeSpent);
+        }
 
         // Save the data
         GameManager.instance.dataManager.SaveData(sets);
@@ -89,7 +92,7 @@ public class CourseManager : MonoBehaviour
         return totalTimeSpent;
     }
 
-    public float GetCurrentSetTotalTimeSpent()
+    public float GetCurrentBossTimeLimit()
     {
         float totalTimeSpent = 0f;
         CourseData[] subcourses = sets[currentSet].subCourses;
@@ -98,7 +101,7 @@ public class CourseManager : MonoBehaviour
             totalTimeSpent += subcourses[i].bestTime;
         }
 
-        return totalTimeSpent;
+        return sets[currentSet].bossTimeLimit - totalTimeSpent;
     }
 
     public CourseData[] GetCourseData(int setIndex)

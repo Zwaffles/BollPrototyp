@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("UI Elements"), SerializeField]
+    private Timer timer;
+    [SerializeField]
+    private BossTimer bossTimer;
+
+    public void StartGameplay()
     {
-        
+        timer.gameObject.SetActive(true);
+        timer.ResetTimer();
+        timer.StartTimer();
+
+        if (!GameManager.instance.courseManager.GetCurrentCourseIsBossCourse())
+            return;
+
+        bossTimer.gameObject.SetActive(true);
+        bossTimer.ResetTimer();
+        bossTimer.StartTimer();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndGameplay(bool completionStatus)
     {
-        
+        timer.StopTimer();
+        // Set the course data as completed and update the time spent
+        GameManager.instance.courseManager.UpdateCourseData(completionStatus, timer.GetTimeSpent());
+        timer.gameObject.SetActive(false);
+
+        if (!bossTimer.isActiveAndEnabled)
+            return;
+
+        bossTimer.StopTimer();
+        bossTimer.gameObject.SetActive(false);
     }
 }
