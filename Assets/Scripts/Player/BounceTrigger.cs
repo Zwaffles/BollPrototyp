@@ -20,12 +20,12 @@ public class BounceTrigger : MonoBehaviour
     private int currentCollisions = 0;
 
     [SerializeField, Tooltip("How strong the impulse from a collision has to be to trigger the SFX")]
-    [Range(0f, 20f)]
-    private float minimumImpulse = 18f;
+    [Range(0f, 40f)]
+    private float minimumImpulse = 20f;
 
     [SerializeField, Tooltip("How strong the impulse from a collision has to be to trigger the SFX")]
     [Range(0f, 180f)]
-    private float minimumAngle = 60f;
+    private float minimumAngle = 60.86f;
 
     //On Event Start
     void Start()
@@ -46,7 +46,13 @@ public class BounceTrigger : MonoBehaviour
         if (collision.impulse.magnitude < minimumImpulse) return;
 
         if (Vector3.Angle(collision.impulse, ballCollisionRb.velocity) < minimumAngle) return;
-        
+
+        // TODO: Remove this
+
+        //Debug.Log("------------------------------------------");
+        //Debug.Log("Angle: " + Vector3.Angle(collision.impulse, ballCollisionRb.velocity));
+        //Debug.Log("Impulse: " + collision.impulse.magnitude);
+
         // The actual wee part
         bounce.triggerBounce(collision.contacts[0].normal);
 
