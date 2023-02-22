@@ -42,6 +42,8 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     public event Action PauseEvent;
     public event Action ResumeEvent;
 
+    public event Action CameraCycleEvent;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(obj: context.ReadValue<Vector2>());
@@ -80,7 +82,10 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
 
     public void OnCycleCamera(InputAction.CallbackContext context)
     {
-
+        if(context.phase == InputActionPhase.Performed)
+        {
+            CameraCycleEvent?.Invoke();
+        }
     }
 
     public void OnZoom(InputAction.CallbackContext context)
