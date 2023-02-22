@@ -7,15 +7,29 @@ public class CourseFinish : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.instance.uiManager.StartGameplay();
+        try
+        {
+            GameManager.instance.uiManager.StartGameplay();
+        }
+        catch
+        {
+            Debug.Log("No GameManager found");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Stop the timer and handle end of gameplay stuff
-            GameManager.instance.uiManager.EndGameplay(true);
+            try
+            {
+                // Stop the timer and handle end of gameplay stuff
+                GameManager.instance.uiManager?.EndGameplay(true);
+            }
+            catch
+            {
+                Debug.Log("No GameManager found");
+            }
         }
     }
 }
