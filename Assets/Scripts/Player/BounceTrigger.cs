@@ -27,12 +27,26 @@ public class BounceTrigger : MonoBehaviour
     [Range(0f, 180f)]
     private float minimumAngle = 60.86f;
 
+    private bool shouldBounce = false;
+    private Vector3 bounceDirection;
+
     //On Event Start
     void Start()
     {
 
         ballCollisionRb = GetComponent<Rigidbody>();
         bounce = GetComponent<BounceSquish>();
+
+    }
+
+    void Update()
+    {
+
+        if (!shouldBounce) return;
+
+        bounce.triggerBounce(bounceDirection);
+
+        shouldBounce = false;
 
     }
 
@@ -47,14 +61,8 @@ public class BounceTrigger : MonoBehaviour
 
         if (Vector3.Angle(collision.impulse, ballCollisionRb.velocity) < minimumAngle) return;
 
-        // TODO: Remove this
-
-        //Debug.Log("------------------------------------------");
-        //Debug.Log("Angle: " + Vector3.Angle(collision.impulse, ballCollisionRb.velocity));
-        //Debug.Log("Impulse: " + collision.impulse.magnitude);
-
-        // The actual wee part
-        bounce.triggerBounce(collision.contacts[0].normal);
+        shouldBounce = true;
+        bounceDirection = collision.contacts[0].normal;
 
     }
 
@@ -62,4 +70,10 @@ public class BounceTrigger : MonoBehaviour
     {
         currentCollisions--;
     }
+
+    private void OnEnable()
+    {
+        shouldBounce = false;
+    }
+
 }
