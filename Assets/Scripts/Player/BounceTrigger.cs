@@ -59,7 +59,7 @@ public class BounceTrigger : MonoBehaviour
 
         if (collision.impulse.magnitude < minimumImpulse) return;
 
-        if (Vector3.Angle(collision.impulse, ballCollisionRb.velocity) < minimumAngle) return;
+        if (Vector3.Angle(collision.impulse, ballCollisionRb.velocity) < minimumAngle) return; // This line triggers a null ref for some reason?
 
         shouldBounce = true;
         bounceDirection = collision.contacts[0].normal;

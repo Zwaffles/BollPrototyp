@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Made by Johan Rosenberg
+ * 2023-02-21
+ * Last modified: 2023-02-23
+ */
 public class TestBehaviourToggle : MonoBehaviour
 {
 
