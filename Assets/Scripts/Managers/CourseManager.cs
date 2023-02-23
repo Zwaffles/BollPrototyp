@@ -13,11 +13,13 @@ public class CourseManager : MonoBehaviour
 
     public void LoadCourse(int setIndex, int courseIndex)
     {
+        GameManager.instance.SetGameState(GameManager.GameState.Play);
         SceneManager.LoadScene(sets[setIndex].subCourses[courseIndex].sceneName);
     }
 
     public void LoadBossCourse(int setIndex)
     {
+        GameManager.instance.SetGameState(GameManager.GameState.Play);
         SceneManager.LoadScene(sets[setIndex].bossCourse.sceneName);
     }
 
@@ -43,6 +45,7 @@ public class CourseManager : MonoBehaviour
         GameManager.instance.dataManager.SaveData(sets);
 
         // Load CourseSelectionMenu
+        GameManager.instance.SetGameState(GameManager.GameState.Menu);
         SceneManager.LoadScene(0);
     }
 
@@ -107,4 +110,3 @@ public class CourseManager : MonoBehaviour
         currentCourse = courseIndex;
     }
 }
-

@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Cycle camera",
+                    "name": "CycleCamera",
                     "type": "Button",
                     "id": "79bb7003-8a1f-442f-8194-77f9f636fa02",
                     "expectedControlType": "Button",
@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "cd962653-5575-4274-b626-0406df121043",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -149,7 +158,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cycle camera",
+                    "action": "CycleCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -160,7 +169,68 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cycle camera",
+                    "action": "CycleCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f01fe1c1-ee15-4434-acf5-99fee0deaa50",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b518728-4d1e-4baa-9f57-560d25861692",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "232d4dca-8e2a-4c6c-9769-7fa79e3e07d7",
+            "actions": [
+                {
+                    "name": "Resume",
+                    "type": "Button",
+                    "id": "a7df86c0-aec0-495c-9a2d-068b4f1d5f28",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b4df211b-4acb-4aa0-a6e9-20a6141d23d1",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9de379c-4d4f-4994-9158-b7e93b058a74",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Resume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,35 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-[RequireComponent(typeof(InputManager))]
+
+//Eventually, everything related to the camera should be handled by a manager.
+//This means that, among other things, a reference to the InputReader will be unnecessary since it will be contained within the GameManager singleton
 public class CameraCycler : MonoBehaviour
 {
+    [SerializeField]
+    private InputReader input;
 
-    private Cinemachine.CinemachineVirtualCamera[] cameras;
+    private CinemachineVirtualCamera[] cameras;
     
     private int currentCameraPointer = 0;
 
-    private InputManager inputs;
+    private bool shouldCycle = false;
 
     void Start()
     {
-        inputs = GetComponent<InputManager>();
+        input.CameraCycleEvent += HandleCameraCycle;
 
         cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
         System.Array.Sort<CinemachineVirtualCamera>(cameras,
             (a, b) => -b.name.CompareTo(a.name)
             );
-
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (inputs.getCameraInput())
+        if (shouldCycle)
         {
+            shouldCycle = false;
 
             cameras[currentCameraPointer].enabled = false;
 
@@ -41,8 +43,11 @@ public class CameraCycler : MonoBehaviour
             }
 
             cameras[currentCameraPointer].enabled = true;
-
         }
+    }
 
+    private void HandleCameraCycle()
+    {
+        shouldCycle = true;
     }
 }
