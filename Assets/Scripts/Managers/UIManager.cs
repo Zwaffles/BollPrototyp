@@ -9,6 +9,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private BossTimer bossTimer;
 
+    private void Start()
+    {
+       
+    }
+
     public void StartGameplay()
     {
         timer.gameObject.SetActive(true);
