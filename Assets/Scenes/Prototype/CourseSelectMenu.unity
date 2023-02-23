@@ -1170,7 +1170,7 @@ GameObject:
   - component: {fileID: 799081742}
   - component: {fileID: 799081743}
   m_Layer: 0
-  m_Name: UIDocument
+  m_Name: UI-Pause-BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1323,6 +1323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2521958280786284843, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
+      propertyPath: input
+      value: 
+      objectReference: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
     - target: {fileID: 2521958280786284844, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1367,6 +1371,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8795088601927785379, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 799081741}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
 --- !u!1 &1296526277
