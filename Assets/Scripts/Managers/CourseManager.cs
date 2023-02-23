@@ -19,6 +19,7 @@ public class CourseManager : MonoBehaviour
 
     public void LoadBossCourse(int setIndex)
     {
+        GameManager.instance.SetGameState(GameManager.GameState.Play);
         SceneManager.LoadScene(sets[setIndex].bossCourse.sceneName);
     }
 

@@ -15,11 +15,15 @@ public class UIManager : MonoBehaviour
 
     private GameManager gameManager;
 
+    private bool awaitInput;
+
     private void Start()
     {
         gameManager = GameManager.instance;
 
         input = gameManager.Input;
+
+        input.HasMovedEvent += HandleTimers;
 
         input.PauseEvent += Pause;
         input.ResumeEvent += Resume;
@@ -27,16 +31,7 @@ public class UIManager : MonoBehaviour
 
     public void StartGameplay()
     {
-        timer.gameObject.SetActive(true);
-        timer.ResetTimer();
-        timer.StartTimer();
-
-        if (!gameManager.courseManager.GetCurrentCourseIsBossCourse())
-            return;
-
-        bossTimer.gameObject.SetActive(true);
-        bossTimer.ResetTimer();
-        bossTimer.StartTimer();
+        awaitInput = true;
     }
 
     public void EndGameplay(bool completionStatus)
@@ -51,6 +46,25 @@ public class UIManager : MonoBehaviour
 
         bossTimer.StopTimer();
         bossTimer.gameObject.SetActive(false);
+    }
+
+    public void HandleTimers()
+    {
+        if (!awaitInput)
+            return;
+
+        awaitInput = false;
+
+        timer.gameObject.SetActive(true);
+        timer.ResetTimer();
+        timer.StartTimer();
+
+        if (!gameManager.courseManager.GetCurrentCourseIsBossCourse())
+            return;
+
+        bossTimer.gameObject.SetActive(true);
+        bossTimer.ResetTimer();
+        bossTimer.StartTimer();
     }
 
     public void Pause()
