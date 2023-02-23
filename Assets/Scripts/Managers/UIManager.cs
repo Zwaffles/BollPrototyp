@@ -8,10 +8,21 @@ public class UIManager : MonoBehaviour
     private Timer timer;
     [SerializeField]
     private BossTimer bossTimer;
+    [SerializeField]
+    private GameObject pauseMenu;
+
+    private InputReader input;
+
+    private GameManager gameManager;
 
     private void Start()
     {
-       
+        gameManager = GameManager.instance;
+
+        input = gameManager.Input;
+
+        input.PauseEvent += Pause;
+        input.ResumeEvent += Resume;
     }
 
     public void StartGameplay()
@@ -20,7 +31,7 @@ public class UIManager : MonoBehaviour
         timer.ResetTimer();
         timer.StartTimer();
 
-        if (!GameManager.instance.courseManager.GetCurrentCourseIsBossCourse())
+        if (!gameManager.courseManager.GetCurrentCourseIsBossCourse())
             return;
 
         bossTimer.gameObject.SetActive(true);
@@ -40,5 +51,25 @@ public class UIManager : MonoBehaviour
 
         bossTimer.StopTimer();
         bossTimer.gameObject.SetActive(false);
+    }
+
+    public void Pause()
+    {
+        if (gameManager.CurrentGameState != GameManager.GameState.Play)
+            return;
+
+        gameManager.SetGameState(GameManager.GameState.Pause);
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        if (gameManager.CurrentGameState != GameManager.GameState.Pause)
+            return;
+
+        gameManager.SetGameState(GameManager.GameState.Play);
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
     }
 }

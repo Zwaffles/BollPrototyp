@@ -9,6 +9,16 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
 {
     private PlayerInputs _playerInputs;
 
+    public event Action<Vector2> MoveEvent;
+
+    public event Action JumpEvent;
+    public event Action JumpCancelledEvent;
+
+    public event Action PauseEvent;
+    public event Action ResumeEvent;
+
+    public event Action CameraCycleEvent;
+
     private void OnEnable()
     {
         if(_playerInputs == null)
@@ -21,28 +31,6 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
             SetGameplay();
         }
     }
-
-    public void SetGameplay()
-    {
-        _playerInputs.Gameplay.Enable();
-        _playerInputs.UI.Disable();
-    }
-
-    public void SetUI()
-    {
-        _playerInputs.Gameplay.Disable();
-        _playerInputs.UI.Enable();
-    }
-
-    public event Action<Vector2> MoveEvent;
-
-    public event Action JumpEvent;
-    public event Action JumpCancelledEvent;
-
-    public event Action PauseEvent;
-    public event Action ResumeEvent;
-
-    public event Action CameraCycleEvent;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -91,5 +79,17 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     public void OnZoom(InputAction.CallbackContext context)
     {
 
+    }
+
+    public void SetGameplay()
+    {
+        _playerInputs.Gameplay.Enable();
+        _playerInputs.UI.Disable();
+    }
+
+    public void SetUI()
+    {
+        _playerInputs.Gameplay.Disable();
+        _playerInputs.UI.Enable();
     }
 }
