@@ -35,19 +35,96 @@
 .LS-Course-Box {
     margin-left: 8px;
     margin-right: 8px;
-    margin-top: 8px;
+    margin-top: 32px;
     margin-bottom: 8px;
-    height: 80px;
-    background-color: rgb(130, 130, 130);
-    width: 80px;
+    height: 100px;
+    background-color: rgb(79, 79, 79);
+    width: 100px;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 32px;
     -unity-font-style: normal;
     -unity-text-align: middle-center;
-    letter-spacing: 16px;
-    text-shadow: 0 0 0 rgba(0, 0, 0, 255);
+    letter-spacing: 8px;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-color: rgb(38, 38, 38);
+    border-right-color: rgb(38, 38, 38);
+    border-top-color: rgb(38, 38, 38);
+    border-bottom-color: rgb(38, 38, 38);
+    transition-duration: 0.1s;
+    opacity: 1;
+    color: rgb(24, 24, 24);
 }
 
 .LS-Course-Box:hover {
+    scale: 1.2 1.2;
+    border-left-color: rgb(17, 17, 17);
+    border-right-color: rgb(17, 17, 17);
+    border-top-color: rgb(17, 17, 17);
+    border-bottom-color: rgb(17, 17, 17);
+    transition-duration: 0.2s;
+    background-color: rgb(173, 173, 173);
+    width: 100px;
+    height: 100px;
+    -unity-font-style: bold;
+}
+
+.LS-BottomButtons {
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ConfirmCancelButton.png?fileID=2800000&guid=912338bc9789dfb42a35402375b15032&type=3#ConfirmCancelButton');
+    font-size: 24px;
+    padding-left: 16px;
+    padding-right: 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -unity-text-align: middle-right;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    overflow: visible;
+    -unity-background-scale-mode: stretch-to-fill;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    -unity-font-style: bold;
+    height: 48px;
+    width: 200px;
+}
+
+.LS-TrackNavigators {
+    width: 48px;
+    height: 48px;
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ArrowImage.png?fileID=2800000&guid=181dfa8a8a0b2d645b78719827f090f3&type=3#ArrowImage');
+    opacity: 0.75;
+    -unity-background-image-tint-color: rgb(103, 103, 103);
+    transition-duration: 0.1s;
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.LS-TrackNavigators:hover {
+    width: 48px;
+    height: 48px;
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ArrowImage.png?fileID=2800000&guid=181dfa8a8a0b2d645b78719827f090f3&type=3#ArrowImage');
+    opacity: 1;
+    transition-duration: 0.2s;
+    scale: 1.1 1.1;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }
