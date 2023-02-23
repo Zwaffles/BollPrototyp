@@ -37,9 +37,9 @@
     margin-right: 8px;
     margin-top: 32px;
     margin-bottom: 8px;
-    height: 110px;
+    height: 100px;
     background-color: rgb(79, 79, 79);
-    width: 110px;
+    width: 100px;
     align-items: center;
     justify-content: center;
     font-size: 32px;
@@ -57,19 +57,19 @@
     border-bottom-color: rgb(38, 38, 38);
     transition-duration: 0.1s;
     opacity: 1;
-    color: rgba(24, 24, 24, 255);
+    color: rgb(24, 24, 24);
 }
 
 .LS-Course-Box:hover {
     scale: 1.2 1.2;
-    border-left-color: rgba(17, 17, 17, 255);
-    border-right-color: rgba(17, 17, 17, 255);
-    border-top-color: rgba(17, 17, 17, 255);
-    border-bottom-color: rgba(17, 17, 17, 255);
+    border-left-color: rgb(17, 17, 17);
+    border-right-color: rgb(17, 17, 17);
+    border-top-color: rgb(17, 17, 17);
+    border-bottom-color: rgb(17, 17, 17);
     transition-duration: 0.2s;
-    background-color: rgba(173, 173, 173, 255);
-    width: 110px;
-    height: 110px;
+    background-color: rgb(173, 173, 173);
+    width: 100px;
+    height: 100px;
     -unity-font-style: bold;
 }
 
@@ -113,7 +113,7 @@
     height: 48px;
     background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ArrowImage.png?fileID=2800000&guid=181dfa8a8a0b2d645b78719827f090f3&type=3#ArrowImage');
     opacity: 0.75;
-    -unity-background-image-tint-color: rgba(103, 103, 103, 255);
+    -unity-background-image-tint-color: rgb(103, 103, 103);
     transition-duration: 0.1s;
     margin-left: 32px;
     margin-right: 32px;
@@ -126,5 +126,5 @@
     opacity: 1;
     transition-duration: 0.2s;
     scale: 1.1 1.1;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }
