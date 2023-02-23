@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +31,36 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
+    public void AddMoveEventListener(Action<Vector2> listener)
+    {
+        MoveEvent += listener;
+    }    
+    
+    public void RemoveMoveEventListener(Action<Vector2> listener)
+    {
+        MoveEvent -= listener;
+    }    
+    
+    public void AddJumpEventListener(Action listener)
+    {
+        JumpEvent += listener;
+    }    
+    
+    public void RemoveJumpEventListener(Action listener)
+    {
+        JumpEvent -= listener;
+    }    
+    
+    public void AddJumpCancelledEventListener(Action listener)
+    {
+        JumpCancelledEvent += listener;
+    }    
+    
+    public void RemoveJumpCancelledEventListener(Action listener)
+    {
+        JumpCancelledEvent -= listener;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(obj: context.ReadValue<Vector2>());
@@ -41,13 +69,14 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        var phase = context.phase;
+        if(phase == InputActionPhase.Performed)
         {
             JumpEvent?.Invoke();
             HasMovedEvent?.Invoke();
         }
 
-        if(context.phase == InputActionPhase.Canceled)
+        else if(phase == InputActionPhase.Canceled)
         {
             JumpCancelledEvent?.Invoke();
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -25,20 +26,22 @@ public class GameManager : MonoBehaviour
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }
 
-    [SerializeField] private GameState currentGameState = GameState.Menu;
+    [SerializeField] private GameState currentState = GameState.Menu;
 
-    public GameState CurrentGameState
+    public GameState CurrentState
     {
         get 
         { 
-            return currentGameState; 
+            return currentState; 
         }
 
         set
         {
-            currentGameState = value;
+            currentState = value;
         }
     }
+
+    public event Action<GameState> GameStateChangedEvent;
 
     private void Awake()
     {
@@ -59,8 +62,14 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
     }
 
-    public void SetGameState(GameState state)
+    public void SetGameState(GameState newState)
     {
-        currentGameState = state;
+        currentState = newState;
+        GameStateChangedEvent?.Invoke(newState);
+
+        if (newState == GameState.Play)
+            input.SetGameplay();
+        else
+            input.SetUI();
     }
 }

@@ -22,13 +22,22 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
     private bool shouldJump = false;
 
+    private void OnEnable()
+    {
+        input.AddMoveEventListener(HandleMove);
+        input.AddJumpEventListener(HandleJump);
+        input.AddJumpCancelledEventListener(HandleCancelledJump);
+    }
+
+    private void OnDisable()
+    {
+        input.RemoveMoveEventListener(HandleMove);
+        input.RemoveJumpEventListener(HandleJump);
+        input.RemoveJumpCancelledEventListener(HandleCancelledJump);
+    }
+
     private void Start()
     {
-        input.MoveEvent += HandleMove;
-
-        input.JumpEvent += HandleJump;
-        input.JumpCancelledEvent += HandleCancelledJump;
-
         rb = GetComponent<Rigidbody>();
         rb.maxAngularVelocity = moveSpeed;
     }

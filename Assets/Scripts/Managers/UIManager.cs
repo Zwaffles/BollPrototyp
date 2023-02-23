@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
 
     private void TogglePause()
     {
-        if (gameManager.CurrentGameState != GameManager.GameState.Menu)
+        if (gameManager.CurrentState != GameManager.GameState.Menu)
         {
             isPaused = !isPaused;
             gameManager.SetGameState(isPaused ? GameManager.GameState.Pause : GameManager.GameState.Play);
