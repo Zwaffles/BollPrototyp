@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI Elements"), SerializeField]
-    private Timer timer;
-    [SerializeField]
-    private BossTimer bossTimer;
-    [SerializeField]
-    private GameObject pauseMenu;
+    [Header("UI Elements")] 
+    [SerializeField] private Timer timer;
+    [SerializeField] private BossTimer bossTimer;
+    [SerializeField] private GameObject pauseMenu;
 
     private InputReader input;
-
     private GameManager gameManager;
 
-    private bool awaitInput;
+    private bool isPaused;
+    private bool gameplayStarted;
 
     private void Start()
     {
@@ -23,67 +21,59 @@ public class UIManager : MonoBehaviour
 
         input = gameManager.Input;
 
-        input.HasMovedEvent += HandleTimers;
+        input.HasMovedEvent += HandleHasMoved;
 
-        input.PauseEvent += Pause;
-        input.ResumeEvent += Resume;
+        input.PauseEvent += TogglePause;
+        input.ResumeEvent += TogglePause;
     }
 
     public void StartGameplay()
     {
-        awaitInput = true;
+        timer.gameObject.SetActive(true);
+        timer.ResetTimer();
+        timer.StartTimer();
+
+        if (gameManager.courseManager.GetCurrentCourseIsBossCourse())
+        {
+            bossTimer.gameObject.SetActive(true);
+            bossTimer.ResetTimer();
+            bossTimer.StartTimer();
+        }
     }
 
     public void EndGameplay(bool completionStatus)
     {
         timer.StopTimer();
-        // Set the course data as completed and update the time spent
         GameManager.instance.courseManager.UpdateCourseData(completionStatus, timer.GetTimeSpent());
         timer.gameObject.SetActive(false);
 
-        if (!bossTimer.isActiveAndEnabled)
-            return;
+        if (bossTimer.gameObject.activeInHierarchy)
+        {
+            bossTimer.StopTimer();
+            bossTimer.gameObject.SetActive(false);
+        }
 
-        bossTimer.StopTimer();
-        bossTimer.gameObject.SetActive(false);
+        // Reset the gameplayStarted flag so that StartGameplay() can be called again for the next course.
+        gameplayStarted = false;
     }
 
-    public void HandleTimers()
+    private void HandleHasMoved()
     {
-        if (!awaitInput)
-            return;
-
-        awaitInput = false;
-
-        timer.gameObject.SetActive(true);
-        timer.ResetTimer();
-        timer.StartTimer();
-
-        if (!gameManager.courseManager.GetCurrentCourseIsBossCourse())
-            return;
-
-        bossTimer.gameObject.SetActive(true);
-        bossTimer.ResetTimer();
-        bossTimer.StartTimer();
+        if (!gameplayStarted)
+        {
+            gameplayStarted = true;
+            StartGameplay();
+        }
     }
 
-    public void Pause()
+    private void TogglePause()
     {
-        if (gameManager.CurrentGameState != GameManager.GameState.Play)
-            return;
-
-        gameManager.SetGameState(GameManager.GameState.Pause);
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
-    }
-
-    public void Resume()
-    {
-        if (gameManager.CurrentGameState != GameManager.GameState.Pause)
-            return;
-
-        gameManager.SetGameState(GameManager.GameState.Play);
-        Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
+        if (gameManager.CurrentGameState != GameManager.GameState.Menu)
+        {
+            isPaused = !isPaused;
+            gameManager.SetGameState(isPaused ? GameManager.GameState.Pause : GameManager.GameState.Play);
+            Time.timeScale = isPaused ? 0f : 1f;
+            pauseMenu.SetActive(isPaused);
+        }
     }
 }

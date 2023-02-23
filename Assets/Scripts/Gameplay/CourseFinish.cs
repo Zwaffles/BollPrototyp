@@ -7,14 +7,7 @@ public class CourseFinish : MonoBehaviour
 {
     private void Start()
     {
-        try
-        {
-            GameManager.instance.uiManager.StartGameplay();
-        }
-        catch
-        {
-            Debug.Log("No GameManager found");
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
