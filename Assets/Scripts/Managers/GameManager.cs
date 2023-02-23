@@ -2,7 +2,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public InputReader input { get; private set; }
+    [SerializeField] private InputReader input;
+
+    public InputReader Input
+    {
+        get
+        {
+            return input;
+        }
+    }
 
     public enum GameState
     {
@@ -17,7 +25,20 @@ public class GameManager : MonoBehaviour
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }
 
-    public GameState currentGameState { get; private set; } = GameState.Menu;
+    [SerializeField] private GameState currentGameState = GameState.Menu;
+
+    public GameState CurrentGameState
+    {
+        get 
+        { 
+            return currentGameState; 
+        }
+
+        set
+        {
+            currentGameState = value;
+        }
+    }
 
     private void Awake()
     {
