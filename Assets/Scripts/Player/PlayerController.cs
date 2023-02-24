@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(PlayerController))]
 public class PlayerControllerEditor : Editor
 {
@@ -124,3 +125,4 @@ public class PlayerControllerEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
