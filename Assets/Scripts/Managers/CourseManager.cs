@@ -59,6 +59,11 @@ public class CourseManager : MonoBehaviour
         return currentCourse == 5;
     }
 
+    public string GetSetName(int setIndex)
+    {
+        return sets[setIndex].setName;
+    }
+
     public string GetCourseName(int setIndex, int courseIndex)
     {
         return sets[setIndex].subCourses[courseIndex].courseName;
