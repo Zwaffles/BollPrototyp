@@ -9,16 +9,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader input;
 
     [SerializeField, Header("Movement")]
-    private float moveSpeed = 60f;
+    private float moveAcceleration = 100f;
+  
     [SerializeField, Header("Jump")]
     private bool hasJump = false;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
+    [SerializeField]
+    private float moveSpeed = 28f;
 
     private Rigidbody rb;
 
     private Vector2 _moveDirection;
-
     private bool isOnGround;
     private bool shouldJump = false;
 
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = 26.5f;
+        rb.maxAngularVelocity = moveSpeed;
         
     }
 
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if (_moveDirection == Vector2.zero)
             return;
 
-        rb.AddTorque(new Vector3(0, 0, -_moveDirection.y * moveSpeed));
+        rb.AddTorque(new Vector3(0, 0, -_moveDirection.y * moveAcceleration));
     }
 
     private void Jump()
