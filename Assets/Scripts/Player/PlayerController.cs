@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputReader input;
 
     [SerializeField, Header("Movement")]
-    private float moveSpeed = 27.5f;
+    private float moveSpeed = 60f;
     [SerializeField, Header("Jump")]
     private bool hasJump = false;
-    [SerializeField, HideInInspector] 
+    [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
 
     private Rigidbody rb;
@@ -39,7 +39,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = moveSpeed;
+        rb.maxAngularVelocity = 26.5f;
+        
     }
 
     private void FixedUpdate()
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isOnGround = false;
+          
+
         }
     }
 }
