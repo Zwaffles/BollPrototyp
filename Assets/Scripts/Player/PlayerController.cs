@@ -10,13 +10,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Header("Movement")]
     private float moveAcceleration = 100f;
-  
+    [SerializeField]
+    private float moveSpeed = 28f;
     [SerializeField, Header("Jump")]
     private bool hasJump = false;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
-    [SerializeField]
-    private float moveSpeed = 28f;
+   
 
     private Rigidbody rb;
 
