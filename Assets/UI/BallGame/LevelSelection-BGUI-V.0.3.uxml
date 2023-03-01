@@ -6,7 +6,7 @@
                 <ui:VisualElement name="UI_LS_SetNavigationLeft_Image" class="LS-TrackNavigators" style="rotate: 180deg; transform-origin: center;" />
             </ui:VisualElement>
             <ui:VisualElement name="UI_LS_Header_Box" style="align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetNameBox.png?fileID=2800000&amp;guid=e54265258d08a8c41ada70e610005bdc&amp;type=3#SetNameBox&apos;); padding-left: 24px; padding-right: 24px; padding-top: 32px; padding-bottom: 32px; width: 32%;">
-                <ui:Label text="Lovely Seaside Road" display-tooltip-when-elided="true" name="UI_LS_Header_Text" style="-unity-text-align: middle-center; font-size: 40px; -unity-font-style: bold-and-italic; color: rgb(239, 239, 239);" />
+                <ui:Label text="Lovely Seaside Road" display-tooltip-when-elided="true" name="UI_LS_Header_Text" style="-unity-text-align: middle-center; font-size: 40px; -unity-font-style: bold-and-italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
             </ui:VisualElement>
             <ui:VisualElement name="UI_LS_SetNavigationRight_Container" style="justify-content: center; flex-grow: 1; align-items: flex-start;">
                 <ui:VisualElement name="UI_LS_SetNavigationRight_Image" class="LS-TrackNavigators" />
