@@ -18,6 +18,8 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
 
     public event Action CameraCycleEvent;
 
+    public event Action SubmitEvent;
+
     private void OnEnable()
     {
         if(_playerInputs == null)
@@ -27,7 +29,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
             _playerInputs.Gameplay.SetCallbacks(instance: this);
             _playerInputs.UI.SetCallbacks(instance: this);
 
-            SetGameplay();
+            SetUI();
         }
     }
 
@@ -61,6 +63,16 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         JumpCancelledEvent -= listener;
     }
 
+    public void AddSubmitEventListener(Action listener)
+    {
+        SubmitEvent += listener;
+    }
+
+    public void RemoveSubmitEventListener(Action listener)
+    {
+        SubmitEvent -= listener;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(obj: context.ReadValue<Vector2>());
@@ -87,7 +99,6 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         if(context.phase == InputActionPhase.Performed)
         {
             PauseEvent?.Invoke();
-            SetUI();
         }
     }
 
@@ -96,7 +107,6 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         if (context.phase == InputActionPhase.Performed)
         {
             ResumeEvent?.Invoke();
-            SetGameplay();
         }
     }
 
@@ -111,6 +121,11 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     public void OnZoom(InputAction.CallbackContext context)
     {
 
+    }
+
+    public void OnSubmit(InputAction.CallbackContext context)
+    {
+        SubmitEvent?.Invoke();
     }
 
     public void SetGameplay()

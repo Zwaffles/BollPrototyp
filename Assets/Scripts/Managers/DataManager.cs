@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
@@ -45,8 +46,16 @@ public class DataManager : MonoBehaviour
             setDataCount++;
         }
 
-        if(hasSavedData)
+        if (hasSavedData)
             GameManager.instance.courseManager.LoadPlayerProgress(setDataList);
+    }
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+        GameManager.instance.courseManager.ResetPlayerProgress();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("Data Reset");
     }
 }
 

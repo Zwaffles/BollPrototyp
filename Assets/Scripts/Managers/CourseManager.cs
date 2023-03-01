@@ -11,6 +11,8 @@ public class CourseManager : MonoBehaviour
     private int currentSet;
     private int currentCourse;
 
+    private const float DEFAULT_TIME = 0f;
+
     public void LoadCourse(int setIndex, int courseIndex)
     {
         GameManager.instance.SetGameState(GameManager.GameState.Play);
@@ -25,7 +27,35 @@ public class CourseManager : MonoBehaviour
 
     public void LoadPlayerProgress(List<SetData> setDataList)
     {
-        sets = setDataList;
+        for (int i = 0; i < setDataList.Count; i++)
+        {
+            SetData setData = setDataList[i];
+            SetData set = sets[i];
+
+            for (int j = 0; j < set.subCourses.Length; j++)
+            {
+                set.subCourses[j].courseCompleted = setData.subCourses[j].courseCompleted;
+                set.subCourses[j].bestTime = setData.subCourses[j].bestTime;
+            }
+
+            set.bossCourse.courseCompleted = setData.bossCourse.courseCompleted;
+            set.bossCourse.bestTime = setData.bossCourse.bestTime;
+        }
+    }
+
+    public void ResetPlayerProgress()
+    {
+        foreach (SetData set in sets)
+        {
+            for (int i = 0; i < set.subCourses.Length; i++)
+            {
+                set.subCourses[i].courseCompleted = false;
+                set.subCourses[i].bestTime = DEFAULT_TIME;
+            }
+
+            set.bossCourse.courseCompleted = false;
+            set.bossCourse.bestTime = DEFAULT_TIME;
+        }
     }
 
     public void UpdateCourseData(bool isCompleted, float timeSpent)
@@ -103,6 +133,11 @@ public class CourseManager : MonoBehaviour
     public CourseData[] GetCourseData(int setIndex)
     {
         return sets[setIndex].subCourses;
+    }
+
+    public int GetCurrentCourse()
+    {
+        return currentCourse;
     }
 
     public void SetCurrentSet(int setIndex)

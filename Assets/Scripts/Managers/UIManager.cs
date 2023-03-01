@@ -59,11 +59,13 @@ public class UIManager : MonoBehaviour
 
     private void HandleHasMoved()
     {
-        if (!gameplayStarted)
-        {
-            gameplayStarted = true;
-            StartGameplay();
-        }
+        if (gameManager.CurrentState != GameManager.GameState.Play)
+            return;
+        if (gameplayStarted)
+            return;
+
+        gameplayStarted = true;
+        StartGameplay();
     }
 
     private void TogglePause()
