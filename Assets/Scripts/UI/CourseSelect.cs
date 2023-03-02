@@ -79,19 +79,31 @@ public class CourseSelect : MonoBehaviour
         if(currentCourse < 5)
         {
             courseName.text = courseManager.GetCourseName(currentSet, currentCourse);
-            courseBestTime.text = "BestTime: " + DisplayTime(courseManager.GetTimeSpent(currentSet, currentCourse));
+
+            var timeSpent = courseManager.GetTimeSpent(currentSet, currentCourse);
+
+            if(timeSpent > 0)
+                courseBestTime.text = "BestTime: " + DisplayTime(timeSpent);
+            else
+                courseBestTime.text = "BestTime: --:--:---";
         }
         else
         {
             courseName.text = courseManager.GetBossCourseName(currentSet);
-            courseBestTime.text = "BestTime: " + DisplayTime(courseManager.GetBossTimeSpent(currentSet));
+
+            var timeSpent = courseManager.GetBossTimeSpent(currentSet);
+
+            if (timeSpent > 0)
+                courseBestTime.text = "BestTime: " + DisplayTime(timeSpent);
+            else
+                courseBestTime.text = "BestTime: --:--:---";
         }
     }
 
     private void Submit()
     {
         if (currentCourse > 0 && !courseManager.GetCompletionStatus(currentSet, currentCourse - 1))
-                return;
+            return;
 
         if (currentCourse < 5)
         {
