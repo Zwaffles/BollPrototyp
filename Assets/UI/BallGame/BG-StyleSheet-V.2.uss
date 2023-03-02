@@ -1,0 +1,130 @@
+.Time {
+    color: rgb(248, 248, 248);
+    font-size: 32px;
+}
+
+.LS-Set-List {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgb(29, 29, 29);
+    width: 48px;
+    height: 32px;
+}
+
+.LS-PBTime {
+    font-size: 24px;
+    color: rgb(221, 221, 221);
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    -unity-text-align: middle-center;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.LS-CourseName {
+    font-size: 32px;
+    color: rgb(222, 222, 222);
+}
+
+.LS-TrackNumber {
+    color: rgb(222, 222, 222);
+}
+
+.LS-Course-Box {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    height: 100px;
+    background-color: rgb(217, 217, 217);
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    letter-spacing: 4px;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    border-left-width: 6px;
+    border-right-width: 6px;
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-left-color: rgb(6, 6, 6);
+    border-right-color: rgb(6, 6, 6);
+    border-top-color: rgb(6, 6, 6);
+    border-bottom-color: rgb(6, 6, 6);
+    transition-duration: 0.1s;
+    opacity: 1;
+    color: rgb(6, 6, 6);
+    white-space: nowrap;
+}
+
+.LS-Course-Box:focus {
+    scale: 1.2 1.2;
+    border-left-color: rgb(6, 6, 6);
+    border-right-color: rgb(6, 6, 6);
+    border-top-color: rgb(6, 6, 6);
+    border-bottom-color: rgb(6, 6, 6);
+    transition-duration: 0.2s;
+    background-color: rgb(235, 235, 235);
+    width: 100px;
+    height: 100px;
+    -unity-font-style: bold;
+}
+
+.LS-BottomButtons {
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ConfirmCancelButton.png?fileID=2800000&guid=912338bc9789dfb42a35402375b15032&type=3#ConfirmCancelButton');
+    font-size: 24px;
+    padding-left: 16px;
+    padding-right: 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -unity-text-align: middle-right;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    overflow: visible;
+    -unity-background-scale-mode: stretch-to-fill;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    -unity-font-style: bold;
+    height: 48px;
+    width: 200px;
+}
+
+.LS-TrackNavigators {
+    width: 48px;
+    height: 48px;
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ArrowImage.png?fileID=2800000&guid=181dfa8a8a0b2d645b78719827f090f3&type=3#ArrowImage');
+    opacity: 0.75;
+    -unity-background-image-tint-color: rgb(226, 226, 226);
+    transition-duration: 0.1s;
+    margin-top: 6%;
+}
+
+.LS-TrackNavigators:focus {
+    width: 48px;
+    height: 48px;
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ArrowImage.png?fileID=2800000&guid=181dfa8a8a0b2d645b78719827f090f3&type=3#ArrowImage');
+    opacity: 1;
+    transition-duration: 0.2s;
+    scale: 1.1 1.1;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}

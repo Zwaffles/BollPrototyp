@@ -1,0 +1,59 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet-V.2.uss?fileID=7433441132597879392&amp;guid=3312e1c28c345954cac5d66465ca06cb&amp;type=3#BG-StyleSheet-V.2" />
+    <ui:VisualElement name="UI_LS_Canvas" style="flex-grow: 1;">
+        <ui:VisualElement name="UI_LS_Header_Container" style="align-items: center; justify-content: flex-start; margin-top: 0; flex-direction: row; width: 100%; height: 16%;">
+            <ui:VisualElement name="UI_LS_Header_Box" style="align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/SetName%20Box.png?fileID=2800000&amp;guid=076ea86150025d44eb3b7991c15e1911&amp;type=3#SetName Box&apos;); padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 45%; flex-direction: row; height: 100%;">
+                <ui:VisualElement name="UI_LS_SetNavigationLeft_Container" style="justify-content: center; flex-grow: 0; flex-direction: column; align-items: flex-end; margin-left: 0;">
+                    <ui:VisualElement name="UI_LS_SetNavigationLeft_Image" class="LS-TrackNavigators" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_LT.png?fileID=2800000&amp;guid=768a72e6542444044ad1b7c73149d02e&amp;type=3#Switch_LT&apos;); opacity: 1;" />
+                </ui:VisualElement>
+                <ui:Label text="Lovely Seaside Road" display-tooltip-when-elided="true" name="UI_LS_Header_Text" style="-unity-text-align: middle-center; font-size: 32px; -unity-font-style: bold-and-italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); rotate: 0; margin-bottom: 2%; margin-left: 16px; margin-right: 16px;" />
+                <ui:VisualElement name="UI_LS_SetNavigationRight_Container" style="justify-content: center; flex-grow: 0; align-items: flex-start;">
+                    <ui:VisualElement name="UI_LS_SetNavigationRight_Image" class="LS-TrackNavigators" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_RT.png?fileID=2800000&amp;guid=68c2e8675aacb67498a09615693b9b48&amp;type=3#Switch_RT&apos;); opacity: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_LS_Levels_Container" style="-unity-text-align: middle-center; flex-direction: row; justify-content: center; flex-grow: 1;">
+            <ui:VisualElement name="UI_LS_SetCoursesAndNavigation_Container" style="flex-grow: 1; height: 100%;">
+                <ui:VisualElement name="UI_LS_CourseInfoAndArrowNavigation" style="flex-direction: column; width: 100%; height: 70%; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="UI_LS_CourseInfo_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/CourseInfo%20Box.png?fileID=2800000&amp;guid=d994ea4c266db4c4c963b6bd421d1666&amp;type=3#CourseInfo Box&apos;); flex-grow: 0; width: 50%; height: 100%; align-items: stretch; justify-content: flex-end;">
+                        <ui:VisualElement name="UI_LS_CourseInfo_Image" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/CoursePreview%20Box.png?fileID=2800000&amp;guid=40d1796c520427541b1dfde0e3ea3628&amp;type=3#CoursePreview Box&apos;); flex-grow: 1; justify-content: flex-end; align-items: center; margin-left: 3%; margin-right: 3%; margin-top: 3%;">
+                            <ui:VisualElement name="UI_LS_CourseName_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/CourseNameTextBox.png?fileID=2800000&amp;guid=eb4f52683a8a3dd4ca87109663974a8c&amp;type=3#CourseNameTextBox&apos;); flex-grow: 0; margin-left: 0; margin-right: 0; width: 110%; margin-top: 0; margin-bottom: 0;">
+                                <ui:Label text="Sea-Shell Lane" display-tooltip-when-elided="true" name="UI_LS_CourseName_Text" style="font-size: 24px; -unity-font-style: bold; color: rgb(239, 239, 239); padding-top: 8px; padding-bottom: 8px; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/CourseName%20Box.png?fileID=2800000&amp;guid=066e8cb45b61adc45ad2d5567795dc20&amp;type=3#CourseName Box&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="UI_LS_CourseInfoText_Container" style="width: 100%; height: 24%; align-items: flex-start; justify-content: center;">
+                            <ui:Label text="BestTime: --:--:---" display-tooltip-when-elided="true" name="UI_LS_CourseBestTime_Text" style="margin-left: 4%; margin-right: 4%; margin-top: 2%; margin-bottom: 2%; font-size: 24px; -unity-font-style: bold; color: rgb(6, 6, 6);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_LS_CourseList_Container" style="flex-direction: row; justify-content: center; width: 100%; height: 48%; align-items: stretch;">
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-1" text="1-1" class="LS-Course LS-Course-Box" style="align-items: stretch;" />
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-2" text="1-2" class="LS-Course LS-Course-Box" />
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-3" text="1-3" class="LS-Course LS-Course-Box" />
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-4" text="1-4" class="LS-Course LS-Course-Box" />
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-5" text="1-5" class="LS-Course LS-Course-Box" />
+                    <ui:VisualElement name="UI_LS_BossLevel_Container" style="align-items: center; justify-content: flex-start;">
+                        <ui:VisualElement style="flex-direction: row; height: 70%;">
+                            <ui:Label text="-" display-tooltip-when-elided="true" name="UI_LS_BossSeperator_Text" style="-unity-font-style: bold; font-size: 64px; color: rgb(5, 7, 5); height: 110px; margin-top: 32px; margin-right: 8px; margin-left: 8px; padding-right: 0;" />
+                            <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-X" text="1-X" class="LS-Course LS-Course-Box" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="UI_LS_BossTime_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Timer%20Box.png?fileID=2800000&amp;guid=acea762bef122ca4690ea0be0ee54050&amp;type=3#Timer Box&apos;); margin-left: 0; margin-right: 0; margin-top: 8px; margin-bottom: 8px; align-items: center; justify-content: center; height: 20%; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px; width: 100%;">
+                            <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_Text" style="padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; font-size: 24px; color: rgb(6, 6, 6); -unity-font-style: bold; margin-left: 8px; margin-right: 8px; margin-top: 8px; margin-bottom: 8px; height: 100%;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_LS_CancelAndConfirm_Container" style="align-items: stretch; justify-content: flex-end; flex-direction: row; width: 100%; height: 16%;">
+            <ui:VisualElement name="UI_LS_CancelAndConfirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Button%20Container.png?fileID=2800000&amp;guid=9ad6456dc6081c14489a14392dafd51d&amp;type=3#Button Container&apos;); height: 100%; width: 40%; justify-content: flex-end; align-items: flex-end;">
+                <ui:Button text="Confirm" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="color: rgb(29, 29, 29); align-items: flex-start; margin-bottom: 4%;">
+                    <ui:VisualElement name="UI_LS_A-ButtonPrompt_Image" style="height: 100%; width: 32px; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_A.png?fileID=2800000&amp;guid=2867dd82e73232b40a5ac4931c0f2e50&amp;type=3#Switch_A&apos;);" />
+                </ui:Button>
+                <ui:Button text="Cancel" display-tooltip-when-elided="true" name="UI_LS_Cancel_Button" class="LS-BottomButtons" style="color: rgb(29, 29, 29); margin-right: 8%; align-items: flex-start; margin-bottom: 4%;">
+                    <ui:VisualElement name="UI_LS_B-ButtonPrompt_Image" style="height: 100%; width: 32px; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_B.png?fileID=2800000&amp;guid=201542546d05d104488cc7efa17fa7ad&amp;type=3#Switch_B&apos;);" />
+                </ui:Button>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
