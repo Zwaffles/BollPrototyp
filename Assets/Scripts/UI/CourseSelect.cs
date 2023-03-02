@@ -23,9 +23,6 @@ public class CourseSelect : MonoBehaviour
 
     private void OnEnable()
     {
-        input = GameManager.instance.Input;
-        input.AddSubmitEventListener(Submit);
-
         root = GetComponent<UIDocument>().rootVisualElement;
 
         setName = root.Q<TextElement>("UI_LS_Header_Text");
@@ -46,13 +43,11 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        input.RemoveSubmitEventListener(Submit);
-    }
-
     private void Start()
     {
+        input = GameManager.instance.Input;
+        input.SubmitEvent += Submit;
+
         courseManager = GameManager.instance.courseManager;
 
         currentCourse = courseManager.GetCurrentCourse();
@@ -62,7 +57,7 @@ public class CourseSelect : MonoBehaviour
         setName.text = courseManager.GetSetName(currentSet);
 
         // Display the remaining time for the boss course
-        float bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
+        var bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
         finalCourseTimeLimit.text = DisplayTime(bossTime);
     }
 
@@ -76,55 +71,84 @@ public class CourseSelect : MonoBehaviour
         var courseButton = evt.target as Button;
         currentCourse = Array.IndexOf(courseButtons, courseButton);
 
-        if(currentCourse < 5)
+        if (currentCourse < 5)
         {
-            courseName.text = courseManager.GetCourseName(currentSet, currentCourse);
-
-            var timeSpent = courseManager.GetTimeSpent(currentSet, currentCourse);
-
-            if(timeSpent > 0)
-                courseBestTime.text = "BestTime: " + DisplayTime(timeSpent);
-            else
-                courseBestTime.text = "BestTime: --:--:---";
+            ShowCourseInfo(currentSet, currentCourse);
         }
         else
         {
-            courseName.text = courseManager.GetBossCourseName(currentSet);
+            ShowBossCourseInfo(currentSet);
+        }
+    }
 
-            var timeSpent = courseManager.GetBossTimeSpent(currentSet);
+    private void ShowCourseInfo(int setIndex, int courseIndex)
+    {
+        courseName.text = courseManager.GetCourseName(setIndex, courseIndex);
 
-            if (timeSpent > 0)
-                courseBestTime.text = "BestTime: " + DisplayTime(timeSpent);
-            else
-                courseBestTime.text = "BestTime: --:--:---";
+        var timeSpent = courseManager.GetTimeSpent(setIndex, courseIndex);
+
+        if (timeSpent > 0)
+        {
+            courseBestTime.text = "BestTime: " + DisplayTime(timeSpent);
+        }
+        else
+        {
+            courseBestTime.text = "BestTime: --:--:---";
+        }
+    }
+
+    private void ShowBossCourseInfo(int setIndex)
+    {
+        courseName.text = courseManager.GetBossCourseName(setIndex);
+
+        var timeSpent = courseManager.GetBossTimeSpent(setIndex);
+
+        if (timeSpent > 0)
+        {
+            courseBestTime.text = "BestTime: " + DisplayTime(timeSpent);
+        }
+        else
+        {
+            courseBestTime.text = "BestTime: --:--:---";
         }
     }
 
     private void Submit()
     {
-        if (currentCourse > 0 && !courseManager.GetCompletionStatus(currentSet, currentCourse - 1))
-            return;
-
-        if (currentCourse < 5)
+        switch (currentCourse)
         {
-            courseManager.SetCurrentSet(currentSet);
-            courseManager.SetCurrentCourse(currentCourse);
-            courseManager.LoadCourse(currentSet, currentCourse);
-        }
-        else
-        {
-            courseManager.SetCurrentSet(currentSet);
-            courseManager.SetCurrentCourse(5);
-            courseManager.LoadBossCourse(currentSet);
+            case 0:
+                courseManager.SetCurrentSet(currentSet);
+                courseManager.SetCurrentCourse(currentCourse);
+                courseManager.LoadCourse(currentSet, currentCourse);
+                break;
+            case int n when n >= 1 && n <= 4 && !courseManager.GetCompletionStatus(currentSet, currentCourse - 1):
+                // do nothing if currentCourse is between 1 and 4 and the previous course has not been completed
+                break;
+            case int n when n >= 1 && n <= 4:
+                courseManager.SetCurrentSet(currentSet);
+                courseManager.SetCurrentCourse(currentCourse);
+                courseManager.LoadCourse(currentSet, currentCourse);
+                break;
+            case 5 when courseManager.GetCompletionStatus(currentSet, currentCourse - 1):
+                courseManager.SetCurrentSet(currentSet);
+                courseManager.SetCurrentCourse(currentCourse);
+                courseManager.LoadBossCourse(currentSet);
+                break;
+            case 5:
+                // do nothing if the previous course has not been completed
+                break;
+            default:
+                break;
         }
     }
 
     // Converts a float time in seconds to a 00:00 formatted string
     private string DisplayTime(float timeInSeconds)
     {
-        int minutes = Mathf.FloorToInt(timeInSeconds / 60f);
-        int seconds = Mathf.FloorToInt(timeInSeconds % 60f);
-        int milliSeconds = Mathf.FloorToInt((timeInSeconds % 1) * 1000);
-        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
+        var minutes = Mathf.FloorToInt(timeInSeconds / 60f);
+        var seconds = Mathf.FloorToInt(timeInSeconds % 60f);
+        var milliSeconds = Mathf.FloorToInt((timeInSeconds % 1) * 1000);
+        return $"{minutes:00}:{seconds:00}:{milliSeconds:000}";
     }
 }
