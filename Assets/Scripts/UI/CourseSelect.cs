@@ -23,6 +23,9 @@ public class CourseSelect : MonoBehaviour
 
     private void OnEnable()
     {
+        input = GameManager.instance.Input;
+        input.AddSubmitEventListener(Submit);
+
         root = GetComponent<UIDocument>().rootVisualElement;
 
         setName = root.Q<TextElement>("UI_LS_Header_Text");
@@ -43,11 +46,13 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        input.RemoveSubmitEventListener(Submit);
+    }
+
     private void Start()
     {
-        input = GameManager.instance.Input;
-        input.SubmitEvent += Submit;
-
         courseManager = GameManager.instance.courseManager;
 
         currentCourse = courseManager.GetCurrentCourse();
@@ -118,6 +123,7 @@ public class CourseSelect : MonoBehaviour
         switch (currentCourse)
         {
             case 0:
+                input.RemoveSubmitEventListener(Submit);
                 courseManager.SetCurrentSet(currentSet);
                 courseManager.SetCurrentCourse(currentCourse);
                 courseManager.LoadCourse(currentSet, currentCourse);
@@ -126,11 +132,13 @@ public class CourseSelect : MonoBehaviour
                 // do nothing if currentCourse is between 1 and 4 and the previous course has not been completed
                 break;
             case int n when n >= 1 && n <= 4:
+                input.RemoveSubmitEventListener(Submit);
                 courseManager.SetCurrentSet(currentSet);
                 courseManager.SetCurrentCourse(currentCourse);
                 courseManager.LoadCourse(currentSet, currentCourse);
                 break;
             case 5 when courseManager.GetCompletionStatus(currentSet, currentCourse - 1):
+                input.RemoveSubmitEventListener(Submit);
                 courseManager.SetCurrentSet(currentSet);
                 courseManager.SetCurrentCourse(currentCourse);
                 courseManager.LoadBossCourse(currentSet);
