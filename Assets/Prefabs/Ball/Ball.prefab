@@ -13,11 +13,7 @@ GameObject:
   - component: {fileID: 2850255129268815806}
   - component: {fileID: 2850255129268815807}
   - component: {fileID: 2850255129268815804}
-  - component: {fileID: 3691982329665594925}
-  - component: {fileID: 4726737077104020636}
-  - component: {fileID: 2765027152541553274}
-  - component: {fileID: 7631505359320462678}
-  - component: {fileID: 1060289330994781116}
+  - component: {fileID: -5837360697688769929}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -119,7 +115,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!114 &3691982329665594925
+--- !u!114 &-5837360697688769929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,94 +124,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2850255129268815805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1c39c7aee15f2e47840945fcb74361c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7390fd4e88c8c004dbdbefd46aa5e3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
-  moveSpeed: 27.5
-  hasJump: 0
-  jumpHeight: 2
---- !u!114 &4726737077104020636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850255129268815805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b816dbb9ce54510478e87b7cccce12d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
---- !u!114 &2765027152541553274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850255129268815805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927309e04262cd4985e16a043e758da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BounceSound:
-    Guid:
-      Data1: -776349059
-      Data2: 1204787096
-      Data3: 1359910591
-      Data4: -2068015768
-    Path: event:/BallSFX/Test-Bounce
-  eqGlobal: 0
-  reverb: 0
-  delay: 0
-  delayTime: 0
-  pitch: 0
-  minimumImpulse: 6
---- !u!114 &7631505359320462678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850255129268815805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb4be582918f37448f8de11521ff560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSpeed: 1
-  maxSpeed: 10
-  minPitch: 0
-  maxPitch: 0.4
---- !u!114 &1060289330994781116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850255129268815805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -748639806
-      Data2: 1150162484
-      Data3: 756954000
-      Data4: -1476375804
-    Path: event:/BallSFX/Test-Rolling
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  speed: 10
+  acceleration: 0.1
+  maxSpeed: 30
+  maxSpeedInAir: 20
+  bounceForce: 20
+  bounceThreshold: 5
+  airControlFactor: 0.1
