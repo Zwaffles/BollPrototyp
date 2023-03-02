@@ -125,7 +125,10 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
 
     public void OnSubmit(InputAction.CallbackContext context)
     {
-        SubmitEvent?.Invoke();
+        if (context.phase == InputActionPhase.Performed)
+        {
+            SubmitEvent?.Invoke();
+        }
     }
 
     public void SetGameplay()
