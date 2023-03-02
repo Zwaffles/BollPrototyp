@@ -62,6 +62,11 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
     }
 
+    private void Start()
+    {
+        input.SetUI();
+    }
+
     public void SetGameState(GameState newState)
     {
         currentState = newState;

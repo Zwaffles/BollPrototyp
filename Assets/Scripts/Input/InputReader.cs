@@ -29,7 +29,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
             _playerInputs.Gameplay.SetCallbacks(instance: this);
             _playerInputs.UI.SetCallbacks(instance: this);
 
-            SetUI();
+            SetGameplay();
         }
     }
 
