@@ -21,6 +21,9 @@ public class CourseSelect : MonoBehaviour
 
     private InputReader input;
 
+    [SerializeField, Header("Lock icon for locked levels")]
+    private Texture2D lockIcon;
+
     private void OnEnable()
     {
         input = GameManager.instance.Input;
@@ -64,6 +67,16 @@ public class CourseSelect : MonoBehaviour
         // Display the remaining time for the boss course
         var bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
         finalCourseTimeLimit.text = DisplayTime(bossTime);
+
+        for (int i = 1; i < 6; i++)
+        {
+            // Lock the course buttons for subcourses 2-5 if the previous subcourse was not completed
+            if (!courseManager.GetCompletionStatus(currentSet, i - 1))
+            {
+                courseButtons[i].text = "";
+                courseButtons[i].style.backgroundImage = lockIcon;
+            }
+        }
     }
 
     public void FocusFirstElement(int currentCourse)

@@ -27,8 +27,9 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         gameManager = GameManager.instance;
+        if(gameManager != null)
+            gameManager.GameStateChangedEvent += StopPlayerMovement;
 
-        gameManager.GameStateChangedEvent += StopPlayerMovement;
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
@@ -36,7 +37,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        gameManager.GameStateChangedEvent -= StopPlayerMovement;
+        if (gameManager != null)
+            gameManager.GameStateChangedEvent -= StopPlayerMovement;
+
         input.RemoveMoveEventListener(HandleMove);
         input.RemoveJumpEventListener(HandleJump);
         input.RemoveJumpCancelledEventListener(HandleCancelledJump);
