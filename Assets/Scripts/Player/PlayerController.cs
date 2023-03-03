@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private bool hasJump = false;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
-   
 
     private Rigidbody rb;
 
@@ -24,8 +22,14 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround;
     private bool shouldJump = false;
 
+    private GameManager gameManager;
+
     private void OnEnable()
     {
+        gameManager = GameManager.instance;
+        if(gameManager != null)
+            gameManager.GameStateChangedEvent += StopPlayerMovement;
+
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
@@ -33,6 +37,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        if (gameManager != null)
+            gameManager.GameStateChangedEvent -= StopPlayerMovement;
+
         input.RemoveMoveEventListener(HandleMove);
         input.RemoveJumpEventListener(HandleJump);
         input.RemoveJumpCancelledEventListener(HandleCancelledJump);
@@ -41,8 +48,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = moveSpeed;
-        
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component not found!");
+        }
+        else
+        {
+            rb.maxAngularVelocity = moveSpeed;
+        }
     }
 
     private void FixedUpdate()
@@ -84,6 +97,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private async void StopPlayerMovement(GameManager.GameState state)
+    {
+        if (state != GameManager.GameState.Menu)
+        {
+            return;
+        }
+
+        float timeElapsed = 0f;
+        Vector3 initialVelocity = rb.velocity;
+        while (timeElapsed < .2f)
+        {
+            float t = timeElapsed / .2f;
+            rb.velocity = Vector3.Lerp(initialVelocity, Vector3.zero, t);
+            await Task.Yield(); // This allows the loop to yield control to Unity's main thread, preventing it from blocking the game.
+            timeElapsed += Time.deltaTime;
+        }
+        rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -97,8 +129,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isOnGround = false;
-          
-
         }
     }
 }
