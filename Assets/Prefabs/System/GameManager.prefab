@@ -48,6 +48,67 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: ff2e6675b068e2d47885cb232638ce02, type: 3}
   m_SortingOrder: 0
+--- !u!1 &1177883119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177883120}
+  - component: {fileID: 1177883121}
+  - component: {fileID: 1177883122}
+  m_Layer: 0
+  m_Name: UI-EndGame-BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1177883120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177883119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091061834450644841}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1177883121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177883119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 1af738f1cda07f64e9a20cd1e40dee30, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: c5542d558f1a743468c8c1cd59188e42, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &1177883122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177883119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b3650ae0a091f41a9b189784fa2e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1669229918
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
-  currentGameState: 2
+  currentState: 2
 --- !u!1 &2521958281556728574
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sets:
-  - setName: 1st Set
+  - setName: Lovely Seaside Road
     bossTimeLimit: 240
     subCourses:
     - courseName: 1st Course
@@ -285,6 +346,18 @@ MonoBehaviour:
       bestTime: 0
     - courseName: 5th Course
       sceneName: Level-PH-5
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: Boss Course
+      sceneName: Level-PH-6
+      courseCompleted: 0
+      bestTime: 0
+  - setName: Halldor Evil Set
+    bossTimeLimit: 240
+    subCourses:
+    - courseName: Halldor Evil Level
+      sceneName: Level_A1_SecretPipeLevel
       courseCompleted: 0
       bestTime: 0
     bossCourse:
@@ -368,6 +441,7 @@ Transform:
   - {fileID: 1669229919}
   - {fileID: 1902059183}
   - {fileID: 799081742}
+  - {fileID: 1177883120}
   m_Father: {fileID: 2521958280786284844}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -386,3 +460,4 @@ MonoBehaviour:
   timer: {fileID: 1669229920}
   bossTimer: {fileID: 1902059186}
   pauseMenu: {fileID: 799081741}
+  endGameUI: {fileID: 1177883122}

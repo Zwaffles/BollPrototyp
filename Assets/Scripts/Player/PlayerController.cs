@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,20 +11,37 @@ public class PlayerController : MonoBehaviour
     private float moveAcceleration = 100f;
     [SerializeField]
     private float moveSpeed = 28f;
+    [SerializeField]
+    private float downSlopeSpeedMultiplier = 4;
+    [SerializeField]
+    private float maxDownSlopeSpeed = 80;
+    [SerializeField]
+    private float upSlopeSpeedMultiplier = 0.5f;
+    [SerializeField]
+    private float minUpSlopeSpeed = 10;
     [SerializeField, Header("Jump")]
     private bool hasJump = false;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
-   
+
+
 
     private Rigidbody rb;
+    RaycastHit slopeHit;
+    private float slopeAngle;
 
     private Vector2 _moveDirection;
     private bool isOnGround;
     private bool shouldJump = false;
 
+    private GameManager gameManager;
+
     private void OnEnable()
     {
+        gameManager = GameManager.instance;
+        if(gameManager != null)
+            gameManager.GameStateChangedEvent += StopPlayerMovement;
+
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
@@ -33,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        if (gameManager != null)
+            gameManager.GameStateChangedEvent -= StopPlayerMovement;
+
         input.RemoveMoveEventListener(HandleMove);
         input.RemoveJumpEventListener(HandleJump);
         input.RemoveJumpCancelledEventListener(HandleCancelledJump);
@@ -41,8 +60,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.maxAngularVelocity = moveSpeed;
-        
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component not found!");
+        }
+        else
+        {
+            rb.maxAngularVelocity = moveSpeed;
+        }
     }
 
     private void FixedUpdate()
@@ -51,6 +76,14 @@ public class PlayerController : MonoBehaviour
 
         if(hasJump)
             Jump();
+
+        OnSlope();
+    }
+
+    private void Update()
+    {
+        //OnSlope();     
+
     }
 
     private void HandleMove(Vector2 dir)
@@ -84,6 +117,62 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnSlope()
+
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f ))
+        {        
+                
+                
+            slopeAngle = slopeHit.normal.x;
+
+
+            if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
+            {
+
+
+                if (slopeHit.normal.x > 0.05 && moveSpeed < maxDownSlopeSpeed)
+                {
+                    moveSpeed = moveSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                    rb.maxAngularVelocity = moveSpeed;
+                    Debug.Log(moveSpeed);
+                }
+
+                if (slopeHit.normal.x < -0.05 && moveSpeed > minUpSlopeSpeed)
+                {
+                    moveSpeed = moveSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    rb.maxAngularVelocity = moveSpeed;
+                }
+
+            }
+            else
+            {
+                moveSpeed = 30;
+                rb.maxAngularVelocity = moveSpeed;
+            }
+               
+        }
+    }
+
+    private async void StopPlayerMovement(GameManager.GameState state)
+    {
+        if (state != GameManager.GameState.Menu)
+        {
+            return;
+        }
+
+        float timeElapsed = 0f;
+        Vector3 initialVelocity = rb.velocity;
+        while (timeElapsed < .2f)
+        {
+            float t = timeElapsed / .2f;
+            rb.velocity = Vector3.Lerp(initialVelocity, Vector3.zero, t);
+            await Task.Yield(); // This allows the loop to yield control to Unity's main thread, preventing it from blocking the game.
+            timeElapsed += Time.deltaTime;
+        }
+        rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -97,8 +186,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isOnGround = false;
-          
-
         }
     }
 }
