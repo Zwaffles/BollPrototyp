@@ -11,12 +11,24 @@ public class PlayerController : MonoBehaviour
     private float moveAcceleration = 100f;
     [SerializeField]
     private float moveSpeed = 28f;
+    [SerializeField]
+    private float downSlopeSpeedMultiplier = 4;
+    [SerializeField]
+    private float maxDownSlopeSpeed = 80;
+    [SerializeField]
+    private float upSlopeSpeedMultiplier = 0.5f;
+    [SerializeField]
+    private float minUpSlopeSpeed = 10;
     [SerializeField, Header("Jump")]
     private bool hasJump = false;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
 
+
+
     private Rigidbody rb;
+    RaycastHit slopeHit;
+    private float slopeAngle;
 
     private Vector2 _moveDirection;
     private bool isOnGround;
@@ -64,6 +76,14 @@ public class PlayerController : MonoBehaviour
 
         if(hasJump)
             Jump();
+
+        OnSlope();
+    }
+
+    private void Update()
+    {
+        //OnSlope();     
+
     }
 
     private void HandleMove(Vector2 dir)
@@ -94,6 +114,43 @@ public class PlayerController : MonoBehaviour
         if (shouldJump && isOnGround)
         {
             rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
+        }
+    }
+
+    private void OnSlope()
+
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f ))
+        {        
+                
+                
+            slopeAngle = slopeHit.normal.x;
+
+
+            if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
+            {
+
+
+                if (slopeHit.normal.x > 0.05 && moveSpeed < maxDownSlopeSpeed)
+                {
+                    moveSpeed = moveSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                    rb.maxAngularVelocity = moveSpeed;
+                    Debug.Log(moveSpeed);
+                }
+
+                if (slopeHit.normal.x < -0.05 && moveSpeed > minUpSlopeSpeed)
+                {
+                    moveSpeed = moveSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    rb.maxAngularVelocity = moveSpeed;
+                }
+
+            }
+            else
+            {
+                moveSpeed = 30;
+                rb.maxAngularVelocity = moveSpeed;
+            }
+               
         }
     }
 
