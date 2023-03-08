@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float minUpSlopeSpeed = 10;
     [SerializeField, Header("Jump")]
-    private bool hasJump = false;
+    private bool hasJump = true;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
 
@@ -91,19 +91,27 @@ public class PlayerController : MonoBehaviour
         Move();
 
         if(hasJump)
+
             Jump();
-
-        OnSlope();
-        LerpSpeed();
-
-        if (!isOnGround) IncreaseGravity();
-        Debug.Log(temporaryGravity);
+       
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+        {
+            isOnGround = true;
+            OnSlope();
+        }
+        else
+        {
+            isOnGround = false;
+            IncreaseGravity();
+        }
+           
+        
     }
 
     private void Update()
     {
-        //OnSlope();     
-
+        
+        
     }
 
     private void HandleMove(Vector2 dir)
@@ -131,22 +139,22 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        
         if (shouldJump && isOnGround)
         {
             rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
+            Debug.Log(isOnGround);
         }
     }
 
     private void OnSlope()
 
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f ))
-        {        
-                
-            // Technically not an angle, but I'll let it slide    
-            slopeAngle = slopeHit.normal.x;
+       
+  
+ 
 
-            // Are you on a slope?
+        // Are you on a slope?
             if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
             {
 
@@ -168,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 targetMaxSpeed = 30f;
             }
                
-        }
+        
     }
 
     private void LerpSpeed()
@@ -211,23 +219,7 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isOnGround = true;
-            Physics.gravity = new Vector3(0f, -standardGravity, 0f);
-            temporaryGravity = standardGravity;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isOnGround = false;
-        }
-    }
+   
 }
 
 #if UNITY_EDITOR
