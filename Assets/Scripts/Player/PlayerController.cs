@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection;
     private bool isOnGround;
     private bool shouldJump = false;
+    
 
     private GameManager gameManager;
 
@@ -148,9 +149,12 @@ public class PlayerController : MonoBehaviour
         if (shouldJump && isOnGround)
         {
             rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
-            Debug.Log(isOnGround);
+            shouldJump = false;
+  
         }
     }
+
+   
 
     private void OnSlope()
     {
