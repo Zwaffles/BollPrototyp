@@ -26,11 +26,12 @@ public class PlayerController : MonoBehaviour
 
     // Variables for Ludwig's ramping speed suggestion - Johan
     [SerializeField, Header("Speed Ramping"), Tooltip("How quickly the speed increases when you're BELOW the regular max speed.")]
-    private float fastSpeedRampUpFactor = 1f;
+    private float fastSpeedRampUpFactor = 2f;
     [SerializeField, Tooltip("How quickly the speed increases when you're ABOVE the regular max speed.")]
-    private float slowSpeedRampUpFactor = 0.5f;
+    private float slowSpeedRampUpFactor = 0.15f;
     [SerializeField, Tooltip("How much above the regular max speed you can go.")]
-    private float overSpeed = 5f;
+    private float maxOverSpeed = 50f;
+    private float currentOverSpeed = 0f;
     [SerializeField, Tooltip("Max-speed the ball should lerp towards")]
     private float targetMaxSpeed = 28f;
 
@@ -38,9 +39,9 @@ public class PlayerController : MonoBehaviour
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
     private float temporaryGravity = 9.8f; 
     [SerializeField, Tooltip("How quickly the gravity increases when you're in air")]
-    private float gravityIncreaseFactor = 1f;
+    private float gravityIncreaseFactor = 20f;
     [SerializeField, Tooltip("Maximum strength of the gravity")]
-    private float maximumGravity = 20f;
+    private float maximumGravity = 40f;
 
     private Rigidbody rb;
     RaycastHit slopeHit;
@@ -94,17 +95,21 @@ public class PlayerController : MonoBehaviour
 
             Jump();
        
+        // Ground check
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
             isOnGround = true;
+            temporaryGravity = standardGravity; //Reset gravity
             OnSlope();
         }
         else
         {
             isOnGround = false;
             IncreaseGravity();
+            targetMaxSpeed = 28f; //Jumping doesn't preserve your speed
         }
-           
+
+        LerpSpeed();
         
     }
 
@@ -148,49 +153,50 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnSlope()
-
     {
        
-  
- 
-
         // Are you on a slope?
-            if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
+        if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
+        {
+
+            // Are you going downhill? (This if might cause issues if you're going in reverse.)
+            if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
             {
-
-                // Are you going downhill? (This if might cause issues if you're going in reverse.)
-                if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
-                {
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
-                }
-
-                // Are you going uphill? (This if might cause issues if you're going in reverse.)
-                if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
-                {
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
-                }
-
+                targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
             }
-            else // You're on flat ground
+
+            // Are you going uphill? (This if might cause issues if you're going in reverse.)
+            if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
             {
-                targetMaxSpeed = 30f;
+                targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
             }
+
+        }
+        else // You're on flat ground
+        {
+            targetMaxSpeed = 28f;
+        }
                
         
     }
 
+    // This needs to be reworked... but how?
     private void LerpSpeed()
     {
-        if (rb.angularVelocity.magnitude + 0.5f > targetMaxSpeed)
+
+        currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, targetMaxSpeed, fastSpeedRampUpFactor * Time.fixedDeltaTime);
+
+        if (rb.angularVelocity.magnitude + 3f > targetMaxSpeed && isOnGround)
         {
-            currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, targetMaxSpeed + overSpeed, slowSpeedRampUpFactor * Time.fixedDeltaTime);
+            currentOverSpeed = Mathf.Lerp(currentOverSpeed, maxOverSpeed, slowSpeedRampUpFactor * Time.fixedDeltaTime);
         }
         else
         {
-            currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, targetMaxSpeed, fastSpeedRampUpFactor * Time.fixedDeltaTime);
+            currentOverSpeed = Mathf.Lerp(currentOverSpeed, 0f, fastSpeedRampUpFactor * Time.fixedDeltaTime);
         }
-        
-        rb.maxAngularVelocity = currentMaxSpeed;
+
+        rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
+
     }
 
     private void IncreaseGravity()
