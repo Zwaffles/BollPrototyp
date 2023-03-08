@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection;
     private bool isOnGround;
     private bool shouldJump = false;
+    
 
     private GameManager gameManager;
 
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
             Jump();
        
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1f))
         {
             isOnGround = true;
             OnSlope();
@@ -103,8 +104,10 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = false;
             IncreaseGravity();
+            
         }
            
+
         
     }
 
@@ -143,16 +146,17 @@ public class PlayerController : MonoBehaviour
         if (shouldJump && isOnGround)
         {
             rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
-            Debug.Log(isOnGround);
+            shouldJump = false;
+  
         }
     }
+
+   
 
     private void OnSlope()
 
     {
        
-  
- 
 
         // Are you on a slope?
             if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
