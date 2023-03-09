@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Header("Movement")]
     private float moveAcceleration = 100f;
     [SerializeField]
-    private float moveSpeed = 28f;
+    private float currentMaxSpeed = 28f; // Renamed from moveSpeed
     [SerializeField]
     private float downSlopeSpeedMultiplier = 4;
     [SerializeField]
@@ -20,11 +20,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float minUpSlopeSpeed = 10;
     [SerializeField, Header("Jump")]
-    private bool hasJump = false;
+    private bool hasJump = true;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
 
+    // Variables for Ludwig's ramping speed suggestion - Johan
+    [SerializeField, Header("Speed Ramping"), Tooltip("How quickly the speed increases when you're BELOW the regular max speed.")]
+    private float fastSpeedRampUpFactor = 2f;
+    [SerializeField, Tooltip("How quickly the speed increases when you're ABOVE the regular max speed.")]
+    private float slowSpeedRampUpFactor = 0.15f;
+    [SerializeField, Tooltip("How much above the regular max speed you can go.")]
+    private float maxOverSpeed = 50f;
+    private float currentOverSpeed = 0f;
+    [SerializeField, Tooltip("Max-speed the ball should lerp towards")]
+    private float targetMaxSpeed = 28f;
 
+    [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
+    private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
+    private float temporaryGravity = 9.8f; 
+    [SerializeField, Tooltip("How quickly the gravity increases when you're in air")]
+    private float gravityIncreaseFactor = 20f;
+    [SerializeField, Tooltip("Maximum strength of the gravity")]
+    private float maximumGravity = 40f;
 
     private Rigidbody rb;
     RaycastHit slopeHit;
@@ -33,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection;
     private bool isOnGround;
     private bool shouldJump = false;
+    
 
     private GameManager gameManager;
 
@@ -66,7 +84,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.maxAngularVelocity = moveSpeed;
+            rb.maxAngularVelocity = currentMaxSpeed;
         }
     }
 
@@ -75,15 +93,31 @@ public class PlayerController : MonoBehaviour
         Move();
 
         if(hasJump)
-            Jump();
 
-        OnSlope();
+            Jump();
+       
+        // Ground check
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+        {
+            isOnGround = true;
+            temporaryGravity = standardGravity; //Reset gravity
+            OnSlope();
+        }
+        else
+        {
+            isOnGround = false;
+            IncreaseGravity();
+            targetMaxSpeed = 28f; //Jumping doesn't preserve your speed
+        }
+
+        LerpSpeed();
+        
     }
 
     private void Update()
     {
-        //OnSlope();     
-
+        
+        
     }
 
     private void HandleMove(Vector2 dir)
@@ -111,47 +145,69 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        
         if (shouldJump && isOnGround)
         {
             rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
+            shouldJump = false;
+  
         }
     }
 
+   
+
     private void OnSlope()
-
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f ))
-        {        
-                
-                
-            slopeAngle = slopeHit.normal.x;
+       
+        // Are you on a slope?
+        if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
+        {
 
-
-            if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
+            // Are you going downhill? (This if might cause issues if you're going in reverse.)
+            if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
             {
-
-
-                if (slopeHit.normal.x > 0.05 && moveSpeed < maxDownSlopeSpeed)
-                {
-                    moveSpeed = moveSpeed + slopeAngle * downSlopeSpeedMultiplier;
-                    rb.maxAngularVelocity = moveSpeed;
-                    Debug.Log(moveSpeed);
-                }
-
-                if (slopeHit.normal.x < -0.05 && moveSpeed > minUpSlopeSpeed)
-                {
-                    moveSpeed = moveSpeed + slopeAngle * upSlopeSpeedMultiplier;
-                    rb.maxAngularVelocity = moveSpeed;
-                }
-
+                targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
             }
-            else
+
+            // Are you going uphill? (This if might cause issues if you're going in reverse.)
+            if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
             {
-                moveSpeed = 30;
-                rb.maxAngularVelocity = moveSpeed;
+                targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
             }
-               
+
         }
+        else // You're on flat ground
+        {
+            targetMaxSpeed = 28f;
+        }
+               
+        
+    }
+
+    // This needs to be reworked... but how?
+    private void LerpSpeed()
+    {
+
+        currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, targetMaxSpeed, fastSpeedRampUpFactor * Time.fixedDeltaTime);
+
+        if (rb.angularVelocity.magnitude + 3f > targetMaxSpeed && isOnGround)
+        {
+            currentOverSpeed = Mathf.Lerp(currentOverSpeed, maxOverSpeed, slowSpeedRampUpFactor * Time.fixedDeltaTime);
+        }
+        else
+        {
+            currentOverSpeed = Mathf.Lerp(currentOverSpeed, 0f, fastSpeedRampUpFactor * Time.fixedDeltaTime);
+        }
+
+        rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
+
+    }
+
+    private void IncreaseGravity()
+    {
+        temporaryGravity += gravityIncreaseFactor * Time.fixedDeltaTime;
+        temporaryGravity = temporaryGravity > maximumGravity ? maximumGravity : temporaryGravity;
+        Physics.gravity = new Vector3(0f, -temporaryGravity, 0f);
     }
 
     private async void StopPlayerMovement(GameManager.GameState state)
@@ -173,21 +229,7 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isOnGround = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isOnGround = false;
-        }
-    }
+   
 }
 
 #if UNITY_EDITOR
