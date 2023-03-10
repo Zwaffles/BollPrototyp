@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Polygon2DMeshGenerator : MonoBehaviour
 { 
 	public float terrainDepth;
+	public Material terrainMaterial;
 
 	private PolygonCollider2D polygonCollider;
 	private GameObject generatedObject;
@@ -128,7 +129,7 @@ public class Polygon2DMeshGenerator : MonoBehaviour
 		// Assign the new mesh to the mesh filter, add a collier and set the material to the terrain material
 		meshFilter.mesh = mesh;
 		meshObject.AddComponent<MeshCollider>();
-		//meshRenderer.material = terrainMaterial;
+		meshRenderer.material = terrainMaterial;
 
 		return meshObject;
 	}
@@ -155,11 +156,14 @@ public class Polygon2DMeshGeneratorEditor : EditorWindow
 	}
 
 	private float terrainDepth = 0f;
+	private Material terrainMaterial;
+
 	private List<GameObject> generatedObjects = new List<GameObject>();
 
 	void OnGUI()
 	{
 		terrainDepth = EditorGUILayout.FloatField("Terrain Depth", terrainDepth);
+		terrainMaterial = (Material)EditorGUILayout.ObjectField(terrainMaterial, typeof(Material), false);
 
 		if (GUILayout.Button("Generate Meshes"))
 		{
@@ -187,6 +191,7 @@ public class Polygon2DMeshGeneratorEditor : EditorWindow
 					generator = collider.gameObject.AddComponent<Polygon2DMeshGenerator>();
 
 				generator.terrainDepth = terrainDepth;
+				generator.terrainMaterial = terrainMaterial;
 				GameObject generatedObject = generator.CreateExtrudedMesh();
 				generatedObjects.Add(generatedObject);
 			}
