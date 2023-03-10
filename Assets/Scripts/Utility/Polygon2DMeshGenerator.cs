@@ -10,9 +10,9 @@ public class Polygon2DMeshGenerator : MonoBehaviour
 	private GameObject generatedObject;
 
 	//public GameObject GenerateMesh()
- //   {
+	//   {
 	//	polygonCollider = GetComponent<PolygonCollider2D>();
- //       Vector2[] points = polygonCollider.points;
+	//       Vector2[] points = polygonCollider.points;
 
 	//	MeshBuilder meshBuilder = new MeshBuilder();
 
@@ -61,7 +61,7 @@ public class Polygon2DMeshGenerator : MonoBehaviour
 
 		Vector2[] vertices2D = polygonCollider.GetPath(0); // Get vertices from the polygon collider
 		Vector3[] vertices3D = new Vector3[vertices2D.Length * 2]; // Create an array to hold the extruded vertices
-		int[] triangles = new int[(vertices2D.Length - 2) * 6 + vertices2D.Length * 6]; // Create an array to hold the triangles
+		List<int> trianglesList = new List<int>(); // Create a list to hold the triangle indices
 
 		// Create the extruded vertices
 		for (int i = 0; i < vertices2D.Length; i++)
@@ -70,65 +70,67 @@ public class Polygon2DMeshGenerator : MonoBehaviour
 			vertices3D[i + vertices2D.Length] = new Vector3(vertices2D[i].x, vertices2D[i].y, terrainDepth);
 		}
 
-		// Create the wall triangles
+		// Create the wall triangles for both sides
 		for (int i = 0; i < vertices2D.Length; i++)
 		{
 			int j = (i + 1) % vertices2D.Length;
-			int k = i * 2;
-			triangles[k * 3] = i;
-			triangles[k * 3 + 1] = j;
-			triangles[k * 3 + 2] = j + vertices2D.Length;
-			triangles[(k + 1) * 3] = i;
-			triangles[(k + 1) * 3 + 1] = j + vertices2D.Length;
-			triangles[(k + 1) * 3 + 2] = i + vertices2D.Length;
+			int k = i * 6;
+			trianglesList.Add(i);
+			trianglesList.Add(j);
+			trianglesList.Add(j + vertices2D.Length);
+			trianglesList.Add(i);
+			trianglesList.Add(j + vertices2D.Length);
+			trianglesList.Add(i + vertices2D.Length);
+			// Duplicate the triangles for the other side of the mesh
+			trianglesList.Add(j + vertices2D.Length);
+			trianglesList.Add(j);
+			trianglesList.Add(i + vertices2D.Length);
+			trianglesList.Add(i + vertices2D.Length);
+			trianglesList.Add(j + vertices2D.Length);
+			trianglesList.Add(j);
 		}
 
-		// Create the top and bottom triangles
+		// Create the top and bottom triangles for both sides
 		for (int i = 0; i < vertices2D.Length; i++)
 		{
-			int k = i * 6;
-			triangles[(vertices2D.Length - 2) * 6 + k] = i;
-			triangles[(vertices2D.Length - 2) * 6 + k + 1] = (i + 1) % vertices2D.Length;
-			triangles[(vertices2D.Length - 2) * 6 + k + 2] = i + vertices2D.Length;
-			triangles[(vertices2D.Length - 2) * 6 + k + 3] = (i + 1) % vertices2D.Length;
-			triangles[(vertices2D.Length - 2) * 6 + k + 4] = (i + 1) % vertices2D.Length + vertices2D.Length;
-			triangles[(vertices2D.Length - 2) * 6 + k + 5] = i + vertices2D.Length;
+			int k = i * 12;
+			trianglesList.Add(i);
+			trianglesList.Add((i + 1) % vertices2D.Length);
+			trianglesList.Add(i + vertices2D.Length);
+			trianglesList.Add((i + 1) % vertices2D.Length);
+			trianglesList.Add((i + 1) % vertices2D.Length + vertices2D.Length);
+			trianglesList.Add(i + vertices2D.Length);
+			// Duplicate the triangles for the other side of the mesh
+			trianglesList.Add((i + 1) % vertices2D.Length);
+			trianglesList.Add(i);
+			trianglesList.Add(i + vertices2D.Length);
+			trianglesList.Add((i + 1) % vertices2D.Length + vertices2D.Length);
+			trianglesList.Add((i + 1) % vertices2D.Length);
+			trianglesList.Add(i + vertices2D.Length);
 		}
 
-		// Create the mesh and assign vertices and triangles
+		// Convert the list of triangles to an array
+		int[] triangles = trianglesList.ToArray();
+
+		// Create the mesh
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertices3D;
 		mesh.triangles = triangles;
 
-		// Calculate the normals
-		Vector3[] normals = new Vector3[vertices3D.Length];
-		for (int i = 0; i < normals.Length; i++)
-		{
-			normals[i] = (i < vertices2D.Length) ? -Vector3.forward : Vector3.forward;
-		}
-		mesh.normals = normals;
+		// Recalculate the normals to ensure proper lighting
+		mesh.RecalculateNormals();
 
-		// Calculate the UVs
-		Vector2[] uvs = new Vector2[vertices3D.Length];
-		for (int i = 0; i < vertices2D.Length; i++)
-		{
-			uvs[i] = new Vector2(vertices2D[i].x, vertices2D[i].y);
-			uvs[i + vertices2D.Length] = new Vector2(vertices2D[i].x, vertices2D[i].y);
-		}
-		mesh.uv = uvs;
+		// Create a new game object and add a MeshFilter and MeshRenderer to it
+		GameObject meshObject = new GameObject("Extruded Mesh");
+		MeshFilter meshFilter = meshObject.AddComponent<MeshFilter>();
+		MeshRenderer meshRenderer = meshObject.AddComponent<MeshRenderer>();
 
-		// Create a game object with mesh
-		GameObject generatedObject = new GameObject();
-		generatedObject.name = "TrackMesh";
-		generatedObject.transform.position = transform.position;
-		generatedObject.transform.rotation = transform.rotation;
-		generatedObject.transform.localScale = transform.localScale;
-		generatedObject.AddComponent<MeshRenderer>();
-		MeshFilter filter = generatedObject.AddComponent<MeshFilter>();
-		filter.mesh = mesh;
-		generatedObject.AddComponent<MeshCollider>();
+		// Assign the new mesh to the mesh filter, add a collier and set the material to the terrain material
+		meshFilter.mesh = mesh;
+		meshObject.AddComponent<MeshCollider>();
+		//meshRenderer.material = terrainMaterial;
 
-		return generatedObject;
+		return meshObject;
 	}
 
 	public void DestroyGeneratedObject()
