@@ -37,7 +37,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
-    private float temporaryGravity = 9.8f; 
+    private float temporaryGravity = 9.8f;
+    private float previousGravity = 9.8f;
+    public float Gravity
+    {
+        get => previousGravity;
+    }
     [SerializeField, Tooltip("How quickly the gravity increases when you're in air")]
     private float gravityIncreaseFactor = 20f;
     [SerializeField, Tooltip("Maximum strength of the gravity")]
@@ -95,10 +100,13 @@ public class PlayerController : MonoBehaviour
         if(hasJump)
 
             Jump();
-       
+
         // Ground check
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
+
+            if (!isOnGround) previousGravity = temporaryGravity;
+
             isOnGround = true;
             temporaryGravity = standardGravity; //Reset gravity
             OnSlope();
@@ -106,6 +114,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             isOnGround = false;
+            previousGravity = temporaryGravity;
             IncreaseGravity();
             targetMaxSpeed = 28f; //Jumping doesn't preserve your speed
         }
