@@ -91,13 +91,15 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+        
 
         if(hasJump)
 
             Jump();
-       
+
         // Ground check
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+        if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
+            //if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
             isOnGround = true;
             temporaryGravity = standardGravity; //Reset gravity
@@ -116,8 +118,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
-        
+
     }
 
     private void HandleMove(Vector2 dir)
@@ -166,6 +167,7 @@ public class PlayerController : MonoBehaviour
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
             {
+                
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
             }
 
