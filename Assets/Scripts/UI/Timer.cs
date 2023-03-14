@@ -52,7 +52,7 @@ public class Timer : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeInSeconds / 60f);
         int seconds = Mathf.FloorToInt(timeInSeconds % 60f);
         int milliSeconds = Mathf.FloorToInt((timeInSeconds % 1) * 1000);
-        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliSeconds);
+        return $"{minutes:00}:{seconds:00}:{milliSeconds:000}";
     }
 
     public float GetTimeSpent()

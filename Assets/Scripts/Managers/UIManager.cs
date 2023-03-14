@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Timer timer;
     [SerializeField] private BossTimer bossTimer;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private EndGameUI endGameUI;
 
     private InputReader input;
     private GameManager gameManager;
@@ -43,8 +44,12 @@ public class UIManager : MonoBehaviour
 
     public void EndGameplay(bool completionStatus)
     {
+        gameManager.SetGameState(GameManager.GameState.Menu);
         timer.StopTimer();
-        GameManager.instance.courseManager.UpdateCourseData(completionStatus, timer.GetTimeSpent());
+
+        var timeSpent = timer.GetTimeSpent();
+
+        GameManager.instance.courseManager.UpdateCourseData(completionStatus, timeSpent);
         timer.gameObject.SetActive(false);
 
         if (bossTimer.gameObject.activeInHierarchy)
@@ -55,6 +60,9 @@ public class UIManager : MonoBehaviour
 
         // Reset the gameplayStarted flag so that StartGameplay() can be called again for the next course.
         gameplayStarted = false;
+
+        endGameUI.gameObject.SetActive(true);
+        endGameUI.DisplayStats(timeSpent);
     }
 
     private void HandleHasMoved()
