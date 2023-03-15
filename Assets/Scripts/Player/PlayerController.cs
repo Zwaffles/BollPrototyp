@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _moveDirection;
     private bool isOnGround;
+    public bool isGrounded
+    {
+        get => isOnGround;
+    }
     private bool shouldJump = false;
     
 

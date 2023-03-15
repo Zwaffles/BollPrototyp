@@ -7,26 +7,74 @@ public class SpeedMirror : MonoBehaviour
 {
 
     private Rigidbody rb, targetRB;
-    [SerializeField, Tooltip("How much the speed of the physical ball should affect the graphical ball"), Range(-2f,2f)]
-    private float graphicalSpeedFactor = 0.5f;
+    private PlayerController playerController;
+    [SerializeField, Tooltip("How much the speed of the physical ball should affect the graphical ball at low speeds"), Range(0f, 100f)]
+    private float lowGraphicalSpeedFactor = 10f;
+    [SerializeField, Tooltip("How much the speed of the physical ball should affect the graphical ball at high speeds"), Range(0f, 100f)]
+    private float highGraphicalSpeedFactor = 50f;
+    [SerializeField, Tooltip("The speed from which the ball will only use the highGraphicalSpeedFactor"), Range(0f, 100f)]
+    private float highSpeedThreshold = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         targetRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
+        playerController = GameObject.Find("Ball").GetComponent<PlayerController>();
+
+        rb.maxAngularVelocity = 1000f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
 
-        // This sorta works, but for slopes I think we need to take the y into account too
-        rb.angularVelocity = new Vector3(
-            -targetRB.velocity.x * graphicalSpeedFactor,
-            -targetRB.velocity.x * graphicalSpeedFactor,
+        float graphicalSpeedFactor = CalculateGraphicalSpeedFactor();
+
+        if (playerController.isGrounded)
+        {
+
+            if (targetRB.velocity.x > 0f)
+            {
+
+                rb.angularVelocity = new Vector3(
+                0f,
+                0f,
+                -targetRB.velocity.magnitude * graphicalSpeedFactor
+                    );
+
+            }
+            else
+            {
+
+                rb.angularVelocity = new Vector3(
+                0f,
+                0f,
+                targetRB.velocity.magnitude * graphicalSpeedFactor
+                    );
+
+            }
+
+        }
+        else
+        {
+
+            rb.angularVelocity = new Vector3(
+            0f,
+            0f,
             -targetRB.velocity.x * graphicalSpeedFactor
                 );
 
+        }
+
     }
+
+    private float CalculateGraphicalSpeedFactor()
+    {
+
+        return Mathf.SmoothStep(lowGraphicalSpeedFactor, highGraphicalSpeedFactor,
+            targetRB.velocity.magnitude/highSpeedThreshold // This value might need tweaking
+            );
+
+    }
+
 }
