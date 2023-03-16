@@ -31,7 +31,7 @@ public class TrackMeshCreator : PathSceneTool
         }
     }
 
-    void CreateTrackMesh () 
+    void CreateTrackMesh ()
     {
         Vector3[] verts = new Vector3[path.NumPoints * 8];
         Vector2[] uvs = new Vector2[verts.Length];
@@ -50,73 +50,87 @@ public class TrackMeshCreator : PathSceneTool
 
         bool usePathNormals = !(path.space == PathSpace.xyz && flattenSurface);
 
-        for (int i = 0; i < path.NumPoints; i++) 
+        for (int i = 0; i < path.NumPoints; i++)
         {
-            Vector3 localUp = (usePathNormals) ? Vector3.Cross (path.GetTangent (i), path.GetNormal (i)) : path.up;
-            Vector3 localRight = (usePathNormals) ? path.GetNormal (i) : Vector3.Cross (localUp, path.GetTangent (i));
-
-            // Find position to left and right of current path vertex
-            Vector3 vertSideA = path.GetPoint(i) - localRight;
-            Vector3 vertSideB = path.GetPoint (i) + localRight * Mathf.Abs (roadHeight);
-
-            // Add top of road vertices
-            verts[vertIndex + 0] = vertSideA + localUp * (roadWidth / 2);
-            verts[vertIndex + 1] = vertSideB + localUp * (roadWidth / 2);
-            // Add bottom of road vertices
-            verts[vertIndex + 2] = vertSideA - localUp * (roadWidth / 2);
-            verts[vertIndex + 3] = vertSideB - localUp * (roadWidth / 2);
-
-            // Duplicate vertices to get flat shading for sides of road
-            verts[vertIndex + 4] = verts[vertIndex + 0];
-            verts[vertIndex + 5] = verts[vertIndex + 1];
-            verts[vertIndex + 6] = verts[vertIndex + 2];
-            verts[vertIndex + 7] = verts[vertIndex + 3];
-
-            // Set uv on y axis to path time (0 at start of path, up to 1 at end of path)
-            uvs[vertIndex + 0] = new Vector2 (0, path.times[i]);
-            uvs[vertIndex + 1] = new Vector2 (1, path.times[i]);
-
-            // Top of road normals
-            normals[vertIndex + 0] = localUp;
-            normals[vertIndex + 1] = localUp;
-            // Bottom of road normals
-            normals[vertIndex + 2] = -localUp;
-            normals[vertIndex + 3] = -localUp;
-            // Sides of road normals
-            normals[vertIndex + 4] = -localRight;
-            normals[vertIndex + 5] = localRight;
-            normals[vertIndex + 6] = -localRight;
-            normals[vertIndex + 7] = localRight;
-
-            // Set triangle indices
-            if (i < path.NumPoints - 1 || path.isClosedLoop) 
-            {
-                for (int j = 0; j < triangleMap.Length; j++) 
-                {
-                    roadTriangles[triIndex + j] = (vertIndex + triangleMap[j]) % verts.Length;
-                    // reverse triangle map for under road so that triangles wind the other way and are visible from underneath
-                    underRoadTriangles[triIndex + j] = (vertIndex + triangleMap[triangleMap.Length - 1 - j] + 2) % verts.Length;
-                }
-                for (int j = 0; j < sidesTriangleMap.Length; j++) 
-                {
-                    sideOfRoadTriangles[triIndex * 2 + j] = (vertIndex + sidesTriangleMap[j]) % verts.Length;
-                }
-
-            }
-
-            vertIndex += 8;
-            triIndex += 6;
+            AddRoadVertices(verts, uvs, normals, vertIndex, usePathNormals, i);
+            SetTriangleIndices(verts, roadTriangles, underRoadTriangles, sideOfRoadTriangles, ref vertIndex, ref triIndex, triangleMap, sidesTriangleMap, i);
         }
 
-        mesh.Clear ();
+        SetMeshProperties(verts, uvs, normals, roadTriangles, underRoadTriangles, sideOfRoadTriangles);
+    }
+
+    private void AddRoadVertices(Vector3[] verts, Vector2[] uvs, Vector3[] normals, int vertIndex, bool usePathNormals, int i)
+    {
+        Vector3 localUp = (usePathNormals) ? Vector3.Cross(path.GetTangent(i), path.GetNormal(i)) : path.up;
+        Vector3 localRight = (usePathNormals) ? path.GetNormal(i) : Vector3.Cross(localUp, path.GetTangent(i));
+
+        // Find position to left and right of current path vertex
+        Vector3 vertSideA = path.GetPoint(i) - localRight;
+        Vector3 vertSideB = path.GetPoint(i) + localRight * Mathf.Abs(roadHeight);
+
+        // Add top of road vertices
+        verts[vertIndex + 0] = vertSideA + localUp * (roadWidth / 2);
+        verts[vertIndex + 1] = vertSideB + localUp * (roadWidth / 2);
+        // Add bottom of road vertices
+        verts[vertIndex + 2] = vertSideA - localUp * (roadWidth / 2);
+        verts[vertIndex + 3] = vertSideB - localUp * (roadWidth / 2);
+
+        // Duplicate vertices to get flat shading for sides of road
+        verts[vertIndex + 4] = verts[vertIndex + 0];
+        verts[vertIndex + 5] = verts[vertIndex + 1];
+        verts[vertIndex + 6] = verts[vertIndex + 2];
+        verts[vertIndex + 7] = verts[vertIndex + 3];
+
+        // Set uv on y axis to path time (0 at start of path, up to 1 at end of path)
+        uvs[vertIndex + 0] = new Vector2(0, path.times[i]);
+        uvs[vertIndex + 1] = new Vector2(1, path.times[i]);
+
+        // Top of road normals
+        normals[vertIndex + 0] = localUp;
+        normals[vertIndex + 1] = localUp;
+        // Bottom of road normals
+        normals[vertIndex + 2] = -localUp;
+        normals[vertIndex + 3] = -localUp;
+        // Sides of road normals
+        normals[vertIndex + 4] = -localRight;
+        normals[vertIndex + 5] = localRight;
+        normals[vertIndex + 6] = -localRight;
+        normals[vertIndex + 7] = localRight;
+    }
+
+    private void SetTriangleIndices(Vector3[] verts, int[] roadTriangles, int[] underRoadTriangles, int[] sideOfRoadTriangles, ref int vertIndex, ref int triIndex, int[] triangleMap, int[] sidesTriangleMap, int i)
+    {
+        // Set triangle indices
+        if (i < path.NumPoints - 1 || path.isClosedLoop)
+        {
+            for (int j = 0; j < triangleMap.Length; j++)
+            {
+                roadTriangles[triIndex + j] = (vertIndex + triangleMap[j]) % verts.Length;
+                // reverse triangle map for under road so that triangles wind the other way and are visible from underneath
+                underRoadTriangles[triIndex + j] = (vertIndex + triangleMap[triangleMap.Length - 1 - j] + 2) % verts.Length;
+            }
+            for (int j = 0; j < sidesTriangleMap.Length; j++)
+            {
+                sideOfRoadTriangles[triIndex * 2 + j] = (vertIndex + sidesTriangleMap[j]) % verts.Length;
+            }
+
+        }
+
+        vertIndex += 8;
+        triIndex += 6;
+    }
+
+    private void SetMeshProperties(Vector3[] verts, Vector2[] uvs, Vector3[] normals, int[] roadTriangles, int[] underRoadTriangles, int[] sideOfRoadTriangles)
+    {
+        mesh.Clear();
         mesh.vertices = verts;
         mesh.uv = uvs;
         mesh.normals = normals;
         mesh.subMeshCount = 3;
-        mesh.SetTriangles (roadTriangles, 0);
-        mesh.SetTriangles (underRoadTriangles, 1);
-        mesh.SetTriangles (sideOfRoadTriangles, 2);
-        mesh.RecalculateBounds ();
+        mesh.SetTriangles(roadTriangles, 0);
+        mesh.SetTriangles(underRoadTriangles, 1);
+        mesh.SetTriangles(sideOfRoadTriangles, 2);
+        mesh.RecalculateBounds();
     }
 
     // Add MeshRenderer and MeshFilter components to this gameobject if not already attached
