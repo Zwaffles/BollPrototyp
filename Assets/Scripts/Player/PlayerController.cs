@@ -264,7 +264,12 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
 
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(physicMaterial.bounciness);
+    }
+
+
 }
 
 #if UNITY_EDITOR
