@@ -89,49 +89,86 @@ public class Polygon2DMeshGenerator : MonoBehaviour
 			trianglesList.Add(i + vertices2D.Length);
 			trianglesList.Add(j + vertices2D.Length);
 			trianglesList.Add(j);
+
+			// Create the side triangles for both sides
+			int quadOffset = vertices2D.Length * 2;
+			int currentVertexIndex = i + quadOffset;
+			int nextVertexIndex = j + quadOffset;
+			int previousVertexIndex = (i == 0) ? vertices2D.Length * 2 - 1 : currentVertexIndex - 1;
+			int oppositeVertexIndex = previousVertexIndex - vertices2D.Length;
+
+			// Create the first triangle of the quad
+			trianglesList.Add(currentVertexIndex);
+			trianglesList.Add(nextVertexIndex);
+			trianglesList.Add(previousVertexIndex);
+
+			// Create the second triangle of the quad
+			trianglesList.Add(currentVertexIndex);
+			trianglesList.Add(previousVertexIndex);
+			trianglesList.Add(oppositeVertexIndex);
+
+			// Duplicate the quad for the other side of the mesh
+			currentVertexIndex += vertices2D.Length;
+			nextVertexIndex += vertices2D.Length;
+			previousVertexIndex += vertices2D.Length;
+			oppositeVertexIndex += vertices2D.Length;
+
+			// Create the first triangle of the quad
+			trianglesList.Add(currentVertexIndex);
+			trianglesList.Add(previousVertexIndex);
+			trianglesList.Add(nextVertexIndex);
+
+			// Create the second triangle of the quad
+			trianglesList.Add(currentVertexIndex);
+			trianglesList.Add(oppositeVertexIndex);
+			trianglesList.Add(previousVertexIndex);
 		}
 
 		// Create the top and bottom triangles for both sides
 		for (int i = 0; i < vertices2D.Length; i++)
 		{
-			int k = i * 12;
-			trianglesList.Add(i);
-			trianglesList.Add((i + 1) % vertices2D.Length);
-			trianglesList.Add(i + vertices2D.Length);
-			trianglesList.Add((i + 1) % vertices2D.Length);
-			trianglesList.Add((i + 1) % vertices2D.Length + vertices2D.Length);
-			trianglesList.Add(i + vertices2D.Length);
-			// Duplicate the triangles for the other side of the mesh
-			trianglesList.Add((i + 1) % vertices2D.Length);
-			trianglesList.Add(i);
-			trianglesList.Add(i + vertices2D.Length);
-			trianglesList.Add((i + 1) % vertices2D.Length + vertices2D.Length);
-			trianglesList.Add((i + 1) % vertices2D.Length);
-			trianglesList.Add(i + vertices2D.Length);
+			int k = i * 2;
+			int vertexIndex1 = i;
+			int vertexIndex2 = (i + 1) % vertices2D.Length;
+			int vertexIndex3 = vertexIndex1 + vertices2D.Length;
+			int vertexIndex4 = vertexIndex2 + vertices2D.Length;
+			trianglesList.Add(vertexIndex1);
+			trianglesList.Add(vertexIndex2);
+			trianglesList.Add(vertexIndex3);
+
+			trianglesList.Add(vertexIndex2);
+			trianglesList.Add(vertexIndex4);
+			trianglesList.Add(vertexIndex3);
+
+			trianglesList.Add(vertexIndex2);
+			trianglesList.Add(vertexIndex1);
+			trianglesList.Add(vertexIndex4);
+
+			trianglesList.Add(vertexIndex1);
+			trianglesList.Add(vertexIndex3);
+			trianglesList.Add(vertexIndex4);
 		}
 
-		// Convert the list of triangles to an array
-		int[] triangles = trianglesList.ToArray();
+		int[] triangles = trianglesList.ToArray(); // Convert the triangle list to an array
 
-		// Create the mesh
+		// Create the mesh and assign the vertices and triangles
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertices3D;
 		mesh.triangles = triangles;
 
-		// Recalculate the normals to ensure proper lighting
+		// Recalculate the normals to make the lighting work correctly
 		mesh.RecalculateNormals();
 
-		// Create a new game object and add a MeshFilter and MeshRenderer to it
-		GameObject meshObject = new GameObject("Extruded Mesh");
-		MeshFilter meshFilter = meshObject.AddComponent<MeshFilter>();
-		MeshRenderer meshRenderer = meshObject.AddComponent<MeshRenderer>();
+		// Create the game object and add a mesh renderer and filter
+		GameObject go = new GameObject("Extruded Mesh");
+		MeshRenderer meshRenderer = go.AddComponent<MeshRenderer>();
+		MeshFilter meshFilter = go.AddComponent<MeshFilter>();
 
-		// Assign the new mesh to the mesh filter, add a collier and set the material to the terrain material
+		// Set the mesh on the filter and assign the material on the renderer
 		meshFilter.mesh = mesh;
-		meshObject.AddComponent<MeshCollider>();
 		meshRenderer.material = terrainMaterial;
 
-		return meshObject;
+		return go;
 	}
 
 	public void DestroyGeneratedObject()

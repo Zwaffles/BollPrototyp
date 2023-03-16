@@ -130,3 +130,64 @@
     scale: 1.1 1.1;
     -unity-background-image-tint-color: rgb(255, 255, 255);
 }
+
+.LS-CourseTest-Box {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    height: 116px;
+    width: 116px;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 8px;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    transition-duration: 0.1s;
+    opacity: 1;
+    color: rgb(24, 24, 24);
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Course%20Box%20-%20Dropshadow.png?fileID=2800000&guid=a9a17aedc47f7e146b7decafadf04457&type=3#Course Box - Dropshadow');
+    border-left-color: rgba(38, 38, 38, 0);
+    border-right-color: rgba(38, 38, 38, 0);
+    border-top-color: rgba(38, 38, 38, 0);
+    border-bottom-color: rgba(38, 38, 38, 0);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -unity-background-image-tint-color: rgb(217, 218, 217);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.LS-CourseTest-Box:focus {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    height: 116px;
+    background-color: rgba(123, 123, 123, 0);
+    width: 116px;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+    letter-spacing: 8px;
+    text-shadow: 0 0 0 rgb(0, 0, 0);
+    transition-duration: 0.2s;
+    opacity: 1;
+    color: rgb(24, 24, 24);
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Course%20Box%20-%20Dropshadow.png?fileID=2800000&guid=a9a17aedc47f7e146b7decafadf04457&type=3#Course Box - Dropshadow');
+    border-left-color: rgba(38, 38, 38, 0);
+    border-right-color: rgba(38, 38, 38, 0);
+    border-top-color: rgba(38, 38, 38, 0);
+    border-bottom-color: rgba(38, 38, 38, 0);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -unity-background-image-tint-color: rgba(253, 253, 253, 255);
+    scale: 1.1 1.1;
+}
