@@ -37,7 +37,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
-    private float temporaryGravity = 9.8f; 
+    private float temporaryGravity = 9.8f;
+    private float previousGravity = 9.8f;
+    public float Gravity
+    {
+        get => previousGravity;
+    }
     [SerializeField, Tooltip("How quickly the gravity increases when you're in air")]
     private float gravityIncreaseFactor = 20f;
     [SerializeField, Tooltip("Maximum strength of the gravity")]
@@ -49,10 +54,22 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _moveDirection;
     private bool isOnGround;
+    public bool isGrounded
+    {
+        get => isOnGround;
+    }
     private bool shouldJump = false;
     
 
     private GameManager gameManager;
+
+    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at low gravity."), Range(0, 1)]
+    private float lowBounciness = 0.2f;
+    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at high gravity."), Range(0, 1)]
+    private float highBounciness = 0.6f;
+    [SerializeField, Tooltip("The gravity from which the ball will only use the highBounciness")]
+    private float highBounceThreshold = 20f;
+    private PhysicMaterial physicMaterial;
 
     private void OnEnable()
     {
@@ -63,6 +80,8 @@ public class PlayerController : MonoBehaviour
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
+
+        
     }
 
     private void OnDisable()
@@ -86,19 +105,26 @@ public class PlayerController : MonoBehaviour
         {
             rb.maxAngularVelocity = currentMaxSpeed;
         }
+
+        physicMaterial = GetComponent<SphereCollider>().material;
     }
 
     private void FixedUpdate()
     {
         Move();
+        
 
         if(hasJump)
 
             Jump();
-       
+
         // Ground check
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+        if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
+            //if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
+
+            if (!isOnGround) previousGravity = temporaryGravity;
+
             isOnGround = true;
             temporaryGravity = standardGravity; //Reset gravity
             OnSlope();
@@ -106,18 +132,19 @@ public class PlayerController : MonoBehaviour
         else
         {
             isOnGround = false;
+            previousGravity = temporaryGravity;
             IncreaseGravity();
             targetMaxSpeed = 28f; //Jumping doesn't preserve your speed
         }
 
         LerpSpeed();
+        SetBounciness();
         
     }
 
     private void Update()
     {
-        
-        
+
     }
 
     private void HandleMove(Vector2 dir)
@@ -166,6 +193,7 @@ public class PlayerController : MonoBehaviour
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
             {
+                
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
             }
 
@@ -208,6 +236,13 @@ public class PlayerController : MonoBehaviour
         temporaryGravity += gravityIncreaseFactor * Time.fixedDeltaTime;
         temporaryGravity = temporaryGravity > maximumGravity ? maximumGravity : temporaryGravity;
         Physics.gravity = new Vector3(0f, -temporaryGravity, 0f);
+    }
+
+    private void SetBounciness()
+    {
+        physicMaterial.bounciness = Mathf.SmoothStep(lowBounciness, highBounciness,
+            (previousGravity - standardGravity)/highBounceThreshold
+            );
     }
 
     private async void StopPlayerMovement(GameManager.GameState state)
