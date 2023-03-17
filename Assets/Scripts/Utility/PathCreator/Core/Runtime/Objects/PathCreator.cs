@@ -69,6 +69,14 @@ namespace PathCreation {
             }
         }
 
+        public void ChangeHandleScale(float size)
+        {
+            if (editorData == null)
+                return;
+
+            editorData.bezierHandleScale = size;
+        }
+
 #if UNITY_EDITOR
 
         // Draw the path when path objected is not selected (if enabled in settings)
