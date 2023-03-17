@@ -14,6 +14,8 @@ public class SpeedMirror : MonoBehaviour
     private float highGraphicalSpeedFactor = 50f;
     [SerializeField, Tooltip("The speed from which the ball will only use the highGraphicalSpeedFactor"), Range(0f, 100f)]
     private float highSpeedThreshold = 20f;
+    [SerializeField, Tooltip("How much the rotation of the physical ball should affect the graphical ball up in the air"), Range(0f, 1f)]
+    private float aerialSpeedFactor = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -58,11 +60,7 @@ public class SpeedMirror : MonoBehaviour
         else
         {
 
-            rb.angularVelocity = new Vector3(
-            0f,
-            0f,
-            -targetRB.velocity.x * graphicalSpeedFactor
-                );
+            rb.angularVelocity = targetRB.angularVelocity * aerialSpeedFactor;
 
         }
 
