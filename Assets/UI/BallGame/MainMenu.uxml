@@ -7,7 +7,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="UI_MM_Button_Container" style="flex-grow: 1;">
-            <ui:VisualElement name="UI_MM_UpperButtons_Container" style="height: 50%; flex-direction: row; align-items: center; justify-content: center;">
+            <ui:VisualElement name="UI_MM_UpperButtons_Container" style="height: 50%; flex-direction: row; align-items: flex-end; justify-content: center;">
                 <ui:Button display-tooltip-when-elided="true" name="UI_MM_PlayButton_Box" class="MM-Button">
                     <ui:Label text="Play" display-tooltip-when-elided="true" name="UI_MM_PlayButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
@@ -15,7 +15,7 @@
                     <ui:Label text="Options" display-tooltip-when-elided="true" name="UI_MM_OptionsButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
             </ui:VisualElement>
-            <ui:VisualElement name="UI_MM_LowerButtons_Container" style="height: 50%; flex-direction: row; justify-content: center; align-items: center;">
+            <ui:VisualElement name="UI_MM_LowerButtons_Container" style="height: 50%; flex-direction: row; justify-content: center; align-items: flex-start;">
                 <ui:Button display-tooltip-when-elided="true" name="UI_MM_CreditsButton_Box" class="MM-Button">
                     <ui:Label text="Credits" display-tooltip-when-elided="true" name="UI_MM_CreditsButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
@@ -26,7 +26,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="UI_MM_Confirm_Container" style="align-items: stretch; justify-content: flex-end; flex-direction: row; width: 100%; height: 16%;">
             <ui:VisualElement name="UI_MM_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SmoleButtonContainer.png?fileID=2800000&amp;guid=0b2eddb605c9f0142806a1ed45474ec4&amp;type=3#SmoleButtonContainer&apos;); height: 100%; width: 25%; justify-content: center; align-items: flex-end;">
-                <ui:Button text="Confirm" display-tooltip-when-elided="true" name="UI_MM_Confirm_Button" class="LS-BottomButtons" style="color: rgb(29, 29, 29); align-items: flex-start; margin-bottom: 4%; margin-left: 8%;">
+                <ui:Button text="Confirm" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="color: rgb(29, 29, 29); align-items: flex-start; margin-bottom: 4%; margin-left: 8%;">
                     <ui:VisualElement name="UI_MM_A-ButtonPrompt_Image" style="height: 100%; width: 32px; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_A.png?fileID=2800000&amp;guid=2867dd82e73232b40a5ac4931c0f2e50&amp;type=3#Switch_A&apos;);" />
                 </ui:Button>
             </ui:VisualElement>
