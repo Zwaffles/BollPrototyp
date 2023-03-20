@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2850255129268815806}
   - component: {fileID: 2850255129268815807}
   - component: {fileID: 2850255129268815804}
-  - component: {fileID: -5837360697688769929}
+  - component: {fileID: 6467141228715247050}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,7 +115,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!114 &-5837360697688769929
+--- !u!114 &6467141228715247050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,13 +124,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2850255129268815805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7390fd4e88c8c004dbdbefd46aa5e3f9, type: 3}
+  m_Script: {fileID: 11500000, guid: a1c39c7aee15f2e47840945fcb74361c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  acceleration: 0.1
-  maxSpeed: 30
-  maxSpeedInAir: 20
-  bounceForce: 20
-  bounceThreshold: 5
-  airControlFactor: 0.1
+  input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
+  moveAcceleration: 100
+  currentMaxSpeed: 28
+  downSlopeSpeedMultiplier: 4
+  maxDownSlopeSpeed: 80
+  upSlopeSpeedMultiplier: 0.5
+  minUpSlopeSpeed: 10
+  hasJump: 1
+  jumpHeight: 2
+  fastSpeedRampUpFactor: 2
+  slowSpeedRampUpFactor: 0.15
+  maxOverSpeed: 50
+  targetMaxSpeed: 28
+  standardGravity: 9.8
+  gravityIncreaseFactor: 20
+  maximumGravity: 40
