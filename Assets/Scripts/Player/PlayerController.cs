@@ -63,6 +63,14 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager;
 
+    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at low gravity."), Range(0, 1)]
+    private float lowBounciness = 0.2f;
+    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at high gravity."), Range(0, 1)]
+    private float highBounciness = 0.6f;
+    [SerializeField, Tooltip("The gravity from which the ball will only use the highBounciness")]
+    private float highBounceThreshold = 20f;
+    private PhysicMaterial physicMaterial;
+
     private void OnEnable()
     {
         gameManager = GameManager.instance;
@@ -72,6 +80,8 @@ public class PlayerController : MonoBehaviour
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
+
+        
     }
 
     private void OnDisable()
@@ -95,6 +105,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.maxAngularVelocity = currentMaxSpeed;
         }
+
+        physicMaterial = GetComponent<SphereCollider>().material;
     }
 
     private void FixedUpdate()
@@ -126,6 +138,7 @@ public class PlayerController : MonoBehaviour
         }
 
         LerpSpeed();
+        SetBounciness();
         
     }
 
@@ -225,6 +238,13 @@ public class PlayerController : MonoBehaviour
         Physics.gravity = new Vector3(0f, -temporaryGravity, 0f);
     }
 
+    private void SetBounciness()
+    {
+        physicMaterial.bounciness = Mathf.SmoothStep(lowBounciness, highBounciness,
+            (previousGravity - standardGravity)/highBounceThreshold
+            );
+    }
+
     private async void StopPlayerMovement(GameManager.GameState state)
     {
         if (state != GameManager.GameState.Menu)
@@ -244,7 +264,12 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
 
-   
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(physicMaterial.bounciness);
+    }
+
+
 }
 
 #if UNITY_EDITOR

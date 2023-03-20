@@ -21,7 +21,7 @@ public class CameraCycler : MonoBehaviour
 
         cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
         System.Array.Sort<CinemachineVirtualCamera>(cameras,
-            (a, b) => -b.name.CompareTo(a.name)
+            (a, b) => b.name.CompareTo(a.name)
             );
     }
 
