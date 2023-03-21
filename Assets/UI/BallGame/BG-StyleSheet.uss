@@ -193,7 +193,7 @@
 }
 
 .MM-Button {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/MainManuButton.png?fileID=2800000&guid=9c3112084ba44bd4d8828e3ccb57466b&type=3#MainManuButton');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/MainMenuButton%20-%20Dropshadow.png?fileID=2800000&guid=897508a38bd53df43a4b916f7b291437&type=3#MainMenuButton - Dropshadow');
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
@@ -210,11 +210,11 @@
     margin-right: 16px;
     margin-left: 16px;
     transition-duration: 0.1s;
-    -unity-background-image-tint-color: rgba(185, 185, 185, 255);
+    transform-origin: center;
 }
 
 .MM-Button:focus {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/MainManuButton.png?fileID=2800000&guid=9c3112084ba44bd4d8828e3ccb57466b&type=3#MainManuButton');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/MainMenuButton%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=0fcbc23b37d5d1f4482233980634968b&type=3#MainMenuButton Selected - Dropshadow');
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
@@ -232,5 +232,10 @@
     margin-left: 16px;
     transition-duration: 0.2s;
     scale: 1.1 1.1;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+    transform-origin: center;
+}
+
+.MM-ButtonText {
+    right: 8px;
+    bottom: 2px;
 }

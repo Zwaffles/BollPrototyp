@@ -9,18 +9,18 @@
         <ui:VisualElement name="UI_MM_Button_Container" style="flex-grow: 1;">
             <ui:VisualElement name="UI_MM_UpperButtons_Container" style="height: 50%; flex-direction: row; align-items: flex-end; justify-content: center;">
                 <ui:Button display-tooltip-when-elided="true" name="UI_MM_PlayButton_Box" class="MM-Button">
-                    <ui:Label text="Play" display-tooltip-when-elided="true" name="UI_MM_PlayButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
+                    <ui:Label text="Play" display-tooltip-when-elided="true" name="UI_MM_PlayButton_Text" class="MM-ButtonText" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
                 <ui:Button display-tooltip-when-elided="true" name="UI_MM_OptionsButton_Box" class="MM-Button">
-                    <ui:Label text="Options" display-tooltip-when-elided="true" name="UI_MM_OptionsButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
+                    <ui:Label text="Options" display-tooltip-when-elided="true" name="UI_MM_OptionsButton_Text" class="MM-ButtonText" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement name="UI_MM_LowerButtons_Container" style="height: 50%; flex-direction: row; justify-content: center; align-items: flex-start;">
                 <ui:Button display-tooltip-when-elided="true" name="UI_MM_CreditsButton_Box" class="MM-Button">
-                    <ui:Label text="Credits" display-tooltip-when-elided="true" name="UI_MM_CreditsButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
+                    <ui:Label text="Credits" display-tooltip-when-elided="true" name="UI_MM_CreditsButton_Text" class="MM-ButtonText" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
                 <ui:Button display-tooltip-when-elided="true" name="UI_MM_QuitButton_Box" class="MM-Button">
-                    <ui:Label text="Quit" display-tooltip-when-elided="true" name="UI_MM_QuitButton_Text" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
+                    <ui:Label text="Quit" display-tooltip-when-elided="true" name="UI_MM_QuitButton_Text" class="MM-ButtonText" style="justify-content: center; width: 100%; height: 100%; color: rgb(14, 14, 14); -unity-font-style: bold-and-italic; font-size: 64px;" />
                 </ui:Button>
             </ui:VisualElement>
         </ui:VisualElement>
