@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -107,10 +107,12 @@ public class PlayerController : MonoBehaviour
         }
 
         physicMaterial = GetComponent<SphereCollider>().material;
+
     }
 
     private void FixedUpdate()
     {
+
         Move();
         
 
@@ -240,6 +242,9 @@ public class PlayerController : MonoBehaviour
 
     private void SetBounciness()
     {
+        
+        // TODO: Rewrite when we know what to do with bounce
+        
         physicMaterial.bounciness = Mathf.SmoothStep(lowBounciness, highBounciness,
             (previousGravity - standardGravity)/highBounceThreshold
             );
@@ -266,7 +271,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(physicMaterial.bounciness);
+        Debug.DrawLine(transform.position, transform.position + collision.impulse, Color.red, 10f);
+        Debug.Log(collision.impulse.magnitude);
+        if (collision.impulse.magnitude > 1f) rb.AddForce(collision.impulse * 0.5f, ForceMode.Impulse);
     }
 
 
