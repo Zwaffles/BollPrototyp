@@ -2,60 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(Rigidbody))]
 public class BounceController : MonoBehaviour
 {
 
+    [SerializeField, Header("Bounce Controls"), Tooltip("How strong the impulse needs to be for a bounce to trigger"), Range(0f, 20f)]
+    private float impulseThreshold = 1f;
+    [SerializeField, Tooltip("How much bias the bounce should have horizontally and vertically")]
+    private Vector2 bounceBias = new Vector2(1f, 1f);
+    [SerializeField, Tooltip("How weak the bounce should be. DO NOT USE THIS TO STRENGTHEN THE BOUNCE"), Range(0f, 1f)]
+    private float bounceStrength = 0.5f;
 
-
-    /*
-    private PlayerController playerController; // Used to access gravity
     private Rigidbody rb;
 
-    [SerializeField, Header("Trigger"), Tooltip("Minimum gravity (read: airtime) for bounce to trigger"), Range(0f, 40f)]
-    private float minimumGravity = 10f;
-    [SerializeField, Tooltip("Maximum angle for bounce to trigger"), Range(0f, 180f)]
-    private float maximumAngle = 100f;
-    [SerializeField, Tooltip("Minimum impulse for bounce to trigger"), Range(0f, 20f)]
-    private float minimumImpulse = 2f;
-
-    [SerializeField, Header("Bounce"), Tooltip("How strong the bounce should be overall")]
-    private float bounceStrength = 0.1f;
-    [SerializeField, Tooltip("How much the gravity (read: airtime) should affect the bounce")]
-    private float gravityFactor = 0.1f;
-
-    private void Bounce(Vector3 impulse, float gravity)
+    private void OnCollisionEnter(Collision collision)
     {
 
-        rb.AddForce(bounceStrength * gravity * gravityFactor * impulse, ForceMode.Impulse);
+        // This is where the bounce happens
+
+        Debug.DrawLine(transform.position, transform.position + collision.impulse, Color.red, 10f);
+        Debug.Log(collision.impulse.magnitude);
+
+        if (collision.impulse.magnitude < impulseThreshold) return;
+
+        rb.AddForce(collision.impulse * bounceBias * bounceStrength, ForceMode.Impulse);
 
     }
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-        if (playerController.Gravity < minimumGravity) return;
-        if (Vector3.Angle(rb.velocity, collision.impulse) > maximumAngle) return;
-        if (collision.impulse.magnitude < minimumImpulse) return;
-
-        Debug.DrawLine(
-            collision.GetContact(0).point,
-            collision.GetContact(0).point + collision.impulse,
-            Color.red,
-            10f
-            );
-
-        Bounce(collision.impulse, playerController.Gravity);
 
     }
-
-    */
 
 }
