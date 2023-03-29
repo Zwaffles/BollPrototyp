@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 2765027152541553274}
   - component: {fileID: 7631505359320462678}
   - component: {fileID: 1060289330994781116}
+  - component: {fileID: 4668796994069957180}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -180,9 +181,6 @@ MonoBehaviour:
   standardGravity: 9.8
   gravityIncreaseFactor: 20
   maximumGravity: 40
-  lowBounciness: 0
-  highBounciness: 0
-  highBounceThreshold: 20
 --- !u!114 &4726737077104020636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +265,21 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &4668796994069957180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850255129268815805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f592a2a0f633904ab2f090bbcf1191a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseThreshold: 1
+  bounceBias: {x: 2, y: 0.5}
+  bounceStrength: 0.5
 --- !u!1 &5396954701141995919
 GameObject:
   m_ObjectHideFlags: 0
