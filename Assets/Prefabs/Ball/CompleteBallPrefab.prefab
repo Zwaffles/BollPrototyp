@@ -240,7 +240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3691982329665594925, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: maximumGravity
-      value: 38
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3691982329665594925, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: minUpSlopeSpeed
@@ -248,19 +248,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3691982329665594925, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: maxDownSlopeSpeed
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 3691982329665594925, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
-      propertyPath: gravityIncreaseFactor
-      value: 20
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 3691982329665594925, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: upSlopeSpeedMultiplier
-      value: 0.6
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4668796994069957180, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: bounceBias.x
-      value: 1.2
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4668796994069957180, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: bounceBias.y
@@ -268,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668796994069957180, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: impulseThreshold
-      value: 1.5
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5878481800010807350, guid: 6dc0cd67445d0f64f9fd6d62be71ed11, type: 3}
       propertyPath: m_LocalRotation.x
