@@ -184,20 +184,25 @@ public class PlayerController : MonoBehaviour
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
             {
-                
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                // Test to see if this works correctly
+                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
             }
 
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
             {
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                // Test to see if this works correctly
+                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
             }
 
         }
         else // You're on flat ground
         {
             targetMaxSpeed = 28f;
+            // Test to see if this works correctly
+            Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
         }
                
         

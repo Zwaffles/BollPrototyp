@@ -20,7 +20,7 @@ public class BounceController : MonoBehaviour
 
         // This is where the bounce happens
 
-        Debug.DrawLine(transform.position, transform.position + collision.impulse * 0.5f, Color.red, 1f);
+        //Debug.DrawLine(transform.position, transform.position + collision.impulse * 0.5f, Color.red, 1f);
 
         if (collision.impulse.magnitude < impulseThreshold) return;
 
