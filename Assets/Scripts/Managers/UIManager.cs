@@ -80,10 +80,23 @@ public class UIManager : MonoBehaviour
     {
         if (gameManager.CurrentState != GameManager.GameState.Menu)
         {
-            isPaused = !isPaused;
-            gameManager.SetGameState(isPaused ? GameManager.GameState.Pause : GameManager.GameState.Play);
-            Time.timeScale = isPaused ? 0f : 1f;
-            pauseMenu.SetActive(isPaused);
+
+            // Placeholder quit-implementation
+            EndGameplay(false);
+            return;
+            
+            //isPaused = !isPaused;
+            //gameManager.SetGameState(isPaused ? GameManager.GameState.Pause : GameManager.GameState.Play);
+            //Time.timeScale = isPaused ? 0f : 1f;
+            //pauseMenu.SetActive(isPaused);
         }
+        else
+        {
+
+            // Placeholder quit-implementation
+            Application.Quit();
+
+        }
+
     }
 }
