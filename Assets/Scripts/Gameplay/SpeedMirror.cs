@@ -17,6 +17,9 @@ public class SpeedMirror : MonoBehaviour
     [SerializeField, Tooltip("How much the rotation of the physical ball should affect the graphical ball up in the air"), Range(0f, 1f)]
     private float aerialSpeedFactor = 0.5f;
 
+    [SerializeField, Tooltip("The maximum speed the graphical ball may attain"), Range(0f, 1000f)]
+    private float maxSpeed = 1000f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,7 @@ public class SpeedMirror : MonoBehaviour
         targetRB = GameObject.Find("Ball").GetComponent<Rigidbody>();
         playerController = GameObject.Find("Ball").GetComponent<PlayerController>();
 
-        rb.maxAngularVelocity = 1000f;
+        rb.maxAngularVelocity = maxSpeed;
     }
 
     private void FixedUpdate()

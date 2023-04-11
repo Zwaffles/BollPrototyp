@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -63,14 +63,6 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager;
 
-    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at low gravity."), Range(0, 1)]
-    private float lowBounciness = 0.2f;
-    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at high gravity."), Range(0, 1)]
-    private float highBounciness = 0.6f;
-    [SerializeField, Tooltip("The gravity from which the ball will only use the highBounciness")]
-    private float highBounceThreshold = 20f;
-    private PhysicMaterial physicMaterial;
-
     private void OnEnable()
     {
         gameManager = GameManager.instance;
@@ -106,11 +98,11 @@ public class PlayerController : MonoBehaviour
             rb.maxAngularVelocity = currentMaxSpeed;
         }
 
-        physicMaterial = GetComponent<SphereCollider>().material;
     }
 
     private void FixedUpdate()
     {
+
         Move();
         
 
@@ -138,7 +130,6 @@ public class PlayerController : MonoBehaviour
         }
 
         LerpSpeed();
-        SetBounciness();
         
     }
 
@@ -193,20 +184,25 @@ public class PlayerController : MonoBehaviour
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
             {
-                
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                // Test to see if this works correctly
+                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
             }
 
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
             {
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                // Test to see if this works correctly
+                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
             }
 
         }
         else // You're on flat ground
         {
             targetMaxSpeed = 28f;
+            // Test to see if this works correctly
+            Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
         }
                
         
@@ -238,13 +234,6 @@ public class PlayerController : MonoBehaviour
         Physics.gravity = new Vector3(0f, -temporaryGravity, 0f);
     }
 
-    private void SetBounciness()
-    {
-        physicMaterial.bounciness = Mathf.SmoothStep(lowBounciness, highBounciness,
-            (previousGravity - standardGravity)/highBounceThreshold
-            );
-    }
-
     private async void StopPlayerMovement(GameManager.GameState state)
     {
         if (state != GameManager.GameState.Menu)
@@ -263,12 +252,6 @@ public class PlayerController : MonoBehaviour
         }
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log(physicMaterial.bounciness);
-    }
-
 
 }
 
