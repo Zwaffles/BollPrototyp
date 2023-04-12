@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.position + Vector3.down, 0.4f);
+    }
     private void FixedUpdate()
     {
 
@@ -107,12 +112,13 @@ public class PlayerController : MonoBehaviour
         
 
         if(hasJump)
-
+            
             Jump();
-
+     
+       
         // Ground check
-        if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
-            //if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+       if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
+           // if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
 
             if (!isOnGround) previousGravity = temporaryGravity;
@@ -135,7 +141,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
     }
 
     private void HandleMove(Vector2 dir)
@@ -182,7 +187,7 @@ public class PlayerController : MonoBehaviour
         {
 
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed && - _moveDirection.y == -1)
+            if (slopeHit.normal.x > 0.05 && targetMaxSpeed < maxDownSlopeSpeed && - _moveDirection.y == -1)
             {
                 slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
@@ -191,7 +196,7 @@ public class PlayerController : MonoBehaviour
             }
 
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
+            if (slopeHit.normal.x < -0.05 && targetMaxSpeed > minUpSlopeSpeed)
             {
                 slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
