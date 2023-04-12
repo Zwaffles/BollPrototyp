@@ -58,9 +58,26 @@ public class PlayerController : MonoBehaviour
     {
         get => isOnGround;
     }
+
+    #region Public Fields
+    public float MoveAcceleration { get => moveAcceleration; set => moveAcceleration = value; }
+    public float CurrentMaxSpeed { get => currentMaxSpeed; set => currentMaxSpeed = value; }
+    public float DownSlopeSpeedMultiplier { get => downSlopeSpeedMultiplier; set => downSlopeSpeedMultiplier = value; }
+    public float MaxDownSlopeSpeed { get => maxDownSlopeSpeed; set => maxDownSlopeSpeed = value; }
+    public float UpSlopeSpeedMultiplier { get => upSlopeSpeedMultiplier; set => upSlopeSpeedMultiplier = value; }
+    public float MinUpSlopeSpeed { get => minUpSlopeSpeed; set => minUpSlopeSpeed = value; }
+    public float JumpHeight { get => jumpHeight; set => jumpHeight = value; }
+    public float FastSpeedRampUpFactor { get => fastSpeedRampUpFactor; set => fastSpeedRampUpFactor = value; }
+    public float SlowSpeedRampUpFactor { get => slowSpeedRampUpFactor; set => slowSpeedRampUpFactor = value; }
+    public float MaxOverSpeed { get => maxOverSpeed; set => maxOverSpeed = value; }
+    public float TargetMaxSpeed { get => targetMaxSpeed; set => targetMaxSpeed = value; }
+    public float StandardGravity { get => standardGravity; set => standardGravity = value; }
+    public float GravityIncreaseFactor { get => gravityIncreaseFactor; set => gravityIncreaseFactor = value; }
+    public float MaximumGravity { get => maximumGravity; set => maximumGravity = value; }
+    #endregion
+
     private bool shouldJump = false;
     
-
     private GameManager gameManager;
 
     private void OnEnable()
