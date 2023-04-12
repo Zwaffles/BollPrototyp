@@ -182,8 +182,9 @@ public class PlayerController : MonoBehaviour
         {
 
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
+            if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed && - _moveDirection.y == -1)
             {
+                slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
                 // Test to see if this works correctly
                 Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
@@ -192,6 +193,7 @@ public class PlayerController : MonoBehaviour
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
             if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
             {
+                slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
                 // Test to see if this works correctly
                 Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
@@ -253,7 +255,30 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+           // isOnGround = true;
+
+
+
+        }
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+           // isOnGround = false;
+
+        }
+    }
 }
+
+
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(PlayerController))]
