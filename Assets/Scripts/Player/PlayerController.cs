@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Header("Movement")]
     private float moveAcceleration = 100f;
-    [SerializeField]
+    // [SerializeField] Not editable
     private float currentMaxSpeed = 28f; // Renamed from moveSpeed
     [SerializeField]
     private float downSlopeSpeedMultiplier = 4;
@@ -32,8 +32,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("How much above the regular max speed you can go.")]
     private float maxOverSpeed = 50f;
     private float currentOverSpeed = 0f;
-    [SerializeField, Tooltip("Max-speed the ball should lerp towards")]
+    // [SerializeField, Tooltip("Max-speed the ball should lerp towards")] Not editable
     private float targetMaxSpeed = 28f;
+    [SerializeField, Tooltip("Max speed to lerp towards for the ball on flat ground and in the air")]
+    private float regularMaxSpeed = 28f;
 
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             previousGravity = temporaryGravity;
             IncreaseGravity();
-            targetMaxSpeed = 28f; //Jumping doesn't preserve your speed
+            targetMaxSpeed = regularMaxSpeed; //Jumping doesn't preserve your speed
         }
 
         LerpSpeed();
@@ -224,7 +226,7 @@ public class PlayerController : MonoBehaviour
         }
         else // You're on flat ground
         {
-            targetMaxSpeed = 28f;
+            targetMaxSpeed = regularMaxSpeed;
             // Test to see if this works correctly
             Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
         }
