@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &162874643
+--- !u!43 &159964080
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -417,7 +417,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 162874643}
+  m_Mesh: {fileID: 159964080}
 --- !u!23 &635625659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635625657}
-  m_Mesh: {fileID: 162874643}
+  m_Mesh: {fileID: 159964080}
 --- !u!4 &635625661
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,22 +1274,6 @@ PrefabInstance:
     - target: {fileID: 801708923694676078, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1821741542890603920, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.39000988
-      objectReference: {fileID: 0}
-    - target: {fileID: 1821741542890603920, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.5000095
-      objectReference: {fileID: 0}
-    - target: {fileID: 1821741542890603920, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -16.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 1821741542890603927, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4346658506022775662, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
       propertyPath: m_Name
