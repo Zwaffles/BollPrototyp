@@ -168,14 +168,14 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
   moveAcceleration: 35
   currentMaxSpeed: 28
-  downSlopeSpeedMultiplier: 4
+  downSlopeSpeedMultiplier: 0.6
   maxDownSlopeSpeed: 80
-  upSlopeSpeedMultiplier: 0.4
-  minUpSlopeSpeed: 10
+  upSlopeSpeedMultiplier: 0.6
+  minUpSlopeSpeed: 6
   hasJump: 1
   jumpHeight: 4
-  fastSpeedRampUpFactor: 1.5
-  slowSpeedRampUpFactor: 0.15
+  fastSpeedRampUpFactor: 1
+  slowSpeedRampUpFactor: 0.1
   maxOverSpeed: 60
   targetMaxSpeed: 28
   standardGravity: 9.8
