@@ -19,10 +19,28 @@ public class PlayerController : MonoBehaviour
     private float upSlopeSpeedMultiplier = 0.5f;
     [SerializeField]
     private float minUpSlopeSpeed = 10;
+
+    // Jump variables
     [SerializeField, Header("Jump")]
     private bool hasJump = true;
     [SerializeField, HideInInspector]
     private float jumpHeight = 2f;
+
+    // Boost variables - PS. Andreas, jag har inte lagt till de här variablerna till Region Public Fields
+    [SerializeField, Header("Boost")]
+    private bool hasBoost = false;
+    [SerializeField, HideInInspector]
+    private int numberOfBoosts = 3;
+    [SerializeField, HideInInspector]
+    private float boostSpeedFactor = 2f;
+    [SerializeField, HideInInspector]
+    private float boostRocketFactor = 2f;
+    [SerializeField, HideInInspector]
+    private float boostDuration = 2f;
+    [SerializeField, HideInInspector]
+    private float boostGravityFactor = 0f;
+    private float remainingBoostDuration;
+    private bool isBoosting = false;
 
     // Variables for Ludwig's ramping speed suggestion - Johan
     [SerializeField, Header("Speed Ramping"), Tooltip("How quickly the speed increases when you're BELOW the regular max speed.")]
@@ -37,6 +55,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Max speed to lerp towards for the ball on flat ground and in the air")]
     private float regularMaxSpeed = 28f;
 
+    // Gravity variables
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
     private float temporaryGravity = 9.8f;
@@ -117,6 +136,8 @@ public class PlayerController : MonoBehaviour
             rb.maxAngularVelocity = currentMaxSpeed;
         }
 
+        remainingBoostDuration = boostDuration;
+
     }
 
     private void OnDrawGizmos()
@@ -133,10 +154,14 @@ public class PlayerController : MonoBehaviour
         if(hasJump)
             
             Jump();
-     
-       
+
+        if (hasBoost)
+
+            Boost();
+
+
         // Ground check
-       if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
+        if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
            // if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
 
@@ -196,7 +221,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+    private void Boost()
+    {
+        
+        if (isBoosting)
+        {
+
+            rb.AddForce(rb.velocity.normalized * boostRocketFactor);
+
+            remainingBoostDuration -= Time.fixedDeltaTime;
+            if (remainingBoostDuration < 0f)
+            {
+                isBoosting = false;
+                remainingBoostDuration = boostDuration;
+            }
+            
+            return;
+
+        }
+
+        if (shouldJump && numberOfBoosts > 0) // Used to have && !isBoosting too, but that became redundant
+        {
+
+            numberOfBoosts--;
+            isBoosting = true;
+
+        }
+
+    }
 
     private void OnSlope()
     {
@@ -238,7 +290,11 @@ public class PlayerController : MonoBehaviour
     private void LerpSpeed()
     {
 
-        currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, targetMaxSpeed, fastSpeedRampUpFactor * Time.fixedDeltaTime);
+        currentMaxSpeed = Mathf.Lerp(
+            currentMaxSpeed, 
+            isBoosting ? targetMaxSpeed * boostSpeedFactor : targetMaxSpeed, 
+            fastSpeedRampUpFactor * Time.fixedDeltaTime
+            );
 
         if (rb.angularVelocity.magnitude + 3f > targetMaxSpeed && isOnGround)
         {
@@ -250,6 +306,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
+        Debug.Log(currentMaxSpeed);
 
     }
 
@@ -257,7 +314,11 @@ public class PlayerController : MonoBehaviour
     {
         temporaryGravity += gravityIncreaseFactor * Time.fixedDeltaTime;
         temporaryGravity = temporaryGravity > maximumGravity ? maximumGravity : temporaryGravity;
-        Physics.gravity = new Vector3(0f, -temporaryGravity, 0f);
+        Physics.gravity = new Vector3(
+            0f, 
+            isBoosting ? -temporaryGravity * boostGravityFactor : -temporaryGravity, 
+            0f
+            );
     }
 
     private async void StopPlayerMovement(GameManager.GameState state)
@@ -311,10 +372,26 @@ public class PlayerControllerEditor : Editor
     private SerializedProperty hasJumpProp;
     private SerializedProperty jumpHeightProp;
 
+    private SerializedProperty hasBoostProp;
+    private SerializedProperty numberOfBoostsProp;
+    private SerializedProperty boostSpeedFactorProp;
+    private SerializedProperty boostDurationProp;
+    private SerializedProperty boostGravityFactorProp;
+    private SerializedProperty boostRocketFactorProp;
+
     private void OnEnable()
     {
+
         hasJumpProp = serializedObject.FindProperty("hasJump");
         jumpHeightProp = serializedObject.FindProperty("jumpHeight");
+
+        hasBoostProp = serializedObject.FindProperty("hasBoost");
+        numberOfBoostsProp = serializedObject.FindProperty("numberOfBoosts");
+        boostSpeedFactorProp = serializedObject.FindProperty("boostSpeedFactor");
+        boostDurationProp = serializedObject.FindProperty("boostDuration");
+        boostGravityFactorProp = serializedObject.FindProperty("boostGravityFactor");
+        boostRocketFactorProp = serializedObject.FindProperty("boostRocketFactor");
+
     }
 
     public override void OnInspectorGUI()
@@ -326,6 +403,15 @@ public class PlayerControllerEditor : Editor
         if (hasJumpProp.boolValue)
         {
             EditorGUILayout.PropertyField(jumpHeightProp);
+        }
+
+        if (hasBoostProp.boolValue)
+        {
+            EditorGUILayout.PropertyField(numberOfBoostsProp);
+            EditorGUILayout.PropertyField(boostSpeedFactorProp);
+            EditorGUILayout.PropertyField(boostDurationProp);
+            EditorGUILayout.PropertyField(boostGravityFactorProp);
+            EditorGUILayout.PropertyField(boostRocketFactorProp);
         }
 
         serializedObject.ApplyModifiedProperties();
