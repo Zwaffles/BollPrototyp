@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6121211581420069464
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 906221876320658664, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_Name
+      value: Variant7Complete (New physics + speed boost)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4314970830375876584, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: hasJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: hasBoost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: numberOfBoosts
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: boostSpeedFactor
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: boostRocketFactor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: boostGravityFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761701395274460117, guid: f8969385906b3914a987682576a95cdc, type: 3}
+      propertyPath: boostVisualiserObject
+      value: 
+      objectReference: {fileID: 1439274642698898093}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f8969385906b3914a987682576a95cdc, type: 3}
+--- !u!1 &1439274642698898093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5119393385324964085, guid: f8969385906b3914a987682576a95cdc, type: 3}
+  m_PrefabInstance: {fileID: 6121211581420069464}
+  m_PrefabAsset: {fileID: 0}
