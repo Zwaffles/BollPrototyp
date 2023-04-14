@@ -43,7 +43,7 @@ public class PlayerSliderController : MonoBehaviour
     private void OnEnable()
     {
         moveAccelerationSlider.onValueChanged.AddListener(OnMoveAccelerationSliderChanged);
-        currentMaxSpeedSlider.onValueChanged.AddListener(OnCurrentMaxSpeedSliderChanged);
+        currentMaxSpeedSlider?.onValueChanged.AddListener(OnCurrentMaxSpeedSliderChanged);
         downSlopeSpeedMultiplierSlider.onValueChanged.AddListener(OnDownSlopeSpeedMultiplierSliderChanged);
         maxDownSlopeSpeedSlider.onValueChanged.AddListener(OnMaxDownSlopeSpeedSliderChanged);
         upSlopeSpeedMultiplierSlider.onValueChanged.AddListener(OnUpSlopeSpeedMultiplierSliderChanged);
@@ -61,7 +61,7 @@ public class PlayerSliderController : MonoBehaviour
     private void OnDisable()
     {
         moveAccelerationSlider.onValueChanged.RemoveListener(OnMoveAccelerationSliderChanged);
-        currentMaxSpeedSlider.onValueChanged.RemoveListener(OnCurrentMaxSpeedSliderChanged);
+        currentMaxSpeedSlider?.onValueChanged.RemoveListener(OnCurrentMaxSpeedSliderChanged);
         downSlopeSpeedMultiplierSlider.onValueChanged.RemoveListener(OnDownSlopeSpeedMultiplierSliderChanged);
         maxDownSlopeSpeedSlider.onValueChanged.RemoveListener(OnMaxDownSlopeSpeedSliderChanged);
         upSlopeSpeedMultiplierSlider.onValueChanged.RemoveListener(OnUpSlopeSpeedMultiplierSliderChanged);
@@ -96,7 +96,7 @@ public class PlayerSliderController : MonoBehaviour
 
         // Set the slider values to match the current PlayerController values
         moveAccelerationSlider.value = playerController.MoveAcceleration;
-        currentMaxSpeedSlider.value = playerController.CurrentMaxSpeed;
+        //currentMaxSpeedSlider.value = playerController.CurrentMaxSpeed;
         downSlopeSpeedMultiplierSlider.value = playerController.DownSlopeSpeedMultiplier;
         maxDownSlopeSpeedSlider.value = playerController.MaxDownSlopeSpeed;
         upSlopeSpeedMultiplierSlider.value = playerController.UpSlopeSpeedMultiplier;
@@ -201,7 +201,7 @@ public class PlayerSliderController : MonoBehaviour
         playerController.JumpHeight = defaultJumpHeight;
 
         moveAccelerationSlider.value = defaultMoveAcceleration;
-        currentMaxSpeedSlider.value = defaultCurrentMaxSpeed;
+        //currentMaxSpeedSlider.value = defaultCurrentMaxSpeed;
         downSlopeSpeedMultiplierSlider.value = defaultDownSlopeSpeedMultiplier;
         maxDownSlopeSpeedSlider.value = defaultMaxDownSlopeSpeed;
         upSlopeSpeedMultiplierSlider.value = defaultUpSlopeSpeedMultiplier;
