@@ -20,28 +20,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float minUpSlopeSpeed = 10;
 
-    // Jump variables
-    [SerializeField, Header("Jump")]
-    private bool hasJump = true;
-    [SerializeField, HideInInspector]
-    private float jumpHeight = 2f;
-
-    // Boost variables - PS. Andreas, jag har inte lagt till de här variablerna till Region Public Fields
-    [SerializeField, Header("Boost")]
-    private bool hasBoost = false;
-    [SerializeField, HideInInspector]
-    private int numberOfBoosts = 3;
-    [SerializeField, HideInInspector]
-    private float boostSpeedFactor = 2f;
-    [SerializeField, HideInInspector]
-    private float boostRocketFactor = 2f;
-    [SerializeField, HideInInspector]
-    private float boostDuration = 2f;
-    [SerializeField, HideInInspector]
-    private float boostGravityFactor = 0f;
-    private float remainingBoostDuration;
-    private bool isBoosting = false;
-
     // Variables for Ludwig's ramping speed suggestion - Johan
     [SerializeField, Header("Speed Ramping"), Tooltip("How quickly the speed increases when you're BELOW the regular max speed.")]
     private float fastSpeedRampUpFactor = 2f;
@@ -79,6 +57,32 @@ public class PlayerController : MonoBehaviour
     {
         get => isOnGround;
     }
+
+    // Moved these down to make the UI-cleaner
+
+    // Jump variables
+    [SerializeField, Header("Jump")]
+    private bool hasJump = true;
+    [SerializeField, HideInInspector]
+    private float jumpHeight = 2f;
+
+    // Boost variables - PS. Andreas, jag har inte lagt till de här variablerna till Region Public Fields
+    [SerializeField]
+    private bool hasBoost = false;
+    [SerializeField, HideInInspector]
+    private int numberOfBoosts = 3;
+    [SerializeField, HideInInspector]
+    private float boostSpeedFactor = 2f;
+    [SerializeField, HideInInspector]
+    private float boostRocketFactor = 2f;
+    [SerializeField, HideInInspector]
+    private float boostDuration = 2f;
+    [SerializeField, HideInInspector]
+    private float boostGravityFactor = 0f;
+    private float remainingBoostDuration;
+    private bool isBoosting = false;
+    [SerializeField]
+    private GameObject boostVisualiserObject;
 
     #region Public Fields
     public float MoveAcceleration { get => moveAcceleration; set => moveAcceleration = value; }
@@ -234,6 +238,7 @@ public class PlayerController : MonoBehaviour
             {
                 isBoosting = false;
                 remainingBoostDuration = boostDuration;
+                boostVisualiserObject.SetActive(false);
             }
             
             return;
@@ -245,6 +250,7 @@ public class PlayerController : MonoBehaviour
 
             numberOfBoosts--;
             isBoosting = true;
+            boostVisualiserObject.SetActive(true);
 
         }
 
