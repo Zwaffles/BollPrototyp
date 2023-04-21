@@ -99,6 +99,10 @@ public class PlayerController : MonoBehaviour
     public float StandardGravity { get => standardGravity; set => standardGravity = value; }
     public float GravityIncreaseFactor { get => gravityIncreaseFactor; set => gravityIncreaseFactor = value; }
     public float MaximumGravity { get => maximumGravity; set => maximumGravity = value; }
+    public float BoostSpeedFactor { get => boostSpeedFactor; set => boostSpeedFactor = value; }
+    public float BoostDuration { get => boostDuration; set => boostDuration = value; }
+    public float BoostGravityFactor { get => boostGravityFactor; set => boostGravityFactor = value; }
+    public float BoostRocketFactor { get => boostRocketFactor; set => boostRocketFactor = value; }
     #endregion
 
     private bool shouldJump = false;

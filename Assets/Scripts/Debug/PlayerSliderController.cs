@@ -22,6 +22,10 @@ public class PlayerSliderController : MonoBehaviour
     [SerializeField] private Slider gravityIncreaseFactorSlider;
     [SerializeField] private Slider maximumGravitySlider;
     [SerializeField] private Slider jumpHeightSlider;
+    [SerializeField] private Slider boostSpeedFactorSlider;
+    [SerializeField] private Slider boostDurationSlider;
+    [SerializeField] private Slider boostGravityFactorSlider;
+    [SerializeField] private Slider boostRocketFactorSlider;
 
     // Add more sliders as needed
 
@@ -39,6 +43,10 @@ public class PlayerSliderController : MonoBehaviour
     private float defaultGravityIncreaseFactor;
     private float defaultMaximumGravity;
     private float defaultJumpHeight;
+    private float defaultBoostSpeedFactor;
+    private float defaultBoostDuration;
+    private float defaultBoostGravityFactor;
+    private float defaultBoostRocketFactor;
 
     private void OnEnable()
     {
@@ -56,6 +64,10 @@ public class PlayerSliderController : MonoBehaviour
         gravityIncreaseFactorSlider.onValueChanged.AddListener(OnGravityIncreaseFactorSliderChanged);
         maximumGravitySlider.onValueChanged.AddListener(OnMaximumGravitySliderChanged);
         jumpHeightSlider.onValueChanged.AddListener(OnJumpHeightSliderChanged);
+        boostSpeedFactorSlider.onValueChanged.AddListener(OnBoostSpeedFactorChanged);
+        boostDurationSlider.onValueChanged.AddListener(OnBoostDurationChanged);
+        boostGravityFactorSlider.onValueChanged.AddListener(OnBoostGravityFactorChanged);
+        boostRocketFactorSlider.onValueChanged.AddListener(OnBoostRocketFactorChanged);
     }
 
     private void OnDisable()
@@ -74,6 +86,10 @@ public class PlayerSliderController : MonoBehaviour
         gravityIncreaseFactorSlider.onValueChanged.RemoveListener(OnGravityIncreaseFactorSliderChanged);
         maximumGravitySlider.onValueChanged.RemoveListener(OnMaximumGravitySliderChanged);
         jumpHeightSlider.onValueChanged.RemoveListener(OnJumpHeightSliderChanged);
+        boostSpeedFactorSlider.onValueChanged.RemoveListener(OnBoostSpeedFactorChanged);
+        boostDurationSlider.onValueChanged.RemoveListener(OnBoostDurationChanged);
+        boostGravityFactorSlider.onValueChanged.RemoveListener(OnBoostGravityFactorChanged);
+        boostRocketFactorSlider.onValueChanged.RemoveListener(OnBoostRocketFactorChanged);
     }
 
     private void Start()
@@ -93,6 +109,10 @@ public class PlayerSliderController : MonoBehaviour
         defaultGravityIncreaseFactor = playerController.GravityIncreaseFactor;
         defaultMaximumGravity = playerController.MaximumGravity;
         defaultJumpHeight = playerController.JumpHeight;
+        defaultBoostSpeedFactor = playerController.BoostSpeedFactor;
+        defaultBoostDuration = playerController.BoostDuration;
+        defaultBoostGravityFactor = playerController.BoostGravityFactor;
+        defaultBoostRocketFactor = playerController.BoostRocketFactor;
 
         // Set the slider values to match the current PlayerController values
         moveAccelerationSlider.value = playerController.MoveAcceleration;
@@ -108,7 +128,11 @@ public class PlayerSliderController : MonoBehaviour
         standardGravitySlider.value = playerController.StandardGravity;
         gravityIncreaseFactorSlider.value = playerController.GravityIncreaseFactor;
         maximumGravitySlider.value = playerController.MaximumGravity;
-        jumpHeightSlider.value = playerController.JumpHeight;
+        //jumpHeightSlider.value = playerController.JumpHeight;
+        boostSpeedFactorSlider.value = playerController.BoostSpeedFactor;
+        boostDurationSlider.value = playerController.BoostDuration;
+        boostGravityFactorSlider.value = playerController.BoostGravityFactor;
+        boostRocketFactorSlider.value = playerController.BoostRocketFactor;
     }
 
     public void OnMoveAccelerationSliderChanged(float value)
@@ -181,6 +205,26 @@ public class PlayerSliderController : MonoBehaviour
         playerController.JumpHeight = value;
     }
 
+    public void OnBoostSpeedFactorChanged(float value)
+    {
+        playerController.BoostSpeedFactor = value;
+    }
+
+    public void OnBoostDurationChanged(float value)
+    {
+        playerController.BoostDuration = value;
+    }
+
+    public void OnBoostGravityFactorChanged(float value)
+    {
+        playerController.BoostGravityFactor = value;
+    }
+
+    public void OnBoostRocketFactorChanged(float value)
+    {
+        playerController.BoostRocketFactor = value;
+    }
+
     // Add more slider change methods as needed
 
     public void ResetToDefault()
@@ -199,6 +243,10 @@ public class PlayerSliderController : MonoBehaviour
         playerController.GravityIncreaseFactor = defaultGravityIncreaseFactor;
         playerController.MaximumGravity = defaultMaximumGravity;
         playerController.JumpHeight = defaultJumpHeight;
+        playerController.BoostSpeedFactor = defaultBoostSpeedFactor;
+        playerController.BoostDuration = defaultBoostDuration;
+        playerController.BoostGravityFactor = defaultBoostGravityFactor;
+        playerController.BoostRocketFactor = defaultBoostRocketFactor;
 
         moveAccelerationSlider.value = defaultMoveAcceleration;
         //currentMaxSpeedSlider.value = defaultCurrentMaxSpeed;
@@ -213,6 +261,10 @@ public class PlayerSliderController : MonoBehaviour
         standardGravitySlider.value = defaultStandardGravity;
         gravityIncreaseFactorSlider.value = defaultGravityIncreaseFactor;
         maximumGravitySlider.value = defaultMaximumGravity;
-        jumpHeightSlider.value = defaultJumpHeight;
+        //jumpHeightSlider.value = defaultJumpHeight;
+        boostSpeedFactorSlider.value = defaultBoostSpeedFactor;
+        boostDurationSlider.value = defaultBoostDuration;
+        boostGravityFactorSlider.value = defaultBoostGravityFactor;
+        boostRocketFactorSlider.value = defaultBoostRocketFactor;
     }
 }
