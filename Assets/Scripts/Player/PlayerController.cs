@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Header("Movement")]
     private float moveAcceleration = 100f;
-    [SerializeField]
+    // [SerializeField] Not editable
     private float currentMaxSpeed = 28f; // Renamed from moveSpeed
     [SerializeField]
     private float downSlopeSpeedMultiplier = 4;
@@ -19,10 +19,6 @@ public class PlayerController : MonoBehaviour
     private float upSlopeSpeedMultiplier = 0.5f;
     [SerializeField]
     private float minUpSlopeSpeed = 10;
-    [SerializeField, Header("Jump")]
-    private bool hasJump = true;
-    [SerializeField, HideInInspector]
-    private float jumpHeight = 2f;
 
     // Variables for Ludwig's ramping speed suggestion - Johan
     [SerializeField, Header("Speed Ramping"), Tooltip("How quickly the speed increases when you're BELOW the regular max speed.")]
@@ -32,9 +28,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("How much above the regular max speed you can go.")]
     private float maxOverSpeed = 50f;
     private float currentOverSpeed = 0f;
-    [SerializeField, Tooltip("Max-speed the ball should lerp towards")]
+    // [SerializeField, Tooltip("Max-speed the ball should lerp towards")] Not editable
     private float targetMaxSpeed = 28f;
+    [SerializeField, Tooltip("Max speed to lerp towards for the ball on flat ground and in the air")]
+    private float regularMaxSpeed = 28f;
 
+    // Gravity variables
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
     private float temporaryGravity = 9.8f;
@@ -58,18 +57,57 @@ public class PlayerController : MonoBehaviour
     {
         get => isOnGround;
     }
+
+    // Moved these down to make the UI-cleaner
+
+    // Jump variables
+    [SerializeField, Header("Jump")]
+    private bool hasJump = true;
+    [SerializeField, HideInInspector]
+    private float jumpHeight = 2f;
+
+    // Boost variables - PS. Andreas, jag har inte lagt till de här variablerna till Region Public Fields
+    [SerializeField]
+    private bool hasBoost = false;
+    [SerializeField, HideInInspector]
+    private int numberOfBoosts = 3;
+    [SerializeField, HideInInspector]
+    private float boostSpeedFactor = 2f;
+    [SerializeField, HideInInspector]
+    private float boostRocketFactor = 2f;
+    [SerializeField, HideInInspector]
+    private float boostDuration = 2f;
+    [SerializeField, HideInInspector]
+    private float boostGravityFactor = 0f;
+    private float remainingBoostDuration;
+    private bool isBoosting = false;
+    [SerializeField]
+    private GameObject boostVisualiserObject;
+
+    #region Public Fields
+    public float MoveAcceleration { get => moveAcceleration; set => moveAcceleration = value; }
+    public float CurrentMaxSpeed { get => currentMaxSpeed; set => currentMaxSpeed = value; }
+    public float DownSlopeSpeedMultiplier { get => downSlopeSpeedMultiplier; set => downSlopeSpeedMultiplier = value; }
+    public float MaxDownSlopeSpeed { get => maxDownSlopeSpeed; set => maxDownSlopeSpeed = value; }
+    public float UpSlopeSpeedMultiplier { get => upSlopeSpeedMultiplier; set => upSlopeSpeedMultiplier = value; }
+    public float MinUpSlopeSpeed { get => minUpSlopeSpeed; set => minUpSlopeSpeed = value; }
+    public float JumpHeight { get => jumpHeight; set => jumpHeight = value; }
+    public float FastSpeedRampUpFactor { get => fastSpeedRampUpFactor; set => fastSpeedRampUpFactor = value; }
+    public float SlowSpeedRampUpFactor { get => slowSpeedRampUpFactor; set => slowSpeedRampUpFactor = value; }
+    public float MaxOverSpeed { get => maxOverSpeed; set => maxOverSpeed = value; }
+    public float TargetMaxSpeed { get => targetMaxSpeed; set => targetMaxSpeed = value; }
+    public float StandardGravity { get => standardGravity; set => standardGravity = value; }
+    public float GravityIncreaseFactor { get => gravityIncreaseFactor; set => gravityIncreaseFactor = value; }
+    public float MaximumGravity { get => maximumGravity; set => maximumGravity = value; }
+    public float BoostSpeedFactor { get => boostSpeedFactor; set => boostSpeedFactor = value; }
+    public float BoostDuration { get => boostDuration; set => boostDuration = value; }
+    public float BoostGravityFactor { get => boostGravityFactor; set => boostGravityFactor = value; }
+    public float BoostRocketFactor { get => boostRocketFactor; set => boostRocketFactor = value; }
+    #endregion
+
     private bool shouldJump = false;
     
-
     private GameManager gameManager;
-
-    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at low gravity."), Range(0, 1)]
-    private float lowBounciness = 0.2f;
-    [SerializeField, Header("Bounce"), Tooltip("How bouncy the ball should be at high gravity."), Range(0, 1)]
-    private float highBounciness = 0.6f;
-    [SerializeField, Tooltip("The gravity from which the ball will only use the highBounciness")]
-    private float highBounceThreshold = 20f;
-    private PhysicMaterial physicMaterial;
 
     private void OnEnable()
     {
@@ -106,21 +144,33 @@ public class PlayerController : MonoBehaviour
             rb.maxAngularVelocity = currentMaxSpeed;
         }
 
-        physicMaterial = GetComponent<SphereCollider>().material;
+        remainingBoostDuration = boostDuration;
+
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.position + Vector3.down, 0.4f);
+    }
     private void FixedUpdate()
     {
+
         Move();
         
 
         if(hasJump)
-
+            
             Jump();
+
+        if (hasBoost)
+
+            Boost();
+
 
         // Ground check
         if (Physics.SphereCast(transform.position, 0.4f, Vector3.down, out slopeHit, 0.2f))
-            //if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
+           // if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
 
             if (!isOnGround) previousGravity = temporaryGravity;
@@ -134,17 +184,15 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             previousGravity = temporaryGravity;
             IncreaseGravity();
-            targetMaxSpeed = 28f; //Jumping doesn't preserve your speed
+            targetMaxSpeed = regularMaxSpeed; //Jumping doesn't preserve your speed
         }
 
         LerpSpeed();
-        SetBounciness();
         
     }
 
     private void Update()
     {
-
     }
 
     private void HandleMove(Vector2 dir)
@@ -181,7 +229,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   
+    private void Boost()
+    {
+        
+        if (isBoosting)
+        {
+
+            rb.AddForce(rb.velocity.normalized * boostRocketFactor);
+
+            remainingBoostDuration -= Time.fixedDeltaTime;
+            if (remainingBoostDuration < 0f)
+            {
+                isBoosting = false;
+                remainingBoostDuration = boostDuration;
+                boostVisualiserObject.SetActive(false);
+            }
+            
+            return;
+
+        }
+
+        if (shouldJump && numberOfBoosts > 0) // Used to have && !isBoosting too, but that became redundant
+        {
+
+            numberOfBoosts--;
+            isBoosting = true;
+            boostVisualiserObject.SetActive(true);
+
+        }
+
+    }
 
     private void OnSlope()
     {
@@ -191,22 +268,29 @@ public class PlayerController : MonoBehaviour
         {
 
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x > 0.05 && currentMaxSpeed < maxDownSlopeSpeed)
+            if (slopeHit.normal.x > 0.05 && targetMaxSpeed < maxDownSlopeSpeed && - _moveDirection.y == -1)
             {
-                
+                slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                // Test to see if this works correctly
+                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
             }
 
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x < -0.05 && currentMaxSpeed > minUpSlopeSpeed)
+            if (slopeHit.normal.x < -0.05 && targetMaxSpeed > minUpSlopeSpeed)
             {
+                slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                // Test to see if this works correctly
+                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
             }
 
         }
         else // You're on flat ground
         {
-            targetMaxSpeed = 28f;
+            targetMaxSpeed = regularMaxSpeed;
+            // Test to see if this works correctly
+            Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
         }
                
         
@@ -216,7 +300,11 @@ public class PlayerController : MonoBehaviour
     private void LerpSpeed()
     {
 
-        currentMaxSpeed = Mathf.Lerp(currentMaxSpeed, targetMaxSpeed, fastSpeedRampUpFactor * Time.fixedDeltaTime);
+        currentMaxSpeed = Mathf.Lerp(
+            currentMaxSpeed, 
+            isBoosting ? targetMaxSpeed * boostSpeedFactor : targetMaxSpeed, 
+            fastSpeedRampUpFactor * Time.fixedDeltaTime
+            );
 
         if (rb.angularVelocity.magnitude + 3f > targetMaxSpeed && isOnGround)
         {
@@ -228,6 +316,7 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
+        Debug.Log(currentMaxSpeed);
 
     }
 
@@ -235,13 +324,10 @@ public class PlayerController : MonoBehaviour
     {
         temporaryGravity += gravityIncreaseFactor * Time.fixedDeltaTime;
         temporaryGravity = temporaryGravity > maximumGravity ? maximumGravity : temporaryGravity;
-        Physics.gravity = new Vector3(0f, -temporaryGravity, 0f);
-    }
-
-    private void SetBounciness()
-    {
-        physicMaterial.bounciness = Mathf.SmoothStep(lowBounciness, highBounciness,
-            (previousGravity - standardGravity)/highBounceThreshold
+        Physics.gravity = new Vector3(
+            0f, 
+            isBoosting ? -temporaryGravity * boostGravityFactor : -temporaryGravity, 
+            0f
             );
     }
 
@@ -264,13 +350,30 @@ public class PlayerController : MonoBehaviour
         rb.isKinematic = true; // Set the rigidbody to kinematic to ensure it stops completely.
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(physicMaterial.bounciness);
+        if (collision.gameObject.tag == "Ground")
+        {
+           // isOnGround = true;
+
+
+
+        }
     }
 
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+           // isOnGround = false;
+
+        }
+    }
 }
+
+
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(PlayerController))]
@@ -279,10 +382,26 @@ public class PlayerControllerEditor : Editor
     private SerializedProperty hasJumpProp;
     private SerializedProperty jumpHeightProp;
 
+    private SerializedProperty hasBoostProp;
+    private SerializedProperty numberOfBoostsProp;
+    private SerializedProperty boostSpeedFactorProp;
+    private SerializedProperty boostDurationProp;
+    private SerializedProperty boostGravityFactorProp;
+    private SerializedProperty boostRocketFactorProp;
+
     private void OnEnable()
     {
+
         hasJumpProp = serializedObject.FindProperty("hasJump");
         jumpHeightProp = serializedObject.FindProperty("jumpHeight");
+
+        hasBoostProp = serializedObject.FindProperty("hasBoost");
+        numberOfBoostsProp = serializedObject.FindProperty("numberOfBoosts");
+        boostSpeedFactorProp = serializedObject.FindProperty("boostSpeedFactor");
+        boostDurationProp = serializedObject.FindProperty("boostDuration");
+        boostGravityFactorProp = serializedObject.FindProperty("boostGravityFactor");
+        boostRocketFactorProp = serializedObject.FindProperty("boostRocketFactor");
+
     }
 
     public override void OnInspectorGUI()
@@ -294,6 +413,15 @@ public class PlayerControllerEditor : Editor
         if (hasJumpProp.boolValue)
         {
             EditorGUILayout.PropertyField(jumpHeightProp);
+        }
+
+        if (hasBoostProp.boolValue)
+        {
+            EditorGUILayout.PropertyField(numberOfBoostsProp);
+            EditorGUILayout.PropertyField(boostSpeedFactorProp);
+            EditorGUILayout.PropertyField(boostDurationProp);
+            EditorGUILayout.PropertyField(boostGravityFactorProp);
+            EditorGUILayout.PropertyField(boostRocketFactorProp);
         }
 
         serializedObject.ApplyModifiedProperties();
