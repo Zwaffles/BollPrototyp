@@ -53,7 +53,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346658506022775662, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
       propertyPath: m_Name
-      value: CompleteBallPrefab
+      value: Variant18
       objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: hasJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: hasBoost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: maximumGravity
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: numberOfBoosts
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: minUpSlopeSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: regularMaxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: boostRocketFactor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: maxDownSlopeSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: boostGravityFactor
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284470449756824659, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+      propertyPath: boostVisualiserObject
+      value: 
+      objectReference: {fileID: 1327307770315097372}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+--- !u!1 &1327307770315097372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8631808626763917171, guid: 9946a27309a5776428feeaf3da7c7918, type: 3}
+  m_PrefabInstance: {fileID: 7323366826985202287}
+  m_PrefabAsset: {fileID: 0}
