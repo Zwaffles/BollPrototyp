@@ -23,6 +23,10 @@ public class TrackMeshCreator : PathSceneTool
 
     protected override void PathUpdated () 
     {
+
+        if (!autoUpdate)
+            return;
+
         if (pathCreator != null)
         {
             AssignMeshComponents ();
