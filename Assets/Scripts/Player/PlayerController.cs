@@ -268,21 +268,43 @@ public class PlayerController : MonoBehaviour
         {
 
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x > 0.05 && targetMaxSpeed < maxDownSlopeSpeed && - _moveDirection.y == -1)
+            if (slopeHit.normal.x > 0.05 && targetMaxSpeed < maxDownSlopeSpeed)
             {
-                slopeAngle = slopeHit.normal.x;
+                if(-_moveDirection.y == -1)
+                {
+                    slopeAngle = slopeHit.normal.x;
                 targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
                 // Test to see if this works correctly
                 Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
             }
+                if (-_moveDirection.y == 1)
+                {
+                    slopeAngle = slopeHit.normal.x;
+                    targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    // Test to see if this works correctly
+                    Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
+                }
+            }
 
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
+
             if (slopeHit.normal.x < -0.05 && targetMaxSpeed > minUpSlopeSpeed)
             {
-                slopeAngle = slopeHit.normal.x;
-                targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
-                // Test to see if this works correctly
-                Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
+                if (-_moveDirection.y == 1)
+                {
+                    slopeAngle = slopeHit.normal.x;
+                    targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                    // Test to see if this works correctly
+                    Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
+                }
+
+                if (-_moveDirection.y == -1)
+                {
+                    slopeAngle = slopeHit.normal.x;
+                    targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    // Test to see if this works correctly
+                    Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
+                }
             }
 
         }
