@@ -40,6 +40,10 @@ PrefabInstance:
       value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: boostDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: numberOfBoosts
       value: 3
       objectReference: {fileID: 0}
@@ -49,11 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: regularMaxSpeed
-      value: 32
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: boostSpeedFactor
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: moveAcceleration
