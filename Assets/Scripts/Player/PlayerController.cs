@@ -216,6 +216,9 @@ public class PlayerController : MonoBehaviour
             return;
 
         rb.AddTorque(new Vector3(0, 0, -_moveDirection.y * moveAcceleration));
+        
+      
+       
     }
 
     private void Jump()
@@ -337,8 +340,14 @@ public class PlayerController : MonoBehaviour
             currentOverSpeed = Mathf.Lerp(currentOverSpeed, 0f, fastSpeedRampUpFactor * Time.fixedDeltaTime);
         }
 
-        rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
-        Debug.Log(currentMaxSpeed);
+        if (-_moveDirection.y == 1)
+        {
+            rb.maxAngularVelocity = currentMaxSpeed / 1.5f + currentOverSpeed;
+        }
+        else
+        {
+            rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
+        }
 
     }
 
