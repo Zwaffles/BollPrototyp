@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public CourseManager courseManager { get; private set; }
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }
+    public AudioManager audioManager { get; private set; }
 
     [SerializeField] private GameState currentState = GameState.Menu;
 
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         courseManager = FindObjectOfType<CourseManager>();
         dataManager = FindObjectOfType<DataManager>();
         uiManager = FindObjectOfType<UIManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Start()
