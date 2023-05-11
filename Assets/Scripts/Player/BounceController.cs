@@ -29,6 +29,8 @@ public class BounceController : MonoBehaviour
         
         if (collision.impulse.magnitude < impulseThreshold) return;
 
+        GameManager.instance.audioManager.PlaySfx("airhorn");
+
         rb.AddForce(collision.impulse * bounceBias * bounceStrength, ForceMode.Impulse);
 
         canBounce = false;

@@ -1,19 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 
 /*
  *  Plays the rolling SFX
  *  Original script by Ludwig, modified by Johan
  */
-
-[RequireComponent(typeof(FMODUnity.StudioEventEmitter))]
+[RequireComponent(typeof(PlayerController))]
 public class SFX_Play_Rolling_Sound : MonoBehaviour
 {
-
-    //FMOD
-    private FMODUnity.StudioEventEmitter emitter;
 
     [SerializeField, Header("Sound Controls"), Tooltip("The minimum speed to play the SFX")]
     private float minSpeed = 1f;
@@ -29,62 +24,47 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
     private float maxPitch = 0.4f;
     private float pitchFromBall;
 
-    private int currentCollisions = 0;
+    private PlayerController playerController;
 
-    void Start()
+    void OnEnable()
     {
 
         ballRb = GetComponent<Rigidbody>();
-        emitter = GetComponent<FMODUnity.StudioEventEmitter>();
+        playerController = GetComponent<PlayerController>();
+
+        GameManager.instance.audioManager.PlayLoopingSfx("Rollin", isRunning, EngineSound);
 
     }
 
-    void Update()
+    float EngineSound()
     {
 
-        EngineSound();
-
-    }
-
-    void EngineSound()
-    {
-
-        currentSpeed = Mathf.Min(ballRb.velocity.magnitude, maxSpeed);
+        currentSpeed = Mathf.Min(ballRb.angularVelocity.magnitude, maxSpeed);
 
         pitchFromBall = currentSpeed / 50f;
 
-        float pitch, volume;
+        float pitch;
         
         if (currentSpeed < minSpeed) 
         {
 
             pitch = minPitch;
-            volume = 0f;
 
         } 
         else
         {
 
             pitch = Mathf.Min(maxPitch, minPitch + pitchFromBall);
-            volume = 1f;
 
         }
 
-        // Set pitch and volume (if the ball is rolling on something)
-        emitter.SetParameter("Pitch", pitch);
-        emitter.EventInstance.setVolume(currentCollisions > 0 ? volume : 0f);
+        return pitch;
 
     }
 
-    // Keep track of how many surfaces the ball is touching
-    private void OnCollisionEnter(Collision collision)
+    bool isRunning()
     {
-        currentCollisions++;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        currentCollisions--;
+        return playerController.isGrounded;
     }
 
 }

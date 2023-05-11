@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 2850255129268815804}
   - component: {fileID: 3691982329665594925}
   - component: {fileID: 4726737077104020636}
-  - component: {fileID: 2765027152541553274}
   - component: {fileID: 7631505359320462678}
   - component: {fileID: 1060289330994781116}
   - component: {fileID: 4668796994069957180}
@@ -167,20 +166,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
   moveAcceleration: 35
-  currentMaxSpeed: 28
   downSlopeSpeedMultiplier: 0.6
   maxDownSlopeSpeed: 80
   upSlopeSpeedMultiplier: 0.6
   minUpSlopeSpeed: 6
-  hasJump: 1
-  jumpHeight: 4
   fastSpeedRampUpFactor: 1
   slowSpeedRampUpFactor: 0.1
   maxOverSpeed: 60
-  targetMaxSpeed: 28
+  regularMaxSpeed: 28
   standardGravity: 9.8
   gravityIncreaseFactor: 18
   maximumGravity: 40
+  hasJump: 1
+  jumpHeight: 4
+  hasBoost: 0
+  numberOfBoosts: 3
+  boostSpeedFactor: 2
+  boostRocketFactor: 2
+  boostDuration: 2
+  boostGravityFactor: 0
+  boostVisualiserObject: {fileID: 0}
 --- !u!114 &4726737077104020636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,31 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 2de08450e9aded645aea9f9c4d8c7351, type: 2}
---- !u!114 &2765027152541553274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850255129268815805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e927309e04262cd4985e16a043e758da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BounceSound:
-    Guid:
-      Data1: -776349059
-      Data2: 1204787096
-      Data3: 1359910591
-      Data4: -2068015768
-    Path: event:/BallSFX/Test-Bounce
-  eqGlobal: 0
-  reverb: 0
-  delay: 0
-  delayTime: 0
-  pitch: 0
-  minimumImpulse: 6
 --- !u!114 &7631505359320462678
 MonoBehaviour:
   m_ObjectHideFlags: 0
