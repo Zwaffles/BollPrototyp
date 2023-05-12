@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 3691982329665594925}
   - component: {fileID: 4726737077104020636}
   - component: {fileID: 7631505359320462678}
-  - component: {fileID: 1060289330994781116}
   - component: {fileID: 4668796994069957180}
   m_Layer: 0
   m_Name: Ball
@@ -212,39 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 1
-  maxSpeed: 10
-  minPitch: 0
-  maxPitch: 0.4
---- !u!114 &1060289330994781116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850255129268815805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -748639806
-      Data2: 1150162484
-      Data3: 756954000
-      Data4: -1476375804
-    Path: event:/BallSFX/Test-Rolling
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  maxSpeed: 50
+  minPitch: 0.7
+  maxPitch: 8
 --- !u!114 &4668796994069957180
 MonoBehaviour:
   m_ObjectHideFlags: 0

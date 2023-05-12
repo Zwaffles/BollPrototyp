@@ -26,13 +26,35 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
 
     private PlayerController playerController;
 
+    private bool wasGrounded = false;
+
     void OnEnable()
     {
 
         ballRb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
 
-        GameManager.instance.audioManager.PlayLoopingSfx("Rollin", isRunning, EngineSound);
+    }
+
+    private void Update()
+    {
+
+        if (playerController.isGrounded)
+        {
+
+            if (wasGrounded) return;
+
+            wasGrounded = true;
+            GameManager.instance.audioManager.PlayLoopingSfx("Rollin", () => wasGrounded, EngineSound);
+
+        }
+        else
+        {
+
+            wasGrounded = false;
+
+        }
+
 
     }
 
@@ -58,12 +80,17 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
 
         }
 
+        Debug.Log("pitch was called: " + pitch);
+
         return pitch;
 
     }
 
     bool isRunning()
     {
+
+        Debug.Log("isRunning was called " + playerController.isGrounded);
+
         return playerController.isGrounded;
     }
 
