@@ -10,6 +10,7 @@ public class BossTimer : MonoBehaviour
     private float timeLeft = 1;
 
     private bool isRunning = false;
+    private bool textIsRed = false;
 
     private void OnEnable()
     {
@@ -31,10 +32,19 @@ public class BossTimer : MonoBehaviour
         // if time left has reached 0
         if(timeLeft <= 0)
         {
-            StopTimer();
-            timeLeft = 0;
-            UpdateTimerUI(timeLeft);
-            GameManager.instance.uiManager.EndGameplay(false);
+            if (textIsRed)
+                return;
+
+            minutes.style.color = Color.red;
+            seconds.style.color = Color.red;
+            milliSeconds.style.color = Color.red;
+
+            textIsRed = true;
+
+            //StopTimer();
+            //timeLeft = 0;
+            //UpdateTimerUI(timeLeft);
+            //GameManager.instance.uiManager.EndGameplay(false);
         }
     }
 
@@ -57,6 +67,10 @@ public class BossTimer : MonoBehaviour
 
     public void ResetTimer()
     {
+        minutes.style.color = Color.white;
+        seconds.style.color = Color.white;
+        milliSeconds.style.color = Color.white;
+
         timeLeft = GameManager.instance.courseManager.GetCurrentBossTimeLimit();
         UpdateTimerUI(timeLeft);
     }
