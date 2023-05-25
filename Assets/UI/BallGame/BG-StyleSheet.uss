@@ -158,6 +158,7 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background-color: rgba(0, 0, 0, 0);
+    -unity-background-image-tint-color: rgba(154, 154, 154, 255);
 }
 
 .LS-CourseTest-Box:focus {
@@ -166,7 +167,7 @@
     margin-top: 32px;
     margin-bottom: 8px;
     height: 116px;
-    background-color: rgba(123, 123, 123, 0);
+    background-color: rgba(253, 253, 253, 0);
     width: 116px;
     align-items: center;
     justify-content: center;
@@ -188,6 +189,7 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     scale: 1.1 1.1;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
 }
 
 .MM-Button {
@@ -236,4 +238,14 @@
 .MM-ButtonText {
     right: 8px;
     bottom: 2px;
+}
+
+.CourseButtonText {
+    font-size: 32px;
+    -unity-font-style: bold;
+    margin-right: 10%;
+    margin-bottom: 4px;
+    justify-content: center;
+    align-items: center;
+    color: rgba(24, 24, 24, 255);
 }
