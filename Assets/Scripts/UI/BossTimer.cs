@@ -3,9 +3,7 @@ using UnityEngine.UIElements;
 
 public class BossTimer : MonoBehaviour
 {
-    TextElement minutes;
-    TextElement seconds;
-    TextElement milliSeconds;
+    private TextElement bossTimer;
 
     private float timeLeft = 1;
 
@@ -16,9 +14,7 @@ public class BossTimer : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-        minutes = root.Q<TextElement>("Minutes");
-        seconds = root.Q<TextElement>("Seconds");
-        milliSeconds = root.Q<TextElement>("Milliseconds");
+        bossTimer = root.Q<TextElement>("BossTimer");
     }
 
     private void Update()
@@ -26,7 +22,7 @@ public class BossTimer : MonoBehaviour
         if (isRunning)
         {
             timeLeft -= Time.deltaTime;
-            UpdateTimerUI(timeLeft);
+            bossTimer.text = UpdateTimerUI(timeLeft);
         }
 
         // if time left has reached 0
@@ -35,9 +31,7 @@ public class BossTimer : MonoBehaviour
             if (textIsRed)
                 return;
 
-            minutes.style.color = Color.red;
-            seconds.style.color = Color.red;
-            milliSeconds.style.color = Color.red;
+            bossTimer.style.color = Color.red;
 
             textIsRed = true;
 
@@ -48,12 +42,21 @@ public class BossTimer : MonoBehaviour
         }
     }
 
-    public void UpdateTimerUI(float timeSpent)
+    public string UpdateTimerUI(float timeSpent)
     {
-        minutes.text = Mathf.FloorToInt(timeSpent / 60f).ToString();
-        seconds.text = Mathf.FloorToInt(timeSpent % 60f).ToString();
-        milliSeconds.text = Mathf.FloorToInt((timeSpent % 1) * 1000).ToString();
+        bool isNegative = timeSpent < 0;
+        if (isNegative)
+            timeSpent *= -1; // Make the time positive for calculation
+
+        int minutes = Mathf.FloorToInt(timeSpent / 60f);
+        int seconds = Mathf.FloorToInt(timeSpent % 60f);
+        int milliSeconds = Mathf.FloorToInt((timeSpent % 1) * 1000);
+
+        string sign = isNegative ? "-" : ""; // Add a negative sign if necessary
+
+        return $"{sign}{minutes:00}:{seconds:00}:{milliSeconds:000}";
     }
+
 
     public void StartTimer()
     {
@@ -67,11 +70,14 @@ public class BossTimer : MonoBehaviour
 
     public void ResetTimer()
     {
-        minutes.style.color = Color.white;
-        seconds.style.color = Color.white;
-        milliSeconds.style.color = Color.white;
+        bossTimer.style.color = Color.black;
 
         timeLeft = GameManager.instance.courseManager.GetCurrentBossTimeLimit();
         UpdateTimerUI(timeLeft);
+    }
+
+    public float GetTimeLeft()
+    {
+        return timeLeft;
     }
 }

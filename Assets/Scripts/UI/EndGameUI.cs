@@ -38,7 +38,7 @@ public class EndGameUI : MonoBehaviour
         courseManager = gameManager.courseManager;
     }
 
-    public void DisplayStats(float timeSpent)
+    public void DisplayStats(float timeSpent, bool completionStatus)
     {
         var _bestTime = courseManager.GetCurrentCourseBestTime();
 
@@ -50,6 +50,11 @@ public class EndGameUI : MonoBehaviour
         {
             bestTime.text = "Best Time: --:--:---";
         }
+
+        if (completionStatus)
+            currentTime.style.color = Color.black;
+        else
+            currentTime.style.color = Color.red;
 
         currentTime.text = "Current Time: " + DisplayTime(timeSpent);
         bossTimer.text = "Boss Timer: " + DisplayTime(courseManager.GetCurrentBossTimeLimit());

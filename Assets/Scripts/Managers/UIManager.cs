@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         gameplayStarted = false;
 
         endGameUI.gameObject.SetActive(true);
-        endGameUI.DisplayStats(timeSpent);
+        endGameUI.DisplayStats(timeSpent, completionStatus);
     }
 
     private void HandleHasMoved()
