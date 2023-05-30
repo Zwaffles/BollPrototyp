@@ -18,39 +18,16 @@
       "allowCompilationErrors": false
     }
   ],
-  "build": {
-    "content": [
+"build": {
+      "globalMetadata": // Edit your documentation website info, see: https://dotnet.github.io/docfx/tutorial/docfx.exe_user_manual.html#322-reserved-metadata
       {
-        "files": [
-          "api/**.yml",
-          "api/index.md"
-        ]
+        "_appTitle": "Example Unity documentation",
+        "_appFooter": "Example Unity documentation",
+        "_enableSearch": true
       },
+      "sitemap":
       {
-        "files": [
-          "articles/**.md",
-          "articles/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
+        "baseUrl": "https://zwaffles.github.io/BollPrototyp/" // The URL of your documentation website
       }
-    ],
-    "resource": [
-      {
-        "files": [
-          "images/**"
-        ]
-      }
-    ],
-    "output": "_site",
-    "globalMetadataFiles": [],
-    "fileMetadataFiles": [],
-    "template": [
-      "default",
-      "modern"
-    ],
-    "postProcessors": [],
-    "keepFileLink": false,
-    "disableGitFeatures": false
   }
 }
