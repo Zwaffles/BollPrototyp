@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -11,6 +12,7 @@ public class EndGameUI : MonoBehaviour
 
     private TextElement bestTime;
     private TextElement currentTime;
+    private TextElement parTime;
     private TextElement bossTimer;
 
     private InputReader input;
@@ -24,6 +26,7 @@ public class EndGameUI : MonoBehaviour
 
         bestTime = root.Q<TextElement>("UI_Endscreen_BestTime_Text");
         currentTime = root.Q<TextElement>("UI_Endscreen_CurrentTime_Text");
+        parTime = root.Q<TextElement>("UI_Endscreen_Par-Time_Text");
         bossTimer = root.Q<TextElement>("UI_Endscreen_BossTime_Text");
     }
 
@@ -41,6 +44,7 @@ public class EndGameUI : MonoBehaviour
     public void DisplayStats(float timeSpent, bool completionStatus)
     {
         var _bestTime = courseManager.GetCurrentCourseBestTime();
+        var _parTime = courseManager.GetCurrentParTime();
 
         if(_bestTime > 0)
         {
@@ -53,13 +57,13 @@ public class EndGameUI : MonoBehaviour
 
         if (completionStatus)
         {
-            if (_bestTime > courseManager.GetCurrentParTime())
+            if (_bestTime > _parTime)
             {
                 currentTime.style.color = Color.red;
             }
             else
             {
-                if (_bestTime < courseManager.GetCurrentParTime())
+                if (_bestTime < _parTime)
                    currentTime.style.color = Color.green;
                 else
                 {
@@ -71,6 +75,7 @@ public class EndGameUI : MonoBehaviour
             currentTime.style.color = Color.red;
 
         currentTime.text = "Current Time: " + DisplayTime(timeSpent);
+        parTime.text = "Par-Time: " + DisplayTime(_parTime);
         bossTimer.text = "Boss Timer: " + DisplayTime(courseManager.GetCurrentBossTimeLimit());
     }
 
