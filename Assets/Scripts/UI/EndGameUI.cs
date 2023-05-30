@@ -52,7 +52,21 @@ public class EndGameUI : MonoBehaviour
         }
 
         if (completionStatus)
-            currentTime.style.color = Color.black;
+        {
+            if (_bestTime > courseManager.CurrentParTime())
+            {
+                currentTime.style.color = Color.red;
+            }
+            else
+            {
+                if (_bestTime < courseManager.CurrentParTime())
+                   currentTime.style.color = Color.green;
+                else
+                {
+                    currentTime.style.color = Color.black;
+                }
+            }
+        }
         else
             currentTime.style.color = Color.red;
 
