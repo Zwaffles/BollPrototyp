@@ -14,7 +14,11 @@ public class CourseManager : MonoBehaviour
 
     private const float DEFAULT_TIME = 0f;
 
-    // Load a specific course by setIndex and courseIndex
+    /// <summary>
+    /// Load a specific course by setIndex and courseIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <param name="courseIndex">The index of the course within the set.</param>
     public void LoadCourse(int setIndex, int courseIndex)
     {
         GameManager.instance.SetGameState(GameManager.GameState.Play);
@@ -22,14 +26,20 @@ public class CourseManager : MonoBehaviour
         Debug.Log(GetCurrentParTime());
     }
 
-    // Load the boss course for a specific set
+    /// <summary>
+    /// Load the boss course for a specific set.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
     public void LoadBossCourse(int setIndex)
     {
         GameManager.instance.SetGameState(GameManager.GameState.Play);
         SceneManager.LoadScene(sets[setIndex].bossCourse.sceneName);
     }
 
-    // Load player progress from a list of SetData
+    /// <summary>
+    /// Load player progress from a list of SetData.
+    /// </summary>
+    /// <param name="setDataList">The list of SetData to load progress from.</param>
     public void LoadPlayerProgress(List<SetData> setDataList)
     {
         for (int i = 0; i < setDataList.Count; i++)
@@ -48,7 +58,9 @@ public class CourseManager : MonoBehaviour
         }
     }
 
-    // Reset player progress for all courses
+    /// <summary>
+    /// Reset player progress for all courses.
+    /// </summary>
     public void ResetPlayerProgress()
     {
         foreach (SetData set in sets)
@@ -64,7 +76,11 @@ public class CourseManager : MonoBehaviour
         }
     }
 
-    // Update course data with completion status and time spent
+    /// <summary>
+    /// Update course data with completion status and time spent.
+    /// </summary>
+    /// <param name="isCompleted">Whether the course is completed or not.</param>
+    /// <param name="timeSpent">The time spent on the course.</param>
     public void UpdateCourseData(bool isCompleted, float timeSpent)
     {
         CourseData courseData = currentCourse < 5 ? sets[currentSet].subCourses[currentCourse] : sets[currentSet].bossCourse;
@@ -79,104 +95,167 @@ public class CourseManager : MonoBehaviour
         }
     }
 
-    // Get the completion status of a course
+    /// <summary>
+    /// Get the completion status of a course.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <param name="courseIndex">The index of the course within the set.</param>
+    /// <returns>True if the course is completed, false otherwise.</returns>
     public bool GetCompletionStatus(int setIndex, int courseIndex)
     {
         return sets[setIndex].subCourses[courseIndex].courseCompleted;
     }
 
-    // Check if the current course is the boss course
+    /// <summary>
+    /// Check if the current course is the boss course.
+    /// </summary>
+    /// <returns>True if the current course is the boss course, false otherwise.</returns>
     public bool GetCurrentCourseIsBossCourse()
     {
         return currentCourse == 5;
     }
 
-    // Get the name of a set by setIndex
+    /// <summary>
+    /// Get the name of a set by setIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <returns>The name of the set.</returns>
     public string GetSetName(int setIndex)
     {
         return sets[setIndex].setName;
     }
 
-    // Get the name of a course by setIndex and courseIndex
+    /// <summary>
+    /// Get the name of a course by setIndex and courseIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <param name="courseIndex">The index of the course within the set.</param>
+    /// <returns>The name of the course.</returns>
     public string GetCourseName(int setIndex, int courseIndex)
     {
         return sets[setIndex].subCourses[courseIndex].courseName;
     }
 
-    // Get the name of the boss course by setIndex
+    /// <summary>
+    /// Get the name of the boss course by setIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <returns>The name of the boss course.</returns>
     public string GetBossCourseName(int setIndex)
     {
         return sets[setIndex].bossCourse.courseName;
     }
 
-    // Get the time spent on a course by setIndex and courseIndex
+    /// <summary>
+    /// Get the time spent on a course by setIndex and courseIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <param name="courseIndex">The index of the course within the set.</param>
+    /// <returns>The time spent on the course.</returns>
     public float GetTimeSpent(int setIndex, int courseIndex)
     {
         return sets[setIndex].subCourses[courseIndex].bestTime;
     }
 
-    // Get the time spent on the boss course by setIndex
+    /// <summary>
+    /// Get the time spent on the boss course by setIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <returns>The time spent on the boss course.</returns>
     public float GetBossTimeSpent(int setIndex)
     {
         return sets[setIndex].bossCourse.bestTime;
     }
 
-    // Get the time limit for the boss course by setIndex
+    /// <summary>
+    /// Get the time limit for the boss course by setIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <returns>The time limit for the boss course.</returns>
     public float GetBossTimeLimit(int setIndex)
     {
         return sets[setIndex].bossTimeLimit;
     }
 
-    // Get the total time spent on all sub-courses in a set by setIndex
+    /// <summary>
+    /// Get the total time spent on all sub-courses in a set by setIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <returns>The total time spent on all sub-courses in the set.</returns>
     public float GetTotalTimeSpent(int setIndex)
     {
         return sets[setIndex].subCourses.Sum(course => course.bestTime);
     }
 
-    // Get the remaining time limit for the current boss course
+    /// <summary>
+    /// Get the remaining time limit for the current boss course.
+    /// </summary>
+    /// <returns>The remaining time limit for the current boss course.</returns>
     public float GetCurrentBossTimeLimit()
     {
         float totalTimeSpent = GetTotalTimeSpent(currentSet);
         return sets[currentSet].bossTimeLimit - totalTimeSpent;
     }
 
-    // Get the best time achieved on the current course
+    /// <summary>
+    /// Get the best time achieved on the current course.
+    /// </summary>
+    /// <returns>The best time achieved on the current course.</returns>
     public float GetCurrentCourseBestTime()
     {
         return currentCourse < 5 ? sets[currentSet].subCourses[currentCourse].bestTime : sets[currentSet].bossCourse.bestTime;
     }
 
-    // Get the list of SetData objects
+    /// <summary>
+    /// Get the list of SetData objects.
+    /// </summary>
+    /// <returns>The list of SetData objects.</returns>
     public List<SetData> GetSetData()
     {
         return sets;
     }
 
-    // Get the array of CourseData for a set by setIndex
+    /// <summary>
+    /// Get the array of CourseData for a set by setIndex.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
+    /// <returns>The array of CourseData for the set.</returns>
     public CourseData[] GetCourseData(int setIndex)
     {
         return sets[setIndex].subCourses;
     }
 
-    // Get the index of the current course
+    /// <summary>
+    /// Get the index of the current course.
+    /// </summary>
+    /// <returns>The index of the current course.</returns>
     public int GetCurrentCourse()
     {
         return currentCourse;
     }
 
-    // Set the current set index
+    /// <summary>
+    /// Set the current set index.
+    /// </summary>
+    /// <param name="setIndex">The index of the set.</param>
     public void SetCurrentSet(int setIndex)
     {
         currentSet = setIndex;
     }
 
-    // Set the current course index
+    /// <summary>
+    /// Set the current course index.
+    /// </summary>
+    /// <param name="courseIndex">The index of the course within the set.</param>
     public void SetCurrentCourse(int courseIndex)
     {
         currentCourse = courseIndex;
     }
 
-    // Get the par time for the current course
+    /// <summary>
+    /// Get the par time for the current course.
+    /// </summary>
+    /// <returns>The par time for the current course.</returns>
     public float GetCurrentParTime()
     {
         return sets[currentSet].subCourses[currentCourse].parTime;

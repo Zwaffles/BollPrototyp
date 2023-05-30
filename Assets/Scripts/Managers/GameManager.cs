@@ -1,10 +1,16 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// The GameManager class controls the overall game flow and manages different game states.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private InputReader input;
 
+    /// <summary>
+    /// Gets the input reader for the GameManager.
+    /// </summary>
     public InputReader Input
     {
         get
@@ -13,7 +19,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Enumeration for different game states
+    /// <summary>
+    /// Enumeration for different game states.
+    /// </summary>
     public enum GameState
     {
         Play,
@@ -21,10 +29,14 @@ public class GameManager : MonoBehaviour
         Menu,
     }
 
-    // Singleton instance of the GameManager
+    /// <summary>
+    /// Singleton instance of the GameManager.
+    /// </summary>
     public static GameManager instance;
 
-    // References to other managers in the game
+    /// <summary>
+    /// References to other managers in the game.
+    /// </summary>
     public CourseManager courseManager { get; private set; }
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }
@@ -32,7 +44,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameState currentState = GameState.Menu;
 
-    // Property to get and set the current game state
+    /// <summary>
+    /// Gets or sets the current game state.
+    /// </summary>
     public GameState CurrentState
     {
         get
@@ -46,12 +60,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Event triggered when the game state changes
+    /// <summary>
+    /// Event triggered when the game state changes.
+    /// </summary>
     public event Action<GameState> GameStateChangedEvent;
 
     private void Awake()
     {
-        // Ensure that only one instance of the GameManager exists
+        /// <summary>
+        /// Ensures that only one instance of the GameManager exists.
+        /// </summary>
         if (instance == null)
         {
             instance = this;
@@ -71,11 +89,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Set the input mode to UI
+        /// <summary>
+        /// Sets the input mode to UI.
+        /// </summary>
         input.SetUI();
     }
 
-    // Method to set the game state and trigger the event
+    /// <summary>
+    /// Sets the game state and triggers the event.
+    /// </summary>
+    /// <param name="newState">The new game state.</param>
     public void SetGameState(GameState newState)
     {
         currentState = newState;

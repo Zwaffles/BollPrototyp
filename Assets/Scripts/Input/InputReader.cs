@@ -7,19 +7,51 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
 {
     private PlayerInputs _playerInputs;
 
-    // Events for gameplay actions
+    /// <summary>
+    /// Event triggered when the player moves.
+    /// </summary>
     public event Action<Vector2> MoveEvent;
+
+    /// <summary>
+    /// Event triggered when the player has moved.
+    /// </summary>
     public event Action HasMovedEvent;
+
+    /// <summary>
+    /// Event triggered when the player jumps.
+    /// </summary>
     public event Action JumpEvent;
+
+    /// <summary>
+    /// Event triggered when the player cancels a jump.
+    /// </summary>
     public event Action JumpCancelledEvent;
+
+    /// <summary>
+    /// Event triggered when the game is paused.
+    /// </summary>
     public event Action PauseEvent;
+
+    /// <summary>
+    /// Event triggered when the game is resumed.
+    /// </summary>
     public event Action ResumeEvent;
+
+    /// <summary>
+    /// Event triggered when the camera cycle action is performed.
+    /// </summary>
     public event Action CameraCycleEvent;
+
+    /// <summary>
+    /// Event triggered when the submit action is performed.
+    /// </summary>
     public event Action SubmitEvent;
 
     private void OnEnable()
     {
-        // Initialize player inputs and set callbacks
+        /// <summary>
+        /// Initializes player inputs and sets callbacks.
+        /// </summary>
         if (_playerInputs == null)
         {
             _playerInputs = new PlayerInputs();
@@ -31,58 +63,82 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
-    // Methods to add and remove event listeners for MoveEvent
+    /// <summary>
+    /// Adds an event listener for the MoveEvent.
+    /// </summary>
     public void AddMoveEventListener(Action<Vector2> listener)
     {
         MoveEvent += listener;
     }
 
+    /// <summary>
+    /// Removes an event listener for the MoveEvent.
+    /// </summary>
     public void RemoveMoveEventListener(Action<Vector2> listener)
     {
         MoveEvent -= listener;
     }
 
-    // Methods to add and remove event listeners for JumpEvent
+    /// <summary>
+    /// Adds an event listener for the JumpEvent.
+    /// </summary>
     public void AddJumpEventListener(Action listener)
     {
         JumpEvent += listener;
     }
 
+    /// <summary>
+    /// Removes an event listener for the JumpEvent.
+    /// </summary>
     public void RemoveJumpEventListener(Action listener)
     {
         JumpEvent -= listener;
     }
 
-    // Methods to add and remove event listeners for JumpCancelledEvent
+    /// <summary>
+    /// Adds an event listener for the JumpCancelledEvent.
+    /// </summary>
     public void AddJumpCancelledEventListener(Action listener)
     {
         JumpCancelledEvent += listener;
     }
 
+    /// <summary>
+    /// Removes an event listener for the JumpCancelledEvent.
+    /// </summary>
     public void RemoveJumpCancelledEventListener(Action listener)
     {
         JumpCancelledEvent -= listener;
     }
 
-    // Methods to add and remove event listeners for SubmitEvent
+    /// <summary>
+    /// Adds an event listener for the SubmitEvent.
+    /// </summary>
     public void AddSubmitEventListener(Action listener)
     {
         SubmitEvent += listener;
     }
 
+    /// <summary>
+    /// Removes an event listener for the SubmitEvent.
+    /// </summary>
     public void RemoveSubmitEventListener(Action listener)
     {
         SubmitEvent -= listener;
     }
 
-    // Callback for Move input action
+    /// <summary>
+    /// Callback for the Move input action.
+    /// </summary>
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent?.Invoke(obj: context.ReadValue<Vector2>());
         HasMovedEvent?.Invoke();
     }
 
-    // Callback for Jump input action
+    /// <summary>
+    /// Callback for the Jump input action.
+    /// </summary>
     public void OnJump(InputAction.CallbackContext context)
     {
         var phase = context.phase;
@@ -97,7 +153,9 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
-    // Callback for Pause input action
+    /// <summary>
+    /// Callback for the Pause input action.
+    /// </summary>
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -106,7 +164,9 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
-    // Callback for Resume input action
+    /// <summary>
+    /// Callback for the Resume input action.
+    /// </summary>
     public void OnResume(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -115,7 +175,9 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
-    // Callback for CycleCamera input action
+    /// <summary>
+    /// Callback for the CycleCamera input action.
+    /// </summary>
     public void OnCycleCamera(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -124,13 +186,17 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
-    // Callback for Zoom input action
+    /// <summary>
+    /// Callback for the Zoom input action.
+    /// </summary>
     public void OnZoom(InputAction.CallbackContext context)
     {
         // Empty implementation
     }
 
-    // Callback for Submit input action
+    /// <summary>
+    /// Callback for the Submit input action.
+    /// </summary>
     public void OnSubmit(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -139,14 +205,18 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         }
     }
 
-    // Enable gameplay inputs and disable UI inputs
+    /// <summary>
+    /// Enables gameplay inputs and disables UI inputs.
+    /// </summary>
     public void SetGameplay()
     {
         _playerInputs.Gameplay.Enable();
         _playerInputs.UI.Disable();
     }
 
-    // Enable UI inputs and disable gameplay inputs
+    /// <summary>
+    /// Enables UI inputs and disables gameplay inputs.
+    /// </summary>
     public void SetUI()
     {
         _playerInputs.Gameplay.Disable();
