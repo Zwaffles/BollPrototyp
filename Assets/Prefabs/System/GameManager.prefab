@@ -372,31 +372,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sets:
   - setName: Lovely Seaside Road
-    bossTimeLimit: 240
+    bossTimeLimit: 154
     subCourses:
     - courseName: 1st Course
-      sceneName: Level-PH-1
+      sceneName: Level_A1_1
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
     - courseName: 2nd Course
-      sceneName: Level-PH-2
+      sceneName: Level_A1_2
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
     - courseName: 3rd Course
-      sceneName: Level-PH-3
+      sceneName: Level_A1_3
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
     - courseName: 4th Course
-      sceneName: Level-PH-4
+      sceneName: Level_A1_4
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
     - courseName: 5th Course
-      sceneName: Level-PH-5
+      sceneName: Level_A1_5
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: Boss Course
-      sceneName: Level-PH-6
+      sceneName: Level_A1_6
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
   - setName: Halldor Evil Set
@@ -404,11 +410,13 @@ MonoBehaviour:
     subCourses:
     - courseName: Halldor Evil Level
       sceneName: Level_A1_SecretPipeLevel
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: Boss Course
       sceneName: Level-PH-6
+      parTime: 69
       courseCompleted: 0
       bestTime: 0
 --- !u!1 &4637475394147627162

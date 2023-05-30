@@ -18,8 +18,7 @@ public class CourseManager : MonoBehaviour
     {
         GameManager.instance.SetGameState(GameManager.GameState.Play);
         SceneManager.LoadScene(sets[setIndex].subCourses[courseIndex].sceneName);
-        ParTime();
-        Debug.Log(parTime);
+        Debug.Log(GetCurrentParTime());
        
     }
 
@@ -157,29 +156,8 @@ public class CourseManager : MonoBehaviour
         currentCourse = courseIndex;
     }
 
-    public void ParTime()
+    public float GetCurrentParTime()
     {
-        switch (currentSet)
-        { 
-            case 0: 
-        switch (currentCourse)
-        {
-            case 0: parTime = 35; break;
-            case 1: parTime = 12; break;
-            case 2: parTime = 15; break;
-            case 3: parTime = 22; break;
-            case 4: parTime = 25; break;
-            case 5: parTime = 45; break;
-                }
-             break;
-    }
-}
-
-
-    public float CurrentParTime()
-    {
-        
-            return parTime;
-
+        return sets[currentSet].subCourses[currentCourse].parTime;
     }
 }

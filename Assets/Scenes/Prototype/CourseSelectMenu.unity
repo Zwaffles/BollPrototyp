@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2152,8 +2152,16 @@ PrefabInstance:
       value: 154
       objectReference: {fileID: 0}
     - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
+      propertyPath: sets.Array.data[1].bossCourse.parTime
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
       propertyPath: sets.Array.data[0].bossCourse.sceneName
       value: Level_A1_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
+      propertyPath: sets.Array.data[1].subCourses.Array.data[0].parTime
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
       propertyPath: sets.Array.data[0].subCourses.Array.data[0].sceneName

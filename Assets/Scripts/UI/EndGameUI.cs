@@ -53,13 +53,13 @@ public class EndGameUI : MonoBehaviour
 
         if (completionStatus)
         {
-            if (_bestTime > courseManager.CurrentParTime())
+            if (_bestTime > courseManager.GetCurrentParTime())
             {
                 currentTime.style.color = Color.red;
             }
             else
             {
-                if (_bestTime < courseManager.CurrentParTime())
+                if (_bestTime < courseManager.GetCurrentParTime())
                    currentTime.style.color = Color.green;
                 else
                 {

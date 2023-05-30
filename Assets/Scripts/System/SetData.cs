@@ -23,16 +23,18 @@ public class CourseData
 {
     public string courseName;
     public string sceneName;
+    public float parTime;
 
     [HideInInspector]
     public bool courseCompleted = false;
     [HideInInspector]
     public float bestTime = 0f;
 
-    public CourseData(string courseName, string sceneName)
+    public CourseData(string courseName, string sceneName, float parTime)
     {
         this.courseName = courseName;
         this.sceneName = sceneName;
+        this.parTime = parTime;
     }
 
     public void SetCourseCompleted(bool isCompleted)
