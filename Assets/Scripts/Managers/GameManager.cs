@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Enumeration for different game states
     public enum GameState
     {
         Play,
@@ -20,8 +21,10 @@ public class GameManager : MonoBehaviour
         Menu,
     }
 
+    // Singleton instance of the GameManager
     public static GameManager instance;
 
+    // References to other managers in the game
     public CourseManager courseManager { get; private set; }
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }
@@ -29,11 +32,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameState currentState = GameState.Menu;
 
+    // Property to get and set the current game state
     public GameState CurrentState
     {
-        get 
-        { 
-            return currentState; 
+        get
+        {
+            return currentState;
         }
 
         set
@@ -42,6 +46,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Event triggered when the game state changes
     public event Action<GameState> GameStateChangedEvent;
 
     private void Awake()
@@ -66,14 +71,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // Set the input mode to UI
         input.SetUI();
     }
 
+    // Method to set the game state and trigger the event
     public void SetGameState(GameState newState)
     {
         currentState = newState;
         GameStateChangedEvent?.Invoke(newState);
 
+        // Set the input mode based on the new game state
         if (newState == GameState.Play)
             input.SetGameplay();
         else
