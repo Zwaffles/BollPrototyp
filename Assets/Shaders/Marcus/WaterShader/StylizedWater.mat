@@ -12,9 +12,9 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2990
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -35,18 +35,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _FoamAmount: 2.86
-    - _FoamCutOff: 1.08
-    - _FoamSpeed: 0.001
-    - _Foam_scale: 1.47
+    - _FoamCutOff: 1.42
+    - _FoamSpeed: 0.002
+    - _Foam_scale: 1.05
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: -10
     - _RefracrionScale: 0.22
     - _RefracrionStrength: 0.33
     - _RefractionSpeed: 0.02
     - _WaterDepth: 3.3
     m_Colors:
     - _DeepWater: {r: 0, g: 0.31611425, b: 0.6320754, a: 0.5764706}
-    - _FoamColor: {r: 0.6462264, g: 1, b: 0.9893909, a: 0.4392157}
+    - _FoamColor: {r: 0.6273585, g: 1, b: 0.98757863, a: 0.6117647}
     - _ShallowWater: {r: 0, g: 0.6602904, b: 0.74509805, a: 0.48235294}
   m_BuildTextureStacks: []
 --- !u!114 &3769432557095857669
