@@ -12,6 +12,10 @@ public class CourseFinish : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Event triggered when the player enters the trigger zone.
+    /// </summary>
+    /// <param name="other">The collider of the other object.</param>
     private void OnTriggerEnter(Collider other)
     {
         if (hasFinished)
@@ -22,11 +26,10 @@ public class CourseFinish : MonoBehaviour
             try
             {
                 var bossTimer = FindObjectOfType<BossTimer>();
-                if(bossTimer != null)
+                if (bossTimer != null)
                 {
                     GameManager.instance.uiManager?.EndGameplay(bossTimer.GetTimeLeft() < 0 ? false : true);
                 }
-
                 else
                 {
                     // Stop the timer and handle end of gameplay stuff

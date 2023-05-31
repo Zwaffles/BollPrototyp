@@ -1,0 +1,404 @@
+\doxysection{Course\+Manager Class Reference}
+\hypertarget{class_course_manager}{}\label{class_course_manager}\index{CourseManager@{CourseManager}}
+Inheritance diagram for Course\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_course_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_course_manager_a659bc93dbee62e519e8f28132e208d31}{Load\+Course}} (int set\+Index, int course\+Index)
+\begin{DoxyCompactList}\small\item\em Load a specific course by set\+Index and course\+Index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_course_manager_a0ef98accf323bd108b371405e736e031}{Load\+Boss\+Course}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Load the boss course for a specific set. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_course_manager_a42d534c80a559889f65bb06d5376f13c}{Load\+Player\+Progress}} (List$<$ \mbox{\hyperlink{class_set_data}{Set\+Data}} $>$ set\+Data\+List)
+\begin{DoxyCompactList}\small\item\em Load player progress from a list of \doxylink{class_set_data}{Set\+Data}. \end{DoxyCompactList}\item 
+\Hypertarget{class_course_manager_aefd303a288b91a87018b9875558f4b89}\label{class_course_manager_aefd303a288b91a87018b9875558f4b89} 
+void {\bfseries Reset\+Player\+Progress} ()
+\begin{DoxyCompactList}\small\item\em Reset player progress for all courses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_course_manager_a5e4a162c8c14f1fcaf450c97ce2f46d7}{Update\+Course\+Data}} (bool is\+Completed, float time\+Spent)
+\begin{DoxyCompactList}\small\item\em Update course data with completion status and time spent. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_course_manager_a8c82a6b1217b8a8143b5dc26f4cec8ff}{Get\+Completion\+Status}} (int set\+Index, int course\+Index)
+\begin{DoxyCompactList}\small\item\em Get the completion status of a course. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_course_manager_ac8ed41b7fa9d60cc1e6158ed85720710}{Get\+Current\+Course\+Is\+Boss\+Course}} ()
+\begin{DoxyCompactList}\small\item\em Check if the current course is the boss course. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_course_manager_acfffab59a6d5da1da610748d6759d144}{Get\+Set\+Name}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Get the name of a set by set\+Index. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_course_manager_af944242be263a3e28c2ea2bd27d3534d}{Get\+Course\+Name}} (int set\+Index, int course\+Index)
+\begin{DoxyCompactList}\small\item\em Get the name of a course by set\+Index and course\+Index. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_course_manager_aa50e86c458a71b08ee6bc3e9c71b54ae}{Get\+Boss\+Course\+Name}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Get the name of the boss course by set\+Index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_a5321f1feb666e3b87e257cc1e4d6b194}{Get\+Time\+Spent}} (int set\+Index, int course\+Index)
+\begin{DoxyCompactList}\small\item\em Get the time spent on a course by set\+Index and course\+Index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_a69c7133833057f1cd556b9991ca4b838}{Get\+Boss\+Time\+Spent}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Get the time spent on the boss course by set\+Index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_ada594bda5fe595431868da50bd21fbfd}{Get\+Boss\+Time\+Limit}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Get the time limit for the boss course by set\+Index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_a94634caef4a2789fe0e2af7571027516}{Get\+Total\+Time\+Spent}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Get the total time spent on all sub-\/courses in a set by set\+Index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_a4dc6b3ae9f29ff26ff6f340c671dc6ba}{Get\+Current\+Boss\+Time\+Limit}} ()
+\begin{DoxyCompactList}\small\item\em Get the remaining time limit for the current boss course. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_a5573c6b16e7837182534d1e180df83a3}{Get\+Current\+Course\+Best\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get the best time achieved on the current course. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_set_data}{Set\+Data}} $>$ \mbox{\hyperlink{class_course_manager_a15026e5a72f1d53fb52889253793f731}{Get\+Set\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Get the list of \doxylink{class_set_data}{Set\+Data} objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_course_data}{Course\+Data}}\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_course_manager_a00b4c087e100d1e90abdd480da463f80}{Get\+Course\+Data}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Get the array of \doxylink{class_course_data}{Course\+Data} for a set by set\+Index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_course_manager_a9c6df5dca82ee193cc3c6a7f8e0266f4}{Get\+Current\+Course}} ()
+\begin{DoxyCompactList}\small\item\em Get the index of the current course. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_course_manager_aacfcef50816ae5bafaa9d3ea8358b237}{Set\+Current\+Set}} (int set\+Index)
+\begin{DoxyCompactList}\small\item\em Set the current set index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_course_manager_a4d9fd81473ad80c4a15d6edeba148a8b}{Set\+Current\+Course}} (int course\+Index)
+\begin{DoxyCompactList}\small\item\em Set the current course index. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_course_manager_a3d11440749e215eb40012544016df9eb}{Get\+Current\+Par\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get the par time for the current course. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_course_manager_aa50e86c458a71b08ee6bc3e9c71b54ae}\label{class_course_manager_aa50e86c458a71b08ee6bc3e9c71b54ae} 
+\index{CourseManager@{CourseManager}!GetBossCourseName@{GetBossCourseName}}
+\index{GetBossCourseName@{GetBossCourseName}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetBossCourseName()}{GetBossCourseName()}}
+{\footnotesize\ttfamily string Course\+Manager.\+Get\+Boss\+Course\+Name (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the name of the boss course by set\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the boss course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_ada594bda5fe595431868da50bd21fbfd}\label{class_course_manager_ada594bda5fe595431868da50bd21fbfd} 
+\index{CourseManager@{CourseManager}!GetBossTimeLimit@{GetBossTimeLimit}}
+\index{GetBossTimeLimit@{GetBossTimeLimit}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetBossTimeLimit()}{GetBossTimeLimit()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Boss\+Time\+Limit (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the time limit for the boss course by set\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time limit for the boss course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a69c7133833057f1cd556b9991ca4b838}\label{class_course_manager_a69c7133833057f1cd556b9991ca4b838} 
+\index{CourseManager@{CourseManager}!GetBossTimeSpent@{GetBossTimeSpent}}
+\index{GetBossTimeSpent@{GetBossTimeSpent}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetBossTimeSpent()}{GetBossTimeSpent()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Boss\+Time\+Spent (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the time spent on the boss course by set\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time spent on the boss course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a8c82a6b1217b8a8143b5dc26f4cec8ff}\label{class_course_manager_a8c82a6b1217b8a8143b5dc26f4cec8ff} 
+\index{CourseManager@{CourseManager}!GetCompletionStatus@{GetCompletionStatus}}
+\index{GetCompletionStatus@{GetCompletionStatus}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCompletionStatus()}{GetCompletionStatus()}}
+{\footnotesize\ttfamily bool Course\+Manager.\+Get\+Completion\+Status (\begin{DoxyParamCaption}\item[{int}]{set\+Index,  }\item[{int}]{course\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the completion status of a course. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+{\em course\+Index} & The index of the course within the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the course is completed, false otherwise.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a00b4c087e100d1e90abdd480da463f80}\label{class_course_manager_a00b4c087e100d1e90abdd480da463f80} 
+\index{CourseManager@{CourseManager}!GetCourseData@{GetCourseData}}
+\index{GetCourseData@{GetCourseData}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCourseData()}{GetCourseData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_course_data}{Course\+Data}}\mbox{[}$\,$\mbox{]} Course\+Manager.\+Get\+Course\+Data (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the array of \doxylink{class_course_data}{Course\+Data} for a set by set\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The array of \doxylink{class_course_data}{Course\+Data} for the set.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_af944242be263a3e28c2ea2bd27d3534d}\label{class_course_manager_af944242be263a3e28c2ea2bd27d3534d} 
+\index{CourseManager@{CourseManager}!GetCourseName@{GetCourseName}}
+\index{GetCourseName@{GetCourseName}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCourseName()}{GetCourseName()}}
+{\footnotesize\ttfamily string Course\+Manager.\+Get\+Course\+Name (\begin{DoxyParamCaption}\item[{int}]{set\+Index,  }\item[{int}]{course\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the name of a course by set\+Index and course\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+{\em course\+Index} & The index of the course within the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a4dc6b3ae9f29ff26ff6f340c671dc6ba}\label{class_course_manager_a4dc6b3ae9f29ff26ff6f340c671dc6ba} 
+\index{CourseManager@{CourseManager}!GetCurrentBossTimeLimit@{GetCurrentBossTimeLimit}}
+\index{GetCurrentBossTimeLimit@{GetCurrentBossTimeLimit}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentBossTimeLimit()}{GetCurrentBossTimeLimit()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Current\+Boss\+Time\+Limit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the remaining time limit for the current boss course. 
+
+\begin{DoxyReturn}{Returns}
+The remaining time limit for the current boss course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a9c6df5dca82ee193cc3c6a7f8e0266f4}\label{class_course_manager_a9c6df5dca82ee193cc3c6a7f8e0266f4} 
+\index{CourseManager@{CourseManager}!GetCurrentCourse@{GetCurrentCourse}}
+\index{GetCurrentCourse@{GetCurrentCourse}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentCourse()}{GetCurrentCourse()}}
+{\footnotesize\ttfamily int Course\+Manager.\+Get\+Current\+Course (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the index of the current course. 
+
+\begin{DoxyReturn}{Returns}
+The index of the current course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a5573c6b16e7837182534d1e180df83a3}\label{class_course_manager_a5573c6b16e7837182534d1e180df83a3} 
+\index{CourseManager@{CourseManager}!GetCurrentCourseBestTime@{GetCurrentCourseBestTime}}
+\index{GetCurrentCourseBestTime@{GetCurrentCourseBestTime}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentCourseBestTime()}{GetCurrentCourseBestTime()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Current\+Course\+Best\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the best time achieved on the current course. 
+
+\begin{DoxyReturn}{Returns}
+The best time achieved on the current course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_ac8ed41b7fa9d60cc1e6158ed85720710}\label{class_course_manager_ac8ed41b7fa9d60cc1e6158ed85720710} 
+\index{CourseManager@{CourseManager}!GetCurrentCourseIsBossCourse@{GetCurrentCourseIsBossCourse}}
+\index{GetCurrentCourseIsBossCourse@{GetCurrentCourseIsBossCourse}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentCourseIsBossCourse()}{GetCurrentCourseIsBossCourse()}}
+{\footnotesize\ttfamily bool Course\+Manager.\+Get\+Current\+Course\+Is\+Boss\+Course (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the current course is the boss course. 
+
+\begin{DoxyReturn}{Returns}
+True if the current course is the boss course, false otherwise.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a3d11440749e215eb40012544016df9eb}\label{class_course_manager_a3d11440749e215eb40012544016df9eb} 
+\index{CourseManager@{CourseManager}!GetCurrentParTime@{GetCurrentParTime}}
+\index{GetCurrentParTime@{GetCurrentParTime}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetCurrentParTime()}{GetCurrentParTime()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Current\+Par\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the par time for the current course. 
+
+\begin{DoxyReturn}{Returns}
+The par time for the current course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a15026e5a72f1d53fb52889253793f731}\label{class_course_manager_a15026e5a72f1d53fb52889253793f731} 
+\index{CourseManager@{CourseManager}!GetSetData@{GetSetData}}
+\index{GetSetData@{GetSetData}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetSetData()}{GetSetData()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_set_data}{Set\+Data}} $>$ Course\+Manager.\+Get\+Set\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the list of \doxylink{class_set_data}{Set\+Data} objects. 
+
+\begin{DoxyReturn}{Returns}
+The list of \doxylink{class_set_data}{Set\+Data} objects.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_acfffab59a6d5da1da610748d6759d144}\label{class_course_manager_acfffab59a6d5da1da610748d6759d144} 
+\index{CourseManager@{CourseManager}!GetSetName@{GetSetName}}
+\index{GetSetName@{GetSetName}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetSetName()}{GetSetName()}}
+{\footnotesize\ttfamily string Course\+Manager.\+Get\+Set\+Name (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the name of a set by set\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the set.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a5321f1feb666e3b87e257cc1e4d6b194}\label{class_course_manager_a5321f1feb666e3b87e257cc1e4d6b194} 
+\index{CourseManager@{CourseManager}!GetTimeSpent@{GetTimeSpent}}
+\index{GetTimeSpent@{GetTimeSpent}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetTimeSpent()}{GetTimeSpent()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Time\+Spent (\begin{DoxyParamCaption}\item[{int}]{set\+Index,  }\item[{int}]{course\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the time spent on a course by set\+Index and course\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+{\em course\+Index} & The index of the course within the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time spent on the course.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a94634caef4a2789fe0e2af7571027516}\label{class_course_manager_a94634caef4a2789fe0e2af7571027516} 
+\index{CourseManager@{CourseManager}!GetTotalTimeSpent@{GetTotalTimeSpent}}
+\index{GetTotalTimeSpent@{GetTotalTimeSpent}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{GetTotalTimeSpent()}{GetTotalTimeSpent()}}
+{\footnotesize\ttfamily float Course\+Manager.\+Get\+Total\+Time\+Spent (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Get the total time spent on all sub-\/courses in a set by set\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total time spent on all sub-\/courses in the set.
+\end{DoxyReturn}
+\Hypertarget{class_course_manager_a0ef98accf323bd108b371405e736e031}\label{class_course_manager_a0ef98accf323bd108b371405e736e031} 
+\index{CourseManager@{CourseManager}!LoadBossCourse@{LoadBossCourse}}
+\index{LoadBossCourse@{LoadBossCourse}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{LoadBossCourse()}{LoadBossCourse()}}
+{\footnotesize\ttfamily void Course\+Manager.\+Load\+Boss\+Course (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Load the boss course for a specific set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_course_manager_a659bc93dbee62e519e8f28132e208d31}\label{class_course_manager_a659bc93dbee62e519e8f28132e208d31} 
+\index{CourseManager@{CourseManager}!LoadCourse@{LoadCourse}}
+\index{LoadCourse@{LoadCourse}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{LoadCourse()}{LoadCourse()}}
+{\footnotesize\ttfamily void Course\+Manager.\+Load\+Course (\begin{DoxyParamCaption}\item[{int}]{set\+Index,  }\item[{int}]{course\+Index }\end{DoxyParamCaption})}
+
+
+
+Load a specific course by set\+Index and course\+Index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+{\em course\+Index} & The index of the course within the set.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_course_manager_a42d534c80a559889f65bb06d5376f13c}\label{class_course_manager_a42d534c80a559889f65bb06d5376f13c} 
+\index{CourseManager@{CourseManager}!LoadPlayerProgress@{LoadPlayerProgress}}
+\index{LoadPlayerProgress@{LoadPlayerProgress}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{LoadPlayerProgress()}{LoadPlayerProgress()}}
+{\footnotesize\ttfamily void Course\+Manager.\+Load\+Player\+Progress (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_set_data}{Set\+Data}} $>$}]{set\+Data\+List }\end{DoxyParamCaption})}
+
+
+
+Load player progress from a list of \doxylink{class_set_data}{Set\+Data}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Data\+List} & The list of \doxylink{class_set_data}{Set\+Data} to load progress from.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_course_manager_a4d9fd81473ad80c4a15d6edeba148a8b}\label{class_course_manager_a4d9fd81473ad80c4a15d6edeba148a8b} 
+\index{CourseManager@{CourseManager}!SetCurrentCourse@{SetCurrentCourse}}
+\index{SetCurrentCourse@{SetCurrentCourse}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{SetCurrentCourse()}{SetCurrentCourse()}}
+{\footnotesize\ttfamily void Course\+Manager.\+Set\+Current\+Course (\begin{DoxyParamCaption}\item[{int}]{course\+Index }\end{DoxyParamCaption})}
+
+
+
+Set the current course index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em course\+Index} & The index of the course within the set.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_course_manager_aacfcef50816ae5bafaa9d3ea8358b237}\label{class_course_manager_aacfcef50816ae5bafaa9d3ea8358b237} 
+\index{CourseManager@{CourseManager}!SetCurrentSet@{SetCurrentSet}}
+\index{SetCurrentSet@{SetCurrentSet}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{SetCurrentSet()}{SetCurrentSet()}}
+{\footnotesize\ttfamily void Course\+Manager.\+Set\+Current\+Set (\begin{DoxyParamCaption}\item[{int}]{set\+Index }\end{DoxyParamCaption})}
+
+
+
+Set the current set index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+Index} & The index of the set.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_course_manager_a5e4a162c8c14f1fcaf450c97ce2f46d7}\label{class_course_manager_a5e4a162c8c14f1fcaf450c97ce2f46d7} 
+\index{CourseManager@{CourseManager}!UpdateCourseData@{UpdateCourseData}}
+\index{UpdateCourseData@{UpdateCourseData}!CourseManager@{CourseManager}}
+\doxysubsubsection{\texorpdfstring{UpdateCourseData()}{UpdateCourseData()}}
+{\footnotesize\ttfamily void Course\+Manager.\+Update\+Course\+Data (\begin{DoxyParamCaption}\item[{bool}]{is\+Completed,  }\item[{float}]{time\+Spent }\end{DoxyParamCaption})}
+
+
+
+Update course data with completion status and time spent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Completed} & Whether the course is completed or not.\\
+\hline
+{\em time\+Spent} & The time spent on the course.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Gits/\+Boll\+Prototyp/\+Assets/\+Scripts/\+Managers/Course\+Manager.\+cs\end{DoxyCompactItemize}

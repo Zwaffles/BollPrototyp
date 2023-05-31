@@ -1,0 +1,86 @@
+\doxysection{Game\+Manager Class Reference}
+\hypertarget{class_game_manager}{}\label{class_game_manager}\index{GameManager@{GameManager}}
+
+
+The \doxylink{class_game_manager}{Game\+Manager} class controls the overall game flow and manages different game states.  
+
+
+Inheritance diagram for Game\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c}\label{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c} 
+enum \mbox{\hyperlink{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c}{Game\+State}} \{ {\bfseries Play}
+, {\bfseries Pause}
+, {\bfseries Menu}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for different game states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_manager_a3c7c2e53878cb155620756f5eac8c764}{Set\+Game\+State}} (\mbox{\hyperlink{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c}{Game\+State}} new\+State)
+\begin{DoxyCompactList}\small\item\em Sets the game state and triggers the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_manager_a7666e8468dac197b9eb32dd32128524f}\label{class_game_manager_a7666e8468dac197b9eb32dd32128524f} 
+static \mbox{\hyperlink{class_game_manager}{Game\+Manager}} {\bfseries instance}
+\begin{DoxyCompactList}\small\item\em Singleton instance of the \doxylink{class_game_manager}{Game\+Manager}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_manager_a9f381651786f6cd727ad399fcec3c2c4}\label{class_game_manager_a9f381651786f6cd727ad399fcec3c2c4} 
+\mbox{\hyperlink{class_input_reader}{Input\+Reader}} {\bfseries Input}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the input reader for the \doxylink{class_game_manager}{Game\+Manager}. \end{DoxyCompactList}\item 
+\Hypertarget{class_game_manager_a4f8ea034ddacc646a522fd2111a8569d}\label{class_game_manager_a4f8ea034ddacc646a522fd2111a8569d} 
+\mbox{\hyperlink{class_course_manager}{Course\+Manager}} {\bfseries course\+Manager}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_game_manager_a07af5d641cdd92f85f36da5617a5ca6a}\label{class_game_manager_a07af5d641cdd92f85f36da5617a5ca6a} 
+\mbox{\hyperlink{class_data_manager}{Data\+Manager}} {\bfseries data\+Manager}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_game_manager_a70d0b416d2ca1ac435f0a3a742226980}\label{class_game_manager_a70d0b416d2ca1ac435f0a3a742226980} 
+\mbox{\hyperlink{class_u_i_manager}{UIManager}} {\bfseries ui\+Manager}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_game_manager_a98707c07e8e201b774ddb6a65f755186}\label{class_game_manager_a98707c07e8e201b774ddb6a65f755186} 
+\mbox{\hyperlink{class_audio_manager}{Audio\+Manager}} {\bfseries audio\+Manager}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\Hypertarget{class_game_manager_aead6c6daffd2e2e1ea7cdbf9211e99a4}\label{class_game_manager_aead6c6daffd2e2e1ea7cdbf9211e99a4} 
+\mbox{\hyperlink{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c}{Game\+State}} {\bfseries Current\+State}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the current game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_game_manager_a964ecf2ac96573001e535d04b8609523}\label{class_game_manager_a964ecf2ac96573001e535d04b8609523} 
+Action$<$ \mbox{\hyperlink{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c}{Game\+State}} $>$ {\bfseries Game\+State\+Changed\+Event}
+\begin{DoxyCompactList}\small\item\em Event triggered when the game state changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_game_manager}{Game\+Manager} class controls the overall game flow and manages different game states. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_manager_a3c7c2e53878cb155620756f5eac8c764}\label{class_game_manager_a3c7c2e53878cb155620756f5eac8c764} 
+\index{GameManager@{GameManager}!SetGameState@{SetGameState}}
+\index{SetGameState@{SetGameState}!GameManager@{GameManager}}
+\doxysubsubsection{\texorpdfstring{SetGameState()}{SetGameState()}}
+{\footnotesize\ttfamily void Game\+Manager.\+Set\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_manager_a809dec58b5681fc1ebcc22eb428a914c}{Game\+State}}}]{new\+State }\end{DoxyParamCaption})}
+
+
+
+Sets the game state and triggers the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+State} & The new game state.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Gits/\+Boll\+Prototyp/\+Assets/\+Scripts/\+Managers/Game\+Manager.\+cs\end{DoxyCompactItemize}

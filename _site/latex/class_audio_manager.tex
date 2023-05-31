@@ -1,0 +1,131 @@
+\doxysection{Audio\+Manager Class Reference}
+\hypertarget{class_audio_manager}{}\label{class_audio_manager}\index{AudioManager@{AudioManager}}
+
+
+Manages the audio playback in the game.  
+
+
+Inheritance diagram for Audio\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_audio_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_audio_manager_a833b4118d215a5083be12f19f305e4d3}{Play\+Sfx}} (string clip\+Name, float pitch=1f)
+\begin{DoxyCompactList}\small\item\em Plays a single sound effect with the given clip name and optional pitch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_afc60ceafdc213c9532ffb1c29c7a2343}{Play\+Voice}} (string clip\+Name, float pitch=1f)
+\begin{DoxyCompactList}\small\item\em Plays a voice clip with the given clip name and optional pitch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a06c913f772956b244eb98efb200ac363}{Play\+Looping\+Sfx}} (string clip\+Name, Func$<$ bool $>$ condition, Func$<$ float $>$ pitch)
+\begin{DoxyCompactList}\small\item\em Plays a looping sound effect with the given clip name, condition, and pitch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_manager_a3dd820000b9f1adcac6606a8fff8de04}{Play\+Music}} (string clip\+Name, bool loop=true, float pitch=1f)
+\begin{DoxyCompactList}\small\item\em Plays music with the given clip name, loop option, and pitch. \end{DoxyCompactList}\item 
+\Hypertarget{class_audio_manager_aa3da61250948e1881a7c3993cf9e5af3}\label{class_audio_manager_aa3da61250948e1881a7c3993cf9e5af3} 
+void {\bfseries Stop\+Music} ()
+\begin{DoxyCompactList}\small\item\em Stops the currently playing music. \end{DoxyCompactList}\item 
+\Hypertarget{class_audio_manager_a2c8eecfab2e225d2bdd46a4f781a93e6}\label{class_audio_manager_a2c8eecfab2e225d2bdd46a4f781a93e6} 
+void {\bfseries Pause\+Audio} ()
+\begin{DoxyCompactList}\small\item\em Pauses all audio sources. \end{DoxyCompactList}\item 
+\Hypertarget{class_audio_manager_a3f697edb12230edf428e5ed146ab8c34}\label{class_audio_manager_a3f697edb12230edf428e5ed146ab8c34} 
+void {\bfseries Un\+Pause\+Audio} ()
+\begin{DoxyCompactList}\small\item\em Unpauses all audio sources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_audio_manager_a2b40eaeee8d71206e52adc75035916d0}\label{class_audio_manager_a2b40eaeee8d71206e52adc75035916d0} 
+float {\bfseries Sfx\+Volume} = .\+5f\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{class_audio_manager_ac40a38a29a8944890b776e8d6632c2c7}\label{class_audio_manager_ac40a38a29a8944890b776e8d6632c2c7} 
+float {\bfseries Voice\+Volume} = .\+5f\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{class_audio_manager_a312e502a26002f6e36a8da7d881709df}\label{class_audio_manager_a312e502a26002f6e36a8da7d881709df} 
+float {\bfseries Music\+Volume} = .\+5f\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\Hypertarget{class_audio_manager_aeef08bbb06786ecd1d560460eebfcbee}\label{class_audio_manager_aeef08bbb06786ecd1d560460eebfcbee} 
+float {\bfseries Master\+Volume} = .\+5f\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the audio playback in the game. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_audio_manager_a06c913f772956b244eb98efb200ac363}\label{class_audio_manager_a06c913f772956b244eb98efb200ac363} 
+\index{AudioManager@{AudioManager}!PlayLoopingSfx@{PlayLoopingSfx}}
+\index{PlayLoopingSfx@{PlayLoopingSfx}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayLoopingSfx()}{PlayLoopingSfx()}}
+{\footnotesize\ttfamily void Audio\+Manager.\+Play\+Looping\+Sfx (\begin{DoxyParamCaption}\item[{string}]{clip\+Name,  }\item[{Func$<$ bool $>$}]{condition,  }\item[{Func$<$ float $>$}]{pitch }\end{DoxyParamCaption})}
+
+
+
+Plays a looping sound effect with the given clip name, condition, and pitch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip\+Name} & The name of the sound effect clip.\\
+\hline
+{\em condition} & The condition that determines when to stop playing the sound effect.\\
+\hline
+{\em pitch} & The pitch of the sound effect.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_a3dd820000b9f1adcac6606a8fff8de04}\label{class_audio_manager_a3dd820000b9f1adcac6606a8fff8de04} 
+\index{AudioManager@{AudioManager}!PlayMusic@{PlayMusic}}
+\index{PlayMusic@{PlayMusic}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayMusic()}{PlayMusic()}}
+{\footnotesize\ttfamily void Audio\+Manager.\+Play\+Music (\begin{DoxyParamCaption}\item[{string}]{clip\+Name,  }\item[{bool}]{loop = {\ttfamily true},  }\item[{float}]{pitch = {\ttfamily 1f} }\end{DoxyParamCaption})}
+
+
+
+Plays music with the given clip name, loop option, and pitch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip\+Name} & The name of the music clip.\\
+\hline
+{\em loop} & Whether the music should loop.\\
+\hline
+{\em pitch} & The pitch of the music.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_a833b4118d215a5083be12f19f305e4d3}\label{class_audio_manager_a833b4118d215a5083be12f19f305e4d3} 
+\index{AudioManager@{AudioManager}!PlaySfx@{PlaySfx}}
+\index{PlaySfx@{PlaySfx}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlaySfx()}{PlaySfx()}}
+{\footnotesize\ttfamily void Audio\+Manager.\+Play\+Sfx (\begin{DoxyParamCaption}\item[{string}]{clip\+Name,  }\item[{float}]{pitch = {\ttfamily 1f} }\end{DoxyParamCaption})}
+
+
+
+Plays a single sound effect with the given clip name and optional pitch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip\+Name} & The name of the sound effect clip.\\
+\hline
+{\em pitch} & The pitch of the sound effect.\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_audio_manager_afc60ceafdc213c9532ffb1c29c7a2343}\label{class_audio_manager_afc60ceafdc213c9532ffb1c29c7a2343} 
+\index{AudioManager@{AudioManager}!PlayVoice@{PlayVoice}}
+\index{PlayVoice@{PlayVoice}!AudioManager@{AudioManager}}
+\doxysubsubsection{\texorpdfstring{PlayVoice()}{PlayVoice()}}
+{\footnotesize\ttfamily void Audio\+Manager.\+Play\+Voice (\begin{DoxyParamCaption}\item[{string}]{clip\+Name,  }\item[{float}]{pitch = {\ttfamily 1f} }\end{DoxyParamCaption})}
+
+
+
+Plays a voice clip with the given clip name and optional pitch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clip\+Name} & The name of the voice clip.\\
+\hline
+{\em pitch} & The pitch of the voice clip.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Gits/\+Boll\+Prototyp/\+Assets/\+Scripts/\+Managers/Audio\+Manager.\+cs\end{DoxyCompactItemize}

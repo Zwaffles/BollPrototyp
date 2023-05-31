@@ -1,7 +1,10 @@
 using System;
-using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine;
 
+/// <summary>
+/// Handles the selection of courses in a menu.
+/// </summary>
 public class CourseSelect : MonoBehaviour
 {
     [SerializeField, Header("Current Set (starts at 0)")]
@@ -24,6 +27,9 @@ public class CourseSelect : MonoBehaviour
     [SerializeField, Header("Lock icon for locked levels")]
     private Texture2D lockIcon;
 
+    /// <summary>
+    /// Event triggered when the script is enabled.
+    /// </summary>
     private void OnEnable()
     {
         input = GameManager.instance.Input;
@@ -42,18 +48,24 @@ public class CourseSelect : MonoBehaviour
         courseButtons[3] = root.Q<Button>("UI_LS_Course_1-4");
         courseButtons[4] = root.Q<Button>("UI_LS_Course_1-5");
         courseButtons[5] = root.Q<Button>("UI_LS_Course_1-X");
-        
-        for(int i = 0; i < courseButtons.Length; i++)
+
+        for (int i = 0; i < courseButtons.Length; i++)
         {
             courseButtons[i].RegisterCallback<FocusInEvent>(OnFocusInCourse);
         }
     }
 
+    /// <summary>
+    /// Event triggered when the script is disabled.
+    /// </summary>
     private void OnDisable()
     {
         input.RemoveSubmitEventListener(Submit);
     }
 
+    /// <summary>
+    /// Initializes the script.
+    /// </summary>
     private void Start()
     {
         courseManager = GameManager.instance.courseManager;
@@ -79,11 +91,19 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the focus on the first element of the selected course.
+    /// </summary>
+    /// <param name="currentCourse">The index of the current course.</param>
     public void FocusFirstElement(int currentCourse)
     {
         courseButtons[currentCourse].Focus();
     }
 
+    /// <summary>
+    /// Event triggered when a course button gains focus.
+    /// </summary>
+    /// <param name="evt">The FocusInEvent.</param>
     private void OnFocusInCourse(FocusInEvent evt)
     {
         var courseButton = evt.target as Button;
@@ -99,6 +119,11 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the information for a selected course.
+    /// </summary>
+    /// <param name="setIndex">The index of the course set.</param>
+    /// <param name="courseIndex">The index of the course within the set.</param>
     private void ShowCourseInfo(int setIndex, int courseIndex)
     {
         courseName.text = courseManager.GetCourseName(setIndex, courseIndex);
@@ -115,6 +140,10 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the information for the boss course.
+    /// </summary>
+    /// <param name="setIndex">The index of the course set.</param>
     private void ShowBossCourseInfo(int setIndex)
     {
         courseName.text = courseManager.GetBossCourseName(setIndex);
@@ -131,6 +160,9 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Event triggered when the submit button is pressed.
+    /// </summary>
     private void Submit()
     {
         switch (currentCourse)
@@ -164,7 +196,11 @@ public class CourseSelect : MonoBehaviour
         }
     }
 
-    // Converts a float time in seconds to a 00:00 formatted string
+    /// <summary>
+    /// Converts a time in seconds to a formatted string in the format 00:00:000.
+    /// </summary>
+    /// <param name="timeInSeconds">The time in seconds.</param>
+    /// <returns>The formatted time string.</returns>
     private string DisplayTime(float timeInSeconds)
     {
         var minutes = Mathf.FloorToInt(timeInSeconds / 60f);

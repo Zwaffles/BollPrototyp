@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the UI elements and interactions during gameplay.
+/// </summary>
 public class UIManager : MonoBehaviour
 {
-    [Header("UI Elements")] 
+    [Header("UI Elements")]
     [SerializeField] private Timer timer;
     [SerializeField] private BossTimer bossTimer;
     [SerializeField] private GameObject pauseMenu;
@@ -28,6 +31,9 @@ public class UIManager : MonoBehaviour
         input.ResumeEvent += TogglePause;
     }
 
+    /// <summary>
+    /// Starts the gameplay by activating and resetting the timer and boss timer (if applicable).
+    /// </summary>
     public void StartGameplay()
     {
         timer.gameObject.SetActive(true);
@@ -42,6 +48,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ends the gameplay and displays the end game UI with the provided completion status.
+    /// </summary>
+    /// <param name="completionStatus">The completion status of the gameplay.</param>
     public void EndGameplay(bool completionStatus)
     {
         gameManager.SetGameState(GameManager.GameState.Menu);
@@ -80,11 +90,10 @@ public class UIManager : MonoBehaviour
     {
         if (gameManager.CurrentState != GameManager.GameState.Menu)
         {
-
             // Placeholder quit-implementation
             EndGameplay(false);
             return;
-            
+
             //isPaused = !isPaused;
             //gameManager.SetGameState(isPaused ? GameManager.GameState.Pause : GameManager.GameState.Play);
             //Time.timeScale = isPaused ? 0f : 1f;
@@ -92,11 +101,8 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-
             // Placeholder quit-implementation
             Application.Quit();
-
         }
-
     }
 }

@@ -3,6 +3,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manages the saving, loading, and resetting of game data.
+/// </summary>
 public class DataManager : MonoBehaviour
 {
     private List<SetData> setDataList;
@@ -12,6 +15,10 @@ public class DataManager : MonoBehaviour
         LoadData();
     }
 
+    /// <summary>
+    /// Saves the provided list of SetData objects to PlayerPrefs.
+    /// </summary>
+    /// <param name="setDataList">The list of SetData objects to save.</param>
     public void SaveData(List<SetData> setDataList)
     {
         this.setDataList = setDataList;
@@ -25,13 +32,16 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    /// <summary>
+    /// Loads the saved data from PlayerPrefs.
+    /// </summary>
     public void LoadData()
     {
         setDataList = new List<SetData>();
         int setDataCount = 0;
         bool hasSavedData = false;
 
-        while(PlayerPrefs.HasKey("SetData_" + setDataCount))
+        while (PlayerPrefs.HasKey("SetData_" + setDataCount))
         {
             Debug.Log("Save data found");
             hasSavedData = true;
@@ -50,6 +60,9 @@ public class DataManager : MonoBehaviour
             GameManager.instance.courseManager.LoadPlayerProgress(setDataList);
     }
 
+    /// <summary>
+    /// Resets the saved data by deleting all PlayerPrefs, resetting player progress, and reloading the scene.
+    /// </summary>
     public void ResetData()
     {
         PlayerPrefs.DeleteAll();

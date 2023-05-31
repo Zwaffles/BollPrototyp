@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using UnityEngine;
 
@@ -34,9 +35,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static GameManager instance;
 
-    /// <summary>
-    /// References to other managers in the game.
-    /// </summary>
     public CourseManager courseManager { get; private set; }
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }

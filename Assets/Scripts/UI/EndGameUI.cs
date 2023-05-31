@@ -3,18 +3,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Manages the UI for the end of the game, displaying statistics and handling user input.
+/// </summary>
 public class EndGameUI : MonoBehaviour
 {
     private GameManager gameManager;
     private CourseManager courseManager;
-
     private VisualElement root;
-
     private TextElement bestTime;
     private TextElement currentTime;
     private TextElement parTime;
     private TextElement bossTimer;
-
     private InputReader input;
 
     private void OnEnable()
@@ -41,12 +41,17 @@ public class EndGameUI : MonoBehaviour
         courseManager = gameManager.courseManager;
     }
 
+    /// <summary>
+    /// Displays the end game statistics on the UI.
+    /// </summary>
+    /// <param name="timeSpent">The time spent by the player.</param>
+    /// <param name="completionStatus">The completion status of the game.</param>
     public void DisplayStats(float timeSpent, bool completionStatus)
     {
         var _bestTime = courseManager.GetCurrentCourseBestTime();
         var _parTime = courseManager.GetCurrentParTime();
 
-        if(_bestTime > 0)
+        if (_bestTime > 0)
         {
             bestTime.text = "Best Time: " + DisplayTime(_bestTime);
         }
@@ -64,7 +69,7 @@ public class EndGameUI : MonoBehaviour
             else
             {
                 if (_bestTime < _parTime)
-                   currentTime.style.color = Color.green;
+                    currentTime.style.color = Color.green;
                 else
                 {
                     currentTime.style.color = Color.black;
@@ -72,7 +77,9 @@ public class EndGameUI : MonoBehaviour
             }
         }
         else
+        {
             currentTime.style.color = Color.red;
+        }
 
         currentTime.text = "Current Time: " + DisplayTime(timeSpent);
         parTime.text = "Par-Time: " + DisplayTime(_parTime);
@@ -90,7 +97,11 @@ public class EndGameUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Converts a float time in seconds to a 00:00 formatted string
+    /// <summary>
+    /// Converts a float time in seconds to a formatted string in the format "00:00:000".
+    /// </summary>
+    /// <param name="timeInSeconds">The time in seconds to be formatted.</param>
+    /// <returns>The formatted time string.</returns>
     private string DisplayTime(float timeInSeconds)
     {
         var minutes = Mathf.FloorToInt(timeInSeconds / 60f);
