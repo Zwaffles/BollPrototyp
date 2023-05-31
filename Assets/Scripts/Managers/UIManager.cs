@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 
     private InputReader input;
     private GameManager gameManager;
+    private CourseManager courseManager;
 
     private bool isPaused;
     private bool gameplayStarted;
@@ -22,6 +23,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
+        courseManager = gameManager.courseManager;
 
         input = gameManager.Input;
 
@@ -59,7 +61,7 @@ public class UIManager : MonoBehaviour
 
         var timeSpent = timer.GetTimeSpent();
 
-        GameManager.instance.courseManager.UpdateCourseData(completionStatus, timeSpent);
+        courseManager.UpdateCourseData(courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus, timeSpent);
         timer.gameObject.SetActive(false);
 
         if (bossTimer.gameObject.activeInHierarchy)

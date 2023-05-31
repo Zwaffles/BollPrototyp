@@ -107,6 +107,15 @@ public class CourseManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Get the completion status of the current course.
+    /// </summary>
+    /// <returns>True if the course is completed, false otherwise.</returns>
+    public bool GetCurrentCourseCompletionStatus()
+    {
+        return sets[currentSet].subCourses[currentCourse].courseCompleted;
+    }
+
+    /// <summary>
     /// Check if the current course is the boss course.
     /// </summary>
     /// <returns>True if the current course is the boss course, false otherwise.</returns>
