@@ -894,7 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSet: 0
   lockIcon: {fileID: 2800000, guid: a79d7463ea699d244b063e0ab44e08cf, type: 3}
-  unlockIcon: {fileID: 0}
+  unlockIcon: {fileID: 2800000, guid: a9a17aedc47f7e146b7decafadf04457, type: 3}
 --- !u!1 &429621578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,10 +2096,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1902059185, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sourceAsset
-      value: 
-      objectReference: {fileID: 9197481963319205126, guid: d52b090061569ff4ea145a3163f5260b, type: 3}
     - target: {fileID: 2521958280786284842, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
       propertyPath: m_Name
       value: GameManager
