@@ -47,6 +47,16 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     /// </summary>
     public event Action SubmitEvent;
 
+    /// <summary>
+    /// Event triggered when the shoulder button right action is performed.
+    /// </summary>
+    public event Action ShoulderButtonRightEvent;
+
+    /// <summary>
+    /// Event triggered when the shoulder button left action is performed.
+    /// </summary>
+    public event Action ShoulderButtonLeftEvent;
+
     private void OnEnable()
     {
         /// <summary>
@@ -128,6 +138,38 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     }
 
     /// <summary>
+    /// Adds an event listener for the ShoulderButtonRightEvent.
+    /// </summary>
+    public void AddShoulderButtonRightEventListener(Action listener)
+    {
+        ShoulderButtonRightEvent += listener;
+    }
+
+    /// <summary>
+    /// Removes an event listener for the ShoulderButtonRightEvent.
+    /// </summary>
+    public void RemoveShoulderButtonRightEventListener(Action listener)
+    {
+        ShoulderButtonRightEvent -= listener;
+    }
+
+    /// <summary>
+    /// Adds an event listener for the ShoulderButtonLeftEvent.
+    /// </summary>
+    public void AddShoulderButtonLeftEventListener(Action listener)
+    {
+        ShoulderButtonLeftEvent += listener;
+    }
+
+    /// <summary>
+    /// Removes an event listener for the ShoulderButtonLeftEvent.
+    /// </summary>
+    public void RemoveShoulderButtonLeftEventListener(Action listener)
+    {
+        ShoulderButtonLeftEvent -= listener;
+    }
+
+    /// <summary>
     /// Callback for the Move input action.
     /// </summary>
     public void OnMove(InputAction.CallbackContext context)
@@ -202,6 +244,23 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         if (context.phase == InputActionPhase.Performed)
         {
             SubmitEvent?.Invoke();
+        }
+    }
+
+
+    public void OnShoulderButtonRight(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            ShoulderButtonRightEvent?.Invoke();
+        }
+    }
+
+    public void OnShoulderButtonLeft(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            ShoulderButtonLeftEvent?.Invoke();
         }
     }
 

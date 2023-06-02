@@ -240,6 +240,24 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShoulderButtonRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""35c91748-d4e1-44bd-8c7d-a60fd3d3deff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShoulderButtonLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""edd35d3a-0333-405c-be4a-795c775d0c90"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -286,6 +304,50 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Submit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7789f8ef-8d51-4461-8a2a-2ee8ef13296d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShoulderButtonRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33ccdef1-0388-47e6-938d-84ee2845f0ea"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShoulderButtonRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4115cd93-7de3-4b88-a22e-230aba1c72f7"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShoulderButtonLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45e95de4-c68f-4966-a1d9-4116a7227fab"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShoulderButtonLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -303,6 +365,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
+        m_UI_ShoulderButtonRight = m_UI.FindAction("ShoulderButtonRight", throwIfNotFound: true);
+        m_UI_ShoulderButtonLeft = m_UI.FindAction("ShoulderButtonLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -429,12 +493,16 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Resume;
     private readonly InputAction m_UI_Submit;
+    private readonly InputAction m_UI_ShoulderButtonRight;
+    private readonly InputAction m_UI_ShoulderButtonLeft;
     public struct UIActions
     {
         private @PlayerInputs m_Wrapper;
         public UIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Resume => m_Wrapper.m_UI_Resume;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
+        public InputAction @ShoulderButtonRight => m_Wrapper.m_UI_ShoulderButtonRight;
+        public InputAction @ShoulderButtonLeft => m_Wrapper.m_UI_ShoulderButtonLeft;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -450,6 +518,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Submit.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Submit.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
                 @Submit.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSubmit;
+                @ShoulderButtonRight.started -= m_Wrapper.m_UIActionsCallbackInterface.OnShoulderButtonRight;
+                @ShoulderButtonRight.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnShoulderButtonRight;
+                @ShoulderButtonRight.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnShoulderButtonRight;
+                @ShoulderButtonLeft.started -= m_Wrapper.m_UIActionsCallbackInterface.OnShoulderButtonLeft;
+                @ShoulderButtonLeft.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnShoulderButtonLeft;
+                @ShoulderButtonLeft.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnShoulderButtonLeft;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -460,6 +534,12 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Submit.started += instance.OnSubmit;
                 @Submit.performed += instance.OnSubmit;
                 @Submit.canceled += instance.OnSubmit;
+                @ShoulderButtonRight.started += instance.OnShoulderButtonRight;
+                @ShoulderButtonRight.performed += instance.OnShoulderButtonRight;
+                @ShoulderButtonRight.canceled += instance.OnShoulderButtonRight;
+                @ShoulderButtonLeft.started += instance.OnShoulderButtonLeft;
+                @ShoulderButtonLeft.performed += instance.OnShoulderButtonLeft;
+                @ShoulderButtonLeft.canceled += instance.OnShoulderButtonLeft;
             }
         }
     }
@@ -476,5 +556,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     {
         void OnResume(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
+        void OnShoulderButtonRight(InputAction.CallbackContext context);
+        void OnShoulderButtonLeft(InputAction.CallbackContext context);
     }
 }

@@ -26,6 +26,8 @@ public class CourseSelect : MonoBehaviour
 
     [SerializeField, Header("Lock icon for locked levels")]
     private Texture2D lockIcon;
+    [SerializeField, Header("Icon for unlocked levels")]
+    private Texture2D unlockIcon;
 
     /// <summary>
     /// Event triggered when the script is enabled.
@@ -34,6 +36,8 @@ public class CourseSelect : MonoBehaviour
     {
         input = GameManager.instance.Input;
         input.AddSubmitEventListener(Submit);
+        input.AddShoulderButtonRightEventListener(NavigateSetRight);
+        input.AddShoulderButtonLeftEventListener(NavigateSetLeft);
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -61,6 +65,8 @@ public class CourseSelect : MonoBehaviour
     private void OnDisable()
     {
         input.RemoveSubmitEventListener(Submit);
+        input.RemoveShoulderButtonRightEventListener(NavigateSetRight);
+        input.RemoveShoulderButtonLeftEventListener(NavigateSetLeft);
     }
 
     /// <summary>
@@ -193,6 +199,54 @@ public class CourseSelect : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void NavigateSetRight()
+    {
+        currentSet = currentSet == courseManager.GetAmountOfSets() - 1 ? 0 : currentSet + 1;
+        UpdateCourseUIInformation();
+    }
+
+    private void NavigateSetLeft()
+    {
+        currentSet = currentSet == 0 ? courseManager.GetAmountOfSets() - 1 : currentSet - 1;
+        UpdateCourseUIInformation();
+    }
+
+    private void UpdateCourseUIInformation()
+    {
+        Debug.Log("Current Set: " + currentSet);
+
+        setName.text = courseManager.GetSetName(currentSet);
+
+        // Display the remaining time for the boss course
+        var bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
+        finalCourseTimeLimit.text = DisplayTime(bossTime);
+
+        for (int i = 1; i < 6; i++)
+        {
+            // Lock the course buttons for subcourses 2-5 if the previous subcourse was not completed
+            if (!courseManager.GetCompletionStatus(currentSet, i - 1))
+            {
+                courseButtons[i].text = "";
+                courseButtons[i].style.backgroundImage = lockIcon;
+            }
+
+            // Unlock the course buttons for subcourses 2-5 if the previous subcourse was completed
+            if (courseManager.GetCompletionStatus(currentSet, i - 1))
+            {
+                courseButtons[i].style.backgroundImage = unlockIcon;
+            }
+        }
+
+        if (currentCourse < 5)
+        {
+            ShowCourseInfo(currentSet, currentCourse);
+        }
+        else
+        {
+            ShowBossCourseInfo(currentSet);
         }
     }
 

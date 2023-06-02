@@ -269,4 +269,13 @@ public class CourseManager : MonoBehaviour
     {
         return sets[currentSet].subCourses[currentCourse].parTime;
     }
+
+    /// <summary>
+    /// Get the amount of sets in the sets list.
+    /// </summary>
+    /// <returns>The count of the sets list.</returns>
+    public int GetAmountOfSets()
+    {
+        return sets.Count();
+    }
 }
