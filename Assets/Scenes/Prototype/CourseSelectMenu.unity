@@ -894,6 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSet: 0
   lockIcon: {fileID: 2800000, guid: a79d7463ea699d244b063e0ab44e08cf, type: 3}
+  unlockIcon: {fileID: 2800000, guid: a9a17aedc47f7e146b7decafadf04457, type: 3}
 --- !u!1 &429621578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,10 +2096,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1902059185, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sourceAsset
-      value: 
-      objectReference: {fileID: 9197481963319205126, guid: d52b090061569ff4ea145a3163f5260b, type: 3}
     - target: {fileID: 2521958280786284842, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -2146,106 +2143,6 @@ PrefabInstance:
     - target: {fileID: 2521958280786284844, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].bossTimeLimit
-      value: 154
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].bossTimeLimit
-      value: 420
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].bossCourse.parTime
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].bossCourse.sceneName
-      value: Level_A1_6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].bossCourse.sceneName
-      value: Level_A1_SecretPipeLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].bossCourse.courseName
-      value: Halldor Evil Boss Level
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[0].parTime
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[1].parTime
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[2].parTime
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[3].parTime
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[4].parTime
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[0].sceneName
-      value: Level_A1_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[1].sceneName
-      value: Level_A1_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[2].sceneName
-      value: Level_A1_3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[3].sceneName
-      value: Level_A1_4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[0].subCourses.Array.data[4].sceneName
-      value: Level_A1_5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[1].sceneName
-      value: Level_A1_SecretPipeLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[2].sceneName
-      value: Level_A1_SecretPipeLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[3].sceneName
-      value: Level_A1_SecretPipeLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[4].sceneName
-      value: Level_A1_SecretPipeLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[1].courseName
-      value: Halldor Evil Level 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[2].courseName
-      value: Halldor Evil Level 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[3].courseName
-      value: Halldor Evil Level 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2521958281556728560, guid: ab0418268a42e2f468573220a8d271ec, type: 3}
-      propertyPath: sets.Array.data[1].subCourses.Array.data[4].courseName
-      value: Halldor Evil Level 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0418268a42e2f468573220a8d271ec, type: 3}

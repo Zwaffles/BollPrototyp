@@ -244,6 +244,15 @@ public class CourseManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Get the index of the current set.
+    /// </summary>
+    /// <returns>The index of the current set.</returns>
+    public int GetCurrentSet()
+    {
+        return currentSet;
+    }
+
+    /// <summary>
     /// Set the current set index.
     /// </summary>
     /// <param name="setIndex">The index of the set.</param>
