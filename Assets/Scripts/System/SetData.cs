@@ -22,6 +22,16 @@ public class SetData
     public float bossTimeLimit;
 
     /// <summary>
+    /// The name of music to use.
+    /// </summary>
+    public string musicName;
+
+    /// <summary>
+    /// How much to offset the music based on the par-time
+    /// </summary>
+    public float musicParOffset;
+
+    /// <summary>
     /// The sub-courses within the set.
     /// </summary>
     public CourseData[] subCourses;
@@ -44,6 +54,26 @@ public class SetData
         this.bossTimeLimit = bossTimeLimit;
         this.subCourses = subCourses;
         this.bossCourse = bossCourse;
+        this.musicParOffset = 0f;
+        this.musicName = "Noel";
+    }
+
+    /// <summary>
+    /// Creates a new SetData object with the specified parameters.
+    /// </summary>
+    /// <param name="setName">The name of the set.</param>
+    /// <param name="bossTimeLimit">The time limit for completing the boss course.</param>
+    /// <param name="subCourses">The sub-courses within the set.</param>
+    /// <param name="bossCourse">The boss course within the set.</param>
+    /// /// <param name="musicParOffset">The boss course within the set.</param>
+    public SetData(string setName, float bossTimeLimit, CourseData[] subCourses, CourseData bossCourse, float musicParOffset, string musicName)
+    {
+        this.setName = setName;
+        this.bossTimeLimit = bossTimeLimit;
+        this.subCourses = subCourses;
+        this.bossCourse = bossCourse;
+        this.musicParOffset = musicParOffset;
+        this.musicName = musicName;
     }
 }
 
