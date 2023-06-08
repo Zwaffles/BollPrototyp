@@ -148,7 +148,7 @@
     transition-duration: 0.1s;
     opacity: 1;
     color: rgb(24, 24, 24);
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Course%20Box%20-%20Dropshadow.png?fileID=2800000&guid=a9a17aedc47f7e146b7decafadf04457&type=3#Course Box - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/Course%20Box%20-%20Dropshadow.png?fileID=2800000&guid=a9a17aedc47f7e146b7decafadf04457&type=3#Course Box - Dropshadow');
     border-left-color: rgba(38, 38, 38, 0);
     border-right-color: rgba(38, 38, 38, 0);
     border-top-color: rgba(38, 38, 38, 0);
@@ -179,7 +179,7 @@
     transition-duration: 0.2s;
     opacity: 1;
     color: rgb(24, 24, 24);
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Course%20Box%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=a7c7efe8794cf724481c5b2e0f1d4f81&type=3#Course Box Selected - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/Course%20Box%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=a7c7efe8794cf724481c5b2e0f1d4f81&type=3#Course Box Selected - Dropshadow');
     border-left-color: rgba(38, 38, 38, 0);
     border-right-color: rgba(38, 38, 38, 0);
     border-top-color: rgba(38, 38, 38, 0);
@@ -193,7 +193,7 @@
 }
 
 .MM-Button {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/MainMenuButton%20-%20Dropshadow.png?fileID=2800000&guid=897508a38bd53df43a4b916f7b291437&type=3#MainMenuButton - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/MainMenuButton%20-%20Dropshadow.png?fileID=2800000&guid=897508a38bd53df43a4b916f7b291437&type=3#MainMenuButton - Dropshadow');
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
@@ -214,7 +214,7 @@
 }
 
 .MM-Button:focus {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/MainMenuButton%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=0fcbc23b37d5d1f4482233980634968b&type=3#MainMenuButton Selected - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/MainMenuButton%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=0fcbc23b37d5d1f4482233980634968b&type=3#MainMenuButton Selected - Dropshadow');
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
@@ -259,7 +259,7 @@
 }
 
 .LS-CourseCheckMarks {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/TrackIconUncompleted.png?fileID=2800000&guid=7b74610776f1e5f4880d3f711ffd0af9&type=3#TrackIconUncompleted');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/TrackIconUncompleted.png?fileID=2800000&guid=7b74610776f1e5f4880d3f711ffd0af9&type=3#TrackIconUncompleted');
     width: 56px;
     height: 56px;
     margin-right: 4px;
@@ -285,4 +285,11 @@
     -unity-text-outline-width: 2px;
     -unity-text-outline-color: rgb(0, 0, 0);
     text-shadow: 3px 2px 0 rgb(0, 0, 0);
+}
+
+.TextBlackBorder {
+    -unity-text-outline-width: 1.5px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 0 rgb(0, 0, 0);
+    -unity-font-style: bold;
 }
