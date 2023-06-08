@@ -68,6 +68,9 @@ public class AudioManager : MonoBehaviour
     /// <param name="pitch">The pitch of the sound effect.</param>
     public void PlaySfx(string clipName, float pitch = 1f)
     {
+
+        Debug.Log("What I meant when I said");
+
         AudioClip clip;
         if (sfxClipsDict.TryGetValue(clipName, out clip))
         {

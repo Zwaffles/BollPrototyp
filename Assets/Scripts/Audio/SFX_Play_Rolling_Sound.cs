@@ -80,17 +80,12 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
 
         }
 
-        Debug.Log("pitch was called: " + pitch);
-
         return pitch;
 
     }
 
     bool isRunning()
     {
-
-        Debug.Log("isRunning was called " + playerController.isGrounded);
-
         return playerController.isGrounded;
     }
 
