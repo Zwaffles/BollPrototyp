@@ -372,11 +372,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sets:
   - setName: Lovely Seaside Road
-    bossTimeLimit: 154
+    bossTimeLimit: 190
+    musicName: 
+    musicParOffset: 0
     subCourses:
     - courseName: 1st Course
       sceneName: Level_A1_1
-      parTime: 34
+      parTime: 42
       courseCompleted: 0
       bestTime: 0
     - courseName: 2nd Course
@@ -386,57 +388,59 @@ MonoBehaviour:
       bestTime: 0
     - courseName: 3rd Course
       sceneName: Level_A1_3
-      parTime: 17
+      parTime: 19
       courseCompleted: 0
       bestTime: 0
     - courseName: 4th Course
       sceneName: Level_A1_4
-      parTime: 27
+      parTime: 32
       courseCompleted: 0
       bestTime: 0
     - courseName: 5th Course
       sceneName: Level_A1_5
-      parTime: 29
+      parTime: 38
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: Boss Course
       sceneName: Level_A1_6
-      parTime: 35
+      parTime: 46
       courseCompleted: 0
       bestTime: 0
   - setName: Halldor Evil Set
-    bossTimeLimit: 420
+    bossTimeLimit: 155
+    musicName: 
+    musicParOffset: 0
     subCourses:
     - courseName: Halldor Evil Level
       sceneName: Level_A1_SecretPipeLevel
-      parTime: 69
+      parTime: 34
       courseCompleted: 0
       bestTime: 0
     - courseName: Halldor Evil Level 2
       sceneName: Level_A1_SecretPipeLevel
-      parTime: 69
+      parTime: 11
       courseCompleted: 0
       bestTime: 0
     - courseName: Halldor Evil Level 3
       sceneName: Level_A1_SecretPipeLevel
-      parTime: 69
+      parTime: 16
       courseCompleted: 0
       bestTime: 0
     - courseName: Halldor Evil Level 4
       sceneName: Level_A1_SecretPipeLevel
-      parTime: 69
+      parTime: 26
       courseCompleted: 0
       bestTime: 0
     - courseName: Halldor Evil Level 5
       sceneName: Level_A1_SecretPipeLevel
-      parTime: 69
+      parTime: 31
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: Halldor Evil Boss Level
       sceneName: Level_A1_SecretPipeLevel
-      parTime: 69
+      parTime: 37
       courseCompleted: 0
       bestTime: 0
 --- !u!1 &4637475394147627162

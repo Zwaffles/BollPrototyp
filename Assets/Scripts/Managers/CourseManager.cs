@@ -21,8 +21,15 @@ public class CourseManager : MonoBehaviour
     /// <param name="courseIndex">The index of the course within the set.</param>
     public void LoadCourse(int setIndex, int courseIndex)
     {
+
+        SetData set = sets[setIndex];
+        CourseData course = set.subCourses[courseIndex];
+
         GameManager.instance.SetGameState(GameManager.GameState.Play);
-        SceneManager.LoadScene(sets[setIndex].subCourses[courseIndex].sceneName);
+        SceneManager.LoadScene(course.sceneName);
+
+        GameManager.instance.audioManager.PlayMusicWithOffset(set.musicName, course.parTime + set.musicParOffset);
+
         Debug.Log(GetCurrentParTime());
     }
 

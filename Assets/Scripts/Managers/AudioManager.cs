@@ -68,6 +68,9 @@ public class AudioManager : MonoBehaviour
     /// <param name="pitch">The pitch of the sound effect.</param>
     public void PlaySfx(string clipName, float pitch = 1f)
     {
+
+        Debug.Log("What I meant when I said");
+
         AudioClip clip;
         if (sfxClipsDict.TryGetValue(clipName, out clip))
         {
@@ -154,6 +157,31 @@ public class AudioManager : MonoBehaviour
             musicSource.loop = loop;
             musicSource.pitch = pitch;
             musicSource.volume = MusicVolume * MasterVolume;
+            musicSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning($"Audio clip {clipName} not found in music dictionary.");
+        }
+    }
+
+    /// <summary>
+    /// Plays music from the timestamp with the given clip name, loop option, and pitch.
+    /// </summary>
+    /// <param name="clipName">The name of the music clip.</param>
+    /// <param name="loop">Whether the music should loop.</param>
+    /// <param name="pitch">The pitch of the music.</param>
+    /// /// <param name="timestamp">The timestamp the music will start from.</param>
+    public void PlayMusicWithOffset(string clipName, float parAndOffset, bool loop = true, float pitch = 1f)
+    {
+        AudioClip clip;
+        if (musicClipsDict.TryGetValue(clipName, out clip))
+        {
+            musicSource.clip = clip;
+            musicSource.loop = loop;
+            musicSource.pitch = pitch;
+            musicSource.volume = MusicVolume * MasterVolume;
+            musicSource.time = Mathf.Max(0, musicSource.clip.length - parAndOffset);
             musicSource.Play();
         }
         else
