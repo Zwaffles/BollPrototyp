@@ -69,8 +69,6 @@ public class AudioManager : MonoBehaviour
     public void PlaySfx(string clipName, float pitch = 1f)
     {
 
-        Debug.Log("What I meant when I said");
-
         AudioClip clip;
         if (sfxClipsDict.TryGetValue(clipName, out clip))
         {

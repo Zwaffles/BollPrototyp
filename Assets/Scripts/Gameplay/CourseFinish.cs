@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class CourseFinish : MonoBehaviour
 {
@@ -36,9 +37,10 @@ public class CourseFinish : MonoBehaviour
                     GameManager.instance.uiManager?.EndGameplay(true);
                 }
             }
-            catch
+            catch (Exception e)
             {
                 Debug.Log("No GameManager found");
+                Debug.Log(e);
             }
 
             hasFinished = true;

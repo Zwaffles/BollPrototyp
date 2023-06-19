@@ -119,7 +119,14 @@ public class CourseManager : MonoBehaviour
     /// <returns>True if the course is completed, false otherwise.</returns>
     public bool GetCurrentCourseCompletionStatus()
     {
+        
+        if (currentCourse >= sets[currentSet].subCourses.Length)
+        {
+            return sets[currentSet].bossCourse.courseCompleted;
+        }
+
         return sets[currentSet].subCourses[currentCourse].courseCompleted;
+
     }
 
     /// <summary>
