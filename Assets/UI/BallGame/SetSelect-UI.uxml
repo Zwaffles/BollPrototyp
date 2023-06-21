@@ -1,0 +1,68 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet-V.2.uss?fileID=7433441132597879392&amp;guid=3312e1c28c345954cac5d66465ca06cb&amp;type=3#BG-StyleSheet-V.2" />
+    <ui:VisualElement name="UI_SS_Canvas" style="flex-grow: 1;">
+        <ui:VisualElement name="UI_SS_Header_Container" style="align-items: center; justify-content: flex-start; margin-top: 0; flex-direction: row; width: 100%; height: 16%;">
+            <ui:VisualElement name="UI_LS_Header_Box" style="align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/SetName%20Box.png?fileID=2800000&amp;guid=076ea86150025d44eb3b7991c15e1911&amp;type=3#SetName Box&apos;); padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 45%; flex-direction: row; height: 100%;">
+                <ui:Label text="#SET_SELECT" display-tooltip-when-elided="true" name="UI_LS_Header_Text" style="-unity-text-align: middle-center; font-size: 64px; -unity-font-style: italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); rotate: 0; margin-bottom: 2%; margin-left: 16px; margin-right: 16px; flex-grow: 0; flex-shrink: 1; -unity-font-definition: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular%20SDF.asset?fileID=11400000&amp;guid=848c78d88f13dd14fb6ce9a122190544&amp;type=2#PatuaOne-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&amp;guid=5881706824e8cf44c970097c42299726&amp;type=3#PatuaOne-Regular&apos;);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_SS_Set_Container" style="-unity-text-align: middle-center; flex-direction: column; justify-content: center; flex-grow: 1; align-items: center;">
+            <ui:VisualElement name="UI_SS_Set_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; align-items: center; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
+                <ui:VisualElement name="UI_SS_Set1_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
+                    <ui:VisualElement name="UI_SS_Set_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBeach.png?fileID=2800000&amp;guid=3a4563376cd279a4eb24e6254f06c7e8&amp;type=3#IMGBeach&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set1_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
+                    <ui:Label text="#SET1NAME" display-tooltip-when-elided="true" name="UI_SS_Set_Name" class="SS-SetName" style="font-size: 48px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set1_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
+                    <ui:VisualElement name="Spacing" style="align-items: center; justify-content: center; width: 101px; height: 100%; margin-left: 8px; margin-right: 8px;">
+                        <ui:VisualElement name="UI_SS_Set1_CompletetionIcon1" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 90px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Spacing" style="align-items: center; justify-content: center; width: 101px; height: 100%; margin-left: 8px; margin-right: 8px;">
+                        <ui:VisualElement name="UI_SS_Set1_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 90px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Spacing" style="align-items: center; justify-content: center; width: 101px; height: 100%; margin-left: 8px; margin-right: 8px;">
+                        <ui:VisualElement name="UI_SS_Set1_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 90px; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="UI_SS_Set2_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; align-items: center; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
+                <ui:VisualElement name="UI_SS_Set2_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
+                    <ui:VisualElement name="UI_SS_Set2_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBoden.png?fileID=2800000&amp;guid=9bbbbbed88dc29e4b80e1be354fc19e6&amp;type=3#IMGBoden&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set2_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
+                    <ui:Label text="#SET2NAME" display-tooltip-when-elided="true" name="UI_SS_Set2_Name" class="SS-SetName" style="font-size: 48px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set2_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
+                    <ui:VisualElement name="UI_SS_Set2_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />
+                    <ui:VisualElement name="UI_SS_Set2_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />
+                    <ui:VisualElement name="UI_SS_Set2_CompletetionIcon1" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="UI_SS_Set3_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; align-items: center; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
+                <ui:VisualElement name="UI_SS_Set3_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
+                    <ui:VisualElement name="UI_SS_Set3Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGForest.png?fileID=2800000&amp;guid=8080da8d7ba52554abfc5c642ad5f5c6&amp;type=3#IMGForest&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set3_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
+                    <ui:Label text="#SET3NAME" display-tooltip-when-elided="true" name="UI_SS_Set3_Name" class="SS-SetName" style="font-size: 48px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set3_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
+                    <ui:VisualElement name="UI_SS_Set3_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/LeafL.png?fileID=2800000&amp;guid=814f9e017bf2f5c499a5d5a3328cdb2b&amp;type=3#LeafL&apos;); width: 101px;" />
+                    <ui:VisualElement name="UI_SS_Set3_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/LeafL.png?fileID=2800000&amp;guid=814f9e017bf2f5c499a5d5a3328cdb2b&amp;type=3#LeafL&apos;); width: 101px;" />
+                    <ui:VisualElement name="UI_SS_Set2_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/LeafL.png?fileID=2800000&amp;guid=814f9e017bf2f5c499a5d5a3328cdb2b&amp;type=3#LeafL&apos;); width: 101px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_SS_CancelAndConfirm_Container" style="align-items: stretch; justify-content: space-between; flex-direction: row; width: 100%; height: 16%; margin-top: 16px;">
+            <ui:VisualElement name="UI_SS_Cancel_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Button%20Container%20Small%20Left.png?fileID=2800000&amp;guid=3ef8b0328a8e7194baf9d0e7f4324da1&amp;type=3#Button Container Small Left&apos;); width: 400px; height: 100%; flex-direction: row; align-items: flex-end;">
+                <ui:VisualElement name="UI_LS_B-ButtonPrompt_Image" class="CancelButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px; margin-left: 80px;" />
+                <ui:Button text="#CANCEL" display-tooltip-when-elided="true" name="UI_LS_Cancel_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 32px; padding-left: 8px; padding-right: 25px; padding-top: 0; padding-bottom: 0; justify-content: flex-end; font-size: 32px; -unity-font-style: normal; -unity-text-align: middle-left; width: auto;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="UI_SS_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Button%20Container.png?fileID=2800000&amp;guid=9ad6456dc6081c14489a14392dafd51d&amp;type=3#Button Container&apos;); height: 100%; width: 400px; justify-content: flex-end; align-items: flex-end;">
+                <ui:VisualElement name="UI_LS_A-ButtonPrompt_Image" class="ConfirmButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px;" />
+                <ui:Button text="#CONFIRM" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 8px; margin-right: 64px; margin-top: 0; margin-bottom: 32px; padding-left: 0; padding-right: 25px; padding-top: 0; padding-bottom: 0; flex-direction: row; -unity-text-align: middle-right; justify-content: flex-start; -unity-font-style: normal; font-size: 32px; width: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

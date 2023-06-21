@@ -1,3 +1,7 @@
+:root {
+    -unity-font-definition: url('project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&guid=5881706824e8cf44c970097c42299726&type=3#PatuaOne-Regular');
+}
+
 .Time {
     color: rgb(248, 248, 248);
     font-size: 32px;
@@ -75,12 +79,7 @@
 }
 
 .LS-BottomButtons {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/ConfirmCancelButton.png?fileID=2800000&guid=912338bc9789dfb42a35402375b15032&type=3#ConfirmCancelButton');
-    font-size: 24px;
-    padding-left: 16px;
-    padding-right: 32px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    font-size: 32px;
     -unity-text-align: middle-right;
     align-items: center;
     justify-content: center;
@@ -100,13 +99,22 @@
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    -unity-font-style: bold;
+    -unity-font-style: normal;
     height: 48px;
     width: 200px;
+    -unity-font-definition: url('project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular%20SDF.asset?fileID=11400000&guid=848c78d88f13dd14fb6ce9a122190544&type=2#PatuaOne-Regular SDF');
+    -unity-font: url('project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&guid=5881706824e8cf44c970097c42299726&type=3#PatuaOne-Regular');
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    flex-direction: row-reverse;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: rgb(235, 235, 235);
 }
 
 .LS-TrackNavigators {
@@ -116,8 +124,8 @@
     opacity: 0.75;
     -unity-background-image-tint-color: rgb(103, 103, 103);
     transition-duration: 0.1s;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 8px;
+    margin-right: 6px;
     margin-top: 6%;
 }
 
@@ -148,7 +156,7 @@
     transition-duration: 0.1s;
     opacity: 1;
     color: rgb(24, 24, 24);
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/Course%20Box%20-%20Dropshadow.png?fileID=2800000&guid=a9a17aedc47f7e146b7decafadf04457&type=3#Course Box - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Course%20Box%20-%20Dropshadow.png?fileID=2800000&guid=a9a17aedc47f7e146b7decafadf04457&type=3#Course Box - Dropshadow');
     border-left-color: rgba(38, 38, 38, 0);
     border-right-color: rgba(38, 38, 38, 0);
     border-top-color: rgba(38, 38, 38, 0);
@@ -159,6 +167,8 @@
     border-bottom-right-radius: 0;
     background-color: rgba(0, 0, 0, 0);
     -unity-background-image-tint-color: rgb(99, 99, 99);
+    -unity-font-definition: url('project://database/Assets/UI/BallGame/Fonts/ArchivoBlack-Regular%20SDF.asset?fileID=11400000&guid=a16d01956778c9d44b3f8536150f0441&type=2#ArchivoBlack-Regular SDF');
+    -unity-font: url('project://database/Assets/UI/BallGame/Fonts/ArchivoBlack-Regular.ttf?fileID=12800000&guid=93f9275f78d8a734cab20720419f8752&type=3#ArchivoBlack-Regular');
 }
 
 .LS-CourseTest-Box:focus {
@@ -179,7 +189,7 @@
     transition-duration: 0.2s;
     opacity: 1;
     color: rgb(24, 24, 24);
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/Course%20Box%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=a7c7efe8794cf724481c5b2e0f1d4f81&type=3#Course Box Selected - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Course%20Box%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=a7c7efe8794cf724481c5b2e0f1d4f81&type=3#Course Box Selected - Dropshadow');
     border-left-color: rgba(38, 38, 38, 0);
     border-right-color: rgba(38, 38, 38, 0);
     border-top-color: rgba(38, 38, 38, 0);
@@ -190,10 +200,12 @@
     border-bottom-right-radius: 0;
     scale: 1.15 1.15;
     -unity-background-image-tint-color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/UI/BallGame/Fonts/ArchivoBlack-Regular%20SDF.asset?fileID=11400000&guid=a16d01956778c9d44b3f8536150f0441&type=2#ArchivoBlack-Regular SDF');
+    -unity-font: url('project://database/Assets/UI/BallGame/Fonts/ArchivoBlack-Regular.ttf?fileID=12800000&guid=93f9275f78d8a734cab20720419f8752&type=3#ArchivoBlack-Regular');
 }
 
 .MM-Button {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/MainMenuButton%20-%20Dropshadow.png?fileID=2800000&guid=897508a38bd53df43a4b916f7b291437&type=3#MainMenuButton - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/MainMenuButton%20-%20Dropshadow.png?fileID=2800000&guid=897508a38bd53df43a4b916f7b291437&type=3#MainMenuButton - Dropshadow');
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
@@ -214,7 +226,7 @@
 }
 
 .MM-Button:focus {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/MainMenuButton%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=0fcbc23b37d5d1f4482233980634968b&type=3#MainMenuButton Selected - Dropshadow');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/MainMenuButton%20Selected%20-%20Dropshadow.png?fileID=2800000&guid=0fcbc23b37d5d1f4482233980634968b&type=3#MainMenuButton Selected - Dropshadow');
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
@@ -252,6 +264,8 @@
     -unity-text-outline-color: rgb(0, 0, 0);
     -unity-text-align: middle-center;
     text-shadow: 1px 1px 0 rgb(0, 0, 0);
+    -unity-font-definition: url('project://database/Assets/UI/BallGame/Fonts/ArchivoBlack-Regular%20SDF.asset?fileID=11400000&guid=a16d01956778c9d44b3f8536150f0441&type=2#ArchivoBlack-Regular SDF');
+    -unity-font: url('project://database/Assets/UI/BallGame/Fonts/ArchivoBlack-Regular.ttf?fileID=12800000&guid=93f9275f78d8a734cab20720419f8752&type=3#ArchivoBlack-Regular');
 }
 
 .ScrollTopAndBot {
@@ -259,7 +273,7 @@
 }
 
 .LS-CourseCheckMarks {
-    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/TrackIconUncompleted.png?fileID=2800000&guid=7b74610776f1e5f4880d3f711ffd0af9&type=3#TrackIconUncompleted');
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/TrackIconUncompleted.png?fileID=2800000&guid=7b74610776f1e5f4880d3f711ffd0af9&type=3#TrackIconUncompleted');
     width: 56px;
     height: 56px;
     margin-right: 4px;
@@ -290,6 +304,53 @@
 .TextBlackBorder {
     -unity-text-outline-width: 1.5px;
     -unity-text-outline-color: rgb(0, 0, 0);
-    text-shadow: 1px 1px 0 rgb(0, 0, 0);
-    -unity-font-style: bold;
+    -unity-font-style: normal;
+}
+
+.DifficultyBox {
+    width: 100%;
+    height: 100px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.SetDifficultyIcon {
+    width: 64px;
+    height: 64px;
+    margin-left: 42px;
+    margin-bottom: 10px;
+    -unity-background-image-tint-color: rgb(44, 44, 44);
+}
+
+.ConfirmButtonIcon {
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_A.png?fileID=2800000&guid=2867dd82e73232b40a5ac4931c0f2e50&type=3#Switch_A');
+}
+
+.CancelButtonIcon {
+    background-image: url('project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_B.png?fileID=2800000&guid=201542546d05d104488cc7efa17fa7ad&type=3#Switch_B');
+}
+
+.SS-SetName {
+    font-size: 40px;
+    margin-left: 16px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.SS-SetCompletionIcon {
+    width: 101px;
+    height: 101px;
+    -unity-background-image-tint-color: rgba(44, 44, 44, 255);
+    margin-right: 8px;
+    margin-left: 8px;
 }

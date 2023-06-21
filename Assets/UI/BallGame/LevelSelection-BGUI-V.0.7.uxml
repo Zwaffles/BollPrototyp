@@ -1,0 +1,85 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
+    <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet-V.2.uss?fileID=7433441132597879392&amp;guid=3312e1c28c345954cac5d66465ca06cb&amp;type=3#BG-StyleSheet-V.2" />
+    <ui:VisualElement name="UI_LS_Canvas" style="flex-grow: 1;">
+        <ui:VisualElement name="UI_LS_Header_Container" style="align-items: center; justify-content: flex-start; margin-top: 0; flex-direction: row; width: 100%; height: 16%;">
+            <ui:VisualElement name="UI_LS_Header_Box" style="align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/SetName%20Box.png?fileID=2800000&amp;guid=076ea86150025d44eb3b7991c15e1911&amp;type=3#SetName Box&apos;); padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 45%; flex-direction: row; height: 100%;">
+                <ui:VisualElement name="UI_LS_SetNavigationLeft_Container" style="justify-content: center; flex-grow: 0; flex-direction: column; align-items: flex-end; margin-left: 0;">
+                    <ui:VisualElement name="UI_LS_SetNavigationLeft_Image" class="LS-TrackNavigators" style="opacity: 1; rotate: 180deg;" />
+                </ui:VisualElement>
+                <ui:Label text="Lovely Seaside Road" display-tooltip-when-elided="true" name="UI_LS_Header_Text" style="-unity-text-align: middle-center; font-size: 48px; -unity-font-style: italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); rotate: 0; margin-bottom: 2%; margin-left: 16px; margin-right: 16px; flex-grow: 0; flex-shrink: 1; -unity-font-definition: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular%20SDF.asset?fileID=11400000&amp;guid=848c78d88f13dd14fb6ce9a122190544&amp;type=2#PatuaOne-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&amp;guid=5881706824e8cf44c970097c42299726&amp;type=3#PatuaOne-Regular&apos;);" />
+                <ui:VisualElement name="UI_LS_SetNavigationRight_Container" style="justify-content: center; flex-grow: 0; align-items: flex-start;">
+                    <ui:VisualElement name="UI_LS_SetNavigationRight_Image" class="LS-TrackNavigators" style="opacity: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_LS_Levels_Container" style="-unity-text-align: middle-center; flex-direction: row; justify-content: center; flex-grow: 1;">
+            <ui:VisualElement name="UI_LS_SetCoursesAndNavigation_Container" style="flex-grow: 1; height: 100%; visibility: visible; overflow: visible;">
+                <ui:VisualElement name="UI_LS_CourseInfoAndArrowNavigation" style="flex-direction: row; width: 100%; height: 70%; align-items: center; justify-content: center; margin-top: 32px;">
+                    <ui:VisualElement name="UI_LS_SpecialBox_Left" style="flex-grow: 0; height: 100%; align-items: flex-start; width: 23%;" />
+                    <ui:VisualElement name="UI_LS_CourseInfo_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/CourseInfo%20Box%20-%20Dropshadow.png?fileID=2800000&amp;guid=873d6cd0aa0ef8b4bb8118cea18e537c&amp;type=3#CourseInfo Box - Dropshadow&apos;); flex-grow: 0; width: 52%; height: 100%; align-items: stretch; justify-content: flex-end;">
+                        <ui:VisualElement name="UI_LS_CourseInfo_Image" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/CoursePreview%20Box.png?fileID=2800000&amp;guid=40d1796c520427541b1dfde0e3ea3628&amp;type=3#CoursePreview Box&apos;); flex-grow: 1; justify-content: flex-end; align-items: center; margin-left: 3%; margin-right: 3%; margin-top: 3%; width: 92%;">
+                            <ui:VisualElement name="UI_LS_CourseName_Box" style="flex-grow: 0; margin-left: 0; margin-right: 0; width: 110%; margin-top: 0; margin-bottom: 0;">
+                                <ui:Label text="Sea-Shell Lane" display-tooltip-when-elided="true" name="UI_LS_CourseName_Text" style="font-size: 32px; color: rgb(239, 239, 239); padding-top: 8px; padding-bottom: 8px; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/CourseName%20Box.png?fileID=2800000&amp;guid=066e8cb45b61adc45ad2d5567795dc20&amp;type=3#CourseName Box&apos;); top: 4px; -unity-font-definition: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular%20SDF.asset?fileID=11400000&amp;guid=848c78d88f13dd14fb6ce9a122190544&amp;type=2#PatuaOne-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&amp;guid=5881706824e8cf44c970097c42299726&amp;type=3#PatuaOne-Regular&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="UI_LS_CourseInfoText_Container" style="width: 100%; height: 24%; align-items: flex-start; justify-content: space-between; flex-direction: row;">
+                            <ui:Label text="BestTime: --:--:---" display-tooltip-when-elided="true" name="UI_LS_CourseBestTime_Text" style="margin-right: 4%; margin-top: 2%; margin-bottom: 2%; font-size: 32px; -unity-font-style: normal; color: rgb(6, 6, 6); margin-left: 42px; -unity-font-definition: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular%20SDF.asset?fileID=11400000&amp;guid=848c78d88f13dd14fb6ce9a122190544&amp;type=2#PatuaOne-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&amp;guid=5881706824e8cf44c970097c42299726&amp;type=3#PatuaOne-Regular&apos;);" />
+                            <ui:Label text="Par Time: --:--:---" display-tooltip-when-elided="true" name="UI_LS_CourseBestTime_Text" style="margin-left: 4%; margin-top: 2%; margin-bottom: 2%; font-size: 32px; -unity-font-style: normal; color: rgb(6, 6, 6); margin-right: 72px; -unity-font-definition: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular%20SDF.asset?fileID=11400000&amp;guid=848c78d88f13dd14fb6ce9a122190544&amp;type=2#PatuaOne-Regular SDF&apos;); -unity-font: url(&apos;project://database/Assets/UI/BallGame/Fonts/PatuaOne-Regular.ttf?fileID=12800000&amp;guid=5881706824e8cf44c970097c42299726&amp;type=3#PatuaOne-Regular&apos;);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_LS_SpecialBox_Right" style="flex-grow: 0; height: 100%; align-items: flex-end; width: 23%;">
+                        <ui:VisualElement name="UI_LS_Difficultise_Box" style="align-items: flex-end; width: 340px; height: 100%; left: 240px; bottom: 80px;">
+                            <ui:VisualElement name="UI_LS_Difficulty_1" class="DifficultyBox" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Difficulty.png?fileID=2800000&amp;guid=5f244cffaabc60c41b32f2df40019b57&amp;type=3#Difficulty&apos;); -unity-background-image-tint-color: rgb(0, 241, 255);">
+                                <ui:VisualElement name="UI_LS_Difficulty_Icon_1" class="SetDifficultyIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeS.png?fileID=2800000&amp;guid=be7d6fee91268a446a3480b073340300&amp;type=3#PalmtreeS&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="UI_LS_Difficulty_2" class="DifficultyBox" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Difficulty.png?fileID=2800000&amp;guid=5f244cffaabc60c41b32f2df40019b57&amp;type=3#Difficulty&apos;); -unity-background-image-tint-color: rgb(255, 164, 0);">
+                                <ui:VisualElement name="UI_LS_Difficulty_Icon_2" class="SetDifficultyIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeS.png?fileID=2800000&amp;guid=be7d6fee91268a446a3480b073340300&amp;type=3#PalmtreeS&apos;);" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="UI_LS_Difficulty_3" class="DifficultyBox" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Difficulty.png?fileID=2800000&amp;guid=5f244cffaabc60c41b32f2df40019b57&amp;type=3#Difficulty&apos;); -unity-background-image-tint-color: rgb(136, 0, 255); right: 64px;">
+                                <ui:VisualElement name="UI_LS_Difficulty_Icon_3" class="SetDifficultyIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeS.png?fileID=2800000&amp;guid=be7d6fee91268a446a3480b073340300&amp;type=3#PalmtreeS&apos;);" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_LS_CourseList_Container" style="flex-direction: row; justify-content: center; width: 100%; height: 24%; align-items: stretch;">
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-1" class="LS-Course LS-CourseTest-Box" style="align-items: center;">
+                        <ui:Label text="1-1" display-tooltip-when-elided="true" name="UI_LS_Course_1-1" class="CourseButtonText" style="align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: auto; height: auto; -unity-font-style: bold;" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-2" class="LS-Course LS-CourseTest-Box">
+                        <ui:Label text="1-2" display-tooltip-when-elided="true" name="UI_LS_Course_1-2" class="CourseButtonText" style="align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: auto; height: auto;" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-3" class="LS-Course LS-CourseTest-Box">
+                        <ui:Label text="1-3" display-tooltip-when-elided="true" name="UI_LS_Course_1-3" class="CourseButtonText" style="align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: auto; height: auto;" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-4" class="LS-Course LS-CourseTest-Box">
+                        <ui:Label text="1-4" display-tooltip-when-elided="true" name="UI_LS_Course_1-4" class="CourseButtonText" style="align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: auto; height: auto;" />
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-5" class="LS-Course LS-CourseTest-Box">
+                        <ui:Label text="1-5" display-tooltip-when-elided="true" name="UI_LS_Course_1-5" class="CourseButtonText" style="align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: auto; height: auto;" />
+                    </ui:Button>
+                    <ui:VisualElement name="UI_LS_DashAndBoss_Container" style="flex-direction: row; height: 100%; overflow: visible;">
+                        <ui:Label text="-" display-tooltip-when-elided="true" name="UI_LS_BossSeperator_Text" style="-unity-font-style: bold; font-size: 80px; color: rgb(5, 7, 5); height: 110px; margin-top: 32px; margin-right: 8px; margin-left: 8px; padding-right: 0; flex-grow: 1;" />
+                        <ui:Button display-tooltip-when-elided="true" name="UI_LS_Course_1-X" class="LS-Course LS-CourseTest-Box">
+                            <ui:Label text="1-X" display-tooltip-when-elided="true" name="UI_LS_Course_1-X" class="CourseButtonText" style="align-items: center; justify-content: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: auto; height: auto;" />
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_LS_CourseList_Container" style="flex-direction: row; justify-content: space-around; width: 100%; height: 10%; align-items: center; overflow: hidden; margin-top: 2px;" />
+        <ui:VisualElement name="UI_LS_CancelAndConfirm_Container" style="align-items: stretch; justify-content: space-between; flex-direction: row; width: 100%; height: 16%; margin-top: 16px;">
+            <ui:VisualElement name="UI_LS_Cancel_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Button%20Container%20Small%20Left.png?fileID=2800000&amp;guid=3ef8b0328a8e7194baf9d0e7f4324da1&amp;type=3#Button Container Small Left&apos;); width: 400px; height: 100%; flex-direction: row; align-items: flex-end;">
+                <ui:VisualElement name="UI_LS_B-ButtonPrompt_Image" class="CancelButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px; margin-left: 80px;" />
+                <ui:Button text="#CANCEL" display-tooltip-when-elided="true" name="UI_LS_Cancel_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 32px; padding-left: 8px; padding-right: 25px; padding-top: 0; padding-bottom: 0; justify-content: flex-end; font-size: 32px; -unity-font-style: normal; -unity-text-align: middle-left; width: auto;" />
+            </ui:VisualElement>
+            <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_Text" class="LS-BossTimer" style="bottom: 48px; font-size: 90px; -unity-font-style: bold; -unity-text-outline-width: 4px; color: rgb(0, 0, 0);">
+                <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_Text" class="LS-BossTimer" style="font-size: 90px; -unity-font-style: bold; -unity-text-outline-width: 4px; bottom: 6px; right: 8px;" />
+            </ui:Label>
+            <ui:VisualElement name="UI_LS_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Button%20Container.png?fileID=2800000&amp;guid=9ad6456dc6081c14489a14392dafd51d&amp;type=3#Button Container&apos;); height: 100%; width: 400px; justify-content: flex-end; align-items: flex-end;">
+                <ui:VisualElement name="UI_LS_A-ButtonPrompt_Image" class="ConfirmButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px;" />
+                <ui:Button text="#CONFIRM" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 8px; margin-right: 64px; margin-top: 0; margin-bottom: 32px; padding-left: 0; padding-right: 25px; padding-top: 0; padding-bottom: 0; flex-direction: row; -unity-text-align: middle-right; justify-content: flex-start; -unity-font-style: normal; font-size: 32px; width: auto;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
