@@ -1,11 +1,10 @@
-using System;
-using UnityEngine.UIElements;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using System;
 
-/// <summary>
-/// Handles the selection of courses in a menu.
-/// </summary>
-public class CourseSelect : MonoBehaviour
+public class LevelSelectMenu : MonoBehaviour
 {
     [SerializeField, Header("Current Set (starts at 0)")]
     private int currentSet = 0;
@@ -36,8 +35,6 @@ public class CourseSelect : MonoBehaviour
     {
         input = GameManager.instance.Input;
         input.AddSubmitEventListener(Submit);
-        input.AddShoulderButtonRightEventListener(NavigateSetRight);
-        input.AddShoulderButtonLeftEventListener(NavigateSetLeft);
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -57,31 +54,6 @@ public class CourseSelect : MonoBehaviour
         {
             courseButtons[i].RegisterCallback<FocusInEvent>(OnFocusInCourse);
         }
-
-        // Taken from void start
-
-        courseManager = GameManager.instance.courseManager;
-
-        currentCourse = courseManager.GetCurrentCourse();
-
-        FocusFirstElement(currentCourse);
-
-        setName.text = courseManager.GetSetName(currentSet);
-
-        // Display the remaining time for the boss course
-        var bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
-        finalCourseTimeLimit.text = DisplayTime(bossTime);
-
-        for (int i = 1; i < 6; i++)
-        {
-            // Lock the course buttons for subcourses 2-5 if the previous subcourse was not completed
-            if (!courseManager.GetCompletionStatus(currentSet, i - 1))
-            {
-                courseButtons[i].text = "";
-                courseButtons[i].style.backgroundImage = lockIcon;
-            }
-        }
-
     }
 
     /// <summary>
@@ -90,11 +62,7 @@ public class CourseSelect : MonoBehaviour
     private void OnDisable()
     {
         input.RemoveSubmitEventListener(Submit);
-        input.RemoveShoulderButtonRightEventListener(NavigateSetRight);
-        input.RemoveShoulderButtonLeftEventListener(NavigateSetLeft);
     }
-
-    /*
 
     /// <summary>
     /// Initializes the script.
@@ -123,8 +91,6 @@ public class CourseSelect : MonoBehaviour
             }
         }
     }
-
-    */
 
     /// <summary>
     /// Sets the focus on the first element of the selected course.
@@ -207,7 +173,6 @@ public class CourseSelect : MonoBehaviour
                 courseManager.SetCurrentSet(currentSet);
                 courseManager.SetCurrentCourse(currentCourse);
                 courseManager.LoadCourse(currentSet, currentCourse);
-                gameObject.SetActive(false);
                 break;
             case int n when n >= 1 && n <= 4 && !courseManager.GetCompletionStatus(currentSet, currentCourse - 1):
                 // do nothing if currentCourse is between 1 and 4 and the previous course has not been completed
@@ -217,14 +182,12 @@ public class CourseSelect : MonoBehaviour
                 courseManager.SetCurrentSet(currentSet);
                 courseManager.SetCurrentCourse(currentCourse);
                 courseManager.LoadCourse(currentSet, currentCourse);
-                gameObject.SetActive(false);
                 break;
             case 5 when courseManager.GetCompletionStatus(currentSet, currentCourse - 1):
                 input.RemoveSubmitEventListener(Submit);
                 courseManager.SetCurrentSet(currentSet);
                 courseManager.SetCurrentCourse(currentCourse);
                 courseManager.LoadBossCourse(currentSet);
-                gameObject.SetActive(false);
                 break;
             case 5:
                 // do nothing if the previous course has not been completed
@@ -232,18 +195,6 @@ public class CourseSelect : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void NavigateSetRight()
-    {
-        currentSet = currentSet == courseManager.GetAmountOfSets() - 1 ? 0 : currentSet + 1;
-        UpdateCourseUIInformation();
-    }
-
-    private void NavigateSetLeft()
-    {
-        currentSet = currentSet == 0 ? courseManager.GetAmountOfSets() - 1 : currentSet - 1;
-        UpdateCourseUIInformation();
     }
 
     private void UpdateCourseUIInformation()

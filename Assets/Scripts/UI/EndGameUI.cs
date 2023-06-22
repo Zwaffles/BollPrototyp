@@ -94,6 +94,7 @@ public class EndGameUI : MonoBehaviour
         // Load CourseSelectionMenu
         SceneManager.LoadScene(0);
 
+        GameManager.instance.uiManager.ToggleLevelSelectMenu(true);
         gameObject.SetActive(false);
     }
 
