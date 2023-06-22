@@ -342,7 +342,7 @@ public class PlayerController : MonoBehaviour
 
         if (-_moveDirection.y == 1)
         {
-            rb.maxAngularVelocity = currentMaxSpeed / 1.5f + currentOverSpeed;
+            rb.maxAngularVelocity = currentMaxSpeed / 1.2f + currentOverSpeed;
         }
         else
         {
