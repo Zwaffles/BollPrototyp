@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: minUpSlopeSpeed
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: regularMaxSpeed
@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: boostVisualiserObject
       value: 
       objectReference: {fileID: 2832314330993609427}
+    - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: upSlopeSpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: downSlopeSpeedMultiplier
       value: 0.8
