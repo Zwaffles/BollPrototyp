@@ -350,7 +350,29 @@
 .SS-SetCompletionIcon {
     width: 101px;
     height: 101px;
-    -unity-background-image-tint-color: rgba(44, 44, 44, 255);
+    -unity-background-image-tint-color: rgb(44, 44, 44);
     margin-right: 8px;
     margin-left: 8px;
+}
+
+.IG-BoostIcons {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(255, 255, 255, 255);
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-left-color: rgb(6, 6, 6);
+    border-right-color: rgb(6, 6, 6);
+    border-top-color: rgb(6, 6, 6);
+    border-bottom-color: rgb(6, 6, 6);
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
