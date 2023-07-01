@@ -54,6 +54,12 @@ public class UIManager : MonoBehaviour
         levelMenu.gameObject.SetActive(active);
     }
 
+    public void ToggleLevelSelectMenu(bool active, int setNumber)
+    {
+        levelMenu.gameObject.SetActive(active);
+        levelMenu.NavigateToSet(setNumber);
+    }
+
     /// <summary>
     /// Starts the gameplay by activating and resetting the timer and boss timer (if applicable).
     /// </summary>

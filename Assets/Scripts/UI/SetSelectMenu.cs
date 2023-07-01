@@ -56,19 +56,19 @@ public class SetSelectMenu : MonoBehaviour
 
         if (focusedElement == set1Button)
         {
-            GameManager.instance.uiManager.ToggleLevelSelectMenu(true);
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 0);
             gameObject.SetActive(false);
         }
 
         if (focusedElement == set2Button)
         {
-            GameManager.instance.uiManager.ToggleLevelSelectMenu(true);
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 1);
             gameObject.SetActive(false);
         }
 
         if (focusedElement == set3Button)
         {
-            GameManager.instance.uiManager.ToggleLevelSelectMenu(true);
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 2);
             gameObject.SetActive(false);
         }
 
