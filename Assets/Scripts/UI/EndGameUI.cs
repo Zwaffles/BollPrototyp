@@ -95,6 +95,7 @@ public class EndGameUI : MonoBehaviour
         SceneManager.LoadScene(0);
 
         GameManager.instance.uiManager.ToggleLevelSelectMenu(true);
+        GameManager.instance.audioManager.StopMusic();
         gameObject.SetActive(false);
     }
 
