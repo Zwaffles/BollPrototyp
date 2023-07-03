@@ -88,7 +88,9 @@ public class UIManager : MonoBehaviour
 
         var timeSpent = timer.GetTimeSpent();
 
-        courseManager.UpdateCourseData(courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus, timeSpent);
+        courseManager.UpdateCourseData(
+            courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus,
+            completionStatus ? timeSpent : courseManager.GetCurrentCourseBestTime());
         timer.gameObject.SetActive(false);
 
         if (bossTimer.gameObject.activeInHierarchy)
