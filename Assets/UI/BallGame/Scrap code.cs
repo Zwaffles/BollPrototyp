@@ -11,28 +11,18 @@ public class UseBoost: MonoBehaviour
     private VisualElement _Boost3;
 
 
-    private void Container_TransitionEnd(TransitionEndEvent evt)
+    private void UseBoost1()
     {
-        _Boost1.style.backgroundColor = new StylebackgroundColor(new backgroundColor(0, 0, 0));
-        _Boost1.style.colors.background = new 
-
-        if (destroyOnTransitionEnd)
-            Destroy(gameObject, duration);
+        _Boost1.style.backgroundColor = new Color(44, 44, 44, 1);
     }
 
-    private void Container_TransitionEnd(TransitionEndEvent evt)
+    private void UseBoost2()
     {
-        _Boost2.style.translate = new StyleTranslate(new Translate(0, 0, 0));
-
-        if (destroyOnTransitionEnd)
-            Destroy(gameObject, duration);
+        _Boost1.style.backgroundColor = new Color(44, 44, 44, 1);
     }
 
-    private void Container_TransitionEnd(TransitionEndEvent evt)
+    private void UseBoost3()
     {
-        _Boost3.style.translate = new StyleTranslate(new Translate(0, 0, 0));
-
-        if (destroyOnTransitionEnd)
-            Destroy(gameObject, duration);
+        _Boost1.style.backgroundColor = new Color(44, 44, 44, 1);
     }
 }
