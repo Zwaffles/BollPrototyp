@@ -104,8 +104,13 @@ public class GameManager : MonoBehaviour
 
         // Set the input mode based on the new game state
         if (newState == GameState.Play)
+        {
             input.SetGameplay();
+        }
         else
+        {
             input.SetUI();
+        }
+
     }
 }

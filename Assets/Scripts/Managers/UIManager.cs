@@ -54,6 +54,12 @@ public class UIManager : MonoBehaviour
         levelMenu.gameObject.SetActive(active);
     }
 
+    public void ToggleLevelSelectMenu(bool active, int setNumber)
+    {
+        levelMenu.gameObject.SetActive(active);
+        levelMenu.NavigateToSet(setNumber);
+    }
+
     /// <summary>
     /// Starts the gameplay by activating and resetting the timer and boss timer (if applicable).
     /// </summary>
@@ -82,7 +88,9 @@ public class UIManager : MonoBehaviour
 
         var timeSpent = timer.GetTimeSpent();
 
-        courseManager.UpdateCourseData(courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus, timeSpent);
+        courseManager.UpdateCourseData(
+            courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus,
+            completionStatus ? timeSpent : courseManager.GetCurrentCourseBestTime());
         timer.gameObject.SetActive(false);
 
         if (bossTimer.gameObject.activeInHierarchy)

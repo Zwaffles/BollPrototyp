@@ -358,7 +358,7 @@
 .IG-BoostIcons {
     width: 80px;
     height: 80px;
-    background-color: rgba(255, 255, 255, 255);
+    background-color: rgb(255, 255, 255);
     border-left-width: 8px;
     border-right-width: 8px;
     border-top-width: 8px;
@@ -379,4 +379,18 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.SS-SetContainer {
+    -unity-background-image-tint-color: rgba(168, 168, 168, 255);
+    scale: 1 1;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.SS-SetContainer:focus {
+    -unity-background-image-tint-color: rgb(253, 253, 253);
+    scale: 1.05 1.05;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
 }

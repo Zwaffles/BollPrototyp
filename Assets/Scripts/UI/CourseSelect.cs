@@ -246,6 +246,17 @@ public class CourseSelect : MonoBehaviour
         UpdateCourseUIInformation();
     }
 
+    public void NavigateToSet(int setNumber)
+    {
+
+        if (setNumber >= 0 && setNumber < courseManager.GetAmountOfSets())
+        {
+            currentSet = setNumber;
+            UpdateCourseUIInformation();
+        }
+
+    }
+
     private void UpdateCourseUIInformation()
     {
         Debug.Log("Current Set: " + currentSet);
