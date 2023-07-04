@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Game UI Elements")]
     [SerializeField] private Timer timer;
+    [SerializeField] private UseBoost useBoost;
     [SerializeField] private BossTimer bossTimer;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private EndGameUI endGameUI;
@@ -153,4 +154,10 @@ public class UIManager : MonoBehaviour
 
         }
     }
+
+    public void handleBoost(int number)
+    {
+        useBoost.playBoostUIAnimation(number);
+    }
+
 }

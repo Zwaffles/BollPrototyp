@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 1669229919}
   - component: {fileID: 1669229921}
   - component: {fileID: 1669229920}
+  - component: {fileID: 8015359247065506461}
   m_Layer: 0
   m_Name: UI-Timer-BG
   m_TagString: Untagged
@@ -168,6 +169,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d62a9fae8a3db44fa23bcf0a4230a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8015359247065506461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669229918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c4f039ebef34847a2aa351cd25e551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1902059182
@@ -776,6 +789,7 @@ MonoBehaviour:
   setMenu: {fileID: 6394573317266344895}
   levelMenu: {fileID: 7413822044127341059}
   timer: {fileID: 1669229920}
+  useBoost: {fileID: 8015359247065506461}
   bossTimer: {fileID: 1902059186}
   pauseMenu: {fileID: 799081741}
   endGameUI: {fileID: 1177883122}
