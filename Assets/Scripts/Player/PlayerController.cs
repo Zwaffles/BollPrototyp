@@ -256,7 +256,13 @@ public class PlayerController : MonoBehaviour
         {
 
             shouldJump = false;
-            gameManager.uiManager.handleBoost(numberOfBoosts);
+
+            try
+            {
+                gameManager.uiManager.handleBoost(numberOfBoosts);
+            } 
+            catch { }
+
             numberOfBoosts--;
             isBoosting = true;
             boostVisualiserObject.SetActive(true);
