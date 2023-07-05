@@ -255,6 +255,8 @@ public class PlayerController : MonoBehaviour
         if (shouldJump && numberOfBoosts > 0) // Used to have && !isBoosting too, but that became redundant
         {
 
+            shouldJump = false;
+            gameManager.uiManager.handleBoost(numberOfBoosts);
             numberOfBoosts--;
             isBoosting = true;
             boostVisualiserObject.SetActive(true);
@@ -342,7 +344,7 @@ public class PlayerController : MonoBehaviour
 
         if (-_moveDirection.y == 1)
         {
-            rb.maxAngularVelocity = currentMaxSpeed / 1.5f + currentOverSpeed;
+            rb.maxAngularVelocity = currentMaxSpeed / 1.2f + currentOverSpeed;
         }
         else
         {

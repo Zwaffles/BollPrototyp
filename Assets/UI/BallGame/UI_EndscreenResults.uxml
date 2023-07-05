@@ -4,11 +4,11 @@
     <ui:VisualElement name="UI_Endscreen_Canvas" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
         <ui:VisualElement name="UI_MM_Header_Container" style="align-items: center; justify-content: flex-start; margin-top: 0; flex-direction: row; width: 100%; height: 16%;">
             <ui:VisualElement name="UI_MM_Header_Box" style="align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/SetName%20Box.png?fileID=2800000&amp;guid=076ea86150025d44eb3b7991c15e1911&amp;type=3#SetName Box&apos;); padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 45%; flex-direction: row; height: 100%;">
-                <ui:Label text="Course Results" display-tooltip-when-elided="true" name="UI_MM_Header_Text" style="-unity-text-align: middle-center; font-size: 64px; -unity-font-style: bold-and-italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); rotate: 0; margin-bottom: 2%; margin-left: 16px; margin-right: 16px; flex-grow: 0; flex-shrink: 1;" />
+                <ui:Label text="#COURSE_RESULTS" display-tooltip-when-elided="true" name="UI_MM_Header_Text" style="-unity-text-align: middle-center; font-size: 64px; -unity-font-style: italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); rotate: 0; margin-bottom: 2%; margin-left: 16px; margin-right: 16px; flex-grow: 0; flex-shrink: 1;" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="UI_Endscreen_Container" style="align-items: center; justify-content: center; height: auto; position: relative; top: 0; flex-grow: 1;">
-            <ui:VisualElement name="UI_Endscreen_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/DropShadow/Endscreen%20-%20Dropshadow.png?fileID=2800000&amp;guid=452ac0628f5bd0343889ddd14a68d844&amp;type=3#Endscreen - Dropshadow&apos;); width: 45%; height: 60%; align-items: stretch;">
+            <ui:VisualElement name="UI_Endscreen_Box" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Dropshadow/Endscreen%20-%20Dropshadow.png?fileID=2800000&amp;guid=452ac0628f5bd0343889ddd14a68d844&amp;type=3#Endscreen - Dropshadow&apos;); width: 45%; height: 60%; align-items: stretch;">
                 <ui:VisualElement name="UI_Endscreen_NormalTimes_Container" style="height: 70%; flex-direction: column;">
                     <ui:VisualElement name="UI_Endscreen_BestTime_Container" style="width: 100%; height: 40%;">
                         <ui:Label text="Best Time: --:--:---" display-tooltip-when-elided="true" name="UI_Endscreen_BestTime_Text" class="ES-BestTime TextBlackBorder" style="margin-left: 64px; margin-right: 0; margin-top: 48px; margin-bottom: 16px; color: rgb(19, 19, 19); font-size: 64px;" />
@@ -31,11 +31,10 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="UI_Endscreen_Confirm_Container" style="align-items: stretch; justify-content: flex-end; flex-direction: row; width: 100%; height: 16%;">
-            <ui:VisualElement name="UI_Endscreen_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SmoleButtonContainer.png?fileID=2800000&amp;guid=0b2eddb605c9f0142806a1ed45474ec4&amp;type=3#SmoleButtonContainer&apos;); height: 100%; width: 25%; justify-content: center; align-items: flex-end;">
-                <ui:Button text="Confirm" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="color: rgb(29, 29, 29); align-items: flex-start; margin-bottom: 4%; margin-left: 8%;">
-                    <ui:VisualElement name="UI_Endscreen_A-ButtonPrompt_Image" style="height: 100%; width: 32px; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Switch-Prompts/Switch_A.png?fileID=2800000&amp;guid=2867dd82e73232b40a5ac4931c0f2e50&amp;type=3#Switch_A&apos;);" />
-                </ui:Button>
+        <ui:VisualElement name="UI_LS_CancelAndConfirm_Container" style="align-items: stretch; justify-content: space-between; flex-direction: row-reverse; width: 100%; height: 16%; margin-top: 16px;">
+            <ui:VisualElement name="UI_LS_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Button%20Container.png?fileID=2800000&amp;guid=9ad6456dc6081c14489a14392dafd51d&amp;type=3#Button Container&apos;); height: 100%; width: 400px; justify-content: flex-end; align-items: flex-end;">
+                <ui:VisualElement name="UI_LS_A-ButtonPrompt_Image" class="ConfirmButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px;" />
+                <ui:Button text="#CONFIRM" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 8px; margin-right: 64px; margin-top: 0; margin-bottom: 32px; padding-left: 0; padding-right: 25px; padding-top: 0; padding-bottom: 0; flex-direction: row; -unity-text-align: middle-right; justify-content: flex-start; -unity-font-style: normal; font-size: 32px; width: auto;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -7,8 +7,14 @@ using UnityEngine;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    [Header("UI Elements")]
+    [Header("Menu UI Elements")]
+    [SerializeField] private MainMenu mainMenu;
+    [SerializeField] private SetSelectMenu setMenu;
+    [SerializeField] private CourseSelect levelMenu;
+
+    [Header("Game UI Elements")]
     [SerializeField] private Timer timer;
+    [SerializeField] private UseBoost useBoost;
     [SerializeField] private BossTimer bossTimer;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private EndGameUI endGameUI;
@@ -31,6 +37,28 @@ public class UIManager : MonoBehaviour
 
         input.PauseEvent += TogglePause;
         input.ResumeEvent += TogglePause;
+
+    }
+
+    public void ToggleMainMenu(bool active)
+    {
+        mainMenu.gameObject.SetActive(active);
+    }
+
+    public void ToggleSetSelectMenu(bool active)
+    {
+        setMenu.gameObject.SetActive(active);
+    }
+
+    public void ToggleLevelSelectMenu(bool active)
+    {
+        levelMenu.gameObject.SetActive(active);
+    }
+
+    public void ToggleLevelSelectMenu(bool active, int setNumber)
+    {
+        levelMenu.gameObject.SetActive(active);
+        levelMenu.NavigateToSet(setNumber);
     }
 
     /// <summary>
@@ -61,7 +89,9 @@ public class UIManager : MonoBehaviour
 
         var timeSpent = timer.GetTimeSpent();
 
-        courseManager.UpdateCourseData(courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus, timeSpent);
+        courseManager.UpdateCourseData(
+            courseManager.GetCurrentCourseCompletionStatus() ? true : completionStatus,
+            completionStatus ? timeSpent : courseManager.GetCurrentCourseBestTime());
         timer.gameObject.SetActive(false);
 
         if (bossTimer.gameObject.activeInHierarchy)
@@ -103,8 +133,31 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            // Placeholder quit-implementation
-            Application.Quit();
+            //Placeholder quit-implementation
+
+            if (mainMenu.gameObject.activeInHierarchy)
+            {
+                Application.Quit();
+            }
+
+            if (setMenu.gameObject.activeInHierarchy)
+            {
+                ToggleMainMenu(true);
+                ToggleSetSelectMenu(false);
+            }
+
+            if (levelMenu.gameObject.activeInHierarchy)
+            {
+                ToggleSetSelectMenu(true);
+                ToggleLevelSelectMenu(false);
+            }
+
         }
     }
+
+    public void handleBoost(int number)
+    {
+        useBoost.playBoostUIAnimation(number);
+    }
+
 }
