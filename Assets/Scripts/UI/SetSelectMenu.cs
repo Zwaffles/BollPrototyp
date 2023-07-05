@@ -34,6 +34,13 @@ public class SetSelectMenu : MonoBehaviour
         //FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
 
+        FocusFirstElement(set1Button);
+
+    }
+
+    public void FocusFirstElement(VisualElement firstElement)
+    {
+        firstElement.Focus();
     }
 
     private void Update()
