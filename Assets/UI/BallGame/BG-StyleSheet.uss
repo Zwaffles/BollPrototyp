@@ -223,6 +223,7 @@
     margin-left: 16px;
     transition-duration: 0.1s;
     transform-origin: center;
+    -unity-background-image-tint-color: rgba(168, 168, 168, 255);
 }
 
 .MM-Button:focus {
@@ -245,6 +246,7 @@
     transition-duration: 0.2s;
     scale: 1.1 1.1;
     transform-origin: center;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
 }
 
 .MM-ButtonText {
@@ -379,10 +381,12 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    transition-duration: 0.16s;
+    transition-timing-function: ease-out;
 }
 
 .SS-SetContainer {
-    -unity-background-image-tint-color: rgba(168, 168, 168, 255);
+    -unity-background-image-tint-color: rgb(168, 168, 168);
     scale: 1 1;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;

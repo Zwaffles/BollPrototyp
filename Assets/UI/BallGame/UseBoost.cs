@@ -10,7 +10,7 @@ public class UseBoost: MonoBehaviour
     private VisualElement _Boost2;
     private VisualElement _Boost3;
 
-    private const float GREY_COLOR = 44 / 255;
+    private const float GREY_COLOR = 0.22f;
 
     private void OnEnable()
     {
