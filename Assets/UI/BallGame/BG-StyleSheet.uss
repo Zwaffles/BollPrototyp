@@ -223,7 +223,7 @@
     margin-left: 16px;
     transition-duration: 0.1s;
     transform-origin: center;
-    -unity-background-image-tint-color: rgba(168, 168, 168, 255);
+    -unity-background-image-tint-color: rgb(168, 168, 168);
 }
 
 .MM-Button:focus {
@@ -246,7 +246,7 @@
     transition-duration: 0.2s;
     scale: 1.1 1.1;
     transform-origin: center;
-    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }
 
 .MM-ButtonText {
@@ -347,6 +347,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    color: rgba(12, 12, 12, 255);
 }
 
 .SS-SetCompletionIcon {
@@ -396,5 +397,12 @@
     -unity-background-image-tint-color: rgb(253, 253, 253);
     scale: 1.05 1.05;
     transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+}
+
+.SS-SetContainer-Locked {
+    -unity-background-image-tint-color: rgb(84, 84, 84);
+    scale: 1 1;
+    transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
 }
