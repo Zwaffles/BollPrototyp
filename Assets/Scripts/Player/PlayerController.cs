@@ -255,6 +255,14 @@ public class PlayerController : MonoBehaviour
         if (shouldJump && numberOfBoosts > 0) // Used to have && !isBoosting too, but that became redundant
         {
 
+            shouldJump = false;
+
+            try
+            {
+                gameManager.uiManager.handleBoost(numberOfBoosts);
+            } 
+            catch { }
+
             numberOfBoosts--;
             isBoosting = true;
             boostVisualiserObject.SetActive(true);

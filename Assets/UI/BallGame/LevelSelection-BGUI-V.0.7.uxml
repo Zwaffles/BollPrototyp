@@ -73,8 +73,8 @@
                 <ui:VisualElement name="UI_LS_B-ButtonPrompt_Image" class="CancelButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px; margin-left: 80px;" />
                 <ui:Button text="#CANCEL" display-tooltip-when-elided="true" name="UI_LS_Cancel_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 32px; padding-left: 8px; padding-right: 25px; padding-top: 0; padding-bottom: 0; justify-content: flex-end; font-size: 32px; -unity-font-style: normal; -unity-text-align: middle-left; width: auto;" />
             </ui:VisualElement>
-            <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_Text" class="LS-BossTimer" style="bottom: 48px; font-size: 90px; -unity-font-style: bold; -unity-text-outline-width: 4px; color: rgb(0, 0, 0);">
-                <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_Text" class="LS-BossTimer" style="font-size: 90px; -unity-font-style: bold; -unity-text-outline-width: 4px; bottom: 6px; right: 8px;" />
+            <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_DropShadow_Text" class="LS-BossTimer" style="bottom: 48px; font-size: 90px; -unity-font-style: bold; -unity-text-outline-width: 4px; color: rgb(0, 0, 0);">
+                <ui:Label text="05:00:000" display-tooltip-when-elided="true" name="UI_LS_BossTimer_Text" class="LS-BossTimer" style="font-size: 90px; -unity-font-style: bold; -unity-text-outline-width: 4px; bottom: 6px; right: 8px; opacity: 1;" />
             </ui:Label>
             <ui:VisualElement name="UI_LS_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Button%20Container.png?fileID=2800000&amp;guid=9ad6456dc6081c14489a14392dafd51d&amp;type=3#Button Container&apos;); height: 100%; width: 400px; justify-content: flex-end; align-items: flex-end;">
                 <ui:VisualElement name="UI_LS_A-ButtonPrompt_Image" class="ConfirmButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px;" />

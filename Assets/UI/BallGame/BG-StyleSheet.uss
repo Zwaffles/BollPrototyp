@@ -223,6 +223,7 @@
     margin-left: 16px;
     transition-duration: 0.1s;
     transform-origin: center;
+    -unity-background-image-tint-color: rgba(168, 168, 168, 255);
 }
 
 .MM-Button:focus {
@@ -245,6 +246,7 @@
     transition-duration: 0.2s;
     scale: 1.1 1.1;
     transform-origin: center;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 255);
 }
 
 .MM-ButtonText {
@@ -350,7 +352,49 @@
 .SS-SetCompletionIcon {
     width: 101px;
     height: 101px;
-    -unity-background-image-tint-color: rgba(44, 44, 44, 255);
+    -unity-background-image-tint-color: rgb(44, 44, 44);
     margin-right: 8px;
     margin-left: 8px;
+}
+
+.IG-BoostIcons {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-left-color: rgb(6, 6, 6);
+    border-right-color: rgb(6, 6, 6);
+    border-top-color: rgb(6, 6, 6);
+    border-bottom-color: rgb(6, 6, 6);
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -8px;
+    margin-bottom: -8px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition-duration: 0.16s;
+    transition-timing-function: ease-out;
+}
+
+.SS-SetContainer {
+    -unity-background-image-tint-color: rgb(168, 168, 168);
+    scale: 1 1;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.SS-SetContainer:focus {
+    -unity-background-image-tint-color: rgb(253, 253, 253);
+    scale: 1.05 1.05;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
 }

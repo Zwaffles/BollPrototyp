@@ -1,8 +1,26 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
     <ui:VisualElement name="UI_InGame_Canvas" style="flex-grow: 1; align-items: flex-start; flex-direction: column;">
-        <ui:VisualElement name="UI_InGame_Timer_Container" style="border-left-color: rgb(43, 43, 43); border-right-color: rgb(43, 43, 43); border-top-color: rgb(43, 43, 43); border-bottom-color: rgb(43, 43, 43); flex-direction: row; margin-right: 0; margin-left: 0; margin-top: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 26%; height: 16%; align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Timer-CountUP.png?fileID=2800000&amp;guid=df7a95c5a9528bb4196418c5c2db5282&amp;type=3#Timer-CountUP&apos;); margin-bottom: 0;">
-            <ui:Label text="00:00:000" display-tooltip-when-elided="true" name="UI_Timer" class="Time" style="font-size: 64px; align-items: center; -unity-text-align: middle-left; width: 68%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; right: 4%; bottom: 4%; -unity-font-style: bold;" />
+        <ui:VisualElement name="UI_InGame_Top_Container" style="width: 100%; height: 50%;">
+            <ui:VisualElement name="UI_InGame_Timer_Container" style="border-left-color: rgb(43, 43, 43); border-right-color: rgb(43, 43, 43); border-top-color: rgb(43, 43, 43); border-bottom-color: rgb(43, 43, 43); flex-direction: row; margin-right: 0; margin-left: 0; margin-top: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 503px; height: 174px; align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Timer-CountUP.png?fileID=2800000&amp;guid=df7a95c5a9528bb4196418c5c2db5282&amp;type=3#Timer-CountUP&apos;); margin-bottom: 0;">
+                <ui:Label text="00:00:000" display-tooltip-when-elided="true" name="UI_Timer" class="Time" style="font-size: 64px; align-items: center; -unity-text-align: middle-left; width: 68%; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; right: 4%; bottom: 4%; -unity-font-style: bold;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_InGame_Bot_Container" style="width: 100%; height: 50%; flex-direction: row; justify-content: flex-end; align-items: flex-end;">
+            <ui:VisualElement name="UI_InGame_Boosts_Container" style="margin-right: 64px; margin-bottom: 48px;">
+                <ui:VisualElement name="Temp" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/Boosts%20Text.png?fileID=2800000&amp;guid=ee12fa43982393348875d0ca36f74a31&amp;type=3#Boosts Text&apos;); width: 339px; height: 81px; margin-bottom: 8px; margin-left: 8px; margin-right: 8px; display: flex; opacity: 0;" />
+                <ui:VisualElement name="UI_InGame_Boosts_Icons_Container" style="align-items: center; flex-direction: row; justify-content: space-around;">
+                    <ui:VisualElement name="UI_InGame_Boosts_IconShadow3" class="IG-BoostIcons" style="background-color: rgb(6, 6, 6);">
+                        <ui:VisualElement name="UI_InGame_Boosts_Icon3" class="IG-BoostIcons" style="bottom: 8px; right: 16px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_InGame_Boosts_IconShadow2" class="IG-BoostIcons" style="background-color: rgb(6, 6, 6);">
+                        <ui:VisualElement name="UI_InGame_Boosts_Icon2" class="IG-BoostIcons" style="bottom: 8px; right: 16px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_InGame_Boosts_IconShadow1" class="IG-BoostIcons" style="background-color: rgb(6, 6, 6);">
+                        <ui:VisualElement name="UI_InGame_Boosts_Icon1" class="IG-BoostIcons" style="bottom: 8px; right: 16px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

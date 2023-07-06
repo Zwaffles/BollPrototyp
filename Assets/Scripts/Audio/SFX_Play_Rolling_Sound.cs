@@ -45,7 +45,15 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
             if (wasGrounded) return;
 
             wasGrounded = true;
-            GameManager.instance.audioManager.PlayLoopingSfx("Rollin", () => wasGrounded, EngineSound);
+
+            try
+            {
+                GameManager.instance.audioManager.PlayLoopingSfx("Rollin", () => wasGrounded, EngineSound);
+            }
+            catch
+            {
+
+            }
 
         }
         else
