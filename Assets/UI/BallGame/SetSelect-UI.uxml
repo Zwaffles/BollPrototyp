@@ -10,7 +10,7 @@
         <ui:VisualElement name="UI_SS_Set_Container" style="-unity-text-align: middle-center; flex-direction: column; justify-content: center; flex-grow: 1; align-items: center;">
             <ui:VisualElement name="UI_SS_Set_Box" focusable="true" class="SS-SetContainer" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; align-items: center; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
                 <ui:VisualElement name="UI_SS_Set1_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
-                    <ui:VisualElement name="UI_SS_Set_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBeach.png?fileID=2800000&amp;guid=3a4563376cd279a4eb24e6254f06c7e8&amp;type=3#IMGBeach&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                    <ui:VisualElement name="UI_SS_Set_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGForest.png?fileID=2800000&amp;guid=8080da8d7ba52554abfc5c642ad5f5c6&amp;type=3#IMGForest&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="UI_SS_Set1_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
                     <ui:Label text="#SET1NAME" display-tooltip-when-elided="true" name="UI_SS_Set_Name" class="SS-SetName" style="font-size: 48px;" />
@@ -42,7 +42,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="UI_SS_Set3_Box" focusable="true" class="SS-SetContainer" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; align-items: center; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
                 <ui:VisualElement name="UI_SS_Set3_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
-                    <ui:VisualElement name="UI_SS_Set3Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGForest.png?fileID=2800000&amp;guid=8080da8d7ba52554abfc5c642ad5f5c6&amp;type=3#IMGForest&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                    <ui:VisualElement name="UI_SS_Set3Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBeach.png?fileID=2800000&amp;guid=3a4563376cd279a4eb24e6254f06c7e8&amp;type=3#IMGBeach&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="UI_SS_Set3_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
                     <ui:Label text="#SET3NAME" display-tooltip-when-elided="true" name="UI_SS_Set3_Name" class="SS-SetName" style="font-size: 48px;" />

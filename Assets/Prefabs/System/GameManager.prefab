@@ -538,74 +538,110 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sets:
-  - setName: Boden Backdrops
-    bossTimeLimit: 150
-    musicName: taratata
+  - setName: Forest I
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Forest_map
     musicParOffset: 0
     subCourses:
-    - courseName: Highspeed Highway 97
-      sceneName: Level_A1_1
+    - courseName: From Fabriken...
+      sceneName: F1-1
       parTime: 42
       courseCompleted: 0
       bestTime: 0
-    - courseName: Sarek Sightseeing
-      sceneName: F Level 9
+    - courseName: From Boden...
+      sceneName: F1-2
       parTime: 19
       courseCompleted: 0
       bestTime: 0
-    - courseName: Troublesome Tollpost
-      sceneName: F Level 8
+    - courseName: From Norrbotten...
+      sceneName: F1-3
       parTime: 12
       courseCompleted: 0
       bestTime: 0
-    - courseName: "White to W\xE6r"
-      sceneName: Level_A1_4
+    - courseName: From Sweden...
+      sceneName: Level_B1_4
       parTime: 32
       courseCompleted: 0
       bestTime: 0
-    - courseName: "Halld\xF3r's Hekla-Home"
-      sceneName: Level_A1_2
+    - courseName: ...With Love
+      sceneName: F1-5
       parTime: 13
       courseCompleted: 0
       bestTime: 0
     bossCourse:
-      courseName: Beyond Baffin Bosstrack
-      sceneName: Level_A1_5
+      courseName: Tough Love!
+      sceneName: Level_B1_5
       parTime: 38
       courseCompleted: 0
       bestTime: 0
-  - setName: East-coast Extravaganza
-    bossTimeLimit: 154
-    musicName: Vonboff_-_Hawaiian_map
+  - setName: Winter I
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Winter_map
     musicParOffset: 154
     subCourses:
-    - courseName: Hawaii Highway
-      sceneName: Level_B1_1
+    - courseName: "0\xB0"
+      sceneName: Level_A1_2
       parTime: 34
       courseCompleted: 0
       bestTime: 0
-    - courseName: Volcano Vogelflight
-      sceneName: Level_B1_2
+    - courseName: "-10\xB0"
+      sceneName: H-L-7
       parTime: 13
       courseCompleted: 0
       bestTime: 0
-    - courseName: Sandy Shorts
-      sceneName: Level_B1_3
+    - courseName: "-20\xB0"
+      sceneName: Balja
       parTime: 17
       courseCompleted: 0
       bestTime: 0
-    - courseName: California Canyon
-      sceneName: Level_B1_4
+    - courseName: "-30\xB0"
+      sceneName: Level_A1_4
       parTime: 27
       courseCompleted: 0
       bestTime: 0
-    - courseName: Goldminer's Gulch
-      sceneName: Level_B1_5
+    - courseName: "-40\xB0"
+      sceneName: F level 9
       parTime: 29
       courseCompleted: 0
       bestTime: 0
     bossCourse:
-      courseName: Sunset Speedrun
+      courseName: "-53\xB0"
+      sceneName: Level_A1_5
+      parTime: 35
+      courseCompleted: 0
+      bestTime: 0
+  - setName: Beach I
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Hawaiian_map
+    musicParOffset: 154
+    subCourses:
+    - courseName: Life's a Beach
+      sceneName: Level_A1_3
+      parTime: 34
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: Only Count the Boosts You Have
+      sceneName: Level_B1_2
+      parTime: 13
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: Seize the Momentum
+      sceneName: H1-3
+      parTime: 17
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: Don't Let Go of Up
+      sceneName: Level_B1_3
+      parTime: 27
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: Saving the Best for Last
+      sceneName: Goetakanal
+      parTime: 29
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: DEATH.
       sceneName: Level_B1_6
       parTime: 35
       courseCompleted: 0
