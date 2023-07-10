@@ -5,6 +5,9 @@ using UnityEngine;
 public class SpeedWind : MonoBehaviour
 {
 
+    // This script doesn't seem to do anything right now...?
+    // (It used to control tilting the hat, so it can be used for other speed affected stuff.)
+
     private Rigidbody targetRB;
     [SerializeField, Tooltip("Maximum tilt of the hat"), Range(0f, 180f)]
     private float highGraphicalSpeedFactor = 50f;

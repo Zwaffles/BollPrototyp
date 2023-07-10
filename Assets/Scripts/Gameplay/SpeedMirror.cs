@@ -38,13 +38,13 @@ public class SpeedMirror : MonoBehaviour
         if (playerController.isGrounded)
         {
 
-            if (targetRB.velocity.x > 0f)
+            if (targetRB.angularVelocity.z < 0f)
             {
 
                 rb.angularVelocity = new Vector3(
                 0f,
                 0f,
-                -targetRB.velocity.magnitude * graphicalSpeedFactor
+                -targetRB.angularVelocity.magnitude * graphicalSpeedFactor
                     );
 
             }
@@ -54,7 +54,7 @@ public class SpeedMirror : MonoBehaviour
                 rb.angularVelocity = new Vector3(
                 0f,
                 0f,
-                targetRB.velocity.magnitude * graphicalSpeedFactor
+                targetRB.angularVelocity.magnitude * graphicalSpeedFactor
                     );
 
             }
@@ -73,7 +73,7 @@ public class SpeedMirror : MonoBehaviour
     {
 
         return Mathf.SmoothStep(lowGraphicalSpeedFactor, highGraphicalSpeedFactor,
-            targetRB.velocity.magnitude/highSpeedThreshold // This value might need tweaking
+            targetRB.angularVelocity.magnitude/highSpeedThreshold // This value might need tweaking
             );
 
     }
