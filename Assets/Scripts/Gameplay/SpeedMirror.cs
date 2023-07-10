@@ -17,8 +17,8 @@ public class SpeedMirror : MonoBehaviour
     [SerializeField, Tooltip("How much the rotation of the physical ball should affect the graphical ball up in the air"), Range(0f, 1f)]
     private float aerialSpeedFactor = 0.5f;
 
-    [SerializeField, Tooltip("The maximum speed the graphical ball may attain"), Range(0f, 1000f)]
-    private float maxSpeed = 1000f;
+    [SerializeField, Tooltip("The maximum speed the graphical ball may attain"), Range(0f, 100f)]
+    private float maxSpeed = 100f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,8 @@ public class SpeedMirror : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        rb.maxAngularVelocity = maxSpeed * (playerController.isOnIce ? 2f : 1f);
 
         float graphicalSpeedFactor = CalculateGraphicalSpeedFactor();
 

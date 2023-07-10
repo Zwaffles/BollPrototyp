@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,6 +33,13 @@ public class PlayerController : MonoBehaviour
     private float targetMaxSpeed = 28f;
     [SerializeField, Tooltip("Max speed to lerp towards for the ball on flat ground and in the air")]
     private float regularMaxSpeed = 28f;
+    private HashSet<GameObject> touchingIceObjects = new HashSet<GameObject>();
+    public bool isOnIce
+    {
+        get => touchingIceObjects.Count > 0;
+    }
+    [SerializeField, Tooltip("Extra speed while on ice")]
+    private float iceSpeedBoost = 20f;
 
     // Gravity variables
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
@@ -193,6 +201,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        Debug.Log(targetMaxSpeed);
+
     }
 
     private void HandleMove(Vector2 dir)
@@ -284,14 +295,14 @@ public class PlayerController : MonoBehaviour
                 if(-_moveDirection.y == -1)
                 {
                     slopeAngle = slopeHit.normal.x;
-                targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * downSlopeSpeedMultiplier;
                 // Test to see if this works correctly
                 Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
             }
                 if (-_moveDirection.y == 1)
                 {
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * upSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
                 }
@@ -321,7 +332,7 @@ public class PlayerController : MonoBehaviour
         }
         else // You're on flat ground
         {
-            targetMaxSpeed = regularMaxSpeed;
+            targetMaxSpeed = regularMaxSpeed + (isOnIce ? iceSpeedBoost : 0f);
             // Test to see if this works correctly
             Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
         }
@@ -392,22 +403,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ice"))
         {
-           // isOnGround = true;
-
-
-
+            touchingIceObjects.Add(collision.gameObject);
         }
     }
 
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.CompareTag("Ice"))
         {
-           // isOnGround = false;
-
+            touchingIceObjects.Remove(collision.gameObject);
         }
     }
 }
