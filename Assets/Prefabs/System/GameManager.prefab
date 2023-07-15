@@ -543,35 +543,71 @@ MonoBehaviour:
     musicName: Vonboff_-_Forest_map
     musicParOffset: 0
     subCourses:
-    - courseName: From Fabriken...
+    - courseName: F1-1
       sceneName: F1-1
       parTime: 42
       courseCompleted: 0
       bestTime: 0
-    - courseName: From Boden...
+    - courseName: F1-2
       sceneName: F1-2
       parTime: 19
       courseCompleted: 0
       bestTime: 0
-    - courseName: From Norrbotten...
+    - courseName: F1-3
       sceneName: F1-3
       parTime: 12
       courseCompleted: 0
       bestTime: 0
-    - courseName: From Sweden...
+    - courseName: F1-4
       sceneName: Level_B1_4
       parTime: 32
       courseCompleted: 0
       bestTime: 0
-    - courseName: ...With Love
+    - courseName: F1-5
       sceneName: F1-5
       parTime: 13
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: Tough Love!
-      sceneName: Level_B1_5
+      sceneName: F1-X
       parTime: 38
+      courseCompleted: 0
+      bestTime: 0
+  - setName: Forest II
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Forest_map
+    musicParOffset: 0
+    subCourses:
+    - courseName: F2-1
+      sceneName: H-L11
+      parTime: 34
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: F2-2
+      sceneName: 10_Harads
+      parTime: 13
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: F2-3
+      sceneName: H-L-15
+      parTime: 17
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: F2-4
+      sceneName: H-L-12
+      parTime: 27
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: F2-5
+      sceneName: F2-5
+      parTime: 29
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: F2-X
+      sceneName: H-L-13
+      parTime: 35
       courseCompleted: 0
       bestTime: 0
   - setName: Winter I
@@ -579,34 +615,70 @@ MonoBehaviour:
     musicName: Vonboff_-_Winter_map
     musicParOffset: 154
     subCourses:
-    - courseName: "0\xB0"
+    - courseName: W1-1
       sceneName: Level_A1_2
       parTime: 34
       courseCompleted: 0
       bestTime: 0
-    - courseName: "-10\xB0"
+    - courseName: W1-2
       sceneName: H-L-7
       parTime: 13
       courseCompleted: 0
       bestTime: 0
-    - courseName: "-20\xB0"
-      sceneName: Balja
+    - courseName: W1-3
+      sceneName: 7_Balja
       parTime: 17
       courseCompleted: 0
       bestTime: 0
-    - courseName: "-30\xB0"
+    - courseName: W1-4
       sceneName: Level_A1_4
       parTime: 27
       courseCompleted: 0
       bestTime: 0
-    - courseName: "-40\xB0"
+    - courseName: W1-5
       sceneName: F level 9
       parTime: 29
       courseCompleted: 0
       bestTime: 0
     bossCourse:
-      courseName: "-53\xB0"
+      courseName: W1-X
       sceneName: Level_A1_5
+      parTime: 35
+      courseCompleted: 0
+      bestTime: 0
+  - setName: Winter II
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Winter_map
+    musicParOffset: 154
+    subCourses:
+    - courseName: W2-1
+      sceneName: H-L-9
+      parTime: 34
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: W2-2
+      sceneName: F Level 6
+      parTime: 13
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: W2-3
+      sceneName: 9_Boeysk
+      parTime: 17
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: W2-4
+      sceneName: 8_Niemisel
+      parTime: 27
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: W2-5
+      sceneName: 12_Bifroest
+      parTime: 29
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: W2-X
+      sceneName: H-L-10
       parTime: 35
       courseCompleted: 0
       bestTime: 0
@@ -615,33 +687,33 @@ MonoBehaviour:
     musicName: Vonboff_-_Hawaiian_map
     musicParOffset: 154
     subCourses:
-    - courseName: Life's a Beach
-      sceneName: Level_A1_3
+    - courseName: B1-1
+      sceneName: 11_Rappatjaern
       parTime: 34
       courseCompleted: 0
       bestTime: 0
-    - courseName: Only Count the Boosts You Have
+    - courseName: B1-2
       sceneName: Level_B1_2
       parTime: 13
       courseCompleted: 0
       bestTime: 0
-    - courseName: Seize the Momentum
+    - courseName: B1-3
       sceneName: H1-3
       parTime: 17
       courseCompleted: 0
       bestTime: 0
-    - courseName: Don't Let Go of Up
+    - courseName: B1-4
       sceneName: Level_B1_3
       parTime: 27
       courseCompleted: 0
       bestTime: 0
-    - courseName: Saving the Best for Last
-      sceneName: Goetakanal
+    - courseName: B1-5
+      sceneName: 6_Goetakanal
       parTime: 29
       courseCompleted: 0
       bestTime: 0
     bossCourse:
-      courseName: DEATH.
+      courseName: B1-X
       sceneName: Level_B1_6
       parTime: 35
       courseCompleted: 0

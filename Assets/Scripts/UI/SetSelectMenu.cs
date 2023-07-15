@@ -9,9 +9,13 @@ public class SetSelectMenu : MonoBehaviour
 
     private VisualElement root;
 
-    private VisualElement set1Button;
-    private VisualElement set2Button;
-    private VisualElement set3Button;
+    private VisualElement setF1Button;
+    private VisualElement setF2Button;
+
+    private VisualElement setW1Button;
+    private VisualElement setW2Button;
+
+    private VisualElement setB1Button;
 
     private float ignoreInputTime;
     private bool inputEnabled;
@@ -27,14 +31,18 @@ public class SetSelectMenu : MonoBehaviour
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
-        set1Button = root.Q<VisualElement>("UI_SS_Set_Box");
-        set2Button = root.Q<VisualElement>("UI_SS_Set2_Box");
-        set3Button = root.Q<VisualElement>("UI_SS_Set3_Box");
+        setF1Button = root.Q<VisualElement>("UI_SS_Set_Box_F1");
+        setF2Button = root.Q<VisualElement>("UI_SS_Set_Box_F2");
+
+        setW1Button = root.Q<VisualElement>("UI_SS_Set_Box_W1");
+        setW2Button = root.Q<VisualElement>("UI_SS_Set_Box_W2");
+
+        setB1Button = root.Q<VisualElement>("UI_SS_Set_Box_B1");
 
         //FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
 
-        FocusFirstElement(set1Button);
+        FocusFirstElement(setF1Button);
 
     }
 
@@ -61,21 +69,39 @@ public class SetSelectMenu : MonoBehaviour
 
         var focusedElement = GetFocusedElement();
 
-        if (focusedElement == set1Button)
+        // Forest
+
+        if (focusedElement == setF1Button)
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 0);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == set2Button)
+        if (focusedElement == setF2Button)
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 1);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == set3Button)
+        // Winter
+
+        if (focusedElement == setW1Button)
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 2);
+            gameObject.SetActive(false);
+        }
+
+        if (focusedElement == setW2Button)
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 3);
+            gameObject.SetActive(false);
+        }
+
+        // Beach
+
+        if (focusedElement == setB1Button)
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 4);
             gameObject.SetActive(false);
         }
 
