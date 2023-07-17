@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7067d62f2cefff842b82cc93f8b733e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockIcon: {fileID: 2800000, guid: d64235851e90d9642be37990b7b36874, type: 3}
 --- !u!114 &5817653315510646539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,6 +575,8 @@ MonoBehaviour:
       parTime: 38
       courseCompleted: 0
       bestTime: 0
+    setUnlocked: 1
+    setUnlockedOnCompletion: Forest II
   - setName: Forest II
     bossTimeLimit: 200
     musicName: Vonboff_-_Forest_map
@@ -610,6 +613,8 @@ MonoBehaviour:
       parTime: 35
       courseCompleted: 0
       bestTime: 0
+    setUnlocked: 0
+    setUnlockedOnCompletion: 
   - setName: Winter I
     bossTimeLimit: 200
     musicName: Vonboff_-_Winter_map
@@ -646,6 +651,8 @@ MonoBehaviour:
       parTime: 35
       courseCompleted: 0
       bestTime: 0
+    setUnlocked: 1
+    setUnlockedOnCompletion: Winter II
   - setName: Winter II
     bossTimeLimit: 200
     musicName: Vonboff_-_Winter_map
@@ -682,6 +689,8 @@ MonoBehaviour:
       parTime: 35
       courseCompleted: 0
       bestTime: 0
+    setUnlocked: 0
+    setUnlockedOnCompletion: 
   - setName: Beach I
     bossTimeLimit: 200
     musicName: Vonboff_-_Hawaiian_map
@@ -718,6 +727,8 @@ MonoBehaviour:
       parTime: 35
       courseCompleted: 0
       bestTime: 0
+    setUnlocked: 1
+    setUnlockedOnCompletion: 
 --- !u!1 &4637475394147627162
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,16 @@ public class SetData
     public CourseData bossCourse;
 
     /// <summary>
+    /// Indicates whether the set has been unlocked.
+    /// </summary>
+    public bool setUnlocked = false;
+
+    /// <summary>
+    /// The name of the set this set unlocks.
+    /// </summary>
+    public string setUnlockedOnCompletion;
+
+    /// <summary>
     /// Creates a new SetData object with the specified parameters.
     /// </summary>
     /// <param name="setName">The name of the set.</param>
@@ -74,7 +84,51 @@ public class SetData
         this.bossCourse = bossCourse;
         this.musicParOffset = musicParOffset;
         this.musicName = musicName;
+        this.setUnlockedOnCompletion = "Noel";
     }
+
+    /// <summary>
+    /// Creates a new SetData object with the specified parameters.
+    /// </summary>
+    /// <param name="setName">The name of the set.</param>
+    /// <param name="bossTimeLimit">The time limit for completing the boss course.</param>
+    /// <param name="subCourses">The sub-courses within the set.</param>
+    /// <param name="bossCourse">The boss course within the set.</param>
+    /// <param name="musicParOffset">The boss course within the set.</param>
+    /// /// <param name="setUnlocked">The unlock status of this set.</param>
+    public SetData(string setName, float bossTimeLimit, CourseData[] subCourses, CourseData bossCourse, float musicParOffset, string musicName, bool setUnlocked)
+    {
+        this.setName = setName;
+        this.bossTimeLimit = bossTimeLimit;
+        this.subCourses = subCourses;
+        this.bossCourse = bossCourse;
+        this.musicParOffset = musicParOffset;
+        this.musicName = musicName;
+        this.setUnlocked = setUnlocked;
+        this.setUnlockedOnCompletion = "Noel";
+    }
+
+    /// <summary>
+    /// Creates a new SetData object with the specified parameters.
+    /// </summary>
+    /// <param name="setName">The name of the set.</param>
+    /// <param name="bossTimeLimit">The time limit for completing the boss course.</param>
+    /// <param name="subCourses">The sub-courses within the set.</param>
+    /// <param name="bossCourse">The boss course within the set.</param>
+    /// <param name="musicParOffset">The boss course within the set.</param>
+    /// /// <param name="setUnlocked">The unlock status of this set.</param>
+    public SetData(string setName, float bossTimeLimit, CourseData[] subCourses, CourseData bossCourse, float musicParOffset, string musicName, bool setUnlocked, string setUnlockedOnCompletion)
+    {
+        this.setName = setName;
+        this.bossTimeLimit = bossTimeLimit;
+        this.subCourses = subCourses;
+        this.bossCourse = bossCourse;
+        this.musicParOffset = musicParOffset;
+        this.musicName = musicName;
+        this.setUnlocked = setUnlocked;
+        this.setUnlockedOnCompletion = setUnlockedOnCompletion;
+    }
+
 }
 
 /// <summary>

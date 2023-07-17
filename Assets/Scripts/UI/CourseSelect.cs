@@ -236,13 +236,21 @@ public class CourseSelect : MonoBehaviour
 
     private void NavigateSetRight()
     {
-        currentSet = currentSet == courseManager.GetAmountOfSets() - 1 ? 0 : currentSet + 1;
+        do
+        {
+            currentSet = currentSet == courseManager.GetAmountOfSets() - 1 ? 0 : currentSet + 1;
+        } 
+        while (!courseManager.GetUnlockStatusOfSet(currentSet));
         UpdateCourseUIInformation();
     }
 
     private void NavigateSetLeft()
     {
-        currentSet = currentSet == 0 ? courseManager.GetAmountOfSets() - 1 : currentSet - 1;
+        do
+        {
+            currentSet = currentSet == 0 ? courseManager.GetAmountOfSets() - 1 : currentSet - 1;
+        }
+        while (!courseManager.GetUnlockStatusOfSet(currentSet));
         UpdateCourseUIInformation();
     }
 
@@ -251,6 +259,12 @@ public class CourseSelect : MonoBehaviour
 
         if (setNumber >= 0 && setNumber < courseManager.GetAmountOfSets())
         {
+
+            while (!courseManager.GetUnlockStatusOfSet(setNumber))
+            {
+                setNumber = setNumber == 0 ? courseManager.GetAmountOfSets() - 1 : setNumber - 1;
+            }
+
             currentSet = setNumber;
             UpdateCourseUIInformation();
         }

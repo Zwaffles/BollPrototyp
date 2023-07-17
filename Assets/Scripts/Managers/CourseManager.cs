@@ -301,4 +301,24 @@ public class CourseManager : MonoBehaviour
     {
         return sets.Count();
     }
+
+    /// <summary>
+    /// Get the unlock-status of the specified set.
+    /// </summary>
+    /// /// <param name="courseIndex">The index of the course within the set.</param>
+    /// <returns>The unlock-status of the specified set.</returns>
+    public bool GetUnlockStatusOfSet(int courseIndex)
+    {
+        return sets[courseIndex].setUnlocked;
+    }
+
+    /// <summary>
+    /// Unlock the specified set.
+    /// </summary>
+    /// /// <param name="courseIndex">The index of the course within the set.</param>
+    public void UnlockSet(int courseIndex)
+    {
+        sets[courseIndex].setUnlocked = true;
+    }
+
 }

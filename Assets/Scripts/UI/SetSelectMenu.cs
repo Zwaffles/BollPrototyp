@@ -22,6 +22,9 @@ public class SetSelectMenu : MonoBehaviour
 
     private InputReader input;
 
+    [SerializeField, Header("Lock icon for locked sets")]
+    private Texture2D lockIcon;
+
     private void OnEnable()
     {
         inputEnabled = false;
@@ -31,13 +34,31 @@ public class SetSelectMenu : MonoBehaviour
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
+        // Forest sets
+
         setF1Button = root.Q<VisualElement>("UI_SS_Set_Box_F1");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(0))
+            setF1Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
+
         setF2Button = root.Q<VisualElement>("UI_SS_Set_Box_F2");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(1))
+            setF2Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
+
+        // Winter sets
 
         setW1Button = root.Q<VisualElement>("UI_SS_Set_Box_W1");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
+            setW1Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
+
         setW2Button = root.Q<VisualElement>("UI_SS_Set_Box_W2");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
+            setW2Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
+
+        // Beach sets
 
         setB1Button = root.Q<VisualElement>("UI_SS_Set_Box_B1");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
+            setB1Button.Q<VisualElement>("UI_SS_Set3_Image").style.backgroundImage = lockIcon;
 
         //FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
@@ -71,13 +92,13 @@ public class SetSelectMenu : MonoBehaviour
 
         // Forest
 
-        if (focusedElement == setF1Button)
+        if (focusedElement == setF1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(0))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 0);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == setF2Button)
+        if (focusedElement == setF2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(1))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 1);
             gameObject.SetActive(false);
@@ -85,13 +106,13 @@ public class SetSelectMenu : MonoBehaviour
 
         // Winter
 
-        if (focusedElement == setW1Button)
+        if (focusedElement == setW1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 2);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == setW2Button)
+        if (focusedElement == setW2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 3);
             gameObject.SetActive(false);
@@ -99,7 +120,7 @@ public class SetSelectMenu : MonoBehaviour
 
         // Beach
 
-        if (focusedElement == setB1Button)
+        if (focusedElement == setB1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 4);
             gameObject.SetActive(false);

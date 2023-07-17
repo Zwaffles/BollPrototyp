@@ -98,6 +98,18 @@ public class UIManager : MonoBehaviour
         {
             bossTimer.StopTimer();
             bossTimer.gameObject.SetActive(false);
+
+            if (completionStatus)
+            {
+                
+                foreach(SetData set in courseManager.GetSetData())
+                {
+                    if (set.setName.Equals(courseManager.GetSetData()[courseManager.GetCurrentSet()].setUnlockedOnCompletion))
+                        set.setUnlocked = true;
+                }
+
+            }
+
         }
 
         // Reset the gameplayStarted flag so that StartGameplay() can be called again for the next course.
