@@ -347,7 +347,7 @@
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
-    color: rgba(12, 12, 12, 255);
+    color: rgb(12, 12, 12);
 }
 
 .SS-SetCompletionIcon {
@@ -391,6 +391,8 @@
     scale: 1 1;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
+    width: 1272px;
+    height: 148px;
 }
 
 .SS-SetContainer:focus {
@@ -398,6 +400,8 @@
     scale: 1.05 1.05;
     transition-duration: 0.25s;
     transition-timing-function: ease-in-out;
+    height: 148px;
+    width: 1272px;
 }
 
 .SS-SetContainer-Locked {
@@ -405,4 +409,18 @@
     scale: 1 1;
     transition-duration: 0.1s;
     transition-timing-function: ease-in-out;
+    height: 148px;
+    width: 1272px;
+}
+
+#unity-content-container {
+    overflow: hidden;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#unity-content-viewport {
+    overflow: hidden;
+    align-items: center;
+    justify-content: flex-start;
 }
