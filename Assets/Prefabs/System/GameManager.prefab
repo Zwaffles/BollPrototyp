@@ -571,7 +571,7 @@ MonoBehaviour:
       bestTime: 0
     bossCourse:
       courseName: Tough Love!
-      sceneName: F1-X
+      sceneName: Level_B1_5
       parTime: 38
       courseCompleted: 0
       bestTime: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
     musicParOffset: 0
     subCourses:
     - courseName: F2-1
-      sceneName: H-L11
+      sceneName: H-L-11
       parTime: 34
       courseCompleted: 0
       bestTime: 0
@@ -728,6 +728,44 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 1
+    setUnlockedOnCompletion: Beach II
+  - setName: Beach II
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Hawaiian_map
+    musicParOffset: 154
+    subCourses:
+    - courseName: B2-1
+      sceneName: H2-1
+      parTime: 34
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B2-2
+      sceneName: 13_Sanctuary
+      parTime: 13
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B2-3
+      sceneName: 14_Alvaret
+      parTime: 17
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B2-4
+      sceneName: H2-4
+      parTime: 27
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B2-5
+      sceneName: 15_Gdansk
+      parTime: 29
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: B2-X
+      sceneName: H2-X
+      parTime: 35
+      courseCompleted: 0
+      bestTime: 0
+    setUnlocked: 0
     setUnlockedOnCompletion: 
 --- !u!1 &4637475394147627162
 GameObject:

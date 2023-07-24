@@ -16,6 +16,7 @@ public class SetSelectMenu : MonoBehaviour
     private VisualElement setW2Button;
 
     private VisualElement setB1Button;
+    private VisualElement setB2Button;
 
     private float ignoreInputTime;
     private bool inputEnabled;
@@ -58,7 +59,11 @@ public class SetSelectMenu : MonoBehaviour
 
         setB1Button = root.Q<VisualElement>("UI_SS_Set_Box_B1");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
-            setB1Button.Q<VisualElement>("UI_SS_Set3_Image").style.backgroundImage = lockIcon;
+            setB1Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
+
+        setB2Button = root.Q<VisualElement>("UI_SS_Set_Box_B2");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
+            setB2Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
 
         //FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
@@ -123,6 +128,12 @@ public class SetSelectMenu : MonoBehaviour
         if (focusedElement == setB1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 4);
+            gameObject.SetActive(false);
+        }
+
+        if (focusedElement == setB2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 5);
             gameObject.SetActive(false);
         }
 
