@@ -64,12 +64,14 @@ public class MainMenu : MonoBehaviour
 
         if (focusedElement == optionsButton)
         {
-            Debug.Log("If you don't like the current settings, ask Johan to change them.");
+            GameManager.instance.uiManager.ToggleOptionsMenu(true);
+            gameObject.SetActive(false);
         }
 
         if (focusedElement == creditsButton)
         {
-            Debug.Log("Johan made this button, the rest idk, but probably Andreas?");
+            GameManager.instance.uiManager.ToggleCreditMenu(true);
+            gameObject.SetActive(false);
         }
 
         if (focusedElement == quitButton)

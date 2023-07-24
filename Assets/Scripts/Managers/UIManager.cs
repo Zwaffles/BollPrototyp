@@ -11,6 +11,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private MainMenu mainMenu;
     [SerializeField] private SetSelectMenu setMenu;
     [SerializeField] private CourseSelect levelMenu;
+    [SerializeField] private OptionsMenu optionsMenu;
+    [SerializeField] private LanguageMenu languageMenu;
+    [SerializeField] private AudioMenu audioMenu;
+    [SerializeField] private CreditScroll credits;
+    [SerializeField] private VideoMenu videoMenu;
 
     [Header("Game UI Elements")]
     [SerializeField] private Timer timer;
@@ -59,6 +64,31 @@ public class UIManager : MonoBehaviour
     {
         levelMenu.gameObject.SetActive(active);
         levelMenu.NavigateToSet(setNumber);
+    }
+
+    public void ToggleVideoMenu(bool active)
+    {
+        videoMenu.gameObject.SetActive(active);
+    }
+
+    public void ToggleAudioMenu(bool active)
+    {
+        audioMenu.gameObject.SetActive(active);
+    }
+
+    public void ToggleLanguageMenu(bool active)
+    {
+        languageMenu.gameObject.SetActive(active);
+    }
+
+    public void ToggleCreditMenu(bool active)
+    {
+        credits.gameObject.SetActive(active);
+    }
+
+    public void ToggleOptionsMenu(bool active)
+    {
+        optionsMenu.gameObject.SetActive(active);
     }
 
     /// <summary>

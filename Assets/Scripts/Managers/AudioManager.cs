@@ -230,4 +230,15 @@ public class AudioManager : MonoBehaviour
         sfxSources.Add(newSource);
         return newSource;
     }
+
+    public void ChangeAudioSettings(float master, float music, float sfx, float voice)
+    {
+        MasterVolume = master;
+        MusicVolume = music;
+        SfxVolume = sfx;
+        VoiceVolume = voice;
+
+        musicSource.volume = MusicVolume * MasterVolume;
+    }
+
 }
