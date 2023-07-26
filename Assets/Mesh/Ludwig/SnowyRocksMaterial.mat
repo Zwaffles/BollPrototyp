@@ -34,15 +34,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Normal_Map:
-        m_Texture: {fileID: 2800000, guid: 24a6deb7af3222a4494df872799251d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8d0b6b26f5bc04468c9fc3c1246cb38, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Second_Normal:
-        m_Texture: {fileID: 2800000, guid: 7364fd06112406b46beb584fd664ed64, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8d0b6b26f5bc04468c9fc3c1246cb38, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Second_Texture:
-        m_Texture: {fileID: 2800000, guid: ed0774540b03f0c48aeb9e25f15ff12c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 77794177dd8d2fb4eb548c1af89c5566, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
@@ -63,10 +63,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Detail_Threshohold: 0.5
-    - _Gloss: 0.2
-    - _Height_Blend: -7.43
-    - _Normal_Strength: 1
+    - _Detail_Threshohold: 1
+    - _Gloss: 1
+    - _Height_Blend: -7.73
+    - _Normal_Strength: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Tiling: 1
