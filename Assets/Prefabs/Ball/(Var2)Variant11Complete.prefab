@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: minUpSlopeSpeed
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: regularMaxSpeed
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: maxDownSlopeSpeed
-      value: 75
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: boostGravityFactor
@@ -85,11 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 2832314330993609427}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: upSlopeSpeedMultiplier
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: downSlopeSpeedMultiplier
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5495587143808078935, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: m_LocalRotation.w

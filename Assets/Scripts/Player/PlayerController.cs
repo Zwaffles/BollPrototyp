@@ -193,16 +193,28 @@ public class PlayerController : MonoBehaviour
             previousGravity = temporaryGravity;
             IncreaseGravity();
             targetMaxSpeed = regularMaxSpeed; //Jumping doesn't preserve your speed
+            
+            
+            if (currentMaxSpeed > regularMaxSpeed)
+            {
+                currentMaxSpeed = currentMaxSpeed - 1f;
+            }
+
+            if (currentMaxSpeed < regularMaxSpeed)
+            {
+                currentMaxSpeed = currentMaxSpeed + 1f;
+            }
         }
 
         LerpSpeed();
+       
         
     }
 
     private void Update()
     {
 
-        Debug.Log(targetMaxSpeed);
+       Debug.Log(currentMaxSpeed);
 
     }
 
@@ -284,48 +296,72 @@ public class PlayerController : MonoBehaviour
 
     private void OnSlope()
     {
-       
+ 
         // Are you on a slope?
         if (slopeHit.normal.x > 0.05 || slopeHit.normal.x < -0.05)
         {
 
             // Are you going downhill? (This if might cause issues if you're going in reverse.)
-            if (slopeHit.normal.x > 0.05 && targetMaxSpeed < maxDownSlopeSpeed)
+            if (slopeHit.normal.x > 0.05)
             {
-                if(-_moveDirection.y == -1)
+                if(-_moveDirection.y == -1 && currentMaxSpeed < maxDownSlopeSpeed)
                 {
                     slopeAngle = slopeHit.normal.x;
-                targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * downSlopeSpeedMultiplier;
+                    currentMaxSpeed = currentMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * downSlopeSpeedMultiplier;
                 // Test to see if this works correctly
                 Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
+
+                  //  if (currentMaxSpeed < targetMaxSpeed)
+                   // {
+                    //    currentMaxSpeed = currentMaxSpeed + slopeAngle;
+                   // }
             }
-                if (-_moveDirection.y == 1)
+                if (-_moveDirection.y == 1 && currentMaxSpeed > minUpSlopeSpeed)
                 {
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * upSlopeSpeedMultiplier;
+                    currentMaxSpeed = currentMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) - slopeAngle * upSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
+
+                   // if (currentMaxSpeed > targetMaxSpeed)
+                   // {
+                  //      currentMaxSpeed = currentMaxSpeed - slopeAngle;
+                 //   }
                 }
             }
 
             // Are you going uphill? (This if might cause issues if you're going in reverse.)
 
-            if (slopeHit.normal.x < -0.05 && targetMaxSpeed > minUpSlopeSpeed)
+            if (slopeHit.normal.x < -0.05)
             {
-                if (-_moveDirection.y == 1)
+
+                if (-_moveDirection.y == 1 && currentMaxSpeed < maxDownSlopeSpeed)
                 {
+                    
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                    currentMaxSpeed = currentMaxSpeed - slopeAngle * downSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
+
+                 //   if (currentMaxSpeed > targetMaxSpeed)
+                 //   {
+                  //      currentMaxSpeed = currentMaxSpeed - slopeAngle;
+                  //  }
+
                 }
 
-                if (-_moveDirection.y == -1)
+                if (-_moveDirection.y == -1 && currentMaxSpeed > minUpSlopeSpeed)
                 {
+                    
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    currentMaxSpeed = currentMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
+
+                    //if (currentMaxSpeed < targetMaxSpeed)
+                    //{
+                    //    currentMaxSpeed = currentMaxSpeed + slopeAngle;
+                  //  }
                 }
             }
 
@@ -335,6 +371,17 @@ public class PlayerController : MonoBehaviour
             targetMaxSpeed = regularMaxSpeed + (isOnIce ? iceSpeedBoost : 0f);
             // Test to see if this works correctly
             Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
+           
+            if(currentMaxSpeed > regularMaxSpeed)
+            {
+                currentMaxSpeed = currentMaxSpeed - 1f;
+            }
+
+            if (currentMaxSpeed < regularMaxSpeed)
+            {
+                currentMaxSpeed = currentMaxSpeed + 1f;
+            }
+
         }
                
         
@@ -343,31 +390,20 @@ public class PlayerController : MonoBehaviour
     // This needs to be reworked... but how?
     private void LerpSpeed()
     {
+    
 
-        currentMaxSpeed = Mathf.Lerp(
-            currentMaxSpeed, 
-            isBoosting ? targetMaxSpeed * boostSpeedFactor : targetMaxSpeed, 
-            fastSpeedRampUpFactor * Time.fixedDeltaTime
-            );
 
-        if (rb.angularVelocity.magnitude + 3f > targetMaxSpeed && isOnGround)
-        {
-            currentOverSpeed = Mathf.Lerp(currentOverSpeed, maxOverSpeed, slowSpeedRampUpFactor * Time.fixedDeltaTime);
-        }
-        else
-        {
-            currentOverSpeed = Mathf.Lerp(currentOverSpeed, 0f, fastSpeedRampUpFactor * Time.fixedDeltaTime);
-        }
 
-        if (-_moveDirection.y == 1)
-        {
-            rb.maxAngularVelocity = currentMaxSpeed / 1.2f + currentOverSpeed;
-        }
-        else
-        {
-            rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
-        }
+     //   if (-_moveDirection.y == 1)
+     //   {
+       //     rb.maxAngularVelocity = currentMaxSpeed / 1.2f + currentOverSpeed;
+     //   }
+       // else
+    //    {
+       //     rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
+     //   }
 
+        rb.maxAngularVelocity = currentMaxSpeed;
     }
 
     private void IncreaseGravity()
