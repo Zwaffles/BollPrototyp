@@ -40,7 +40,7 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
         if (collision.impulse.magnitude < minimumImpulse) return;
 
         // Removed temporarily for our sanity's sake
-        //GameManager.instance.audioManager.PlaySfx("airhorn", pitch);
+        GameManager.instance.audioManager.PlaySfx("Basket_Bounce_1-SFX", pitch);
 
     }
 

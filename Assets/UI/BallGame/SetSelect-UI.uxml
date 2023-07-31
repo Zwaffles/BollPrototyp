@@ -47,6 +47,25 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set_Box_F3" focusable="true" class="SS-SetContainer" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); align-items: center; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
+                    <ui:VisualElement name="UI_SS_Set1_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
+                        <ui:VisualElement name="UI_SS_Set_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGForest.png?fileID=2800000&amp;guid=8080da8d7ba52554abfc5c642ad5f5c6&amp;type=3#IMGForest&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_SS_Set1_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
+                        <ui:Label text="#SETF3NAME" display-tooltip-when-elided="true" name="UI_SS_Set_Name" class="SS-SetName" style="font-size: 48px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_SS_Set1_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
+                        <ui:VisualElement name="Spacing" style="align-items: center; justify-content: center; width: 101px; height: 100%; margin-left: 8px; margin-right: 8px;">
+                            <ui:VisualElement name="UI_SS_Set1_CompletetionIcon1" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 90px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Spacing" style="align-items: center; justify-content: center; width: 101px; height: 100%; margin-left: 8px; margin-right: 8px;">
+                            <ui:VisualElement name="UI_SS_Set1_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 90px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Spacing" style="align-items: center; justify-content: center; width: 101px; height: 100%; margin-left: 8px; margin-right: 8px;">
+                            <ui:VisualElement name="UI_SS_Set1_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 90px; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 0;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 <ui:VisualElement name="UI_SS_Set_Box_W1" focusable="true" class="SS-SetContainer" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
                     <ui:VisualElement name="UI_SS_Set2_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
                         <ui:VisualElement name="UI_SS_Set2_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBoden.png?fileID=2800000&amp;guid=9bbbbbed88dc29e4b80e1be354fc19e6&amp;type=3#IMGBoden&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
@@ -66,6 +85,19 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="UI_SS_Set2_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
                         <ui:Label text="#SETW2NAME" display-tooltip-when-elided="true" name="UI_SS_Set2_Name" class="SS-SetName" style="font-size: 48px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_SS_Set2_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
+                        <ui:VisualElement name="UI_SS_Set2_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />
+                        <ui:VisualElement name="UI_SS_Set2_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />
+                        <ui:VisualElement name="UI_SS_Set2_CompletetionIcon1" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set_Box_W3" focusable="true" class="SS-SetContainer" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
+                    <ui:VisualElement name="UI_SS_Set2_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
+                        <ui:VisualElement name="UI_SS_Set2_Image" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBoden.png?fileID=2800000&amp;guid=9bbbbbed88dc29e4b80e1be354fc19e6&amp;type=3#IMGBoden&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_SS_Set2_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
+                        <ui:Label text="#SETW3NAME" display-tooltip-when-elided="true" name="UI_SS_Set2_Name" class="SS-SetName" style="font-size: 48px;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="UI_SS_Set2_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
                         <ui:VisualElement name="UI_SS_Set2_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SnowflakeL.png?fileID=2800000&amp;guid=1b1fbdd6cc128294db352e8069586cee&amp;type=3#SnowflakeL&apos;); width: 101px;" />

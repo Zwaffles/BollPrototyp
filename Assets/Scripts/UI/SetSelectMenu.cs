@@ -11,9 +11,11 @@ public class SetSelectMenu : MonoBehaviour
 
     private VisualElement setF1Button;
     private VisualElement setF2Button;
+    private VisualElement setF3Button;
 
     private VisualElement setW1Button;
     private VisualElement setW2Button;
+    private VisualElement setW3Button;
 
     private VisualElement setB1Button;
     private VisualElement setB2Button;
@@ -45,24 +47,32 @@ public class SetSelectMenu : MonoBehaviour
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(1))
             setF2Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
 
+        setF3Button = root.Q<VisualElement>("UI_SS_Set_Box_F3");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
+            setF3Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
+
         // Winter sets
 
         setW1Button = root.Q<VisualElement>("UI_SS_Set_Box_W1");
-        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
             setW1Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
 
         setW2Button = root.Q<VisualElement>("UI_SS_Set_Box_W2");
-        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
             setW2Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
+
+        setW3Button = root.Q<VisualElement>("UI_SS_Set_Box_W3");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
+            setW3Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
 
         // Beach sets
 
         setB1Button = root.Q<VisualElement>("UI_SS_Set_Box_B1");
-        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(6))
             setB1Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
 
         setB2Button = root.Q<VisualElement>("UI_SS_Set_Box_B2");
-        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(7))
             setB2Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
 
         //FocusFirstElement(playButton);
@@ -109,31 +119,43 @@ public class SetSelectMenu : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        // Winter
-
-        if (focusedElement == setW1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
+        if (focusedElement == setF3Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 2);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == setW2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
+        // Winter
+
+        if (focusedElement == setW1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 3);
             gameObject.SetActive(false);
         }
 
-        // Beach
-
-        if (focusedElement == setB1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
+        if (focusedElement == setW2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 4);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == setB2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
+        if (focusedElement == setW3Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 5);
+            gameObject.SetActive(false);
+        }
+
+        // Beach
+
+        if (focusedElement == setB1Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(6))
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 6);
+            gameObject.SetActive(false);
+        }
+
+        if (focusedElement == setB2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(7))
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 7);
             gameObject.SetActive(false);
         }
 
