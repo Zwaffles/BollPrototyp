@@ -147,6 +147,13 @@ public class UIManager : MonoBehaviour
 
         endGameUI.gameObject.SetActive(true);
         endGameUI.DisplayStats(timeSpent, completionStatus);
+
+        // Aloha achievement
+        if (completionStatus && courseManager.GetCurrentSet() > 5)
+        {
+            gameManager.achievementManager.GiveAchievement(Achievement.Aloha);
+        }
+
     }
 
     private void HandleHasMoved()

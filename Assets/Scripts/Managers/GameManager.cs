@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public DataManager dataManager { get; private set; }
     public UIManager uiManager { get; private set; }
     public AudioManager audioManager { get; private set; }
+    public AchievementManager achievementManager { get; private set; }
 
     [SerializeField] private GameState currentState = GameState.Menu;
 
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
         dataManager = FindObjectOfType<DataManager>();
         uiManager = FindObjectOfType<UIManager>();
         audioManager = FindObjectOfType<AudioManager>();
+        achievementManager = FindObjectOfType<AchievementManager>();
     }
 
     private void Start()
