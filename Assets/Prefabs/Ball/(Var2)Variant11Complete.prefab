@@ -36,6 +36,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: mudMaxSpeed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: maxOverSpeed
       value: 75
       objectReference: {fileID: 0}
@@ -46,6 +50,14 @@ PrefabInstance:
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: iceSpeedBoost
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: mudVisualizer
+      value: 
+      objectReference: {fileID: 5553474663727368119}
+    - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: waterMaxSpeed
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: numberOfBoosts
@@ -78,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: boostGravityFactor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: muddySpeedDecrease
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3271083922731829645, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: boostVisualiserObject
@@ -167,6 +183,10 @@ PrefabInstance:
       propertyPath: m_IsContraintActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8765928477901637577, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9041869978867918926, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
       propertyPath: m_LocalPosition.x
       value: 153.05235
@@ -200,5 +220,10 @@ PrefabInstance:
 --- !u!1 &2832314330993609427 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439274642698898093, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
+  m_PrefabInstance: {fileID: 3798560103101415550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5553474663727368119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8765928477901637577, guid: d50481701e7ec5b479c8d9ac57904664, type: 3}
   m_PrefabInstance: {fileID: 3798560103101415550}
   m_PrefabAsset: {fileID: 0}

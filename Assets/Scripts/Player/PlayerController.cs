@@ -41,6 +41,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Extra speed while on ice")]
     private float iceSpeedBoost = 20f;
 
+    private HashSet<GameObject> touchingMudObjects = new HashSet<GameObject>();
+    public bool isInMud
+    {
+        get => touchingMudObjects.Count > 0;
+    }
+    public bool isMuddy = false;
+    [SerializeField, Tooltip("Max speed while in mud")]
+    private float mudMaxSpeed = 5f;
+    [SerializeField, Tooltip("Less speed while muddy")]
+    private float muddySpeedDecrease = 30f;
+    [SerializeField]
+    private GameObject mudVisualizer;
+
+    private HashSet<GameObject> touchingWaterObjects = new HashSet<GameObject>();
+    public bool isInWater
+    {
+        get => touchingWaterObjects.Count > 0;
+    }
+    [SerializeField, Tooltip("Max speed while in water")]
+    private float waterMaxSpeed = 5f;
+
     // Gravity variables
     [SerializeField, Header("Gravity"), Tooltip("Regular gravity when on ground")]
     private float standardGravity = 9.8f; // There's a risk that this is different from the Physics default...
@@ -126,8 +147,6 @@ public class PlayerController : MonoBehaviour
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
-
-        
     }
 
     private void OnDisable()
@@ -202,8 +221,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log(targetMaxSpeed);
-
     }
 
     private void HandleMove(Vector2 dir)
@@ -258,6 +275,12 @@ public class PlayerController : MonoBehaviour
                 remainingBoostDuration = boostDuration;
                 boostVisualiserObject.SetActive(false);
             }
+
+            if (!isInMud)
+            {
+                isMuddy = false;
+                mudVisualizer.SetActive(false);
+            }
             
             return;
 
@@ -295,14 +318,14 @@ public class PlayerController : MonoBehaviour
                 if(-_moveDirection.y == -1)
                 {
                     slopeAngle = slopeHit.normal.x;
-                targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * downSlopeSpeedMultiplier;
+                targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + (isMuddy ? -muddySpeedDecrease : 0f) + slopeAngle * downSlopeSpeedMultiplier;
                 // Test to see if this works correctly
                 Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
             }
                 if (-_moveDirection.y == 1)
                 {
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + slopeAngle * upSlopeSpeedMultiplier;
+                    targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + (isMuddy ? -muddySpeedDecrease : 0f) + slopeAngle * upSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
                 }
@@ -315,7 +338,7 @@ public class PlayerController : MonoBehaviour
                 if (-_moveDirection.y == 1)
                 {
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * downSlopeSpeedMultiplier;
+                    targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + (isMuddy ? -muddySpeedDecrease : 0f) + slopeAngle * downSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.green, 2f);
                 }
@@ -323,7 +346,7 @@ public class PlayerController : MonoBehaviour
                 if (-_moveDirection.y == -1)
                 {
                     slopeAngle = slopeHit.normal.x;
-                    targetMaxSpeed = targetMaxSpeed + slopeAngle * upSlopeSpeedMultiplier;
+                    targetMaxSpeed = targetMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + (isMuddy ? -muddySpeedDecrease : 0f) + slopeAngle * upSlopeSpeedMultiplier;
                     // Test to see if this works correctly
                     Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.red, 2f);
                 }
@@ -332,12 +355,13 @@ public class PlayerController : MonoBehaviour
         }
         else // You're on flat ground
         {
-            targetMaxSpeed = regularMaxSpeed + (isOnIce ? iceSpeedBoost : 0f);
+            targetMaxSpeed = regularMaxSpeed + (isOnIce ? iceSpeedBoost : 0f) + (isMuddy ? -muddySpeedDecrease : 0f);
             // Test to see if this works correctly
             Debug.DrawLine(transform.position, transform.position + slopeHit.normal * 5f, Color.blue, 2f);
         }
-               
-        
+
+        if (targetMaxSpeed < 0.1f) targetMaxSpeed = 0.1f;
+
     }
 
     // This needs to be reworked... but how?
@@ -359,6 +383,18 @@ public class PlayerController : MonoBehaviour
             currentOverSpeed = Mathf.Lerp(currentOverSpeed, 0f, fastSpeedRampUpFactor * Time.fixedDeltaTime);
         }
 
+        if (isInMud)
+        {
+            currentMaxSpeed = mudMaxSpeed;
+            currentOverSpeed = 0f;
+        }
+        if (isInWater)
+        {
+            currentMaxSpeed = waterMaxSpeed;
+            currentOverSpeed = 0f;
+        }
+        if (currentMaxSpeed < 0.1f) currentMaxSpeed = 0.1f;
+
         if (-_moveDirection.y == 1)
         {
             rb.maxAngularVelocity = currentMaxSpeed / 1.2f + currentOverSpeed;
@@ -367,6 +403,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.maxAngularVelocity = currentMaxSpeed + currentOverSpeed;
         }
+
+        //Debug.Log(rb.maxAngularVelocity);
 
     }
 
@@ -417,6 +455,42 @@ public class PlayerController : MonoBehaviour
             touchingIceObjects.Remove(collision.gameObject);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Mud"))
+        {
+            touchingMudObjects.Add(other.gameObject);
+            isMuddy = true;
+            mudVisualizer.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("Water"))
+        {
+            touchingWaterObjects.Add(other.gameObject);
+            
+            if (!isInMud)
+            {
+                isMuddy = false;
+                mudVisualizer.SetActive(false);
+            }
+            
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Mud"))
+        {
+            touchingMudObjects.Remove(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Water"))
+        {
+            touchingWaterObjects.Remove(other.gameObject);
+        }
+    }
+
 }
 
 
