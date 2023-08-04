@@ -28,6 +28,17 @@ public class SetSelectMenu : MonoBehaviour
     [SerializeField, Header("Lock icon for locked sets")]
     private Texture2D lockIcon;
 
+    /* ChatGPT told me to do this
+    private ScrollView scrollView;
+    private VisualElement selectedItem;
+    private VisualElement contentContainer;
+    private float itemHeight;
+    private int selectedMenuItemIndex;
+    private const float scrollSpeed = 200f;
+    private float scrollOffset;
+
+    */
+
     private void OnEnable()
     {
         inputEnabled = false;
@@ -36,6 +47,26 @@ public class SetSelectMenu : MonoBehaviour
         input.AddSubmitEventListener(Submit);
 
         root = GetComponent<UIDocument>().rootVisualElement;
+
+        /*
+        
+        Stuff ChatGPT told me to do
+        
+        scrollView = root.Q<ScrollView>("ScrollView");
+        itemHeight = 30f; // Set this to the height of your menu items.
+        selectedMenuItemIndex = 0;
+
+        contentContainer = scrollView.contentContainer;
+        scrollView.RegisterCallback<FocusEvent>(OnMenuItemFocused);
+        scrollView.RegisterCallback<WheelEvent>(OnMouseWheel);
+
+        // Enable keyboard focus so arrow keys work.
+        scrollView.focusable = true;
+
+        // Set up the scroll wheel event.
+        scrollView.contentViewport.RegisterCallback<WheelEvent>(OnMouseWheel);
+
+        */
 
         // Forest sets
 
@@ -93,6 +124,8 @@ public class SetSelectMenu : MonoBehaviour
         {
             inputEnabled = true;
         }
+
+        //HandleArrowKeys();
     }
 
     public void Submit()
@@ -160,6 +193,80 @@ public class SetSelectMenu : MonoBehaviour
         }
 
     }
+
+    /*
+    
+    Stuff ChatGPT told me to do
+
+    private void HandleArrowKeys()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        if (Mathf.Abs(verticalInput) > 0.1f)
+        {
+            int direction = verticalInput > 0f ? -1 : 1;
+            SelectNextMenuItem(direction);
+            Debug.Log("This does get called");
+        }
+    }
+
+    private void SelectNextMenuItem(int direction)
+    {
+        int nextIndex = selectedMenuItemIndex + direction;
+        nextIndex = Mathf.Clamp(nextIndex, 0, contentContainer.childCount - 1);
+
+        if (nextIndex != selectedMenuItemIndex)
+        {
+            selectedMenuItemIndex = nextIndex;
+            selectedItem.RemoveFromClassList("focused");
+            selectedItem = contentContainer.ElementAt(selectedMenuItemIndex);
+            selectedItem.AddToClassList("focused");
+            ScrollToSelected();
+        }
+    }
+
+    private void ScrollToSelected()
+    {
+        float containerHeight = scrollView.contentViewport.layout.height;
+        float itemTop = selectedMenuItemIndex * itemHeight;
+        float itemBottom = itemTop + itemHeight;
+        float viewTop = scrollOffset;
+        float viewBottom = scrollOffset + containerHeight;
+
+        if (itemTop < viewTop)
+        {
+            scrollOffset = itemTop;
+        }
+        else if (itemBottom > viewBottom)
+        {
+            scrollOffset = itemBottom - containerHeight;
+        }
+
+        UpdateScrollPosition();
+    }
+
+    private void OnMouseWheel(WheelEvent evt)
+    {
+        scrollOffset -= evt.delta.y * scrollSpeed;
+        UpdateScrollPosition();
+        Debug.Log("Halo sucks");
+        evt.StopPropagation();
+    }
+
+    private void UpdateScrollPosition()
+    {
+        float maxOffset = Mathf.Max(0f, contentContainer.layout.height - scrollView.contentViewport.layout.height);
+        scrollOffset = Mathf.Clamp(scrollOffset, 0f, maxOffset);
+        contentContainer.style.top = new StyleLength(-scrollOffset);
+    }
+
+    private void OnMenuItemFocused(FocusEvent evt)
+    {
+        selectedItem = evt.target as VisualElement;
+        selectedMenuItemIndex = contentContainer.IndexOf(selectedItem);
+        ScrollToSelected();
+    }
+
+    */
 
     public Focusable GetFocusedElement()
     {

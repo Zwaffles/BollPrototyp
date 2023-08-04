@@ -57,7 +57,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     /// </summary>
     public event Action ShoulderButtonLeftEvent;
 
-    public event Action NavigateLeftEvent, NavigateRightEvent;
+    public event Action NavigateLeftEvent, NavigateRightEvent, NavigateUpEvent, NavigateDownEvent;
 
     private void OnEnable()
     {
@@ -191,6 +191,26 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         NavigateRightEvent -= listener;
     }
 
+    public void AddNavigateUpEventListener(Action listener)
+    {
+        NavigateUpEvent += listener;
+    }
+
+    public void RemoveNavigateUpEventListener(Action listener)
+    {
+        NavigateUpEvent -= listener;
+    }
+
+    public void AddNavigateDownEventListener(Action listener)
+    {
+        NavigateDownEvent += listener;
+    }
+
+    public void RemoveNavigateDownEventListener(Action listener)
+    {
+        NavigateDownEvent -= listener;
+    }
+
     /// <summary>
     /// Callback for the Move input action.
     /// </summary>
@@ -299,6 +319,16 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
         if (context.ReadValue<Vector2>() == Vector2.right)
         {
             NavigateRightEvent?.Invoke();
+        }
+
+        if (context.ReadValue<Vector2>() == Vector2.up)
+        {
+            NavigateUpEvent?.Invoke();
+        }
+
+        if (context.ReadValue<Vector2>() == Vector2.down)
+        {
+            NavigateDownEvent?.Invoke();
         }
 
     }
