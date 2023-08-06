@@ -28,16 +28,13 @@ public class SetSelectMenu : MonoBehaviour
     [SerializeField, Header("Lock icon for locked sets")]
     private Texture2D lockIcon;
 
-    /* ChatGPT told me to do this
     private ScrollView scrollView;
     private VisualElement selectedItem;
     private VisualElement contentContainer;
-    private float itemHeight;
+    private float itemHeight = 0f;
     private int selectedMenuItemIndex;
     private const float scrollSpeed = 200f;
     private float scrollOffset;
-
-    */
 
     private void OnEnable()
     {
@@ -47,26 +44,23 @@ public class SetSelectMenu : MonoBehaviour
         input.AddSubmitEventListener(Submit);
 
         root = GetComponent<UIDocument>().rootVisualElement;
-
-        /*
-        
-        Stuff ChatGPT told me to do
         
         scrollView = root.Q<ScrollView>("ScrollView");
-        itemHeight = 30f; // Set this to the height of your menu items.
         selectedMenuItemIndex = 0;
 
         contentContainer = scrollView.contentContainer;
-        scrollView.RegisterCallback<FocusEvent>(OnMenuItemFocused);
-        scrollView.RegisterCallback<WheelEvent>(OnMouseWheel);
+        //scrollView.RegisterCallback<FocusEvent>(OnMenuItemFocused);
+
+        foreach (VisualElement ve in contentContainer.Children())
+        {
+            ve.RegisterCallback<FocusEvent>(OnMenuItemFocused);
+        }
 
         // Enable keyboard focus so arrow keys work.
-        scrollView.focusable = true;
+        //scrollView.focusable = true;
 
         // Set up the scroll wheel event.
         scrollView.contentViewport.RegisterCallback<WheelEvent>(OnMouseWheel);
-
-        */
 
         // Forest sets
 
@@ -105,6 +99,30 @@ public class SetSelectMenu : MonoBehaviour
         setB2Button = root.Q<VisualElement>("UI_SS_Set_Box_B2");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(7))
             setB2Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
+
+        // Special navigation cases
+        setF1Button.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: setF1Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: setF2Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: setF1Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: setF1Button.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+        setB2Button.RegisterCallback<NavigationMoveEvent>(e =>
+       {
+           switch (e.direction)
+           {
+               case NavigationMoveEvent.Direction.Up: setB1Button.Focus(); break;
+               case NavigationMoveEvent.Direction.Down: setB2Button.Focus(); break;
+               case NavigationMoveEvent.Direction.Left: setB2Button.Focus(); break;
+               case NavigationMoveEvent.Direction.Right: setB2Button.Focus(); break;
+           }
+           e.PreventDefault();
+       });
 
         //FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
@@ -195,8 +213,8 @@ public class SetSelectMenu : MonoBehaviour
     }
 
     /*
-    
-    Stuff ChatGPT told me to do
+
+    Is this the issue?
 
     private void HandleArrowKeys()
     {
@@ -205,7 +223,6 @@ public class SetSelectMenu : MonoBehaviour
         {
             int direction = verticalInput > 0f ? -1 : 1;
             SelectNextMenuItem(direction);
-            Debug.Log("This does get called");
         }
     }
 
@@ -224,31 +241,40 @@ public class SetSelectMenu : MonoBehaviour
         }
     }
 
+    */
+
     private void ScrollToSelected()
     {
+
         float containerHeight = scrollView.contentViewport.layout.height;
         float itemTop = selectedMenuItemIndex * itemHeight;
         float itemBottom = itemTop + itemHeight;
         float viewTop = scrollOffset;
         float viewBottom = scrollOffset + containerHeight;
+        float itemMiddle = itemTop + itemHeight / 2;
+        float containerMiddle = scrollView.contentViewport.layout.height / 2;
 
-        if (itemTop < viewTop)
+        scrollOffset = itemMiddle - containerMiddle;
+
+        /*
+
+        if (itemMiddle < containerMiddle)
         {
-            scrollOffset = itemTop;
+            scrollOffset = itemTop - itemHeight;
         }
-        else if (itemBottom > viewBottom)
+        else if (itemBottom > viewBottom - itemHeight)
         {
-            scrollOffset = itemBottom - containerHeight;
+            scrollOffset = itemHeight + itemBottom - containerHeight;
         }
+
+        */
 
         UpdateScrollPosition();
     }
-
     private void OnMouseWheel(WheelEvent evt)
     {
-        scrollOffset -= evt.delta.y * scrollSpeed;
-        UpdateScrollPosition();
-        Debug.Log("Halo sucks");
+        //scrollOffset -= evt.delta.y * scrollSpeed;
+        //UpdateScrollPosition();
         evt.StopPropagation();
     }
 
@@ -262,11 +288,10 @@ public class SetSelectMenu : MonoBehaviour
     private void OnMenuItemFocused(FocusEvent evt)
     {
         selectedItem = evt.target as VisualElement;
+        itemHeight = Mathf.Max(itemHeight, selectedItem.contentRect.height);
         selectedMenuItemIndex = contentContainer.IndexOf(selectedItem);
         ScrollToSelected();
     }
-
-    */
 
     public Focusable GetFocusedElement()
     {
