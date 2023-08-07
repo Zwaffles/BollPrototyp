@@ -62,11 +62,18 @@ public class SetSelectMenu : MonoBehaviour
         // Set up the scroll wheel event.
         scrollView.contentViewport.RegisterCallback<WheelEvent>(OnMouseWheel);
 
+        int stars;
+
         // Forest sets
 
         setF1Button = root.Q<VisualElement>("UI_SS_Set_Box_F1");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(0))
             setF1Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[0].stars;
+
+        if (stars >= 3) setF1Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setF1Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setF1Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         setF2Button = root.Q<VisualElement>("UI_SS_Set_Box_F2");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(1))
@@ -100,7 +107,7 @@ public class SetSelectMenu : MonoBehaviour
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(7))
             setB2Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
 
-        // Special navigation cases
+        // Special navigation cases for top and bottom
         setF1Button.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)

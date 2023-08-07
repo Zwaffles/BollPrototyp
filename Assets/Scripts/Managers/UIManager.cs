@@ -127,6 +127,7 @@ public class UIManager : MonoBehaviour
         if (bossTimer.gameObject.activeInHierarchy)
         {
             bossTimer.StopTimer();
+            float remainingTime = bossTimer.GetTimeLeft();
             bossTimer.gameObject.SetActive(false);
 
             if (completionStatus)
@@ -136,6 +137,24 @@ public class UIManager : MonoBehaviour
                 {
                     if (set.setName.Equals(courseManager.GetSetData()[courseManager.GetCurrentSet()].setUnlockedOnCompletion))
                         set.setUnlocked = true;
+                }
+
+                int stars = 1;
+
+                SetData currentSet = courseManager.GetSetData()[courseManager.GetCurrentSet()];
+
+                if (remainingTime >= currentSet.requiredTimeRemainingFor3StarScore)
+                {
+                    stars = 3;
+                }
+                else if (remainingTime >= currentSet.requiredTimeRemainingFor3StarScore / 2)
+                {
+                    stars = 2;
+                }
+
+                if (stars > currentSet.stars)
+                {
+                    currentSet.stars = stars;
                 }
 
             }

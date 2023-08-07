@@ -52,6 +52,17 @@ public class SetData
     public string setUnlockedOnCompletion;
 
     /// <summary>
+    /// With how much time to spare you need to finish the boss course to get a 3 "star"-rating
+    /// </summary>
+    public float requiredTimeRemainingFor3StarScore = 10;
+
+    /// <summary>
+    /// How much to offset the music based on the par-time
+    /// </summary>
+    [HideInInspector]
+    public int stars = 0;
+
+    /// <summary>
     /// Creates a new SetData object with the specified parameters.
     /// </summary>
     /// <param name="setName">The name of the set.</param>
@@ -127,6 +138,28 @@ public class SetData
         this.musicName = musicName;
         this.setUnlocked = setUnlocked;
         this.setUnlockedOnCompletion = setUnlockedOnCompletion;
+    }
+
+    /// <summary>
+    /// Creates a new SetData object with the specified parameters.
+    /// </summary>
+    /// <param name="setName">The name of the set.</param>
+    /// <param name="bossTimeLimit">The time limit for completing the boss course.</param>
+    /// <param name="subCourses">The sub-courses within the set.</param>
+    /// <param name="bossCourse">The boss course within the set.</param>
+    /// <param name="musicParOffset">The boss course within the set.</param>
+    /// /// <param name="setUnlocked">The unlock status of this set.</param>
+    public SetData(string setName, float bossTimeLimit, CourseData[] subCourses, CourseData bossCourse, float musicParOffset, string musicName, bool setUnlocked, string setUnlockedOnCompletion, float requiredTimeRemainingFor3StarScore)
+    {
+        this.setName = setName;
+        this.bossTimeLimit = bossTimeLimit;
+        this.subCourses = subCourses;
+        this.bossCourse = bossCourse;
+        this.musicParOffset = musicParOffset;
+        this.musicName = musicName;
+        this.setUnlocked = setUnlocked;
+        this.setUnlockedOnCompletion = setUnlockedOnCompletion;
+        this.requiredTimeRemainingFor3StarScore = requiredTimeRemainingFor3StarScore;
     }
 
 }
