@@ -49,18 +49,26 @@ public class SetSelectMenu : MonoBehaviour
         selectedMenuItemIndex = 0;
 
         contentContainer = scrollView.contentContainer;
-        //scrollView.RegisterCallback<FocusEvent>(OnMenuItemFocused);
 
         foreach (VisualElement ve in contentContainer.Children())
         {
             ve.RegisterCallback<FocusEvent>(OnMenuItemFocused);
         }
 
-        // Enable keyboard focus so arrow keys work.
-        //scrollView.focusable = true;
-
         // Set up the scroll wheel event.
         scrollView.contentViewport.RegisterCallback<WheelEvent>(OnMouseWheel);
+
+        SetupSetsUI();
+
+        //FocusFirstElement(playButton);
+        ignoreInputTime = Time.time + .25f;
+
+        FocusFirstElement(setF1Button);
+
+    }
+
+    private void SetupSetsUI()
+    {
 
         int stars;
 
@@ -78,34 +86,69 @@ public class SetSelectMenu : MonoBehaviour
         setF2Button = root.Q<VisualElement>("UI_SS_Set_Box_F2");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(1))
             setF2Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[1].stars;
+
+        if (stars >= 3) setF2Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setF2Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setF2Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         setF3Button = root.Q<VisualElement>("UI_SS_Set_Box_F3");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(2))
             setF3Button.Q<VisualElement>("UI_SS_Set_Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[2].stars;
+
+        if (stars >= 3) setF3Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setF3Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setF3Button.Q<VisualElement>("UI_SS_Set1_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         // Winter sets
 
         setW1Button = root.Q<VisualElement>("UI_SS_Set_Box_W1");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(3))
             setW1Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[3].stars;
+
+        if (stars >= 3) setW1Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setW1Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setW1Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         setW2Button = root.Q<VisualElement>("UI_SS_Set_Box_W2");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(4))
             setW2Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[4].stars;
+
+        if (stars >= 3) setW2Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setW2Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setW2Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         setW3Button = root.Q<VisualElement>("UI_SS_Set_Box_W3");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(5))
             setW3Button.Q<VisualElement>("UI_SS_Set2_Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[5].stars;
+
+        if (stars >= 3) setW3Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setW3Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setW3Button.Q<VisualElement>("UI_SS_Set2_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         // Beach sets
 
         setB1Button = root.Q<VisualElement>("UI_SS_Set_Box_B1");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(6))
             setB1Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[6].stars;
+
+        if (stars >= 3) setB1Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setB1Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setB1Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         setB2Button = root.Q<VisualElement>("UI_SS_Set_Box_B2");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(7))
             setB2Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[7].stars;
+
+        if (stars >= 3) setB2Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setB2Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setB2Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
         // Special navigation cases for top and bottom
         setF1Button.RegisterCallback<NavigationMoveEvent>(e =>
@@ -120,21 +163,16 @@ public class SetSelectMenu : MonoBehaviour
             e.PreventDefault();
         });
         setB2Button.RegisterCallback<NavigationMoveEvent>(e =>
-       {
-           switch (e.direction)
-           {
-               case NavigationMoveEvent.Direction.Up: setB1Button.Focus(); break;
-               case NavigationMoveEvent.Direction.Down: setB2Button.Focus(); break;
-               case NavigationMoveEvent.Direction.Left: setB2Button.Focus(); break;
-               case NavigationMoveEvent.Direction.Right: setB2Button.Focus(); break;
-           }
-           e.PreventDefault();
-       });
-
-        //FocusFirstElement(playButton);
-        ignoreInputTime = Time.time + .25f;
-
-        FocusFirstElement(setF1Button);
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: setB1Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: setB2Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: setB2Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: setB2Button.Focus(); break;
+            }
+            e.PreventDefault();
+        });
 
     }
 
@@ -145,12 +183,12 @@ public class SetSelectMenu : MonoBehaviour
 
     private void Update()
     {
+
         if (Time.time > ignoreInputTime)
         {
             inputEnabled = true;
         }
 
-        //HandleArrowKeys();
     }
 
     public void Submit()
@@ -219,37 +257,6 @@ public class SetSelectMenu : MonoBehaviour
 
     }
 
-    /*
-
-    Is this the issue?
-
-    private void HandleArrowKeys()
-    {
-        float verticalInput = Input.GetAxis("Vertical");
-        if (Mathf.Abs(verticalInput) > 0.1f)
-        {
-            int direction = verticalInput > 0f ? -1 : 1;
-            SelectNextMenuItem(direction);
-        }
-    }
-
-    private void SelectNextMenuItem(int direction)
-    {
-        int nextIndex = selectedMenuItemIndex + direction;
-        nextIndex = Mathf.Clamp(nextIndex, 0, contentContainer.childCount - 1);
-
-        if (nextIndex != selectedMenuItemIndex)
-        {
-            selectedMenuItemIndex = nextIndex;
-            selectedItem.RemoveFromClassList("focused");
-            selectedItem = contentContainer.ElementAt(selectedMenuItemIndex);
-            selectedItem.AddToClassList("focused");
-            ScrollToSelected();
-        }
-    }
-
-    */
-
     private void ScrollToSelected()
     {
 
@@ -263,25 +270,10 @@ public class SetSelectMenu : MonoBehaviour
 
         scrollOffset = itemMiddle - containerMiddle;
 
-        /*
-
-        if (itemMiddle < containerMiddle)
-        {
-            scrollOffset = itemTop - itemHeight;
-        }
-        else if (itemBottom > viewBottom - itemHeight)
-        {
-            scrollOffset = itemHeight + itemBottom - containerHeight;
-        }
-
-        */
-
         UpdateScrollPosition();
     }
     private void OnMouseWheel(WheelEvent evt)
     {
-        //scrollOffset -= evt.delta.y * scrollSpeed;
-        //UpdateScrollPosition();
         evt.StopPropagation();
     }
 

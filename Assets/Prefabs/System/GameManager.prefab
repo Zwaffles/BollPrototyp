@@ -661,6 +661,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 1
     setUnlockedOnCompletion: Forest II
+    requiredTimeRemainingFor3StarScore: 20
+    stars: 0
   - setName: Forest II
     bossTimeLimit: 200
     musicName: Vonboff_-_Forest_map
@@ -699,6 +701,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: Forest III
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
   - setName: Forest III
     bossTimeLimit: 200
     musicName: Vonboff_-_Forest_map
@@ -737,6 +741,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: 
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
   - setName: Winter I
     bossTimeLimit: 200
     musicName: Vonboff_-_Winter_map
@@ -775,6 +781,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 1
     setUnlockedOnCompletion: Winter II
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
   - setName: Winter II
     bossTimeLimit: 200
     musicName: Vonboff_-_Winter_map
@@ -813,6 +821,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: Winter III
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
   - setName: Winter III
     bossTimeLimit: 200
     musicName: Vonboff_-_Winter_map
@@ -851,6 +861,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: 
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
   - setName: Beach I
     bossTimeLimit: 200
     musicName: Vonboff_-_Hawaiian_map
@@ -889,6 +901,8 @@ MonoBehaviour:
       bestTime: 0
     setUnlocked: 1
     setUnlockedOnCompletion: Beach II
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
   - setName: Beach II
     bossTimeLimit: 200
     musicName: Vonboff_-_Hawaiian_map
@@ -926,7 +940,49 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
+    setUnlockedOnCompletion: Beach III
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
+  - setName: Beach III
+    bossTimeLimit: 200
+    musicName: Vonboff_-_Hawaiian_map
+    musicParOffset: 154
+    subCourses:
+    - courseName: B3-1
+      sceneName: B3-1
+      parTime: 34
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B3-2
+      sceneName: B3-1
+      parTime: 13
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B3-3
+      sceneName: B3-1
+      parTime: 17
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B3-4
+      sceneName: B3-1
+      parTime: 27
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: B3-5
+      sceneName: B3-1
+      parTime: 29
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: B3-X
+      sceneName: B3-1
+      parTime: 35
+      courseCompleted: 0
+      bestTime: 0
+    setUnlocked: 0
     setUnlockedOnCompletion: 
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
 --- !u!1 &3406334378184867289
 GameObject:
   m_ObjectHideFlags: 0

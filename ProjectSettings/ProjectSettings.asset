@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Less is More Games AB
-  productName: Bl0730
+  productName: Bl0808
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -22,7 +22,7 @@ PlayerSettings:
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 0
+  m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -39,7 +39,11 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
+    duration: 2.5
+  - logo: {fileID: 21300000, guid: 87d4ceb75e219de408dc96fa9748e160, type: 3}
+    duration: 3
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -134,7 +138,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.13
+  bundleVersion: 0.14
   preloadedAssets:
   - {fileID: 11400000, guid: 65646802a5b1a8049a2ccb854011623b, type: 2}
   metroInputSource: 0
@@ -156,7 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.Less-is-More-Games-AB.Bl0721a
+    Standalone: com.Less-is-More-Games-AB.Bl0808
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -274,7 +278,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: de98baf415a2c4d7dbe0de74cb6e171c, type: 3}
+      m_Icon: {fileID: 2800000, guid: f114d6b0458508846bb8f46628df5d2d, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
