@@ -19,6 +19,7 @@ public class SetSelectMenu : MonoBehaviour
 
     private VisualElement setB1Button;
     private VisualElement setB2Button;
+    private VisualElement setB3Button;
 
     private float ignoreInputTime;
     private bool inputEnabled;
@@ -150,6 +151,15 @@ public class SetSelectMenu : MonoBehaviour
         if (stars >= 2) setB2Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
         if (stars >= 1) setB2Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
+        setB3Button = root.Q<VisualElement>("UI_SS_Set_Box_B3");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(8))
+            setB3Button.Q<VisualElement>("UI_SS_Set3Image").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[8].stars;
+
+        if (stars >= 3) setB3Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setB3Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setB3Button.Q<VisualElement>("UI_SS_Set3_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
+
         // Special navigation cases for top and bottom
         setF1Button.RegisterCallback<NavigationMoveEvent>(e =>
         {
@@ -162,14 +172,14 @@ public class SetSelectMenu : MonoBehaviour
             }
             e.PreventDefault();
         });
-        setB2Button.RegisterCallback<NavigationMoveEvent>(e =>
+        setB3Button.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: setB1Button.Focus(); break;
-                case NavigationMoveEvent.Direction.Down: setB2Button.Focus(); break;
-                case NavigationMoveEvent.Direction.Left: setB2Button.Focus(); break;
-                case NavigationMoveEvent.Direction.Right: setB2Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: setB2Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: setB3Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: setB3Button.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: setB3Button.Focus(); break;
             }
             e.PreventDefault();
         });
@@ -179,6 +189,9 @@ public class SetSelectMenu : MonoBehaviour
     public void FocusFirstElement(VisualElement firstElement)
     {
         firstElement.Focus();
+
+        SetData focusedSet = GameManager.instance.courseManager.GetSetData()[0]; // Here I assume it's always the first set - Forest I
+        GameManager.instance.uiManager.SetTargetColors(focusedSet.primarySetColor, focusedSet.secondarySetColor);
     }
 
     private void Update()
@@ -188,6 +201,38 @@ public class SetSelectMenu : MonoBehaviour
         {
             inputEnabled = true;
         }
+
+        // Allt nedanför hade nog kunnat göras event-drivet.
+
+        var focusedElement = GetFocusedElement();
+
+        SetData focusedSet = GameManager.instance.courseManager.GetSetData()[0];
+
+        // Forest
+
+        if (focusedElement == setF1Button) focusedSet = GameManager.instance.courseManager.GetSetData()[0];
+
+        if (focusedElement == setF2Button) focusedSet = GameManager.instance.courseManager.GetSetData()[1];
+
+        if (focusedElement == setF3Button) focusedSet = GameManager.instance.courseManager.GetSetData()[2];
+
+        // Winter
+
+        if (focusedElement == setW1Button) focusedSet = GameManager.instance.courseManager.GetSetData()[3];
+
+        if (focusedElement == setW2Button) focusedSet = GameManager.instance.courseManager.GetSetData()[4];
+
+        if (focusedElement == setW3Button) focusedSet = GameManager.instance.courseManager.GetSetData()[5];
+
+        // Beach
+
+        if (focusedElement == setB1Button) focusedSet = GameManager.instance.courseManager.GetSetData()[6];
+
+        if (focusedElement == setB2Button) focusedSet = GameManager.instance.courseManager.GetSetData()[7];
+
+        if (focusedElement == setB3Button) focusedSet = GameManager.instance.courseManager.GetSetData()[8];
+
+        GameManager.instance.uiManager.SetTargetColors(focusedSet.primarySetColor, focusedSet.secondarySetColor);
 
     }
 
@@ -252,6 +297,12 @@ public class SetSelectMenu : MonoBehaviour
         if (focusedElement == setB2Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(7))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 7);
+            gameObject.SetActive(false);
+        }
+
+        if (focusedElement == setB3Button && GameManager.instance.courseManager.GetUnlockStatusOfSet(8))
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 8);
             gameObject.SetActive(false);
         }
 

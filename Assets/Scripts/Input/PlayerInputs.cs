@@ -97,6 +97,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""69809f3d-31df-4987-81ea-6b14d704b43f"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/button9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""WASD"",
                     ""id"": ""bbe27197-5b4b-4098-bcaf-fdadd93c4d74"",
                     ""path"": ""2DVector"",
@@ -208,6 +219,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""131200f5-7b23-457c-8d18-603d4b3852e5"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f8aa3e75-3ab6-4dfe-9022-42e70cb9a03c"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
@@ -254,6 +276,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""3b518728-4d1e-4baa-9f57-560d25861692"",
                     ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a989594-621b-4cfa-a59c-fa111f82532f"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/button10"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -338,6 +371,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""40fd9720-4cf7-42d7-955f-95d3eb1b9773"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3803fffb-d19f-4333-b097-9eb0e4372b18"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6fda273a-2223-483e-a6af-0326d2199703"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
@@ -351,6 +406,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""a073ee6f-5afe-44a4-ba2d-dda67ebfdfaf"",
                     ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f317f7e-690d-4e37-be23-048b3d962d84"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fa876e9-c8e2-4c75-b0a6-24d22c3357f4"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/button9"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -546,6 +623,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""up"",
+                    ""id"": ""c34af855-834a-41a5-aac8-744391c0d815"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/hat/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""down"",
                     ""id"": ""08bbcce4-ee62-40a3-a469-3cd5e07af850"",
                     ""path"": ""<Gamepad>/leftStick/down"",
@@ -579,6 +667,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""down"",
+                    ""id"": ""395da71c-7c8e-41ec-897c-61afad83d6f9"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/hat/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""left"",
                     ""id"": ""c298e338-ea4a-460c-bdb0-d4b6b7609902"",
                     ""path"": ""<Gamepad>/leftStick/left"",
@@ -593,6 +692,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": ""left"",
                     ""id"": ""cec33f6c-e496-4888-87f7-c37c31c32856"",
                     ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""3e4308b2-17d1-4a3a-b700-b7a306d25d35"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/hat/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -637,6 +747,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""name"": ""right"",
                     ""id"": ""cad3f6bb-69a1-4d59-b010-08bb63d35d50"",
                     ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""53d982d9-21f3-420d-98be-60d260db132f"",
+                    ""path"": ""<HID::HuiJia  USB GamePad>/hat/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

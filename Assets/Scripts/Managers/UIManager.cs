@@ -31,8 +31,14 @@ public class UIManager : MonoBehaviour
     private bool isPaused;
     private bool gameplayStarted;
 
+    private Color targetPrimaryColor, targetSecondaryColor;
+    private Color currentPrimaryColor, currentSecondaryColor;
+    private float colorTransitionSpeed = 1f;
+    private UIColorManager colorManager;
+
     private void Start()
     {
+
         gameManager = GameManager.instance;
         courseManager = gameManager.courseManager;
 
@@ -42,6 +48,92 @@ public class UIManager : MonoBehaviour
 
         input.PauseEvent += TogglePause;
         input.ResumeEvent += TogglePause;
+
+        currentPrimaryColor = new Color(0.2f,0.67f,0.24f);
+        targetPrimaryColor = currentPrimaryColor;
+        currentSecondaryColor = new Color(0f, 0.21f, 0.02f);
+        targetSecondaryColor = currentSecondaryColor;
+
+    }
+
+    private void Update()
+    {
+
+        currentPrimaryColor = InterpolateColors(currentPrimaryColor, targetPrimaryColor, colorTransitionSpeed);
+        currentSecondaryColor = InterpolateColors(currentSecondaryColor, targetSecondaryColor, colorTransitionSpeed);
+
+        if (gameManager.CurrentState == GameManager.GameState.Menu)
+        {
+
+            try
+            {
+                colorManager.changeColors(currentPrimaryColor, currentSecondaryColor);
+            }
+            catch
+            {
+                Debug.Log("No color manager found.");
+            }
+
+        }
+
+    }
+
+    public void ProvideUIColorManager(UIColorManager uiColorManager)
+    {
+        colorManager = uiColorManager;
+    }
+
+    public void SetTargetColors(Color primaryColor, Color secondaryColor)
+    {
+        primaryColor.a = 1f;
+        secondaryColor.a = 1f;
+
+        targetPrimaryColor = primaryColor;
+        targetSecondaryColor = secondaryColor;
+    }
+
+    private Color InterpolateColors(Color currentColor, Color targetColor, float interpolationSpeed)
+    {
+
+        if (currentColor != targetColor)
+        {
+
+            if (currentColor.r < targetColor.r)
+            {
+                currentColor.r += interpolationSpeed * Time.deltaTime;
+                currentColor.r = currentColor.r > targetColor.r ? targetColor.r : currentColor.r;
+            }
+            else if (currentColor.r > targetColor.r)
+            {
+                currentColor.r -= interpolationSpeed * Time.deltaTime;
+                currentColor.r = currentColor.r < targetColor.r ? targetColor.r : currentColor.r;
+            }
+
+            if (currentColor.g < targetColor.g)
+            {
+                currentColor.g += interpolationSpeed * Time.deltaTime;
+                currentColor.g = currentColor.g > targetColor.g ? targetColor.g : currentColor.g;
+            }
+            else if (currentColor.g > targetColor.g)
+            {
+                currentColor.g -= interpolationSpeed * Time.deltaTime;
+                currentColor.g = currentColor.g < targetColor.g ? targetColor.g : currentColor.g;
+            }
+
+            if (currentColor.b < targetColor.b)
+            {
+                currentColor.b += interpolationSpeed * Time.deltaTime;
+                currentColor.b = currentColor.b > targetColor.b ? targetColor.b : currentColor.b;
+            }
+            else if (currentColor.b > targetColor.b)
+            {
+                currentColor.b -= interpolationSpeed * Time.deltaTime;
+                currentColor.b = currentColor.b < targetColor.b ? targetColor.b : currentColor.b;
+            }
+
+        }
+
+        return currentColor;
 
     }
 

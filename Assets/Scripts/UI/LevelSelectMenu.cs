@@ -16,6 +16,7 @@ public class LevelSelectMenu : MonoBehaviour
 
     private TextElement setName;
     private TextElement finalCourseTimeLimit;
+    private TextElement finalCourseTimeLimitDropShadow;
     private TextElement courseName;
     private TextElement courseBestTime;
 
@@ -40,6 +41,7 @@ public class LevelSelectMenu : MonoBehaviour
 
         setName = root.Q<TextElement>("UI_LS_Header_Text");
         finalCourseTimeLimit = root.Q<TextElement>("UI_LS_BossTimer_Text");
+        finalCourseTimeLimitDropShadow = root.Q<TextElement>("UI_LS_BossTimer_DropShadow_Text");
         courseName = root.Q<TextElement>("UI_LS_CourseName_Text");
         courseBestTime = root.Q<TextElement>("UI_LS_CourseBestTime_Text");
 
@@ -80,6 +82,7 @@ public class LevelSelectMenu : MonoBehaviour
         // Display the remaining time for the boss course
         var bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
         finalCourseTimeLimit.text = DisplayTime(bossTime);
+        finalCourseTimeLimitDropShadow.text = DisplayTime(bossTime);
 
         for (int i = 1; i < 6; i++)
         {

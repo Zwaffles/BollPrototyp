@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 799081742}
   - component: {fileID: 799081743}
+  - component: {fileID: 5828791567090050953}
   m_Layer: 0
   m_Name: UI-Pause-BG
   m_TagString: Untagged
@@ -48,6 +49,21 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: ff2e6675b068e2d47885cb232638ce02, type: 3}
   m_SortingOrder: 0
+--- !u!114 &5828791567090050953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799081741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c2de8669294e04a8e87eb1e295b2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table:
+    m_TableReference:
+      m_TableCollectionName: GUID:8da51acfb7e5b754da2dba22f9a06ee6
 --- !u!1 &1177883119
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,6 +75,7 @@ GameObject:
   - component: {fileID: 1177883120}
   - component: {fileID: 1177883121}
   - component: {fileID: 1177883122}
+  - component: {fileID: 7874160987533915078}
   m_Layer: 0
   m_Name: UI-EndGame-BG
   m_TagString: Untagged
@@ -109,6 +126,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b3650ae0a091f41a9b189784fa2e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7874160987533915078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177883119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c2de8669294e04a8e87eb1e295b2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table:
+    m_TableReference:
+      m_TableCollectionName: GUID:8da51acfb7e5b754da2dba22f9a06ee6
 --- !u!1 &1669229918
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,45 +656,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sets:
   - setName: Forest I
-    bossTimeLimit: 200
+    bossTimeLimit: 160
     musicName: Vonboff_-_Forest_map
     musicParOffset: 0
     subCourses:
     - courseName: F1-1
       sceneName: F1-1
-      parTime: 42
+      parTime: 17
       courseCompleted: 0
       bestTime: 0
     - courseName: F1-2
       sceneName: F1-2
-      parTime: 19
+      parTime: 21
       courseCompleted: 0
       bestTime: 0
     - courseName: F1-3
       sceneName: F1-3
-      parTime: 12
+      parTime: 48
       courseCompleted: 0
       bestTime: 0
     - courseName: F1-4
       sceneName: Level_B1_4
-      parTime: 32
+      parTime: 27
       courseCompleted: 0
       bestTime: 0
     - courseName: F1-5
       sceneName: F1-5
-      parTime: 13
+      parTime: 12
       courseCompleted: 0
       bestTime: 0
     bossCourse:
-      courseName: Tough Love!
+      courseName: F1-X
       sceneName: Level_B1_5
-      parTime: 38
+      parTime: 28
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 1
     setUnlockedOnCompletion: Forest II
-    requiredTimeRemainingFor3StarScore: 20
+    requiredTimeRemainingFor3StarScore: 15
     stars: 0
+    primarySetColor: {r: 0.20000002, g: 0.67058825, b: 0.24705884, a: 0}
+    secondarySetColor: {r: 0, g: 0.21698111, b: 0.022369163, a: 0}
   - setName: Forest II
     bossTimeLimit: 200
     musicName: Vonboff_-_Forest_map
@@ -670,39 +704,41 @@ MonoBehaviour:
     subCourses:
     - courseName: F2-1
       sceneName: H-L-11
-      parTime: 34
+      parTime: 28
       courseCompleted: 0
       bestTime: 0
     - courseName: F2-2
       sceneName: 10_Harads
-      parTime: 13
+      parTime: 25
       courseCompleted: 0
       bestTime: 0
     - courseName: F2-3
       sceneName: H-L-15
-      parTime: 17
+      parTime: 38
       courseCompleted: 0
       bestTime: 0
     - courseName: F2-4
       sceneName: H-L-12
-      parTime: 27
+      parTime: 25
       courseCompleted: 0
       bestTime: 0
     - courseName: F2-5
       sceneName: F2-5
-      parTime: 29
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: F2-X
       sceneName: H-L-13
-      parTime: 35
+      parTime: 39
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: Forest III
     requiredTimeRemainingFor3StarScore: 10
     stars: 0
+    primarySetColor: {r: 0.20000002, g: 0.67058825, b: 0.24705884, a: 0}
+    secondarySetColor: {r: 0, g: 0.21568629, b: 0.023529414, a: 0}
   - setName: Forest III
     bossTimeLimit: 200
     musicName: Vonboff_-_Forest_map
@@ -710,279 +746,293 @@ MonoBehaviour:
     subCourses:
     - courseName: F3-1
       sceneName: H-L-18
-      parTime: 34
+      parTime: 42
       courseCompleted: 0
       bestTime: 0
     - courseName: F3-2
       sceneName: F3-2
-      parTime: 13
+      parTime: 34
       courseCompleted: 0
       bestTime: 0
     - courseName: F3-3
       sceneName: 18_Gasa
-      parTime: 17
+      parTime: 27
       courseCompleted: 0
       bestTime: 0
     - courseName: F3-4
       sceneName: F3-4
-      parTime: 27
+      parTime: 33
       courseCompleted: 0
       bestTime: 0
     - courseName: F3-5
       sceneName: F3-5
-      parTime: 29
+      parTime: 32
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: F3-X
       sceneName: F3-X
-      parTime: 35
+      parTime: 28
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: 
-    requiredTimeRemainingFor3StarScore: 10
+    requiredTimeRemainingFor3StarScore: 19
     stars: 0
+    primarySetColor: {r: 0.20000002, g: 0.67058825, b: 0.24705884, a: 0}
+    secondarySetColor: {r: 0, g: 0.21568629, b: 0.023529414, a: 0}
   - setName: Winter I
-    bossTimeLimit: 200
+    bossTimeLimit: 130
     musicName: Vonboff_-_Winter_map
     musicParOffset: 154
     subCourses:
     - courseName: W1-1
       sceneName: Level_A1_2
-      parTime: 34
+      parTime: 8
       courseCompleted: 0
       bestTime: 0
     - courseName: W1-2
       sceneName: H-L-7
-      parTime: 13
+      parTime: 18
       courseCompleted: 0
       bestTime: 0
     - courseName: W1-3
       sceneName: 7_Balja
-      parTime: 17
+      parTime: 19
       courseCompleted: 0
       bestTime: 0
     - courseName: W1-4
       sceneName: Level_A1_4
-      parTime: 27
+      parTime: 26
       courseCompleted: 0
       bestTime: 0
     - courseName: W1-5
       sceneName: F level 9
-      parTime: 29
+      parTime: 23
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: W1-X
       sceneName: Level_A1_5
-      parTime: 35
+      parTime: 30
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 1
     setUnlockedOnCompletion: Winter II
-    requiredTimeRemainingFor3StarScore: 10
+    requiredTimeRemainingFor3StarScore: 21
     stars: 0
+    primarySetColor: {r: 0.48235297, g: 0.854902, b: 0.94117653, a: 0}
+    secondarySetColor: {r: 0.09714311, g: 0.3009383, b: 0.3490566, a: 0}
   - setName: Winter II
-    bossTimeLimit: 200
+    bossTimeLimit: 160
     musicName: Vonboff_-_Winter_map
     musicParOffset: 154
     subCourses:
     - courseName: W2-1
       sceneName: H-L-9
-      parTime: 34
+      parTime: 23
       courseCompleted: 0
       bestTime: 0
     - courseName: W2-2
       sceneName: F Level 6
-      parTime: 13
+      parTime: 26
       courseCompleted: 0
       bestTime: 0
     - courseName: W2-3
       sceneName: 9_Boeysk
-      parTime: 17
+      parTime: 19
       courseCompleted: 0
       bestTime: 0
     - courseName: W2-4
       sceneName: 8_Niemisel
-      parTime: 27
+      parTime: 38
       courseCompleted: 0
       bestTime: 0
     - courseName: W2-5
       sceneName: 12_Bifroest
-      parTime: 29
+      parTime: 23
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: W2-X
       sceneName: H-L-10
-      parTime: 35
+      parTime: 25
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: Winter III
-    requiredTimeRemainingFor3StarScore: 10
+    requiredTimeRemainingFor3StarScore: 18
     stars: 0
+    primarySetColor: {r: 0.48235297, g: 0.854902, b: 0.94117653, a: 0}
+    secondarySetColor: {r: 0.098039225, g: 0.3019608, b: 0.34901962, a: 0}
   - setName: Winter III
-    bossTimeLimit: 200
+    bossTimeLimit: 190
     musicName: Vonboff_-_Winter_map
     musicParOffset: 154
     subCourses:
     - courseName: W3-1
       sceneName: O-L-1
-      parTime: 34
+      parTime: 26
       courseCompleted: 0
       bestTime: 0
     - courseName: W3-2
       sceneName: O-L-2
-      parTime: 13
+      parTime: 33
       courseCompleted: 0
       bestTime: 0
     - courseName: W3-3
       sceneName: O-L-3
-      parTime: 17
+      parTime: 32
       courseCompleted: 0
       bestTime: 0
     - courseName: W3-4
       sceneName: O-L-4
-      parTime: 27
+      parTime: 29
       courseCompleted: 0
       bestTime: 0
     - courseName: W3-5
       sceneName: 16_Kruttor
-      parTime: 29
+      parTime: 36
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: W3-X
       sceneName: O-L-5
-      parTime: 35
+      parTime: 29
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: 
-    requiredTimeRemainingFor3StarScore: 10
+    requiredTimeRemainingFor3StarScore: 23
     stars: 0
+    primarySetColor: {r: 0.48235297, g: 0.854902, b: 0.94117653, a: 0}
+    secondarySetColor: {r: 0.098039225, g: 0.3019608, b: 0.34901962, a: 0}
   - setName: Beach I
-    bossTimeLimit: 200
+    bossTimeLimit: 120
     musicName: Vonboff_-_Hawaiian_map
     musicParOffset: 154
     subCourses:
     - courseName: B1-1
       sceneName: 11_Rappatjaern
-      parTime: 34
+      parTime: 25
       courseCompleted: 0
       bestTime: 0
     - courseName: B1-2
       sceneName: Level_B1_2
-      parTime: 13
+      parTime: 7
       courseCompleted: 0
       bestTime: 0
     - courseName: B1-3
       sceneName: H1-3
-      parTime: 17
+      parTime: 20
       courseCompleted: 0
       bestTime: 0
     - courseName: B1-4
       sceneName: Level_B1_3
-      parTime: 27
+      parTime: 12
       courseCompleted: 0
       bestTime: 0
     - courseName: B1-5
       sceneName: 6_Goetakanal
-      parTime: 29
+      parTime: 18
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: B1-X
       sceneName: Level_B1_6
-      parTime: 35
+      parTime: 34
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 1
     setUnlockedOnCompletion: Beach II
     requiredTimeRemainingFor3StarScore: 10
     stars: 0
+    primarySetColor: {r: 0.9686275, g: 0.77647066, b: 0.41176474, a: 0}
+    secondarySetColor: {r: 0.6415094, g: 0.3307362, b: 0.04538981, a: 0}
   - setName: Beach II
-    bossTimeLimit: 200
+    bossTimeLimit: 190
     musicName: Vonboff_-_Hawaiian_map
     musicParOffset: 154
     subCourses:
     - courseName: B2-1
       sceneName: H2-1
-      parTime: 34
+      parTime: 13
       courseCompleted: 0
       bestTime: 0
     - courseName: B2-2
       sceneName: 13_Sanctuary
-      parTime: 13
+      parTime: 25
       courseCompleted: 0
       bestTime: 0
     - courseName: B2-3
       sceneName: 14_Alvaret
-      parTime: 17
+      parTime: 30
       courseCompleted: 0
       bestTime: 0
     - courseName: B2-4
       sceneName: H2-4
-      parTime: 27
+      parTime: 22
       courseCompleted: 0
       bestTime: 0
     - courseName: B2-5
       sceneName: 15_Gdansk
-      parTime: 29
+      parTime: 34
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: B2-X
       sceneName: H2-X
-      parTime: 35
+      parTime: 65
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: Beach III
-    requiredTimeRemainingFor3StarScore: 10
+    requiredTimeRemainingFor3StarScore: 17
     stars: 0
+    primarySetColor: {r: 0.9686275, g: 0.77647066, b: 0.41176474, a: 0}
+    secondarySetColor: {r: 0.6431373, g: 0.32941177, b: 0.04705883, a: 0}
   - setName: Beach III
-    bossTimeLimit: 200
+    bossTimeLimit: 300
     musicName: Vonboff_-_Hawaiian_map
     musicParOffset: 154
     subCourses:
     - courseName: B3-1
       sceneName: B3-1
-      parTime: 34
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: B3-2
       sceneName: B3-1
-      parTime: 13
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: B3-3
       sceneName: B3-1
-      parTime: 17
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: B3-4
       sceneName: B3-1
-      parTime: 27
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: B3-5
       sceneName: B3-1
-      parTime: 29
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: B3-X
       sceneName: B3-1
-      parTime: 35
+      parTime: 50
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
     setUnlockedOnCompletion: 
     requiredTimeRemainingFor3StarScore: 10
     stars: 0
+    primarySetColor: {r: 0.9686275, g: 0.77647066, b: 0.41176474, a: 0}
+    secondarySetColor: {r: 0.6431373, g: 0.32941177, b: 0.04705883, a: 0}
 --- !u!1 &3406334378184867289
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,16 @@ public class SetData
     public int stars = 0;
 
     /// <summary>
+    /// Primary color used for the UI while viewing this set
+    /// </summary>
+    public Color primarySetColor;
+
+    /// <summary>
+    /// Secondary color used for the UI while viewing this set
+    /// </summary>
+    public Color secondarySetColor;
+
+    /// <summary>
     /// Creates a new SetData object with the specified parameters.
     /// </summary>
     /// <param name="setName">The name of the set.</param>
