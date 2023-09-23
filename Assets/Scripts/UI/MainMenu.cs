@@ -33,9 +33,14 @@ public class MainMenu : MonoBehaviour
         creditsButton = root.Q<VisualElement>("UI_MM_CreditsButton_Box");
         quitButton = root.Q<VisualElement>("UI_MM_QuitButton_Box");
 
-        //FocusFirstElement(playButton);
+        FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
 
+    }
+
+    public void FocusFirstElement(VisualElement firstElement)
+    {
+        firstElement.Focus();
     }
 
     private void Update()

@@ -8,19 +8,7 @@ using UnityEngine.UIElements;
 public enum Language
 {
     English,
-    French,
-    German,
-    Hawaiian,
-    Italian,
-    Polish,
-    Portuguese,
-    Russian,
-    Spanish,
-    Turkish,
-    Ukrainian,
-    Chinese,
-    Japanese,
-    Icelandic
+    Norwegian
 }
 
 public class LanguageMenu : MonoBehaviour
@@ -79,46 +67,76 @@ public class LanguageMenu : MonoBehaviour
             case Language.English:
                 menuLanguageText.text = "English";
                 break;
-            case Language.French:
-                menuLanguageText.text = "Français";
-                break;
-            case Language.German:
-                menuLanguageText.text = "Deutsch";
-                break;
-            case Language.Hawaiian:
-                menuLanguageText.text = "ʻŌlelo Hawaiʻi";
-                break;
-            case Language.Italian:
-                menuLanguageText.text = "Italiano";
-                break;
-            case Language.Polish:
-                menuLanguageText.text = "Polski";
-                break;
-            case Language.Portuguese:
-                menuLanguageText.text = "Português Brasileiro";
-                break;
-            case Language.Russian:
-                menuLanguageText.text = "Русский";
-                break;
-            case Language.Spanish:
-                menuLanguageText.text = "Español";
-                break;
-            case Language.Turkish:
-                menuLanguageText.text = "Türkçe";
-                break;
-            case Language.Ukrainian:
-                menuLanguageText.text = "Українська";
-                break;
-            case Language.Chinese:
-                menuLanguageText.text = "中文";
-                break;
-            case Language.Japanese:
-                menuLanguageText.text = "日本語";
-                break;
-            case Language.Icelandic:
-                menuLanguageText.text = "Íslenska";
+            case Language.Norwegian:
+                menuLanguageText.text = "Norsk";
                 break;
         }
+
+        menuLanguage.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: menuLanguage.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: confirmButton.Focus(); break;
+
+                case NavigationMoveEvent.Direction.Left:
+                    switch (currentLanguage)
+                    {
+                        case Language.English:
+                            menuLanguageText.text = "Norsk";
+                            currentLanguage = Language.Norwegian;
+                            return;
+                        case Language.Norwegian:
+                            menuLanguageText.text = "English";
+                            currentLanguage = Language.English;
+                            return;
+                    }
+                    PlayerPrefs.SetString("selected-locale", GetLocaleFromLanguage(currentLanguage));
+                    SetLocaleFromLanguage(currentLanguage);
+                    break;
+
+                case NavigationMoveEvent.Direction.Right:
+                    switch (currentLanguage)
+                    {
+                        case Language.English:
+                            menuLanguageText.text = "Norsk";
+                            currentLanguage = Language.Norwegian;
+                            return;
+                        case Language.Norwegian:
+                            menuLanguageText.text = "English";
+                            currentLanguage = Language.English;
+                            return;
+                    }
+                    PlayerPrefs.SetString("selected-locale", GetLocaleFromLanguage(currentLanguage));
+                    SetLocaleFromLanguage(currentLanguage);
+                    break;
+            }
+            e.PreventDefault();
+        });
+
+        confirmButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: menuLanguage.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: defaultButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+
+        defaultButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: menuLanguage.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: defaultButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: defaultButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
 
     }
 
@@ -177,32 +195,8 @@ public class LanguageMenu : MonoBehaviour
         {
             case Language.English:
                 return "en";
-            case Language.French:
-                return "fr";
-            case Language.German:
-                return "de";
-            case Language.Hawaiian:
-                return "haw";
-            case Language.Italian:
-                return "it";
-            case Language.Polish:
-                return "pl";
-            case Language.Portuguese:
-                return "pt-BR";
-            case Language.Russian:
-                return "ru";
-            case Language.Spanish:
-                return "es";
-            case Language.Turkish:
-                return "tr";
-            case Language.Ukrainian:
-                return "uk";
-            case Language.Chinese:
-                return "zh-Hans";
-            case Language.Japanese:
-                return "ja";
-            case Language.Icelandic:
-                return "is";
+            case Language.Norwegian:
+                return "no";
             default:
                 return "en";
         }
@@ -214,32 +208,8 @@ public class LanguageMenu : MonoBehaviour
         {
             case "en":
                 return Language.English;
-            case "fr":
-                return Language.French;
-            case "de":
-                return Language.German;
-            case "haw":
-                return Language.Hawaiian;
-            case "it":
-                return Language.Italian;
-            case "pl":
-                return Language.Polish;
-            case "pt-BR":
-                return Language.Portuguese;
-            case "ru":
-                return Language.Russian;
-            case "es":
-                return Language.Spanish;
-            case "tr":
-                return Language.Turkish;
-            case "uk":
-                return Language.Ukrainian;
-            case "zh-Hans":
-                return Language.Chinese;
-            case "ja":
-                return Language.Japanese;
-            case "is":
-                return Language.Icelandic;
+            case "no":
+                return Language.Norwegian;
             default:
                 return Language.English;
         }
@@ -252,44 +222,8 @@ public class LanguageMenu : MonoBehaviour
             case Language.English:
                 LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[0];
                 return;
-            case Language.French:
+            case Language.Norwegian:
                 LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[1];
-                return;
-            case Language.German:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[2];
-                return;
-            case Language.Hawaiian:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[3];
-                return;
-            case Language.Italian:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[4];
-                return;
-            case Language.Polish:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[5];
-                return;
-            case Language.Portuguese:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[6];
-                return;
-            case Language.Russian:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[7];
-                return;
-            case Language.Spanish:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[8];
-                return;
-            case Language.Turkish:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[9];
-                return;
-            case Language.Ukrainian:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[10];
-                return;
-            case Language.Chinese:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[11];
-                return;
-            case Language.Japanese:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[12];
-                return;
-            case Language.Icelandic:
-                LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[13];
                 return;
             default:
 

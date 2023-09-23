@@ -109,6 +109,119 @@ public class AudioMenu : MonoBehaviour
         musicAmount.text = musicValue.ToString();
         sfxAmount.text = sfxValue.ToString();
         voiceAmount.text = voiceValue.ToString();
+
+        masterSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: masterSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: musicSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Left:
+                    masterValue = Math.Min(100, Math.Max(0, masterValue - 10));
+                    masterSlider.value = masterValue;
+                    masterAmount.text = masterValue.ToString();
+                    SetVolumes();
+                    break;
+                case NavigationMoveEvent.Direction.Right:
+                    masterValue = Math.Min(100, Math.Max(0, masterValue + 10));
+                    masterSlider.value = masterValue;
+                    masterAmount.text = masterValue.ToString();
+                    SetVolumes();
+                    break;
+            }
+            e.PreventDefault();
+        });
+
+        musicSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: masterSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: sfxSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Left:
+                    musicValue = Math.Min(100, Math.Max(0, musicValue - 10));
+                    musicSlider.value = musicValue;
+                    musicAmount.text = musicValue.ToString();
+                    SetVolumes();
+                    break;
+                case NavigationMoveEvent.Direction.Right:
+                    musicValue = Math.Min(100, Math.Max(0, musicValue + 10));
+                    musicSlider.value = musicValue;
+                    musicAmount.text = musicValue.ToString();
+                    SetVolumes();
+                    break;
+            }
+            e.PreventDefault();
+        });
+
+        sfxSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: musicSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: voiceSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Left:
+                    sfxValue = Math.Min(100, Math.Max(0, sfxValue - 10));
+                    sfxSlider.value = sfxValue;
+                    sfxAmount.text = sfxValue.ToString();
+                    SetVolumes();
+                    break;
+                case NavigationMoveEvent.Direction.Right:
+                    sfxValue = Math.Min(100, Math.Max(0, sfxValue + 10));
+                    sfxSlider.value = sfxValue;
+                    sfxAmount.text = sfxValue.ToString();
+                    SetVolumes();
+                    break;
+            }
+            e.PreventDefault();
+        });
+
+        voiceSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: sfxSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left:
+                    voiceValue = Math.Min(100, Math.Max(0, voiceValue - 10));
+                    voiceSlider.value = voiceValue;
+                    voiceAmount.text = voiceValue.ToString();
+                    SetVolumes();
+                    break;
+                case NavigationMoveEvent.Direction.Right:
+                    voiceValue = Math.Min(100, Math.Max(0, voiceValue + 10));
+                    voiceSlider.value = voiceValue;
+                    voiceAmount.text = voiceValue.ToString();
+                    SetVolumes();
+                    break;
+            }
+            e.PreventDefault();
+        });
+
+        confirmButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: voiceSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: defaultButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+
+        defaultButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: voiceSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: defaultButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: confirmButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: defaultButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+
     }
 
     private void Update()

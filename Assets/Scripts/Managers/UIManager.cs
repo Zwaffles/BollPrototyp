@@ -293,12 +293,6 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            //Placeholder quit-implementation
-
-            if (mainMenu.gameObject.activeInHierarchy)
-            {
-                Application.Quit();
-            }
 
             if (setMenu.gameObject.activeInHierarchy)
             {
@@ -310,6 +304,30 @@ public class UIManager : MonoBehaviour
             {
                 ToggleSetSelectMenu(true);
                 ToggleLevelSelectMenu(false);
+            }
+
+            if (optionsMenu.gameObject.activeInHierarchy)
+            {
+                ToggleMainMenu(true);
+                ToggleOptionsMenu(false);
+            }
+
+            if (videoMenu.gameObject.activeInHierarchy)
+            {
+                ToggleOptionsMenu(true);
+                ToggleVideoMenu(false);
+            }
+
+            if (audioMenu.gameObject.activeInHierarchy)
+            {
+                ToggleOptionsMenu(true);
+                ToggleAudioMenu(false);
+            }
+
+            if (languageMenu.gameObject.activeInHierarchy)
+            {
+                ToggleOptionsMenu(true);
+                ToggleLanguageMenu(false);
             }
 
         }
