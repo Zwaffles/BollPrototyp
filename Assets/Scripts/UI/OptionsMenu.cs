@@ -10,9 +10,9 @@ public class OptionsMenu : MonoBehaviour
 
     private Button videoButton;
     private Button audioButton;
-    private Button languageButton;
-    private Button creditsButton;
-    private Button returnButton;
+    //private Button languageButton;
+    //private Button creditsButton;
+    //private Button returnButton;
 
     private float ignoreInputTime;
     private bool inputEnabled;
@@ -30,9 +30,9 @@ public class OptionsMenu : MonoBehaviour
 
         videoButton = root.Q<Button>("VideoButton");
         audioButton = root.Q<Button>("AudioButton");
-        languageButton = root.Q<Button>("LanguageButton");
-        creditsButton = root.Q<Button>("CreditsButton");
-        returnButton = root.Q<Button>("ReturnButton");
+        //languageButton = root.Q<Button>("LanguageButton");
+        //creditsButton = root.Q<Button>("CreditsButton");
+        //returnButton = root.Q<Button>("ReturnButton");
 
         FocusFirstElement(videoButton);
         ignoreInputTime = Time.time + .25f;
@@ -73,6 +73,8 @@ public class OptionsMenu : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        /*
+
         if (focusedElement == languageButton)
         {
             GameManager.instance.uiManager.ToggleLanguageMenu(true);
@@ -91,6 +93,9 @@ public class OptionsMenu : MonoBehaviour
             GameManager.instance.uiManager.ToggleMainMenu(true);
             gameObject.SetActive(false);
         }
+
+        */
+
     }
 
     public Focusable GetFocusedElement()

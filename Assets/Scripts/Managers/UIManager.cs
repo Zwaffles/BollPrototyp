@@ -260,7 +260,7 @@ public class UIManager : MonoBehaviour
         endGameUI.DisplayStats(timeSpent, completionStatus);
 
         // Aloha achievement
-        if (completionStatus && courseManager.GetCurrentSet() > 5)
+        if (completionStatus && courseManager.GetCurrentSet() > 5 && courseManager.GetCurrentSet() < 9)
         {
             gameManager.achievementManager.GiveAchievement(Achievement.Aloha);
         }

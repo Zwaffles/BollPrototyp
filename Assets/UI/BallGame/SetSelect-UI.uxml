@@ -157,6 +157,19 @@
                         <ui:VisualElement name="UI_SS_SetHOH_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 101px;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:VisualElement name="UI_SS_Set_Box_KTN" focusable="true" class="SS-SetContainer" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/SetOption.png?fileID=2800000&amp;guid=2cdb36f55a63ab142a1e12baa32257e4&amp;type=3#SetOption&apos;); width: 1272px; height: 148px; flex-direction: row; margin-top: 16px; margin-bottom: 16px;">
+                    <ui:VisualElement name="UI_SS_SetKTN_Image_Box" style="height: 100%; align-items: center; flex-direction: row;">
+                        <ui:VisualElement name="UI_SS_SetKTNImage" style="flex-direction: row; align-items: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/IMGBeach.png?fileID=2800000&amp;guid=3a4563376cd279a4eb24e6254f06c7e8&amp;type=3#IMGBeach&apos;); width: 315px; height: 140px; justify-content: flex-start;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_SS_SetKTN_Name_Box" style="align-items: center; flex-direction: row; justify-content: flex-start; width: 40%; height: 100%;">
+                        <ui:Label text="#SETKTNNAME" display-tooltip-when-elided="true" name="UI_SS_SetKTN_Name" class="SS-SetName" style="font-size: 48px;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="UI_SS_SetKTN_CompletetionIcon_Box" style="flex-direction: row; align-items: center; justify-content: flex-start; width: 30%; height: 100%;">
+                        <ui:VisualElement name="UI_SS_SetKTN_CompletetionIcon1" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 101px;" />
+                        <ui:VisualElement name="UI_SS_SetKTN_CompletetionIcon2" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 101px;" />
+                        <ui:VisualElement name="UI_SS_SetKTN_CompletetionIcon3" class="SS-SetCompletionIcon" style="background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Prototype/PalmtreeL.png?fileID=2800000&amp;guid=29de0054dd5a926438e8b23a1ee4422b&amp;type=3#PalmtreeL&apos;); width: 101px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement name="UI_SS_CancelAndConfirm_Container" style="align-items: stretch; justify-content: space-between; flex-direction: row; width: 100%; height: 16%; margin-top: 16px;">

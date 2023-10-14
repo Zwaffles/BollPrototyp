@@ -22,6 +22,7 @@ public class SetSelectMenu : MonoBehaviour
     private VisualElement setB3Button;
 
     private VisualElement setHOHButton;
+    private VisualElement setKTNButton;
 
     private float ignoreInputTime;
     private bool inputEnabled;
@@ -173,6 +174,15 @@ public class SetSelectMenu : MonoBehaviour
         if (stars >= 2) setHOHButton.Q<VisualElement>("UI_SS_SetHOH_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
         if (stars >= 1) setHOHButton.Q<VisualElement>("UI_SS_SetHOH_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
+        setKTNButton = root.Q<VisualElement>("UI_SS_Set_Box_KTN");
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(10))
+            setKTNButton.Q<VisualElement>("UI_SS_SetKTNImage").style.backgroundImage = lockIcon;
+        stars = GameManager.instance.courseManager.GetSetData()[10].stars;
+
+        if (stars >= 3) setKTNButton.Q<VisualElement>("UI_SS_SetKTN_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 2) setKTNButton.Q<VisualElement>("UI_SS_SetKTN_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
+        if (stars >= 1) setKTNButton.Q<VisualElement>("UI_SS_SetKTN_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
+
         // Special navigation cases for top and bottom
         setF1Button.RegisterCallback<NavigationMoveEvent>(e =>
         {
@@ -185,14 +195,14 @@ public class SetSelectMenu : MonoBehaviour
             }
             e.PreventDefault();
         });
-        setHOHButton.RegisterCallback<NavigationMoveEvent>(e =>
+        setKTNButton.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: setB3Button.Focus(); break;
-                case NavigationMoveEvent.Direction.Down: setHOHButton.Focus(); break;
-                case NavigationMoveEvent.Direction.Left: setHOHButton.Focus(); break;
-                case NavigationMoveEvent.Direction.Right: setHOHButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: setHOHButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: setKTNButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: setKTNButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: setKTNButton.Focus(); break;
             }
             e.PreventDefault();
         });
@@ -248,6 +258,8 @@ public class SetSelectMenu : MonoBehaviour
         // Collabs
 
         if (focusedElement == setHOHButton) focusedSet = GameManager.instance.courseManager.GetSetData()[9];
+
+        if (focusedElement == setKTNButton) focusedSet = GameManager.instance.courseManager.GetSetData()[10];
 
         GameManager.instance.uiManager.SetTargetColors(focusedSet.primarySetColor, focusedSet.secondarySetColor);
 
@@ -328,6 +340,12 @@ public class SetSelectMenu : MonoBehaviour
         if (focusedElement == setHOHButton && GameManager.instance.courseManager.GetUnlockStatusOfSet(9))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 9);
+            gameObject.SetActive(false);
+        }
+
+        if (focusedElement == setKTNButton && GameManager.instance.courseManager.GetUnlockStatusOfSet(10))
+        {
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 10);
             gameObject.SetActive(false);
         }
 

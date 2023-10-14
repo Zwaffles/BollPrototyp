@@ -465,7 +465,7 @@ MonoBehaviour:
   autoUpdate: 1
   roadHeight: 4
   roadWidth: 4
-  roadMaterial: {fileID: 2100000, guid: 097cb2b93f951274b863c0ff84b50716, type: 2}
+  roadMaterial: {fileID: -6126091556477775235, guid: e893ef46862534d40926f871e647ef1f, type: 3}
   textureTiling: 1
   meshHolder: {fileID: 1470826094}
 --- !u!114 &841393941
@@ -981,7 +981,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1156577349
+--- !u!43 &1085676317
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1197,7 +1197,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1156577349}
+  m_Mesh: {fileID: 1085676317}
 --- !u!23 &1470826096
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1218,9 +1218,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 097cb2b93f951274b863c0ff84b50716, type: 2}
-  - {fileID: 2100000, guid: 097cb2b93f951274b863c0ff84b50716, type: 2}
-  - {fileID: 2100000, guid: 097cb2b93f951274b863c0ff84b50716, type: 2}
+  - {fileID: -6126091556477775235, guid: e893ef46862534d40926f871e647ef1f, type: 3}
+  - {fileID: -6126091556477775235, guid: e893ef46862534d40926f871e647ef1f, type: 3}
+  - {fileID: -6126091556477775235, guid: e893ef46862534d40926f871e647ef1f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1249,7 +1249,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470826094}
-  m_Mesh: {fileID: 1156577349}
+  m_Mesh: {fileID: 1085676317}
 --- !u!4 &1470826098
 Transform:
   m_ObjectHideFlags: 0

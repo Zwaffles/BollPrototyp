@@ -676,7 +676,7 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     - courseName: F1-4
-      sceneName: Level_B1_4
+      sceneName: F1-4
       parTime: 27
       courseCompleted: 0
       bestTime: 0
@@ -687,7 +687,7 @@ MonoBehaviour:
       bestTime: 0
     bossCourse:
       courseName: F1-X
-      sceneName: Level_B1_5
+      sceneName: F1-X
       parTime: 28
       courseCompleted: 0
       bestTime: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     - courseName: F2-3
-      sceneName: H-L-15
+      sceneName: F2-3
       parTime: 38
       courseCompleted: 0
       bestTime: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     - courseName: W1-3
-      sceneName: 7_Balja
+      sceneName: W1-3
       parTime: 19
       courseCompleted: 0
       bestTime: 0
@@ -1028,7 +1028,7 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     setUnlocked: 0
-    setUnlockedOnCompletion: Collab - House of How
+    setUnlockedOnCompletion: Collab - Krister
     requiredTimeRemainingFor3StarScore: 10
     stars: 0
     primarySetColor: {r: 0.9686275, g: 0.77647066, b: 0.41176474, a: 0}
@@ -1044,28 +1044,28 @@ MonoBehaviour:
       courseCompleted: 0
       bestTime: 0
     - courseName: HOH1-2
-      sceneName: HOH1-1
+      sceneName: HOH1-2
       parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: HOH1-3
-      sceneName: HOH1-1
+      sceneName: HOH1-3
       parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: HOH1-4
-      sceneName: HOH1-1
+      sceneName: HOH1-4
       parTime: 50
       courseCompleted: 0
       bestTime: 0
     - courseName: HOH1-5
-      sceneName: HOH1-1
+      sceneName: HOH1-5
       parTime: 50
       courseCompleted: 0
       bestTime: 0
     bossCourse:
       courseName: HOH1-X
-      sceneName: HOH1-1
+      sceneName: HOH1-X
       parTime: 50
       courseCompleted: 0
       bestTime: 0
@@ -1075,6 +1075,48 @@ MonoBehaviour:
     stars: 0
     primarySetColor: {r: 0.4117647, g: 0.69947714, b: 0.96862745, a: 0}
     secondarySetColor: {r: 0.047058817, g: 0.12653588, b: 0.6431373, a: 0}
+  - setName: Collab - Krister
+    bossTimeLimit: 300
+    musicName: Vonboff_-_Hawaiian_map
+    musicParOffset: 154
+    subCourses:
+    - courseName: KTN1-1
+      sceneName: KTN1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: KTN1-2
+      sceneName: KTN1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: KTN1-3
+      sceneName: KTN1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: KTN1-4
+      sceneName: KTN1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: KTN1-5
+      sceneName: KTN1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: KTN1-X
+      sceneName: KTN1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    setUnlocked: 0
+    setUnlockedOnCompletion: 
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
+    primarySetColor: {r: 0.96862745, g: 0.4117647, b: 0.4117647, a: 0}
+    secondarySetColor: {r: 0.6431373, g: 0.047058817, b: 0.047058817, a: 0}
 --- !u!1 &3406334378184867289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 1af738f1cda07f64e9a20cd1e40dee30, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 70d3c51885b7a1442bc4f2ca42a1966b, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 2ba9c95c4fae3f842b07c22ddfb74f8a, type: 3}
   m_SortingOrder: 0
 --- !u!114 &8572694152698090868
 MonoBehaviour:

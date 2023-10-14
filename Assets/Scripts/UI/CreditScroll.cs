@@ -41,6 +41,7 @@ public class CreditScroll : MonoBehaviour
 
         input = GameManager.instance.Input;
         input.AddSubmitEventListener(Submit);
+        input.AddNavigateEventListener(Navigate);
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -97,7 +98,13 @@ public class CreditScroll : MonoBehaviour
         if (Time.time < endTime + creditsHoldTimeBottom)
             return;
 
-        GameManager.instance.uiManager.ToggleOptionsMenu(true);
+        // Cheat unlock all levels
+        foreach (SetData set in GameManager.instance.courseManager.GetSetData())
+        {
+            set.setUnlocked = true;
+        }
+
+        GameManager.instance.uiManager.ToggleMainMenu(true);
         gameObject.SetActive(false);
 
     }
@@ -111,11 +118,10 @@ public class CreditScroll : MonoBehaviour
         if (!gameObject.activeInHierarchy)
             return;
 
-        GameManager.instance.uiManager.ToggleOptionsMenu(true);
+        GameManager.instance.uiManager.ToggleMainMenu(true);
         gameObject.SetActive(false);
     }
 
-    /*
     public void Navigate(InputAction.CallbackContext context)
     {
         if (!gameObject.activeInHierarchy)
@@ -144,15 +150,13 @@ public class CreditScroll : MonoBehaviour
 
     }
 
-    */
-
     public void Cancel(InputAction.CallbackContext context)
     {
 
         if (!gameObject.activeInHierarchy)
             return;
 
-        GameManager.instance.uiManager.ToggleOptionsMenu(true);
+        GameManager.instance.uiManager.ToggleMainMenu(true);
         gameObject.SetActive(false);
 
     }
