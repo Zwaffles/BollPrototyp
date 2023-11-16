@@ -33,6 +33,8 @@ public class BounceController : MonoBehaviour
 
         rb.AddForce(collision.impulse * bounceBias * bounceStrength, ForceMode.Impulse);
 
+        GameManager.instance.achievementManager.AddStat(Stat.Bounces, 1);
+
         canBounce = false;
 
     }

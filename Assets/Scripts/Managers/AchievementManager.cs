@@ -5,12 +5,13 @@ using UnityEngine;
 
 public enum Achievement
 {
-    Aloha
+    Aloha,
+    BallsToTheWall
 }
 
 public enum Stat
 {
-    GamesPlayed
+    Bounces
 }
 
 public class AchievementManager : MonoBehaviour
@@ -21,6 +22,9 @@ public class AchievementManager : MonoBehaviour
     private List<string> achievementQueue = new List<string>();
 
     private Dictionary<Stat, int> statsQueue = new Dictionary<Stat, int>();
+
+    private const int BALLS_TO_THE_WALL_THRESHOLD = 83; // Balls to the Wall was released in '83.
+    // Should probably be higher.
 
     private void OnEnable()
     {
@@ -93,6 +97,9 @@ public class AchievementManager : MonoBehaviour
             case Achievement.Aloha:
                 GiveAchievement("ACH_ALOHA");
                 break;
+            case Achievement.BallsToTheWall:
+                GiveAchievement("ACH_BALLTTWALL");
+                break;
             default:
                 break;
 
@@ -107,8 +114,8 @@ public class AchievementManager : MonoBehaviour
 
         switch (stat)
         {
-            case Stat.GamesPlayed:
-                statReference = "stat_games";
+            case Stat.Bounces:
+                statReference = "stat_bounces";
                 break;
             default:
                 break;
@@ -126,6 +133,18 @@ public class AchievementManager : MonoBehaviour
             SteamUserStats.StoreStats();
             */
 
+            switch (stat)
+            {
+                case Stat.Bounces:
+                    if (currentValue + value >= BALLS_TO_THE_WALL_THRESHOLD)
+                    {
+                        GiveAchievement(Achievement.BallsToTheWall);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
             Debug.Log(currentValue);
 
         }
@@ -135,6 +154,18 @@ public class AchievementManager : MonoBehaviour
             if (statsQueue.ContainsKey(stat))
             {
                 statsQueue[stat] += value;
+                // Placeholder code to test w/o Steamworks
+                switch (stat)
+                {
+                    case Stat.Bounces:
+                        if (statsQueue[stat] >= BALLS_TO_THE_WALL_THRESHOLD)
+                        {
+                            GiveAchievement(Achievement.BallsToTheWall);
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
 
         }
@@ -148,8 +179,8 @@ public class AchievementManager : MonoBehaviour
 
         switch (stat)
         {
-            case Stat.GamesPlayed:
-                statReference = "stat_games";
+            case Stat.Bounces:
+                statReference = "stat_bounces";
                 break;
             default:
                 break;
@@ -190,7 +221,7 @@ public class AchievementManager : MonoBehaviour
     private void ClearStatQueue()
     {
 
-        if (statsQueue.ContainsKey(Stat.GamesPlayed)) AddStat(Stat.GamesPlayed, statsQueue[Stat.GamesPlayed]);
+        if (statsQueue.ContainsKey(Stat.Bounces)) AddStat(Stat.Bounces, statsQueue[Stat.Bounces]);
 
         statsQueue.Clear();
 
