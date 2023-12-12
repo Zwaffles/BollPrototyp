@@ -265,6 +265,12 @@ public class UIManager : MonoBehaviour
             gameManager.achievementManager.GiveAchievement(Achievement.Aloha);
         }
 
+        // Safe to eat achievement
+        if (completionStatus && timeSpent < 5f)
+        {
+            gameManager.achievementManager.GiveAchievement(Achievement.SafeToEat);
+        }
+
     }
 
     private void HandleHasMoved()

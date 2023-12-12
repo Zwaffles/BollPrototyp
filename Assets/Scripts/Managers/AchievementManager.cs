@@ -6,7 +6,8 @@ using UnityEngine;
 public enum Achievement
 {
     Aloha,
-    BallsToTheWall
+    BallsToTheWall,
+    SafeToEat
 }
 
 public enum Stat
@@ -99,6 +100,9 @@ public class AchievementManager : MonoBehaviour
                 break;
             case Achievement.BallsToTheWall:
                 GiveAchievement("ACH_BALLTTWALL");
+                break;
+            case Achievement.SafeToEat:
+                GiveAchievement("ACH_SAFETOEAT");
                 break;
             default:
                 break;
