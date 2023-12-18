@@ -1,61 +1,69 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/BallGame/BG-StyleSheet.uss?fileID=7433441132597879392&amp;guid=d1ea9dce0874a5741a38507e099499f3&amp;type=3#BG-StyleSheet" />
-    <ui:VisualElement name="Canvas" style="flex-grow: 1; flex-direction: row; visibility: visible; overflow: hidden;">
-        <ui:VisualElement name="MenuContainer" style="width: 100%; height: 100%; justify-content: center; margin-left: 8%;">
-            <ui:VisualElement name="MenuBox" style="background-image: url(&apos;project://database/Assets/UI/Basket/Basket-UIGUI/Prototype/OptionsMenu/OptionsBG.png?fileID=2800000&amp;guid=038dd1064a5343d45ad8e9fee19abce4&amp;type=3#OptionsBG&apos;); width: 90%; height: 104%; flex-shrink: 0; align-items: stretch;">
-                <ui:VisualElement name="VideoOptionsContent" style="flex-grow: 1; margin-left: 8%; margin-right: 8%; margin-top: 4%; margin-bottom: 4%;">
-                    <ui:VisualElement name="TitleBox" style="flex-direction: row;">
-                        <ui:Label text="#AUDIO" display-tooltip-when-elided="true" name="TitleText" style="-unity-font-style: italic; font-size: 100px; color: rgb(255, 255, 255); margin-left: 48px; margin-right: 48px; margin-top: 48px; margin-bottom: 48px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; text-shadow: 6px 6px 0 rgb(0, 0, 0);" />
-                    </ui:VisualElement>
-                    <ui:VisualElement name="MasterContainer" focusable="true" class="OptionSelection" style="flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
-                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%;">
-                            <ui:Label text="#MASTER" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(255, 255, 255); font-size: 48px; -unity-font-style: italic;" />
+    <ui:VisualElement name="Canvas" style="flex-grow: 1; flex-direction: column; visibility: visible; overflow: hidden;">
+        <ui:VisualElement name="UI_MM_Header_Container" style="align-items: center; justify-content: flex-start; margin-top: 0; flex-direction: row; width: 100%; height: 16%;">
+            <ui:VisualElement name="UI_MM_Header_Box" style="align-items: center; justify-content: center; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/SetName%20Box.png?fileID=2800000&amp;guid=076ea86150025d44eb3b7991c15e1911&amp;type=3#SetName Box&apos;); padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 45%; flex-direction: row; height: 100%;">
+                <ui:Label text="#AUDIO" display-tooltip-when-elided="true" name="UI_MM_Header_Text" style="-unity-text-align: middle-center; font-size: 64px; -unity-font-style: italic; color: rgb(239, 239, 239); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); rotate: 0; margin-bottom: 2%; margin-left: 16px; margin-right: 16px; flex-grow: 0; flex-shrink: 1;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="MenuContainer" style="width: 100%; height: 100%; justify-content: center; flex-direction: column; flex-wrap: nowrap; position: relative; margin-left: 6%;">
+            <ui:VisualElement name="MenuBox" style="width: 90%; height: 104%; flex-shrink: 0; align-items: stretch;">
+                <ui:VisualElement name="VideoOptionsContent" style="flex-grow: 1; margin-left: 4%; margin-right: 4%; margin-top: 1%; margin-bottom: 1%; align-items: center;">
+                    <ui:VisualElement name="MasterContainer" focusable="true" class="MM-Button" style="flex-direction: row; justify-content: space-between; align-items: center; width: 80%; height: 40%; padding-left: 10%; padding-right: 14%; padding-top: 0; padding-bottom: 0; margin-top: 16px; margin-bottom: 16px;">
+                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%; -unity-text-align: middle-left; align-items: stretch; flex-direction: column; justify-content: center;">
+                            <ui:Label text="#MASTER" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(0, 0, 0); font-size: 48px; -unity-font-style: italic; -unity-text-align: upper-left;" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="SliderBox" style="width: auto; height: 100%; margin-right: 1%; margin-left: 1%;">
-                            <ui:SliderInt picking-mode="Ignore" value="50" high-value="100" show-input-field="false" focusable="true" direction="Horizontal" name="MasterSlider" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-center; -unity-font-style: bold-and-italic; font-size: 48px; color: rgb(255, 255, 255); justify-content: flex-start; align-items: center; visibility: visible; overflow: visible; width: 100%; height: 100%;" />
+                        <ui:VisualElement name="SliderBox" style="width: auto; height: 100%; margin-right: 1%; margin-left: 1%; color: rgb(0, 0, 0);">
+                            <ui:SliderInt picking-mode="Ignore" value="50" high-value="100" show-input-field="false" focusable="false" direction="Horizontal" name="MasterSlider" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-center; -unity-font-style: bold-and-italic; font-size: 48px; color: rgb(0, 0, 0); justify-content: flex-start; align-items: center; visibility: visible; overflow: visible; width: 100%; height: 100%; -unity-background-image-tint-color: rgb(0, 0, 0);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderAmountBox" style="height: 100%; -unity-text-align: middle-right; align-items: flex-end; justify-content: center; width: 16%;">
-                            <ui:Label text="50%" display-tooltip-when-elided="true" name="MasterAmountText" style="color: rgb(255, 255, 255); font-size: 40px; -unity-font-style: normal;" />
+                            <ui:Label text="50%" display-tooltip-when-elided="true" name="MasterAmountText" style="color: rgb(0, 0, 0); font-size: 40px; -unity-font-style: normal;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="MusicContainer" focusable="true" class="OptionSelection" style="flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-top: 0; margin-bottom: 0; margin-left: 0; margin-right: 0;">
-                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%;">
-                            <ui:Label text="#MUSIC" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(255, 255, 255); font-size: 48px; -unity-font-style: italic;" />
+                    <ui:VisualElement name="MusicContainer" focusable="true" class="MM-Button" style="flex-direction: row; justify-content: space-between; align-items: center; width: 80%; margin-top: 16px; margin-bottom: 16px; margin-left: 16px; margin-right: 16px; height: 40%; padding-left: 10%; padding-right: 14%; padding-top: 0; padding-bottom: 0;">
+                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%; justify-content: center;">
+                            <ui:Label text="#MUSIC" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(0, 0, 0); font-size: 48px; -unity-font-style: italic; -unity-text-align: middle-left;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderBox" style="width: auto; height: 100%; margin-right: 1%; margin-left: 1%;">
                             <ui:SliderInt picking-mode="Ignore" value="50" high-value="100" show-input-field="false" focusable="true" direction="Horizontal" name="MusicSlider" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-center; -unity-font-style: bold-and-italic; font-size: 48px; color: rgb(255, 255, 255); justify-content: flex-start; align-items: center; visibility: visible; overflow: visible; width: 100%; height: 100%;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderAmountBox" style="height: 100%; -unity-text-align: middle-right; align-items: flex-end; justify-content: center; width: 16%;">
-                            <ui:Label text="50%" display-tooltip-when-elided="true" name="MusicAmountText" style="color: rgb(255, 255, 255); font-size: 40px; -unity-font-style: normal;" />
+                            <ui:Label text="50%" display-tooltip-when-elided="true" name="MusicAmountText" style="color: rgb(0, 0, 0); font-size: 40px; -unity-font-style: normal;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="SFXContainer" focusable="true" class="OptionSelection" style="flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-top: 0; margin-bottom: 0; margin-left: 0; margin-right: 0;">
-                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%;">
-                            <ui:Label text="#SFX" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(255, 255, 255); font-size: 48px; -unity-font-style: italic;" />
+                    <ui:VisualElement name="SFXContainer" focusable="true" class="MM-Button" style="flex-direction: row; justify-content: space-between; align-items: center; width: 80%; margin-top: 16px; margin-bottom: 16px; margin-left: 16px; margin-right: 16px; height: 40%; padding-left: 10%; padding-right: 14%; padding-top: 0; padding-bottom: 0;">
+                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%; justify-content: center;">
+                            <ui:Label text="#SFX" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(0, 0, 0); font-size: 48px; -unity-font-style: italic; -unity-text-align: middle-left;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderBox" style="width: auto; height: 100%; margin-right: 1%; margin-left: 1%;">
                             <ui:SliderInt picking-mode="Ignore" value="50" high-value="100" show-input-field="false" focusable="true" direction="Horizontal" name="SFXSlider" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-center; -unity-font-style: bold-and-italic; font-size: 48px; color: rgb(255, 255, 255); justify-content: flex-start; align-items: center; visibility: visible; overflow: visible; width: 100%; height: 100%;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderAmountBox" style="height: 100%; -unity-text-align: middle-right; align-items: flex-end; justify-content: center; width: 16%;">
-                            <ui:Label text="50%" display-tooltip-when-elided="true" name="SFXAmountText" style="color: rgb(255, 255, 255); font-size: 40px; -unity-font-style: normal;" />
+                            <ui:Label text="50%" display-tooltip-when-elided="true" name="SFXAmountText" style="color: rgb(0, 0, 0); font-size: 40px; -unity-font-style: normal;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="VoiceContainer" focusable="true" class="OptionSelection" style="flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-top: 0; margin-bottom: 0; margin-left: 0; margin-right: 0;">
-                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%;">
-                            <ui:Label text="#VOICE" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(255, 255, 255); font-size: 48px; -unity-font-style: italic;" />
+                    <ui:VisualElement name="VoiceContainer" focusable="true" class="MM-Button" style="flex-direction: row; justify-content: space-between; align-items: center; width: 80%; margin-top: 16px; margin-bottom: 16px; margin-left: 16px; margin-right: 16px; height: 40%; padding-left: 10%; padding-right: 14%; padding-top: 0; padding-bottom: 0;">
+                        <ui:VisualElement name="SliderNameBox" style="height: 100%; width: 24%; justify-content: center;">
+                            <ui:Label text="#VOICE" display-tooltip-when-elided="true" name="SliderNameText" style="color: rgb(0, 0, 0); font-size: 48px; -unity-font-style: italic; -unity-text-align: middle-left;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderBox" style="width: auto; height: 100%; margin-right: 1%; margin-left: 1%;">
                             <ui:SliderInt picking-mode="Ignore" value="50" high-value="100" show-input-field="false" focusable="true" direction="Horizontal" name="VoiceSlider" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; -unity-text-align: middle-center; -unity-font-style: bold-and-italic; font-size: 48px; color: rgb(255, 255, 255); justify-content: flex-start; align-items: center; visibility: visible; overflow: visible; width: 100%; height: 100%;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="SliderAmountBox" style="height: 100%; -unity-text-align: middle-right; align-items: flex-end; justify-content: center; width: 16%;">
-                            <ui:Label text="50%" display-tooltip-when-elided="true" name="VoiceAmountText" style="color: rgb(255, 255, 255); font-size: 40px; -unity-font-style: normal;" />
+                            <ui:Label text="50%" display-tooltip-when-elided="true" name="VoiceAmountText" style="color: rgb(0, 0, 0); font-size: 40px; -unity-font-style: normal;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="ConfirmDefaultBox" style="flex-direction: row; justify-content: space-around; flex-grow: 1; align-items: flex-end;">
-                        <ui:Button text="#CONFIRM" display-tooltip-when-elided="true" name="Confirm" class="OptionsButtons MM-Button" style="background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); font-size: 48px; -unity-text-align: middle-center; bottom: 16%;" />
-                        <ui:Button text="#DEFAULT" display-tooltip-when-elided="true" name="Default" class="OptionsButtons MM-Button" style="background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); font-size: 48px; -unity-text-align: middle-center; bottom: 16%;" />
+                    <ui:VisualElement name="ConfirmDefaultBox" style="flex-direction: row; justify-content: space-around; flex-grow: 0; align-items: flex-end; height: 68%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; width: 65%;">
+                        <ui:Button text="#CONFIRM" display-tooltip-when-elided="true" name="Confirm" class="OptionsButtons MM-Button" style="font-size: 48px; width: 33%;" />
+                        <ui:Button text="#DEFAULT" display-tooltip-when-elided="true" name="Default" class="OptionsButtons MM-Button" style="background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); font-size: 48px; -unity-text-align: middle-center; bottom: auto; width: 33%;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="UI_MM_Confirm_Container" style="align-items: stretch; justify-content: flex-end; flex-direction: row; width: 100%; height: 16%; margin-top: 16px;">
+            <ui:VisualElement name="UI_LS_Confirm_Box" style="flex-direction: row; background-image: url(&apos;project://database/Assets/UI/BallGame/BG-UIGUI/Alpha%20UI/Button%20Container.png?fileID=2800000&amp;guid=9ad6456dc6081c14489a14392dafd51d&amp;type=3#Button Container&apos;); height: 100%; width: 400px; justify-content: flex-end; align-items: flex-end;">
+                <ui:VisualElement name="UI_LS_A-ButtonPrompt_Image" class="ConfirmButtonIcon" style="height: 48px; width: 48px; margin-bottom: 32px;" />
+                <ui:Button text="#CONFIRM" display-tooltip-when-elided="true" name="UI_LS_Confirm_Button" class="LS-BottomButtons" style="flex-shrink: 1; margin-left: 8px; margin-right: 64px; margin-top: 0; margin-bottom: 32px; padding-left: 0; padding-right: 25px; padding-top: 0; padding-bottom: 0; flex-direction: row; -unity-text-align: middle-right; justify-content: flex-start; -unity-font-style: normal; font-size: 32px; width: auto;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

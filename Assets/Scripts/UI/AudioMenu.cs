@@ -110,12 +110,12 @@ public class AudioMenu : MonoBehaviour
         sfxAmount.text = sfxValue.ToString();
         voiceAmount.text = voiceValue.ToString();
 
-        masterSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        masterContainer.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: masterSlider.Focus(); break;
-                case NavigationMoveEvent.Direction.Down: musicSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: masterContainer.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: musicContainer.Focus(); break;
                 case NavigationMoveEvent.Direction.Left:
                     masterValue = Math.Min(100, Math.Max(0, masterValue - 10));
                     masterSlider.value = masterValue;
@@ -132,12 +132,12 @@ public class AudioMenu : MonoBehaviour
             e.PreventDefault();
         });
 
-        musicSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        musicContainer.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: masterSlider.Focus(); break;
-                case NavigationMoveEvent.Direction.Down: sfxSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: masterContainer.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: sfxContainer.Focus(); break;
                 case NavigationMoveEvent.Direction.Left:
                     musicValue = Math.Min(100, Math.Max(0, musicValue - 10));
                     musicSlider.value = musicValue;
@@ -154,12 +154,12 @@ public class AudioMenu : MonoBehaviour
             e.PreventDefault();
         });
 
-        sfxSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        sfxContainer.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: musicSlider.Focus(); break;
-                case NavigationMoveEvent.Direction.Down: voiceSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: musicContainer.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: voiceContainer.Focus(); break;
                 case NavigationMoveEvent.Direction.Left:
                     sfxValue = Math.Min(100, Math.Max(0, sfxValue - 10));
                     sfxSlider.value = sfxValue;
@@ -176,11 +176,11 @@ public class AudioMenu : MonoBehaviour
             e.PreventDefault();
         });
 
-        voiceSlider.RegisterCallback<NavigationMoveEvent>(e =>
+        voiceContainer.RegisterCallback<NavigationMoveEvent>(e =>
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: sfxSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: sfxContainer.Focus(); break;
                 case NavigationMoveEvent.Direction.Down: confirmButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Left:
                     voiceValue = Math.Min(100, Math.Max(0, voiceValue - 10));
@@ -202,7 +202,7 @@ public class AudioMenu : MonoBehaviour
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: voiceSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: voiceContainer.Focus(); break;
                 case NavigationMoveEvent.Direction.Down: confirmButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Left: confirmButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Right: defaultButton.Focus(); break;
@@ -214,7 +214,7 @@ public class AudioMenu : MonoBehaviour
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: voiceSlider.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: voiceContainer.Focus(); break;
                 case NavigationMoveEvent.Direction.Down: defaultButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Left: confirmButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Right: defaultButton.Focus(); break;
