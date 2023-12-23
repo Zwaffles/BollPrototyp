@@ -98,11 +98,11 @@ public class VideoMenu : MonoBehaviour
         switch (currentScreenMode)
         {
             case FullScreenMode.ExclusiveFullScreen:
-                displayModeText.style.fontSize = 32;
+                displayModeText.style.fontSize = 48;
                 displayModeText.text = GetLocalizedVariant("Fullscreen");
                 break;
             case FullScreenMode.FullScreenWindow:
-                displayModeText.style.fontSize = 32;
+                displayModeText.style.fontSize = 48;
                 displayModeText.text = GetLocalizedVariant("Borderless Windowed");
                 break;
             case FullScreenMode.Windowed:
@@ -147,12 +147,12 @@ public class VideoMenu : MonoBehaviour
                             currentScreenMode = FullScreenMode.Windowed;
                             return;
                         case FullScreenMode.FullScreenWindow:
-                            displayModeText.style.fontSize = 32;
+                            displayModeText.style.fontSize = 48;
                             displayModeText.text = GetLocalizedVariant("Fullscreen");
                             currentScreenMode = FullScreenMode.ExclusiveFullScreen;
                             return;
                         case FullScreenMode.Windowed:
-                            displayModeText.style.fontSize = 25;
+                            displayModeText.style.fontSize = 48;
                             displayModeText.text = GetLocalizedVariant("Borderless Windowed");
                             currentScreenMode = FullScreenMode.FullScreenWindow;
                             return;
@@ -162,12 +162,12 @@ public class VideoMenu : MonoBehaviour
                     switch (currentScreenMode)
                     {
                         case FullScreenMode.ExclusiveFullScreen:
-                            displayModeText.style.fontSize = 25;
+                            displayModeText.style.fontSize = 48;
                             displayModeText.text = GetLocalizedVariant("Borderless Windowed");
                             currentScreenMode = FullScreenMode.FullScreenWindow;
                             return;
                         case FullScreenMode.FullScreenWindow:
-                            displayModeText.style.fontSize = 32;
+                            displayModeText.style.fontSize = 48;
                             displayModeText.text = GetLocalizedVariant("Windowed");
                             currentScreenMode = FullScreenMode.Windowed;
                             return;
@@ -357,7 +357,7 @@ public class VideoMenu : MonoBehaviour
             currentFramerateCap = defaultFramerateCap;
             vSyncEnabled = defaultVSyncEnabled;
 
-            displayModeText.style.fontSize = 25;
+            displayModeText.style.fontSize = 48;
             displayModeText.text = GetLocalizedVariant("Borderless Windowed");
             resolutionText.text = resolutionOptions[resolutionOptions.Count - 1];
             framerateCapText.text = GetLocalizedVariant("Unlimited");
