@@ -29,8 +29,6 @@ public class CourseManager : MonoBehaviour
         SceneManager.LoadScene(course.sceneName);
 
         GameManager.instance.audioManager.PlayMusicWithOffset(set.musicName, course.parTime + set.musicParOffset);
-
-        Debug.Log(GetCurrentParTime());
     }
 
     /// <summary>

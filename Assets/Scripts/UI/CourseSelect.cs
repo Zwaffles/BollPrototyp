@@ -273,7 +273,6 @@ public class CourseSelect : MonoBehaviour
 
     private void UpdateCourseUIInformation()
     {
-        Debug.Log("Current Set: " + currentSet);
 
         setName.text = courseManager.GetSetName(currentSet);
 

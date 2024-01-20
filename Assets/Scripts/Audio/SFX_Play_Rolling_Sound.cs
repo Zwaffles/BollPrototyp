@@ -48,7 +48,7 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
 
             try
             {
-                GameManager.instance.audioManager.PlayLoopingSfx("Rollin", () => wasGrounded, EngineSound);
+                GameManager.instance.audioManager.PlayLoopingSfx("Rollin", IsRollingSFXApplicable, EngineSound);
             }
             catch
             {
@@ -95,6 +95,11 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
     bool isRunning()
     {
         return playerController.isGrounded;
+    }
+
+    bool IsRollingSFXApplicable()
+    {
+        return wasGrounded && !(ballRb is null);
     }
 
 }
