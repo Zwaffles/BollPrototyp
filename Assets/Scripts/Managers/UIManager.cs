@@ -271,6 +271,13 @@ public class UIManager : MonoBehaviour
             gameManager.achievementManager.GiveAchievement(Achievement.SafeToEat);
         }
 
+        // Ballpark achievement
+        float timeOverPar = timeSpent - courseManager.GetCurrentParTime();
+        if (timeOverPar > 0f && timeOverPar < 1f)
+        {
+            gameManager.achievementManager.GiveAchievement(Achievement.Ballpark);
+        }
+
     }
 
     private void HandleHasMoved()

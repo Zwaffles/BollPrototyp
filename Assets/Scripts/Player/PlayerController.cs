@@ -138,6 +138,10 @@ public class PlayerController : MonoBehaviour
     
     private GameManager gameManager;
 
+    // Achievement-related variables
+    private float lastTimeOnGround;
+    private const float TIME_FOR_VIVA_VIDSEL = 3f;
+
     private void OnEnable()
     {
         gameManager = GameManager.instance;
@@ -147,7 +151,8 @@ public class PlayerController : MonoBehaviour
         input.AddMoveEventListener(HandleMove);
         input.AddJumpEventListener(HandleJump);
         input.AddJumpCancelledEventListener(HandleCancelledJump);
-    }
+        lastTimeOnGround = Time.time;
+}
 
     private void OnDisable()
     {
@@ -200,9 +205,14 @@ public class PlayerController : MonoBehaviour
            // if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, 1.5f))
         {
 
-            if (!isOnGround) previousGravity = temporaryGravity;
+            if (!isOnGround)
+            {
+                previousGravity = temporaryGravity;
+                if (lastTimeOnGround + TIME_FOR_VIVA_VIDSEL < Time.time && GameManager.instance.courseManager.GetCurrentSet() < 3) Debug.Log("Viva Vidsel! Achieved");
+            }
 
             isOnGround = true;
+            lastTimeOnGround = Time.time;
             temporaryGravity = standardGravity; //Reset gravity
             OnSlope();
         }

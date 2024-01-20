@@ -7,7 +7,9 @@ public enum Achievement
 {
     Aloha,
     BallsToTheWall,
-    SafeToEat
+    SafeToEat,
+    VivaVidsel,
+    Ballpark
 }
 
 public enum Stat
@@ -69,6 +71,8 @@ public class AchievementManager : MonoBehaviour
     private void GiveAchievement(string achievement)
     {
 
+        Debug.Log(achievement);
+
         if (hasReceivedUserStats)
         {
 
@@ -103,6 +107,12 @@ public class AchievementManager : MonoBehaviour
                 break;
             case Achievement.SafeToEat:
                 GiveAchievement("ACH_SAFETOEAT");
+                break;
+            case Achievement.VivaVidsel:
+                GiveAchievement("ACH_VIVAVIDSEL");
+                break;
+            case Achievement.Ballpark:
+                GiveAchievement("ACH_BALLPARK");
                 break;
             default:
                 break;
@@ -148,8 +158,6 @@ public class AchievementManager : MonoBehaviour
                 default:
                     break;
             }
-
-            Debug.Log(currentValue);
 
         }
         else
