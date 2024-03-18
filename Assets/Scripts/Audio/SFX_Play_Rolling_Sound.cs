@@ -69,7 +69,14 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
     float EngineSound()
     {
 
-        currentSpeed = Mathf.Min(ballRb.angularVelocity.magnitude, maxSpeed);
+        if (ballRb != null)
+        {
+            currentSpeed = Mathf.Min(ballRb.angularVelocity.magnitude, maxSpeed);
+        }
+        else
+        {
+            currentSpeed = 0f;
+        }
 
         pitchFromBall = currentSpeed / 50f;
 
@@ -99,7 +106,7 @@ public class SFX_Play_Rolling_Sound : MonoBehaviour
 
     bool IsRollingSFXApplicable()
     {
-        return wasGrounded && !(ballRb is null);
+        return wasGrounded && !(ballRb == null);
     }
 
 }

@@ -31,8 +31,12 @@ public class PlayerController : MonoBehaviour
     private float currentOverSpeed = 0f;
     // [SerializeField, Tooltip("Max-speed the ball should lerp towards")] Not editable
     private float targetMaxSpeed = 28f;
-    [SerializeField, Tooltip("Max speed to lerp towards for the ball on flat ground and in the air")]
+    [SerializeField, Tooltip("Max speed to lerp towards for the ball on flat ground")]
     private float regularMaxSpeed = 28f;
+    [SerializeField, Tooltip("Max speed to lerp towards for the ball in the air")]
+    private float aerialMaxSpeed = 28f;
+
+    // Environmental hazards
     private HashSet<GameObject> touchingIceObjects = new HashSet<GameObject>();
     public bool isOnIce
     {
@@ -221,7 +225,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
             previousGravity = temporaryGravity;
             IncreaseGravity();
-            targetMaxSpeed = regularMaxSpeed; //Jumping doesn't preserve your speed
+            targetMaxSpeed = aerialMaxSpeed; //Jumping doesn't preserve your speed
         }
 
         LerpSpeed();

@@ -56,6 +56,9 @@ public class LevelSelectMenu : MonoBehaviour
         {
             courseButtons[i].RegisterCallback<FocusInEvent>(OnFocusInCourse);
         }
+
+        FocusFirstElement(currentCourse);
+
     }
 
     /// <summary>
