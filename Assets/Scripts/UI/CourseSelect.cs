@@ -1,6 +1,7 @@
 using System;
 using UnityEngine.UIElements;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Handles the selection of courses in a menu.
@@ -64,8 +65,6 @@ public class CourseSelect : MonoBehaviour
 
         currentCourse = courseManager.GetCurrentCourse();
 
-        FocusFirstElement(currentCourse);
-
         setName.text = courseManager.GetSetName(currentSet);
 
         // Display the remaining time for the boss course
@@ -81,6 +80,8 @@ public class CourseSelect : MonoBehaviour
                 courseButtons[i].style.backgroundImage = lockIcon;
             }
         }
+
+        FocusFirstElement(courseButtons[currentCourse]);
 
     }
 
@@ -130,9 +131,9 @@ public class CourseSelect : MonoBehaviour
     /// Sets the focus on the first element of the selected course.
     /// </summary>
     /// <param name="currentCourse">The index of the current course.</param>
-    public void FocusFirstElement(int currentCourse)
+    public void FocusFirstElement(VisualElement firstElement)
     {
-        courseButtons[currentCourse].Focus();
+        firstElement.Focus();
     }
 
     /// <summary>

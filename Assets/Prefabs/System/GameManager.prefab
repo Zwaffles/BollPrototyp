@@ -322,10 +322,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e9514a369cc594e94e867490beae7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 100
-  reverseScrollSpeed: 50
-  fastForwardScrollSpeed: 200
-  maxScroll: 2150
+  scrollSpeed: 150
+  reverseScrollSpeed: 150
+  fastForwardScrollSpeed: 500
+  maxScroll: 2750
   creditsHoldTimeTop: 0.5
   creditsHoldTimeBottom: 0.5
 --- !u!114 &4844514414649670470
@@ -1380,6 +1380,7 @@ MonoBehaviour:
   currentSet: 0
   lockIcon: {fileID: 2800000, guid: a79d7463ea699d244b063e0ab44e08cf, type: 3}
   unlockIcon: {fileID: 2800000, guid: a9a17aedc47f7e146b7decafadf04457, type: 3}
+  panelSettings: {fileID: 11400000, guid: 1af738f1cda07f64e9a20cd1e40dee30, type: 2}
 --- !u!114 &6162732671409491742
 MonoBehaviour:
   m_ObjectHideFlags: 0

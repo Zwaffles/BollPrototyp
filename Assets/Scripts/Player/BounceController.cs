@@ -12,6 +12,9 @@ public class BounceController : MonoBehaviour
     private Vector2 bounceBias = new Vector2(1f, 1f);
     [SerializeField, Tooltip("How weak the bounce should be. DO NOT USE THIS TO STRENGTHEN THE BOUNCE"), Range(0f, 1f)]
     private float bounceStrength = 0.5f;
+    [SerializeField, Tooltip("How much the bounce should be offset by, allowing you to bounce over obstacles")]
+    private Vector2 bounceOffset = new Vector2(0f, 0f);
+    private Vector3 internalBounceOffset;
 
     private bool canBounce = false;
 
@@ -31,7 +34,7 @@ public class BounceController : MonoBehaviour
 
         //GameManager.instance.audioManager.PlaySfx("Rollin", 0.1f);
 
-        rb.AddForce(collision.impulse * bounceBias * bounceStrength, ForceMode.Impulse);
+        rb.AddForce((collision.impulse + internalBounceOffset) * bounceBias * bounceStrength, ForceMode.Impulse);
 
         GameManager.instance.achievementManager.AddStat(Stat.Bounces, 1);
 
@@ -48,6 +51,7 @@ public class BounceController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
+        internalBounceOffset = new Vector3(bounceOffset.x, bounceOffset.y, 0f);
     }
 
 }

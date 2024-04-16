@@ -277,7 +277,7 @@ public class InputReader : ScriptableObject, PlayerInputs.IGameplayActions, Play
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            CameraCycleEvent?.Invoke();
+            //CameraCycleEvent?.Invoke();
         }
     }
 

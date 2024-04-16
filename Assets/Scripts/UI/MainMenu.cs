@@ -33,6 +33,54 @@ public class MainMenu : MonoBehaviour
         creditsButton = root.Q<VisualElement>("UI_MM_CreditsButton_Box");
         quitButton = root.Q<VisualElement>("UI_MM_QuitButton_Box");
 
+        playButton.RegisterCallback<NavigationMoveEvent>(e =>
+         {
+             switch (e.direction)
+             {
+                 case NavigationMoveEvent.Direction.Up: playButton.Focus(); break;
+                 case NavigationMoveEvent.Direction.Down: creditsButton.Focus(); break;
+                 case NavigationMoveEvent.Direction.Left: playButton.Focus(); break;
+                 case NavigationMoveEvent.Direction.Right: optionsButton.Focus(); break;
+             }
+             e.PreventDefault();
+         });
+
+        optionsButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: optionsButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: quitButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: playButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: optionsButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+
+        creditsButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: playButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: creditsButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: creditsButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: quitButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+
+        quitButton.RegisterCallback<NavigationMoveEvent>(e =>
+        {
+            switch (e.direction)
+            {
+                case NavigationMoveEvent.Direction.Up: optionsButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Down: quitButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Left: creditsButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Right: quitButton.Focus(); break;
+            }
+            e.PreventDefault();
+        });
+
         FocusFirstElement(playButton);
         ignoreInputTime = Time.time + .25f;
 
