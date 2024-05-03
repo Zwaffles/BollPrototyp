@@ -1117,6 +1117,48 @@ MonoBehaviour:
     stars: 0
     primarySetColor: {r: 0.96862745, g: 0.4117647, b: 0.4117647, a: 0}
     secondarySetColor: {r: 0.6431373, g: 0.047058817, b: 0.047058817, a: 0}
+  - setName: Tim Lee
+    bossTimeLimit: 300
+    musicName: Vonboff_-_Hawaiian_map
+    musicParOffset: 154
+    subCourses:
+    - courseName: TL1-1
+      sceneName: TL1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: TL1-2
+      sceneName: TL1-2
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: TL1-3
+      sceneName: TL1-3
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: TL1-4
+      sceneName: TL1-4
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    - courseName: TL1-5
+      sceneName: TL1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    bossCourse:
+      courseName: TL1-X
+      sceneName: TL1-1
+      parTime: 50
+      courseCompleted: 0
+      bestTime: 0
+    setUnlocked: 0
+    setUnlockedOnCompletion: 
+    requiredTimeRemainingFor3StarScore: 10
+    stars: 0
+    primarySetColor: {r: 0.52156866, g: 0.58431375, b: 0.5764706, a: 0}
+    secondarySetColor: {r: 0.33333334, g: 0.37254903, b: 0.3529412, a: 0}
 --- !u!1 &3406334378184867289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1422,6 @@ MonoBehaviour:
   currentSet: 0
   lockIcon: {fileID: 2800000, guid: a79d7463ea699d244b063e0ab44e08cf, type: 3}
   unlockIcon: {fileID: 2800000, guid: a9a17aedc47f7e146b7decafadf04457, type: 3}
-  panelSettings: {fileID: 11400000, guid: 1af738f1cda07f64e9a20cd1e40dee30, type: 2}
 --- !u!114 &6162732671409491742
 MonoBehaviour:
   m_ObjectHideFlags: 0
