@@ -9,10 +9,6 @@ using UnityEngine;
 
 public class SFX_Play_Bounce_Sound : MonoBehaviour
 {
-    //Rigidbody
-    private Rigidbody ballCollisionRb;
-
-    private int currentCollisions = 0;
 
     [SerializeField]
     [Range(-12f, 12f)]
@@ -22,11 +18,19 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     [Range(0f, 20f)]
     private float minimumImpulse = 2f;
 
+    private float lastBounceTime;
+    private const float MIN_TIME_BETWEEN_BOUNCES = 0.3f;
+
+    private PlayerController playerController;
+
+    private bool wasGrounded = false;
+
     //On Event Start
     void Start()
     {
 
-        ballCollisionRb = GetComponent<Rigidbody>();
+        lastBounceTime = Time.time;
+        playerController = GetComponent<PlayerController>();
 
     }
 
@@ -35,18 +39,28 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        //if (currentCollisions++ != 0) return;
+        if (wasGrounded) return;
+
+        wasGrounded = true;
 
         if (collision.impulse.magnitude < minimumImpulse) return;
 
-        // Removed temporarily for our sanity's sake
+        if (Time.time < lastBounceTime + MIN_TIME_BETWEEN_BOUNCES) return;
+
         GameManager.instance.audioManager.PlaySfx("Basket_Bounce_1-SFX", pitch);
+        lastBounceTime = Time.time;
 
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void Update()
     {
-        currentCollisions--;
+        if (!playerController.isGrounded)
+        {
+
+            wasGrounded = false;
+
+        }
+
     }
 
 }
