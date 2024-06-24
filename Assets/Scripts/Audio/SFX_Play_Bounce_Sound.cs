@@ -47,7 +47,7 @@ public class SFX_Play_Bounce_Sound : MonoBehaviour
 
         if (Time.time < lastBounceTime + MIN_TIME_BETWEEN_BOUNCES) return;
 
-        GameManager.instance.audioManager.PlaySfx("Basket_Bounce_1-SFX", pitch);
+        GameManager.instance.audioManager.PlaySfx(string.Format("BallBounce{0}", Mathf.FloorToInt(Random.Range(1f, 4.9f))), pitch); //"Basket_Bounce_1-SFX"
         lastBounceTime = Time.time;
 
     }
