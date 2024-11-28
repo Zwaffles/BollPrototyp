@@ -30,11 +30,16 @@ public class CourseSelect : MonoBehaviour
     [SerializeField, Header("Icon for unlocked levels")]
     private Texture2D unlockIcon;
 
+    private float ignoreInputTime;
+    private bool inputEnabled;
+
     /// <summary>
     /// Event triggered when the script is enabled.
     /// </summary>
     private void OnEnable()
     {
+        inputEnabled = false;
+
         input = GameManager.instance.Input;
         input.AddSubmitEventListener(Submit);
         input.AddShoulderButtonRightEventListener(NavigateSetRight);
@@ -83,7 +88,7 @@ public class CourseSelect : MonoBehaviour
             }
         }
 
-        FocusFirstElement(courseButtons[currentCourse]);
+        ignoreInputTime = Time.time + .25f;
 
     }
 
@@ -97,11 +102,20 @@ public class CourseSelect : MonoBehaviour
         input.RemoveShoulderButtonLeftEventListener(NavigateSetLeft);
     }
 
-    /*
-
     /// <summary>
     /// Initializes the script.
     /// </summary>
+    private void Start()
+    {
+        // Display the remaining time for the boss course
+        var bossTime = courseManager.GetBossTimeLimit(currentSet) - courseManager.GetTotalTimeSpent(currentSet);
+        finalCourseTimeLimit.text = DisplayTime(bossTime);
+        finalCourseTimeLimitDropShadow.text = DisplayTime(bossTime);
+    }
+
+    /*
+
+    // Old start script, not sure why it was commented out
     private void Start()
     {
         courseManager = GameManager.instance.courseManager;
@@ -128,6 +142,18 @@ public class CourseSelect : MonoBehaviour
     }
 
     */
+
+    private void Update()
+    {
+
+        if (inputEnabled) return;
+        
+        if (Time.time > ignoreInputTime)
+        {
+            inputEnabled = true;
+            FocusFirstElement(courseButtons[currentCourse]);
+        }
+    }
 
     /// <summary>
     /// Sets the focus on the first element of the selected course.
@@ -203,6 +229,10 @@ public class CourseSelect : MonoBehaviour
     /// </summary>
     private void Submit()
     {
+
+        if (!inputEnabled)
+            return;
+
         switch (currentCourse)
         {
             case 0:

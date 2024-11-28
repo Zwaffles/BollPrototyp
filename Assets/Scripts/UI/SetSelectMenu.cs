@@ -175,6 +175,8 @@ public class SetSelectMenu : MonoBehaviour
         if (stars >= 2) setHOHButton.Q<VisualElement>("UI_SS_SetHOH_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
         if (stars >= 1) setHOHButton.Q<VisualElement>("UI_SS_SetHOH_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
+        /*
+
         setKTNButton = root.Q<VisualElement>("UI_SS_Set_Box_KTN");
         if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(10))
             setKTNButton.Q<VisualElement>("UI_SS_SetKTNImage").style.backgroundImage = lockIcon;
@@ -184,10 +186,12 @@ public class SetSelectMenu : MonoBehaviour
         if (stars >= 2) setKTNButton.Q<VisualElement>("UI_SS_SetKTN_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
         if (stars >= 1) setKTNButton.Q<VisualElement>("UI_SS_SetKTN_CompletetionIcon1").style.unityBackgroundImageTintColor = Color.white;
 
+        */
+
         setTILButton = root.Q<VisualElement>("UI_SS_Set_Box_TIL");
-        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(11))
+        if (!GameManager.instance.courseManager.GetUnlockStatusOfSet(10))
             setTILButton.Q<VisualElement>("UI_SS_SetTILImage").style.backgroundImage = lockIcon;
-        stars = GameManager.instance.courseManager.GetSetData()[11].stars;
+        stars = GameManager.instance.courseManager.GetSetData()[10].stars;
 
         if (stars >= 3) setTILButton.Q<VisualElement>("UI_SS_SetTIL_CompletetionIcon3").style.unityBackgroundImageTintColor = Color.white;
         if (stars >= 2) setTILButton.Q<VisualElement>("UI_SS_SetTIL_CompletetionIcon2").style.unityBackgroundImageTintColor = Color.white;
@@ -209,7 +213,7 @@ public class SetSelectMenu : MonoBehaviour
         {
             switch (e.direction)
             {
-                case NavigationMoveEvent.Direction.Up: setKTNButton.Focus(); break;
+                case NavigationMoveEvent.Direction.Up: setHOHButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Down: setTILButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Left: setTILButton.Focus(); break;
                 case NavigationMoveEvent.Direction.Right: setTILButton.Focus(); break;
@@ -269,9 +273,9 @@ public class SetSelectMenu : MonoBehaviour
 
         if (focusedElement == setHOHButton) focusedSet = GameManager.instance.courseManager.GetSetData()[9];
 
-        if (focusedElement == setKTNButton) focusedSet = GameManager.instance.courseManager.GetSetData()[10];
+        //if (focusedElement == setKTNButton) focusedSet = GameManager.instance.courseManager.GetSetData()[10];
 
-        if (focusedElement == setTILButton) focusedSet = GameManager.instance.courseManager.GetSetData()[11];
+        if (focusedElement == setTILButton) focusedSet = GameManager.instance.courseManager.GetSetData()[10];
 
         GameManager.instance.uiManager.SetTargetColors(focusedSet.primarySetColor, focusedSet.secondarySetColor);
 
@@ -355,15 +359,19 @@ public class SetSelectMenu : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        /*
+
         if (focusedElement == setKTNButton && GameManager.instance.courseManager.GetUnlockStatusOfSet(10))
         {
             GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 10);
             gameObject.SetActive(false);
         }
 
-        if (focusedElement == setTILButton && GameManager.instance.courseManager.GetUnlockStatusOfSet(11))
+        */
+
+        if (focusedElement == setTILButton && GameManager.instance.courseManager.GetUnlockStatusOfSet(10))
         {
-            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 11);
+            GameManager.instance.uiManager.ToggleLevelSelectMenu(true, 10);
             gameObject.SetActive(false);
         }
 
